@@ -1,2 +1,0 @@
-testerering
-kntl
