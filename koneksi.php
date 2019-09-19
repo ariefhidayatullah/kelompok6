@@ -1,3 +1,0 @@
-testerering
-kntl
-qwerty
