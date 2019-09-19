@@ -1,3 +1,2 @@
 testerering
-kntl
-qwerty
+polije
