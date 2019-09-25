@@ -1,0 +1,15 @@
+    #id{
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        background-color: salmon;
+    }
+    .class{
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        margin-top: 30px;
+        background-color: violet;
+    }
+
+    
