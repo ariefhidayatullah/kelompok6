@@ -1,5 +1,15 @@
-<?php
-    echo "Hallowww Kelas </br></br>";
+<!DOCTYPE html>
+<html>
+<head>
+	<title>@bimabgskr</title>
+</head>
+<body>
+    <h1 style="color:blue">SELAMAT BELAJAR HTML </h1>
+    <h2 style="color :crimson ">NAMA SAYA : (BIMA BAGASKARA) </h2>
+    <h3 style="color:cyan">POLITEKNIK NEGERI JEMBER</h3>
+
+    <?php
+    echo "HALLO GAESS KEMBALI LAGI BERSAMA SAYA BIMA NO LIMIT </br></br>";
     $tempat = "di Polije";
 	$Tempat = "di Polije Dua";
 	$TempaT = "di Polije Tiga";
@@ -38,3 +48,5 @@
 	khafid();
 
 ?>
+</body>
+</html>
