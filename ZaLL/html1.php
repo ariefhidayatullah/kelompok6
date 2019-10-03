@@ -7,7 +7,7 @@
 
 <h1 style="color:red">Selamat Belajar HTML</h1>
 <h2 style="color:blue">Nama Saya: Fabryzal Adam Pramudya</h2>
-<h3>Politeknik Negeri Jember</h3>
+<h3><marquee>Politeknik Negeri Jember</marquee></h3>
 
 <?php
     echo "ENTER 2 TIMES </br></br>";
@@ -27,13 +27,14 @@
 
 	echo $jumlah."</br></br>";
 
-	for ($x = 0; $x <= 10; $x++) {
+	for ($x = 1; $x <= 10; $x++) {
     	echo "Tempat Ke - ".$x."<br>";
 		}
 
 	$t = date("H");
 
 	if ($t < "20") {
+		echo "<br>";
     	echo "Selamat Pagi!";
 	}
 
