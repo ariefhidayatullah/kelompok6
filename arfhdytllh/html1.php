@@ -5,10 +5,10 @@
 </head>
 <body>
 
-<h1 style="color:red;">Selamat belajar html</h1>
+	<div style="text-align: center">
 <h1 style="color:green;">nama saya : mohammad arief hidayatullah</h1>
 <h3>Politeknik negeri jember</h3>
-
+	
 <?php
     echo "Hallowww Kelas </br></br>";
     $tempat = "di Polije";
@@ -38,18 +38,18 @@
 	}
 
 	//Konstanta
-	define("Khafid", "Selamat datang di Polije!");
-	echo "</br></br>".Khafid;
+	define("arfhdytllh", "Selamat datang di Polije!");
+	echo "</br></br>".arfhdytllh;
 
 	//Fungsi
 	function khafid(){
-		echo "</br></br>".Khafid." Dua";
+		echo "</br></br>".arfhdytllh." Dua";
 	}
 
 	khafid();
 
 ?>
-
+	</div>
 <h4 align="center">kembali kehalaman sebelumnya <a href="html2.html" align="center">klik disini</a></h4>
 
 </body>
