@@ -19,7 +19,7 @@
 	ECHO "<h2 style='color:red'>Selamat Belajar HTML</h2>";
 	EcHo "<h3> Selamat Belajar HTML ".$Tempat."</h3>";
 	echo $TempaT."</br></br>";
-	echo date("Y/m/d")."</br></br>";
+	echo date("d/m/Y")."</br></br>";
 
 	//Penjumlahan
 	$a = 10; $b = $c = 20; $d = 2;
