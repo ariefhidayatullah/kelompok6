@@ -10,7 +10,6 @@
 <h3>Politeknik negeri jember</h3>
 	
 <?php
-    echo "Hallowww Kelas </br></br>";
     $tempat = "di Polije";
 	$Tempat = "di Polije Dua";
 	$TempaT = "di Polije Tiga";
