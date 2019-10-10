@@ -31,8 +31,8 @@
 				<td><?php echo $d['id_produk']; ?></td>
 				<td><?php echo $d['stok']; ?></td>
 				<td>
-					<a href="edit.php?id=<?php echo $d['id']; ?>">EDIT</a>
-					<a href="hapus.php?id=<?php echo $d['id']; ?>">HAPUS</a>
+					<a href="edit_bahan.php?id=<?php echo $d['id_bahan']; ?>">EDIT</a>
+					<a href="hapus_bahan.php?id=<?php echo $d['id_bahan']; ?>">HAPUS</a>
 				</td>
 			</tr>
 			<?php 
