@@ -7,7 +7,7 @@
 
 	<h2>CRUD</h2>
 	<br/>
-	<a href="tambah.php">+ TAMBAH BAHAN</a>
+	<a href="tambah_bahan.php">+ TAMBAH BAHAN</a>
 	<br/>
 	<br/>
 	<table border="1">
