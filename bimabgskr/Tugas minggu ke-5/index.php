@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LATIHAN</title>
+    <title>TRAINING</title>
     <style>
     body{
-        background-image: url(coba.jpg);
+        background-image: url(aye.jpg);
         background-size: cover;
 
     }
@@ -19,7 +19,7 @@
 <div style="text-align: center">
 
 <br>
-<h1>ARRAY</h1>
+<h1> ARRAY</h1>
 <?php
 
 //Mendeklarasi array
