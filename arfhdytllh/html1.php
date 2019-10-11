@@ -14,7 +14,7 @@
 	$Tempat = "di Polije Dua";
 	$TempaT = "di Polije Tiga";
 
-	echo "<h1 style='color:red'>Selamat Belajar HTML ".$tempat."</h1>";
+	echo "<h1 style='color:green'>Selamat Belajar HTML ".$tempat."</h1>";
 	echo "<h2 style='color:blue'>Selamat Belajar HTML</h2>";
 	echo "<h3>Selamat Belajar HTML ".$Tempat."</h3>";
 	echo $TempaT."</br></br>";
