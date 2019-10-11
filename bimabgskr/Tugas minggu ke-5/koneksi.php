@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root" ;
 $password = "";
-$database = "printonline";
+$database = "malasngoding";
 
 $koneksi = mysqli_connect("$host","$user","$password","$database");
 
