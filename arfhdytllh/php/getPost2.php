@@ -1,6 +1,6 @@
  <?php
-$nama = $_GET['nama'];
-$alamat = $_GET['alamat'];
+$nama = $_POST["nama"];
+$alamat = $_POST['alamat'];
 echo " nama anda :". $nama;
 echo "<br>";
 echo "alamat:". $alamat;

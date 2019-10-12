@@ -9,8 +9,8 @@
 <body>
     <div style="text-align: center">
     <h1>penanganan form</h1>
-    <table border ="1" cellpedding = "10" cellspacing= "0"  style="text-align: center"> 
-    <form action="getPost2.php" method="GET">
+    <table border ="1" cellpedding = "10" cellspacing= "0"> 
+    <form action="getPost2.php" method="post">
             <tr>
                 <td>
                     <label for="nama">nama:</label>
