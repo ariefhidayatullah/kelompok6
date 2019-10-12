@@ -11,13 +11,19 @@ $mahasiswa = query('SELECT * FROM mahasiswa');
 <head>
 	<meta charset="UTF-8">
 	<title>Latian CRUD</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="jquery-3.3.1.slim.min.js"></script>
+	<script src="popper.min.js"></script>
+	<script src="ajax.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 	<h1>Daftar Mahasiswa</h1>
 
-	<a href="tambah.php"> Tambah data </a>
+	<a href="tambah.php" class="btn btn-primary" role="button"> Tambah data </a>
 
-	<table border="1" cellpadding="10" cellspacing="0">
+<div class="container text-center">
+	<table border="1" cellpadding="10" cellspacing="0" class="table table-hover table-dark">
 		<tr>
 			<th>No.</th>
 			<th>aksi</th>
@@ -44,5 +50,6 @@ $mahasiswa = query('SELECT * FROM mahasiswa');
 		</tr>
 		<?php $i++ ?>
 		<?php endforeach; ?>
+		</div>
 </body>
 </html>
