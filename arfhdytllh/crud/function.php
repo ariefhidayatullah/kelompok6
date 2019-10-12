@@ -21,16 +21,59 @@ function query($query){
 function tambah($data){
 	global $conn;
 	//ambil data dari tiap elemen dalam form
-	$nama = $data['nama'];
-	$nim = $data['nim'];
-	$email = $data['email'];
-	$jurusan = $data['jurusan'];
-	$gambar = $data['gambar'];
+	$nama = htmlspecialchars($data['nama']);
+	$nim = htmlspecialchars($data['nim']);
+	$email = htmlspecialchars($data['email']);
+	$jurusan = htmlspecialchars($data['jurusan']);
+	
+	// upload gambar
+	$gambar=upload();
+	if ( !$gambar ) {
+		return false; 
+	}
 
 	//query insert data
 	$query = "INSERT INTO mahasiswa VALUES (NULL, '$nama', '$nim', '$email', '$jurusan', '$gambar')";
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
+}
+
+
+function upload(){
+
+	$namafile = $_FILES['gambar']['name'];
+	$ukuranfile = $_FILES['gambar']['size'];
+	$error = $_FILES['gambar']['error'];
+	$tmpname = $_FILES['gambar']['tmp_name'];
+
+	//cek apakah tidak ada gambar yang di upload
+	if ( $error == 4) {
+		echo "<script>
+				alert('pilih gambar terlebih dahulu!');
+			</script>";
+		return false;
+	}
+
+	// cek apakah yang di upload adalah gambar
+	$ekstensigambarvalid = ['jpg', 'jpeg', 'png'];
+	$ekstensigambar = explode('.', $namafile);
+	$ekstensigambar = strtolower(end($ekstensigambar));
+	if ( !in_array($ekstensigambar, $ekstensigambarvalid)) {
+		echo "<script>
+				alert('yang anda upload bukan gambar');
+			</script>";
+		return false;
+	}
+
+	// cek ukuran gambar terlalu besar
+	$ekstensiFile = [' > 1500000 ' ];
+	if( !in_array($ukuranfile , $ekstensiFile )) {
+		echo "<script>
+			alert('ukuran gambar terlalu besar !');
+		</script>";
+		return false;
+}
+
 }
 
 
