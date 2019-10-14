@@ -28,12 +28,13 @@ function tambah($data){
 	
 	// upload gambar
 	$gambar=upload();
+
 	if ( !$gambar ) {
 		return false; 
 	}
 
 	//query insert data
-	$query = "INSERT INTO mahasiswa VALUES (NULL, '$nama', '$nim', '$email', '$jurusan', '$gambar')";
+	$query = "INSERT INTO mahasiswa VALUES (NULL, '$nim', '$nama', '$email', '$jurusan', '$gambar')";
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
 }
@@ -66,13 +67,13 @@ function upload(){
 	}
 
 	// cek ukuran gambar terlalu besar
-	$ekstensiFile = [' > 1500000 ' ];
-	if( !in_array($ukuranfile , $ekstensiFile )) {
-		echo "<script>
-			alert('ukuran gambar terlalu besar !');
-		</script>";
-		return false;
-}
+    $ekstensiFile = [' > 1500000 ' ];
+    if(in_array($ukuranfile , $ekstensiFile )) {
+        echo "<script>
+            alert('ukuran gambar terlalu besar !');
+        </script>";
+        return false;
+    }
 
 }
 
