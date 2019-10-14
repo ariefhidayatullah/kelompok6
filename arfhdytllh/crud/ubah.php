@@ -42,9 +42,10 @@ if (isset($_POST["submit"])) {
 		<h1>Ubah Data</h1>
 		<?php foreach ($mhs as $row):?>
 		<table  border="1" cellpadding="10" cellspacing="0">
-		<form action="" method="POST">
+		<form action="" method="POST" enctype="multipart/form-data">
 			<ul>
 				<input type="hidden" name="id" value="<?= $row['id']; ?>">
+				<input type="hidden" name="gambarLama" value="<?= $row['gambar']; ?>">
 				<tr>
 					<td><li><label for="nama">nama</label></li></td>
 					<td><li><input type="text" name="nama" id="nama" required value="<?= $row['nama']; ?>"></li></td>
@@ -71,7 +72,8 @@ if (isset($_POST["submit"])) {
 			<ul>
 				<tr>
 					<td><li><label for="gambar">gambar</label></li></td>
-					<td><li><input type="text" name="gambar" id="gambar" required value="<?= $row['gambar']; ?>"></li></td>
+					
+					<td><li><img src="img/<?= $row['gambar']; ?>" width="40"><input type="file" name="gambar" id="gambar"></li></td>
 				</tr>
 			</ul>
 			<ul>

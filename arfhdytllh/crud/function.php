@@ -21,60 +21,22 @@ function query($query){
 function tambah($data){
 	global $conn;
 	//ambil data dari tiap elemen dalam form
-	$nama = htmlspecialchars($data['nama']);
-	$nim = htmlspecialchars($data['nim']);
-	$email = htmlspecialchars($data['email']);
-	$jurusan = htmlspecialchars($data['jurusan']);
-	
-	// upload gambar
-	$gambar=upload();
+	$nama = $data['nama'];
+	$nim = $data['nim'];
+	$email = $data['email'];
+	$jurusan = $data['jurusan'];
 
-	if ( !$gambar ) {
-		return false; 
+	//upload Gambar
+
+	$gambar = upload();
+	if ($gambar == false) {
+		return false;
 	}
 
 	//query insert data
-	$query = "INSERT INTO mahasiswa VALUES (NULL, '$nim', '$nama', '$email', '$jurusan', '$gambar')";
+	$query = "INSERT INTO mahasiswa VALUES (NULL, '$nama', '$nim', '$email', '$jurusan', '$gambar')";
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
-}
-
-
-function upload(){
-
-	$namafile = $_FILES['gambar']['name'];
-	$ukuranfile = $_FILES['gambar']['size'];
-	$error = $_FILES['gambar']['error'];
-	$tmpname = $_FILES['gambar']['tmp_name'];
-
-	//cek apakah tidak ada gambar yang di upload
-	if ( $error == 4) {
-		echo "<script>
-				alert('pilih gambar terlebih dahulu!');
-			</script>";
-		return false;
-	}
-
-	// cek apakah yang di upload adalah gambar
-	$ekstensigambarvalid = ['jpg', 'jpeg', 'png'];
-	$ekstensigambar = explode('.', $namafile);
-	$ekstensigambar = strtolower(end($ekstensigambar));
-	if ( !in_array($ekstensigambar, $ekstensigambarvalid)) {
-		echo "<script>
-				alert('yang anda upload bukan gambar');
-			</script>";
-		return false;
-	}
-
-	// cek ukuran gambar terlalu besar
-    $ekstensiFile = [' > 1500000 ' ];
-    if(in_array($ukuranfile , $ekstensiFile )) {
-        echo "<script>
-            alert('ukuran gambar terlalu besar !');
-        </script>";
-        return false;
-    }
-
 }
 
 
@@ -93,7 +55,16 @@ function ubah($data){
 	$nim = $data['nim'];
 	$email = $data['email'];
 	$jurusan = $data['jurusan'];
-	$gambar = $data['gambar'];
+	$gambarLama = $data['gambarLama'];
+
+	//cek
+
+	if($_FILES['gambar']['error'] === 4){
+		$gambar = $gambarLama;
+	}else{
+		$gambar = upload();
+	}
+
 
 	//query insert data
 	$query = "UPDATE mahasiswa SET 
@@ -107,4 +78,59 @@ function ubah($data){
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
 }
- ?>
+
+function cari($key){
+	$query = "SELECT * FROM mahasiswa WHERE nama LIKE '%$key%'";
+	return query($query);
+}	
+
+function upload(){
+	$namaFile = $_FILES['gambar']['name'];
+	$ukuranFile = $_FILES['gambar']['size'];
+	$error = $_FILES['gambar']['error'];
+	$tmpName = $_FILES['gambar']['tmp_name'];
+
+	//jika gambar tidak di upload
+
+	if($error === 4){
+		echo "<script>alert('Masukkan Gambar!!');</script>";
+		return false;
+	}
+
+	//jika yg di upload bukan gambar
+
+	$valid = ['jpg', 'jpeg', 'png'];
+
+	//explode untuk mengubah string menjadi array(memecah)
+	// '.' yang mau di pecah selanjutnya
+	$ekstensiGambar = explode('.', $namaFile);
+	//mengambil array yang paling akhir (end)
+	//menjadikan huruf kecil semua (strtolower())
+	$ekstensiGambar = strtolower(end($ekstensiGambar));
+
+	if(!in_array($ekstensiGambar, $valid)){
+		echo "<script>alert('yang anda Upload bukan Gambar!');</script>";
+		return false;
+	}
+
+	//cek ukurannya terlalu besar
+
+	if ($ukuranFile > 1000000) {
+		echo "<script>
+					alert('Gambar terlalu besar!');
+			</script>";
+		return false;
+	}
+
+	//membuat nama file baru
+
+	$namaFileBaru = uniqid().'.'.$ekstensiGambar;
+
+	//jika lolos dari seleksi
+
+	move_uploaded_file($tmpName, 'img/'.$namaFileBaru);
+
+	return $namaFileBaru;
+
+
+}
