@@ -1,0 +1,13 @@
+{
+    "name": "belajar-composer/latihan-composer",
+    "description": "buat belajar",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Fabryzal Adam Pramudya",
+            "email": "ryzaldm@gmail.com"
+        }
+    ],
+    "require": {}
+}
