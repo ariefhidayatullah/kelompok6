@@ -3,6 +3,8 @@
     "type": "project",
     "license": "GPL",
     "require": {
-        "phpoffice/phpspreadsheet": "^1.9"
+        "phpoffice/phpspreadsheet": "^1.9",
+        "nesbot/carbon": "^2.25",
+        "setasign/fpdf": "^1.8"
     }
 }
