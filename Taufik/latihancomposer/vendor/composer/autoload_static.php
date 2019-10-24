@@ -42,11 +42,16 @@ class ComposerStaticInitbb3ee2e2aa16b974820647715fce85cb
         ),
     );
 
+    public static $classMap = array (
+        'FPDF' => __DIR__ . '/..' . '/setasign/fpdf/fpdf.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitbb3ee2e2aa16b974820647715fce85cb::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitbb3ee2e2aa16b974820647715fce85cb::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitbb3ee2e2aa16b974820647715fce85cb::$classMap;
 
         }, null, ClassLoader::class);
     }

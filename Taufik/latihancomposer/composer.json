@@ -1,0 +1,13 @@
+{
+    "name": "taufik/latihancomposer",
+    "authors": [
+        {
+            "name": "Taufik Hariyanto",
+            "email": "hariyantotaufik7@gmail.com"
+        }
+    ],
+    "require": {},
+    "scripts": {
+        "server": "php -S localhost:8080"
+    }
+}
