@@ -1,6 +1,12 @@
 {
-    "require": {
-        "matthiasmullie/minify": "^1.3",
-        "phpoffice/phpspreadsheet": "^1.9"
-    }
+    "name": "bimabgskr/bimabgskr-composer",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "bimabagaskara",
+            "email": "55170641+bimabagaskara@users.noreply.github.com"
+        }
+    ],
+    "require": {}
 }
