@@ -1,6 +1,6 @@
-<?php 
+<?php
 require 'function.php';
-$mahasiswa = query('SELECT * FROM mahasiswa');
+$bahan = query('SELECT * FROM produk');
 // foreach ($mahasiswa as $kel) {
 // 	echo $kel['id'];
 // }
@@ -8,6 +8,7 @@ $mahasiswa = query('SELECT * FROM mahasiswa');
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Latian CRUD</title>
@@ -17,39 +18,37 @@ $mahasiswa = query('SELECT * FROM mahasiswa');
 	<script src="ajax.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </head>
+
 <body>
-	<h1>Daftar Mahasiswa</h1>
-
-	<a href="tambah.php" class="btn btn-primary" role="button"> Tambah data </a>
-
-<div class="container text-center">
-	<table border="1" cellpadding="10" cellspacing="0" class="table table-hover table-dark">
-		<tr>
-			<th>No.</th>
-			<th>aksi</th>
-			<th>Gambar</th>
-			<th>NIM</th>
-			<th>Nama</th>
-			<th>Email</th>
-			<th>Jurusan</th>
-		</tr>
-		<?php $i = 1; ?>
-		<?php foreach($mahasiswa as $row):?>
-		<tr>
-			<td><?= $i; ?></td>
-			<td>
-				<a href="ubah.php?id=<?= $row['id']; ?>">ubah</a>
-				<a href="hapus.php?id=<?= $row['id']; ?>" onclick="return confirm('yakin ? ');">hapus</a>
-			</td>
-			<td><img src="img/<?= $row['gambar']; ?>"width="80">
-			</td>
-			<td><?= $row['nim']; ?></td>
-			<td><?= $row['nama']; ?></td>
-			<td><?= $row['email']; ?></td>
-			<td><?= $row['jurusan']; ?></td>
-		</tr>
-		<?php $i++ ?>
-		<?php endforeach; ?>
-		</div>
+	<div class="container text-center">
+		<h1 style="text-center">Daftar Mahasiswa</h1>
+		<a href="tambah.php" class="btn btn-primary" role="button"> Tambah data </a>
+		<table border="1" cellpadding="10" cellspacing="0" class="table table-hover table-dark">
+			<tr>
+				<th>No.</th>
+				<th>aksi</th>
+				<th>gambar</th>
+				<th>id produk</th>
+				<th>jenis produk</th>
+				<th>harga satuan</th>
+			</tr>
+			<?php $i = 1; ?>
+			<?php foreach ($bahan as $row) : ?>
+				<tr>
+					<td><?= $i; ?></td>
+					<td>
+						<a href="ubah.php?id=<?= $row['id_produk']; ?>">ubah</a>
+						<a href="hapus.php?id=<?= $row['id_produk']; ?>" onclick="return confirm('apakah anda yakin ? ');">hapus</a>
+					</td>
+					<td><img src="img/<?= $row['gambar']; ?>" width="100">
+					</td>
+					<td><?= $row['id_produk']; ?></td>
+					<td><?= $row['jenis_produk']; ?></td>
+					<td><?= $row['harga_satuan']; ?></td>
+				</tr>
+				<?php $i++ ?>
+			<?php endforeach; ?>
+	</div>
 </body>
+
 </html>

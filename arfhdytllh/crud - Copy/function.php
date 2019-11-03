@@ -1,30 +1,30 @@
-<?php
+<?php 
 //untuk koneksi
-$conn = mysqli_connect('localhost', 'root', '', 'printonline');
+$conn = mysqli_connect('localhost', 'root', '', 'phpdasar');
 
 //membuat function agar jadi satu, supaya jadi efektif dan efisien
-function query($query)
-{
+function query($query){
 	//untuk memasukkan variabel $conn karena kalau langsung tidak bisa, grgr scope
 	global $conn;
 	//membuat array kosong untuk menampung data
 	$result = mysqli_query($conn, $query);
 	//untuk mengambil data dari database
 	$rows = [];
-
+	
 	while ($row = mysqli_fetch_assoc($result)) {
 		$rows[] = $row;
 	}
 	return $rows;
+
 }
 
-function tambah($data)
-{
+function tambah($data){
 	global $conn;
 	//ambil data dari tiap elemen dalam form
-	$id_produk = $data['id_produk'];
-	$jenis_produk = $data['jenis_produk'];
-	$harga_satuan = $data['harga_satuan'];
+	$nama = $data['nama'];
+	$nim = $data['nim'];
+	$email = $data['email'];
+	$jurusan = $data['jurusan'];
 
 	//upload Gambar
 
@@ -34,57 +34,57 @@ function tambah($data)
 	}
 
 	//query insert data
-	$query = "INSERT INTO produk VALUES ('$id_produk', '$jenis_produk', '$harga_satuan', '$gambar')";
+	$query = "INSERT INTO mahasiswa VALUES (NULL, '$nama', '$nim', '$email', '$jurusan', '$gambar')";
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
 }
 
 
-function hapus($id_produk)
-{
+function hapus($id){
 	global $conn;
-	mysqli_query($conn, "DELETE FROM produk WHERE id_produk = '$id_produk'");
+	mysqli_query($conn, "DELETE FROM `mahasiswa` WHERE id= $id");
 	return mysqli_affected_rows($conn);
 }
 
-function ubah($data)
-{
+function ubah($data){
 	global $conn;
 
-	$id_produk = $data['id_produk'];
-	$jenis_produk = $data['jenis_produk'];
-	$harga_satuan = $data['harga_satuan'];
+	$id = $data['id'];
+	//ambil data dari tiap elemen dalam form
+	$nama = $data['nama'];
+	$nim = $data['nim'];
+	$email = $data['email'];
+	$jurusan = $data['jurusan'];
 	$gambarLama = $data['gambarLama'];
 
 	//cek
 
-	if ($_FILES['gambar']['error'] === 4) {
+	if($_FILES['gambar']['error'] === 4){
 		$gambar = $gambarLama;
-	} else {
+	}else{
 		$gambar = upload();
 	}
 
 
 	//query insert data
-	$query = "UPDATE produk SET 
-			id_produk = '$id_produk', 
-			jenis_produk = '$jenis_produk',
-			harga_satuan = '$harga_satuan',
+	$query = "UPDATE mahasiswa SET 
+			nama = '$nama', 
+			nim = '$nim',
+			email = '$email', 
+			jurusan = '$jurusan',
 			gambar = '$gambar'
-			WHERE id_produk = '$id_produk'
+			WHERE id = $id
 			";
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
 }
 
-function cari($key)
-{
-	$query = "SELECT * FROM produk WHERE nama LIKE '%$key%'";
+function cari($key){
+	$query = "SELECT * FROM mahasiswa WHERE nama LIKE '%$key%'";
 	return query($query);
-}
+}	
 
-function upload()
-{
+function upload(){
 	$namaFile = $_FILES['gambar']['name'];
 	$ukuranFile = $_FILES['gambar']['size'];
 	$error = $_FILES['gambar']['error'];
@@ -92,7 +92,7 @@ function upload()
 
 	//jika gambar tidak di upload
 
-	if ($error === 4) {
+	if($error === 4){
 		echo "<script>alert('Masukkan Gambar!!');</script>";
 		return false;
 	}
@@ -108,7 +108,7 @@ function upload()
 	//menjadikan huruf kecil semua (strtolower())
 	$ekstensiGambar = strtolower(end($ekstensiGambar));
 
-	if (!in_array($ekstensiGambar, $valid)) {
+	if(!in_array($ekstensiGambar, $valid)){
 		echo "<script>alert('yang anda Upload bukan Gambar!');</script>";
 		return false;
 	}
@@ -124,11 +124,13 @@ function upload()
 
 	//membuat nama file baru
 
-	$namaFileBaru = uniqid() . '.' . $ekstensiGambar;
+	$namaFileBaru = uniqid().'.'.$ekstensiGambar;
 
 	//jika lolos dari seleksi
 
-	move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
+	move_uploaded_file($tmpName, 'img/'.$namaFileBaru);
 
 	return $namaFileBaru;
+
+
 }
