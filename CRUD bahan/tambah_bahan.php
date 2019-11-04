@@ -1,3 +1,28 @@
+<?php 
+require 'function.php';
+
+if (isset($_POST["submit"])) {
+
+	//cek data berhasil ditambah atau tidak
+	if(tambah_bahan($_POST) > 0){
+		echo "
+			<script>
+				alert('data berhasil ditambah');
+					document.location.href = 'index.php';
+			</script>
+		";
+	}else{
+		echo "
+			<script>
+				alert('data gagal ditambah'); 
+				document.location.href = 'index.php';
+			</script>
+		";
+	}
+}
+
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +36,7 @@
 	<br/>
 	<br/>
 	<h3>TAMBAH BAHAN</h3>
-	<form method="post" action="tambah_bahan_aksi.php">
+	<form action="" method="POST" enctype="multipart/form-data">
 		<table>
 			<tr>			
 				<td>ID BAHAN</td>
