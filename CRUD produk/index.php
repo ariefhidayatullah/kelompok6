@@ -1,41 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>THE KING ADVERTISING</title>
-</head>
-<body>
+<?php
+require 'function.php';
+$bahan = query('SELECT * FROM produk');
+// foreach ($mahasiswa as $kel) {
+// 	echo $kel['id'];
+// }
+?>
 
-	<h2>TABEL PRODUK</h2>
-	<br/>
-	<a href="tambah_produk.php">+ TAMBAH PRODUK</a>
-	<br/>
-	<br/>
-	<table border="1">
-		<tr>
-			<th>NO</th>
-			<th>ID PRODUK</th>
-			<th>JENIS PRODUK</th>
-			<th>HARGA SATUAN</th>
-		</tr>
-		<?php 
-		include 'koneksi.php';
-		$no = 1;
-		$data = mysqli_query($koneksi,"select * from produk");
-		while($d = mysqli_fetch_array($data)){
-			?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Latian CRUD</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="jquery-3.3.1.slim.min.js"></script>
+	<script src="popper.min.js"></script>
+	<script src="ajax.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="container text-center">
+		<h1 style="text-center">Daftar Mahasiswa</h1>
+		<a href="tambah.php" class="btn btn-primary" role="button"> Tambah data </a>
+		<table border="1" cellpadding="10" cellspacing="0" class="table table-hover table-dark">
 			<tr>
-				<td><?php echo $no++; ?></td>
-				<td><?php echo $d['id_produk']; ?></td>
-				<td><?php echo $d['jenis_produk']; ?></td>
-				<td><?php echo $d['harga_satuan']; ?></td>
-				<td>
-					<a href="edit_produk.php?id=<?php echo $d['id_produk']; ?>">EDIT</a>
-					<a href="hapus_produk.php?id=<?php echo $d['id_produk']; ?>">HAPUS</a>
-				</td>
+				<th>No.</th>
+				<th>aksi</th>
+				<th>gambar</th>
+				<th>id produk</th>
+				<th>jenis produk</th>
+				<th>harga satuan</th>
 			</tr>
-			<?php 
-		}
-		?>
-	</table>
+			<?php $i = 1; ?>
+			<?php foreach ($bahan as $row) : ?>
+				<tr>
+					<td><?= $i; ?></td>
+					<td>
+						<a href="ubah.php?id=<?= $row['id_produk']; ?>">ubah</a>
+						<a href="hapus.php?id=<?= $row['id_produk']; ?>" onclick="return confirm('apakah anda yakin ? ');">hapus</a>
+					</td>
+					<td><img src="img/<?= $row['gambar']; ?>" width="100">
+					</td>
+					<td><?= $row['id_produk']; ?></td>
+					<td><?= $row['jenis_produk']; ?></td>
+					<td><?= $row['harga_satuan']; ?></td>
+				</tr>
+				<?php $i++ ?>
+			<?php endforeach; ?>
+	</div>
 </body>
+
 </html>
