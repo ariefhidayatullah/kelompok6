@@ -14,7 +14,7 @@
 
 	<?php
 	include 'koneksi.php';
-	$id_bahan = $_POST['id_bahan'];
+	$id_bahan = $_GET['id_bahan'];
 	$data = mysqli_query($koneksi,"select * from bahan where id_bahan='$id_bahan'");
 	while($d = mysqli_fetch_array($data)){
 		?>
