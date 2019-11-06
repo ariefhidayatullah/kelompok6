@@ -7,7 +7,7 @@
 
 	<h2>CRUD</h2>
 	<br/>
-	<a href="edit.php">+ TAMBAH BAHAN</a>
+	<a href="edit.php">+ edi</a>
 	<br/>
 	<br/>
 	<table border="1">
