@@ -8,18 +8,25 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Hello, world!</title>
+    <title>Printonline</title>
   </head>
   <body id="page-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top" id="maiNav">
       <div class="container">
-  <a class="navbar-brand font-weight-bold" href="#page-top">Printonline</a>
+  <a class="navbar-brand font-weight-bold text-white" href="#page-top ">Printonline</a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto"></ul>
+    <ul class="navbar-nav ml-auto">
+    	<li class="nav-item">
+        	<a class="nav-link text-white" href="#">Login</a>
+      	</li>
+      	<li class="nav-item">
+        	<a class="nav-link text-white" href="#">Daftar</a>
+      	</li>
+    </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
@@ -45,7 +52,7 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="img/ios3.jpg" class="d-block w-100" alt="...">
+      <img src="img/bg/bg1.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
       <h1 class="display-4">Selamat Datang di<br> <span class="font-weight-bold">PRINTONLINE</span></h1>
       <hr class="my-4">
@@ -54,7 +61,13 @@
         </div>
     </div>
     <div class="carousel-item">
-      <img src="img/ios2.jpg" class="d-block w-100" alt="...">
+      <img src="img/bg/bg2.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+      <h1 class="display-4">Selamat Datang di<br> <span class="font-weight-bold">PRINTONLINE</span></h1>
+      <hr class="my-4">
+      <p class="lead">Ayo print di sobat ERMANTOL</p>
+      <a class="btn btn-primary btn-lg font-weight-bold" href="#" role="button">Kunjungi</a> 
+        </div>
     </div>
     <div class="carousel-item">
       <img src="img/6.png" class="d-block w-100" alt="...">
