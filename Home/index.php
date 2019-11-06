@@ -19,7 +19,14 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto"></ul>
+    <ul class="navbar-nav ml-auto">
+    	<li class="nav-item">
+        	<a class="nav-link text-white" href="#">Login</a>
+      	</li>
+      	<li class="nav-item">
+        	<a class="nav-link text-white" href="#">Daftar</a>
+      	</li>
+    </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
@@ -54,7 +61,7 @@
         </div>
     </div>
     <div class="carousel-item">
-      <img src="img/ios2.jpg" class="d-block w-100" alt="...">
+      <img src="img/bg/bg2.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
       <img src="img/6.png" class="d-block w-100" alt="...">
