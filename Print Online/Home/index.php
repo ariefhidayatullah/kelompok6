@@ -20,10 +20,10 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-    	<li class="nav-item">
+    	<li class="nav-item" data-toggle="modal" data-target="#mylogin"><span class="glyphicon glyphicon-user"></span>
         	<a class="nav-link text-white" href="#">Login</a>
       	</li>
-      	<li class="nav-item">
+      	<li class="nav-item" data-toggle="modal" data-target="#mydaftar"><span class="glyphicon glyphicon-user"></span>
         	<a class="nav-link text-white" href="#">Daftar</a>
       	</li>
     </ul>
@@ -179,6 +179,94 @@
 </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Modal daftar -->
+<div id="mydaftar" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+     <script type="text/javascript">
+  function Angkasaja(evt){
+    var charCode = (evt.which) ?
+    evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+      return true;
+    }
+  }
+</script>
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <form>
+     <div class="form-group">
+    <form action="" method="POST" enctype="multipart/form-data">
+      <p class="form-group">
+        <label for="id_user">ID USER<br></label>
+        <input type="text" class="form-control" name="id_user" id="id_user" placeholder="ID User" required="">
+      </p>
+      <p class="form-group">
+        <label for="nama_user">USERNAME<br></label>
+        <input type="text" class="form-control" name="nama_user" id="nama_user" placeholder="nama anda" required="">
+      </p>
+      <p class="form-group">
+        <label for="email">EMAIL<br></label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="email anda" required="">
+      </p>
+      <p class="form-group">
+        <label for="password">PASSWORD<br></label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="password" required="">
+      </p>
+      <div class="form-group">
+        <label for="nohp_user">NOMOR HP<br></label>
+      <input type="text" class="form-control" name="nohp_user" id="nohp_user" placeholder="nomor hp yang aktif" minlength="10" maxlength="12" required="" onkeypress="return Angkasaja(event)"/>
+      </div>
+    </form>
+    </div>
+  </form>
+      </div>
+      <div class="modal-footer">
+        <br><button type="submit" class="btn btn-success" name="submit" data-dimiss="submit">DaftarP</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal daftar -->
+
+<!-- Modal login -->
+<div id="mylogin" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Username</label>
+      <input type="text" class="form-control" id="username" placeholder="Username">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+  </form>
+      </div>
+      <div class="modal-footer">
+       <button type="submit" class="btn btn-success" data-dismiss="modal">Login</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
