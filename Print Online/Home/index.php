@@ -11,9 +11,9 @@
     <title>Printonline</title>
   </head>
   <body id="page-top">
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top" id="maiNav">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-lg  bg-info fixed-top" id="maiNav">
       <div class="container">
-  <a class="navbar-brand font-weight-bold text-white" href="#page-top ">Printonline</a>
+  <a class="navbar-brand font-weight-bold p-2 mb-1 text-white" href="#page-top ">Printonline</a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -29,7 +29,7 @@
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
   </div>
@@ -62,12 +62,6 @@
     </div>
     <div class="carousel-item">
       <img src="img/bg/bg2.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-      <h1 class="display-4">Selamat Datang di<br> <span class="font-weight-bold">PRINTONLINE</span></h1>
-      <hr class="my-4">
-      <p class="lead">Ayo print di sobat ERMANTOL</p>
-      <a class="btn btn-primary btn-lg font-weight-bold" href="#" role="button">Kunjungi</a> 
-        </div>
     </div>
     <div class="carousel-item">
       <img src="img/6.png" class="d-block w-100" alt="...">
@@ -83,7 +77,7 @@
   </a>
 </div>
 
-<h4 class="text-center font-weight-bold m-4">PRODUK TERBARU</h4>
+<h4 class="text-center font-weight-bold m-4">KATALOG PRODUK</h4>
 
 <div class="container">
   <div class="row">
@@ -91,7 +85,7 @@
       <div class="card" style="width: 13rem;">
         <img src="img/produk/xbanner.png" class="card-img-top" alt="...">
         <div class="card-body bg-light">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">Banner</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="#" class="btn btn-primary">Detail</a>
          <a href="#" class="btn btn-danger">Rp. 500</a>
@@ -102,7 +96,7 @@
       <div class="card" style="width: 13rem">
         <img src="img/produk/kartunama.jpg" class="card-img-top" alt="...">
         <div class="card-body bg-light">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">kartu Nama</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="#" class="btn btn-primary">Detail</a>
          <a href="#" class="btn btn-danger">Rp. 500</a>
@@ -177,6 +171,15 @@
     </div>
   </div>
 </div>
+<footer class="bg-dark text-white">
+  <div class="container">
+    <div class="row mb-5">
+     <div class="col-md-4">
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat reprehenderit magnam deleniti quasi saepe, consequatur atque sequi delectus dolore veritatis obcaecati quae, repellat eveniet omnis, voluptatem in. Soluta, eligendi, architecto.</p>
+     </div> 
+    </div>
+  </div> 
+</footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- Modal daftar -->
@@ -266,6 +269,7 @@
     </div>
   </div>
 </div>
+
 
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
