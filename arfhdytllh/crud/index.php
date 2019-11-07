@@ -37,7 +37,7 @@ $bahan = query('SELECT * FROM produk');
 				<tr>
 					<td><?= $i; ?></td>
 					<td>
-						<a href="ubah.php?id=<?= $row['id_produk']; ?>">ubah</a>
+						<a href="ubah.php?id=<?= $row['id_produk']; ?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit" aria-hidden="true"></i></a>
 						<a href="hapus.php?id=<?= $row['id_produk']; ?>" onclick="return confirm('apakah anda yakin ? ');">hapus</a>
 					</td>
 					<td><img src="img/<?= $row['gambar']; ?>" width="100">

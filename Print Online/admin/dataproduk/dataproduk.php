@@ -27,11 +27,10 @@ $bahan = query('SELECT * FROM produk');
   <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
 
   <!-- Custom styles for this page -->
+  <script src="../assets/js/bootstrap.min.js"></script>
   <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="../jquery-3.3.1.slim.min.js"></script>
   <script src="../popper.min.js"></script>
-  <script src="../ajax.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
 
 </head>
 
@@ -149,7 +148,7 @@ $bahan = query('SELECT * FROM produk');
                       <tr>
                         <td><?= $i; ?></td>
                         <td>
-                          <a href="ubah.php?id=<?= $row['id_produk']; ?>">ubah</a>
+                          <a href="ubah.php?id=<?= $row['id_produk']; ?>" class="btn btn"><i class="glyphicon "></i></a>
                           <a href="hapus.php?id=<?= $row['id_produk']; ?>" onclick="return confirm('apakah anda yakin ? ');">hapus</a>
                         </td>
                         <td><img src="img/<?= $row['gambar']; ?>" width="100">
@@ -166,7 +165,6 @@ $bahan = query('SELECT * FROM produk');
               </div>
             </div>
           </div>
-
         </div>
         <!-- /.container-fluid -->
 
