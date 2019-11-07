@@ -1,3 +1,43 @@
+<?php
+// session_start();
+
+// require_once "../_config/config.php";
+// if (isset($_SESSION['login'])) {
+//   header("Location: ../index.php");
+//   exit;
+// }
+
+
+if (isset($_POST["login"])) {
+  $username = $_POST["username"];
+  $password = $_POST["password"];
+
+  $result = mysqli_query($conn, "SELECT * FROM 'admin' WHERE username = '$username'");
+
+  if (mysqli_num_rows($result) === 1) {
+    $row = mysqli_fetch_assoc($result);
+    // cek password
+    if (password_verify($password, $row["password"])) {
+      $_SESSION["login"] = $username;
+      header("Location:../index.php");
+      exit;
+    }
+  }
+  $error  = true;
+  ?>
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3" style="padding-top: 10%; ">
+      <div class="alert alert-danger alert-dismissable" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <strong>Login Gagal!</strong> username atau password salah
+      </div>
+    </div>
+  </div>
+<?php
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +52,7 @@
   <title>SB Admin 2 - Login</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
@@ -37,9 +77,9 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">selamat datang!</h1>
                   </div>
-                  <form class="user">
+                  <form class="user" action="" method="post">
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
@@ -52,15 +92,8 @@
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                    <a type="submit" name="login" class="btn btn-primary btn-user btn-block">
                       Login
-                    </a>
-                    <hr>
-                    <a href="index.html" class="btn btn-google btn-user btn-block">
-                      <i class="fab fa-google fa-fw"></i> Login with Google
-                    </a>
-                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                      <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                     </a>
                   </form>
                   <hr>
@@ -83,11 +116,11 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
