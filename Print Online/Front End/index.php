@@ -11,9 +11,9 @@
     <title>Printonline</title>
   </head>
   <body id="page-top">
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top" id="maiNav">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-lg  bg-info fixed-top" id="maiNav">
       <div class="container">
-  <a class="navbar-brand font-weight-bold text-white" href="#page-top ">Printonline</a>
+  <a class="navbar-brand font-weight-bold p-2 mb-1 text-white" href="#page-top ">Printonline</a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -29,7 +29,7 @@
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
   </div>
@@ -62,12 +62,6 @@
     </div>
     <div class="carousel-item">
       <img src="img/bg/bg2.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-      <h1 class="display-4">Selamat Datang di<br> <span class="font-weight-bold">PRINTONLINE</span></h1>
-      <hr class="my-4">
-      <p class="lead">Ayo print di sobat ERMANTOL</p>
-      <a class="btn btn-primary btn-lg font-weight-bold" href="#" role="button">Kunjungi</a> 
-        </div>
     </div>
     <div class="carousel-item">
       <img src="img/6.png" class="d-block w-100" alt="...">
@@ -83,95 +77,97 @@
   </a>
 </div>
 
-<h4 class="text-center font-weight-bold m-4">PRODUK TERBARU</h4>
+<h4 class="text-center font-weight-bold m-4">OUR PRODUK</h4>
 
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="card" style="width: 13rem;">
-        <img src="img/produk/xbanner.png" class="card-img-top" alt="...">
+      <div class="card" style="width: 15rem; height: 35rem;">
+        <img src="img/produk/xbanner.png" class="card-img-top" alt="..." style="width: 15rem; height: 12rem;">
         <div class="card-body bg-light">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Detail</a>
-         <a href="#" class="btn btn-danger">Rp. 500</a>
+        <h5 class="card-title">xBanner</h5>
+        <p class="card-text">X Banner (Ukuran 60×160) adalah media yang digunakan untuk menyampaikan informasi, berbentuk banner dengan konstruksi penyangga berbentuk “X” sehingga banner bisa berdiri sendiri, dilengkapi dengan stand.</p>
+        <a href="#" class="btn btn-primary btn-block" >Order Now</a>
+         <a href="#" class="btn btn-danger btn-block">Rp. 75000 / meter</a>
       </div>
       </div>
     </div>
     <div class="col">
-      <div class="card" style="width: 13rem">
-        <img src="img/produk/kartunama.jpg" class="card-img-top" alt="...">
+      <div class="card" style="width: 15rem; height: 35rem;">
+        <img src="img/produk/kartunama.jpg" class="card-img-top" alt="..." style="width: 15rem; height: 12rem;">
         <div class="card-body bg-light">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Detail</a>
-         <a href="#" class="btn btn-danger">Rp. 500</a>
+        <h5 class="card-title">Kartu Nama</h5>
+        <p class="card-text">Kartu Nama adalah sebuah kartu yang menyampaikan informasi tentang sebuah perusahaan ataupun individu yang disampaikan hanya sebagai pengingat dalam sebuah perkenalan formal.
+        </p><br>
+        <a href="#" class="btn btn-primary btn-block">Order Now</a>
+         <a href="#" class="btn btn-danger btn-block">Rp. 20000 / Lembar</a>
       </div>
       </div>
     </div>
     <div class="col">
-      <div class="card" style="width: 13rem;">
-        <img src="img/produk/idcard.jpg" class="card-img-top" alt="...">
+      <div class="card" style="width: 15rem; height: 35rem;">
+        <img src="img/produk/idcard.jpg" class="card-img-top" alt="..." style="width: 15rem; height: 12rem;">
         <div class="card-body bg-light">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Detail</a>
-         <a href="#" class="btn btn-danger">Rp. 500</a>
+        <h5 class="card-title">ID Card</h5>
+        <p class="card-text">ID Card adalah kartu yang tidak hanya sebagai kartu identitas karyawan perusahaan, tetapi memberi arti tersendiri dalam mendukung formalitas dan nilai atau image perusahaan.
+        </p><br>
+        <a href="#" class="btn btn-primary btn-block">Order Now</a>
+         <a href="#" class="btn btn-danger btn-block">Rp. 8000 / lembar</a>
       </div>
       </div>
     </div>
     <div class="col">
-      <div class="card" style="width: 13rem;">
-        <img src="img/produk/mug.jpg" class="card-img-top" alt="...">
+      <div class="card" style="width: 15rem; height: 35rem;">
+        <img src="img/produk/mug.jpg" class="card-img-top" alt="..." style="width: 15rem; height: 12rem;">
         <div class="card-body bg-light">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Detail</a>
-         <a href="#" class="btn btn-danger">Rp. 500</a>
+        <h5 class="card-title">Mug</h5>
+        <p class="card-text">mug adalah tipe alat minum sejenis cangkir yang umumnya digunakan untuk meminum minuman panas, seperti kopi, teh, atau coklat panas.</p><br><br><br>
+        <a href="#" class="btn btn-primary btn-block">Order Now</a>
+         <a href="#" class="btn btn-danger btn-block">Rp. 1000 / buah</a>
       </div>
       </div>
     </div>
         <div class="col">
-      <div class="card" style="width: 13rem;">
-        <img src="img/produk/umbul.jpg" class="card-img-top" alt="...">
+      <div class="card" style="width: 15rem; height: 35rem;">
+        <img src="img/produk/umbul.jpg" class="card-img-top" alt="..." style="width: 15rem; height: 12rem;">
         <div class="card-body bg-light">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Detail</a>
-         <a href="#" class="btn btn-danger">Rp. 500</a>
+        <a href="#" class="btn btn-primary btn-block">Order Now</a>
+         <a href="#" class="btn btn-danger btn-block">Rp. 500</a>
       </div>
       </div>
     </div>
     <div class="col">
-      <div class="card" style="width: 13rem;">
-        <img src="img/produk/neonbox.jpg" class="card-img-top" alt="...">
+      <div class="card" style="width: 15rem; height: 35rem;">
+        <img src="img/produk/neonbox.jpg" class="card-img-top" alt="..." style="width: 15rem; height: 12rem;">
         <div class="card-body bg-light">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Detail</a>
-         <a href="#" class="btn btn-danger">Rp. 500</a>
+        <a href="#" class="btn btn-primary btn-block">Order Now</a>
+         <a href="#" class="btn btn-danger btn-block">Rp. 500</a>
       </div>
       </div>
     </div>
     <div class="col">
-      <div class="card" style="width: 13rem;">
-        <img src="img/produk/sticker.jpg" class="card-img-top" alt="...">
+      <div class="card" style="width: 15rem; height: 35rem;">
+        <img src="img/produk/sticker.jpg" class="card-img-top" alt="..." style="width: 15rem; height: 12rem;">
         <div class="card-body bg-light">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Detail</a>
-         <a href="#" class="btn btn-danger">Rp. 500</a>
+        <a href="#" class="btn btn-primary btn-block">Order Now</a>
+         <a href="#" class="btn btn-danger btn-block">Rp. 500</a>
       </div>
       </div>
     </div>
     <div class="col">
-      <div class="card" style="width: 13rem;">
-        <img src="img/produk/pin.png" class="card-img-top" alt="...">
+      <div class="card" style="width: 15rem; height: 35rem;">
+        <img src="img/produk/pin.png" class="card-img-top" alt="..." style="width: 15rem; height: 12rem;">
         <div class="card-body bg-light">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Detail</a>
-         <a href="#" class="btn btn-danger">Rp. 500</a>
+        <a href="#" class="btn btn-primary btn-block">Order Now</a>
+         <a href="#" class="btn btn-danger btn-block">Rp. 500</a>
       </div>
       </div>
     </div>
@@ -198,7 +194,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
+        <h4 class="modal-title">REGISTER USER</h4>
       </div>
       <div class="modal-body">
         <form>
@@ -218,6 +214,10 @@
       </p>
       <p class="form-group">
         <label for="password">PASSWORD<br></label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="password" required="">
+      </p>
+      <p class="form-group">
+        <label for="password">RETYPE PASSWORD<br></label>
         <input type="password" class="form-control" name="password" id="password" placeholder="password" required="">
       </p>
       <div class="form-group">
@@ -245,16 +245,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
+        <h4 class="modal-title">LOGIN USER</h4>
       </div>
       <div class="modal-body">
         <form>
     <div class="form-group">
-      <label for="exampleInputEmail1">Username</label>
+      <label for="exampleInputEmail1">EMAIL</label>
       <input type="text" class="form-control" id="username" placeholder="Username">
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
+      <label for="exampleInputPassword1">PASSWORD</label>
       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
     </div>
   </form>
@@ -267,8 +267,23 @@
   </div>
 </div>
 
+
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>
+  <footer class="bg-dark text-white">
+  <div class="container">
+    <div class="row mb-5">
+     <div class="col-md-4">
+       <p>
+         <span class="font-weight-bold">PRINTONLINE</span><br>
+         Jalan K.I.S Mangunsarkoro, Kampung Templek, Kecamatan Bondowoso, Kabupaten Bondowoso.
+         Telp 087273635635
+       </p>
+     </div> 
+    </div>
+  </div> 
+</footer>
+
 </html>
