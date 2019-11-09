@@ -70,10 +70,6 @@ if ($datakode) {
 				<input type="text" class="form-control" name="jenis_produk" id="jenis_produk" placeholder="jenis produk">
 			</div>
 			<div class="form-group">
-				<label for="harga_satuan">harga satuan</label>
-				<input type="number" class="form-control" name="harga_satuan" id="harga_satuan" placeholder="Harga satuan">
-			</div>
-			<div class="form-group">
 				<label for="gambar">gambar</label>
 				<input type="file" name="gambar" id="gambar">
 			</div>

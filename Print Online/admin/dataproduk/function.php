@@ -24,7 +24,6 @@ function tambah($data)
 	//ambil data dari tiap elemen dalam form
 	$id_produk = $data['id_produk'];
 	$jenis_produk = $data['jenis_produk'];
-	$harga_satuan = $data['harga_satuan'];
 
 	//upload Gambar
 
@@ -34,18 +33,18 @@ function tambah($data)
 	}
 
 	//query insert data
-	$query = "INSERT INTO produk VALUES ('$id_produk', '$jenis_produk', '$harga_satuan', '$gambar')";
+	$query = "INSERT INTO produk VALUES ('$id_produk', '$jenis_produk', '$gambar')";
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
 }
 
 
-function hapus($id_produk)
-{
-	global $conn;
-	mysqli_query($conn, "DELETE FROM produk WHERE id_produk = '$id_produk'");
-	return mysqli_affected_rows($conn);
-}
+// function hapus($id_produk)
+// {
+// 	global $conn;
+// 	mysqli_query($conn, "DELETE FROM produk WHERE id_produk = $id_produk");
+// 	return mysqli_affected_rows($conn);
+// }
 
 function ubah($data)
 {
@@ -53,7 +52,6 @@ function ubah($data)
 
 	$id_produk = $data['id_produk'];
 	$jenis_produk = $data['jenis_produk'];
-	$harga_satuan = $data['harga_satuan'];
 	$gambarLama = $data['gambarLama'];
 
 	//cek
@@ -69,7 +67,6 @@ function ubah($data)
 	$query = "UPDATE produk SET 
 			id_produk = '$id_produk', 
 			jenis_produk = '$jenis_produk',
-			harga_satuan = '$harga_satuan',
 			gambar = '$gambar'
 			WHERE id_produk = '$id_produk'
 			";

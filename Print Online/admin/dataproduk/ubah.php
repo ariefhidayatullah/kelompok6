@@ -158,6 +158,7 @@ if (isset($_POST["submit"])) {
                                     <div class="p-5">
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">tambahkan akun!</h1>
+                                            <?php foreach ($mhs as $row) : ?>
                                         </div>
                                         <form class="user" action="" method="POST" enctype="multipart/form-data">
                                             <input type="hidden" name="id" value="<?= $row['id']; ?>">
@@ -174,11 +175,6 @@ if (isset($_POST["submit"])) {
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col mb-3 mb-sm-0">
-                                                    <input class="form-control form-control-user" type="text" name="harga_satuan" id="harga_satuan" required value="<?= $row['harga_satuan']; ?>">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col mb-3 mb-sm-0">
                                                     <img src="img/<?= $row['gambar']; ?>" width="40"><input type="file" name="gambar" id="gambar">
                                                 </div>
                                             </div>
@@ -191,16 +187,16 @@ if (isset($_POST["submit"])) {
                             </div>
                         </div>
                     </div>
-
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; The King 2019</span>
-                            </div>
+                <?php endforeach; ?>
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; The King 2019</span>
                         </div>
-                    </footer>
-                    <!-- End of Footer -->
+                    </div>
+                </footer>
+                <!-- End of Footer -->
 
                 </div>
                 <!-- End of Content Wrapper -->

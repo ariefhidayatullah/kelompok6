@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+require_once "../dataproduk/function.php";
+if (!isset($_SESSION['login'])) {
+  header("Location: ../auth/login.php");
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,14 +64,13 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Daftar Akun</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.php">Login</a>
-            <a class="collapse-item" href="../auth/register.php">Register</a>
-            <a class="collapse-item" href="forgot-password.php">Forgot Password</a>
+            <h6 class="collapse-header">login Admin / User</h6>
+            <a class="collapse-item" href="../auth/register.php">tambah akun admin</a>
+            <a class="collapse-item" href="../auth/register.php">list user / pengguna</a>
           </div>
         </div>
       </li>
@@ -71,6 +80,12 @@
         <a class="nav-link" href="../dataproduk/dataproduk.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Data Produk</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../auth/logout.php">
+          <i class="fas fa-fw fa-power-off"></i>
+          <span>Logout</span></a>
       </li>
 
       <!-- Divider -->
@@ -119,7 +134,7 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
           </div>
-          <p>Selamat datang di dashboard The King </p>
+          <p><?= $_SESSION['login']; ?>, Selamat datang di dashboard The King </p>
 
           <!-- Content Row -->
           <div class="row">

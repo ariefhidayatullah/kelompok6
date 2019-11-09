@@ -46,11 +46,11 @@ if ($datakode) {
   <title>the king - Register</title>
 
   <!-- Custom fonts for this template-->
-  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -74,8 +74,8 @@ if ($datakode) {
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+      <li class="nav-item">
+        <a class="nav-link" href="../dashboard/index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -84,24 +84,30 @@ if ($datakode) {
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Daftar Akun</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.php">Login</a>
-            <a class="collapse-item" href="register.php">Register</a>
-            <a class="collapse-item" href="forgot-password.php">Forgot Password</a>
+            <h6 class="collapse-header">login Admin / User</h6>
+            <a class="collapse-item" href="../auth/register.php">tambah akun admin</a>
+            <a class="collapse-item" href="../auth/register.php">list user / pengguna</a>
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="dataproduk.php">
+        <a class="nav-link" href="../dataproduk/dataproduk.php">
           <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+          <span>Data Produk</span></a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../auth/logout.php">
+          <i class="fas fa-fw fa-power-off"></i>
+          <span>Logout</span></a>
+      </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -143,80 +149,73 @@ if ($datakode) {
         </nav>
         <!-- End of Topbar -->
 
-        <div class="container">
+        <div class="container ml-5">
 
-          <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-              <!-- Nested Row within Card Body -->
-              <div class="row">
-                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                <div class="col-lg-7">
-                  <div class="p-5">
+          <div class="col-lg-8 ml-5">
+
+            <div class="card o-hidden border-0 shadow-lg my-5 ml-5">
+              <div class="card-body p-0 ml-5">
+                <!-- Nested Row within Card Body -->
+                <div class="row ml-5">
+                  <div class="col-lg">
                     <div class="text-center">
                       <h1 class="h4 text-gray-900 mb-4">tambahkan akun!</h1>
                     </div>
                     <form class="user" method="post" action="">
                       <div class="form-group row">
                         <div class="col mb-3 mb-sm-0">
-                          <input type="text" class="form-control form-control-user" id="id_admin" name="id_admin" value="<?= $kode_otomatis; ?>" readonly>
+                          <input type="text" class="form-control form-control-static" id="id_admin" name="id_admin" value="<?= $kode_otomatis; ?>" readonly>
                         </div>
                       </div>
                       <div class="form-group row">
                         <div class="col mb-3 mb-sm-0">
-                          <input type="text" class="form-control form-control-user" id="nama_admin" name="nama_admin" placeholder="masukkan nama admin....">
+                          <input type="text" class="form-control form-control-static" id="nama_admin" name="nama_admin" placeholder="masukkan nama admin....">
                         </div>
                       </div>
                       <div class="form-group row">
                         <div class="col mb-3 mb-sm-0">
-                          <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="masukkan username...">
+                          <input type="text" class="form-control form-control-static" id="username" name="username" placeholder="masukkan username...">
                         </div>
                       </div>
                       <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
-                          <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
+                          <input type="password" class="form-control form-control-static" id="password" name="password" placeholder="Password">
                         </div>
                         <div class="col-sm-6">
-                          <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
+                          <input type="password" class="form-control form-control-static" id="password2" name="password2" placeholder="Repeat Password">
                         </div>
                       </div>
                       <div class="form-group row">
                         <div class="col mb-3 mb-sm-0">
-                          <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="masukkan username...">
+                          <input type="email" class="form-control form-control-static" id="email" name="email" placeholder="masukkan email...">
                         </div>
                       </div>
                       <div class="form-group row">
                         <div class="col mb-3 mb-sm-0">
-                          <input type="text" class="form-control form-control-user" id="nohp" name="nohp" placeholder="masukkan username...">
+                          <input type="text" class="form-control form-control-static" id="nohp" name="nohp" placeholder="masukkan no hp...">
                         </div>
                       </div>
-                      <button class="btn btn-primary" name="register" type="submit">
-                        register
-                      </button>
+                      <div class="text-center">
+                        <input class="btn btn-primary" name="register" type="submit" value="tambahkan!">
+                        </input>
+                      </div>
                     </form>
-                    <hr>
-                    <div class="text-center">
-                      <a class="small" href="forgot-password.html">Forgot Password?</a>
-                    </div>
-                    <div class="text-center">
-                      <a class="small" href="login.html">Already have an account? Login!</a>
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
 
-        </div>
+          <!-- Bootstrap core JavaScript-->
+          <script src="../assets/vendor/jquery/jquery.min.js"></script>
+          <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="../vendor/jquery/jquery.min.js"></script>
-        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <!-- Core plugin JavaScript-->
+          <script src="../vassets/endor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-        <!-- Custom scripts for all pages-->
-        <script src="../js/sb-admin-2.min.js"></script>
+          <!-- Custom scripts for all pages-->
+          <script src="../assets/js/sb-admin-2.min.js"></script>
 
 </body>
 

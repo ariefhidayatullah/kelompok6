@@ -25,6 +25,8 @@ $bahan = query('SELECT * FROM produk');
 
   <!-- Custom styles for this template -->
   <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
+  <!-- <link href="../assets/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- Custom styles for this page -->
   <script src="../assets/js/bootstrap.min.js"></script>
@@ -137,25 +139,23 @@ $bahan = query('SELECT * FROM produk');
                   <thead>
                     <tr>
                       <th>No.</th>
-                      <th>aksi</th>
-                      <th>gambar</th>
                       <th>id produk</th>
                       <th>jenis produk</th>
-                      <th>harga satuan</th>
+                      <th>gambar</th>
+                      <th>aksi</th>
                     </tr>
                     <?php $i = 1; ?>
                     <?php foreach ($bahan as $row) : ?>
                       <tr>
                         <td><?= $i; ?></td>
-                        <td>
-                          <a href="ubah.php?id=<?= $row['id_produk']; ?>" class="btn btn"><i class="glyphicon "></i></a>
-                          <a href="hapus.php?id=<?= $row['id_produk']; ?>" onclick="return confirm('apakah anda yakin ? ');">hapus</a>
-                        </td>
-                        <td><img src="img/<?= $row['gambar']; ?>" width="100">
-                        </td>
                         <td><?= $row['id_produk']; ?></td>
                         <td><?= $row['jenis_produk']; ?></td>
-                        <td><?= $row['harga_satuan']; ?></td>
+                        <td><img src="img/<?= $row['gambar']; ?>" width="100"></td>
+                        <td>
+                          <span href="ubah.php?id=<?= $row['id_produk']; ?>"><button class="fa fa-edit btn btn-warning btn-sm">edit</button></span>
+                          <a>||</a>
+                          <a href="hapus.php?id=<?= $row['id_produk']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="fa fa-trash btn btn-danger btn-sm">hapus</button></a>
+                        </td>
                       </tr>
                       <?php $i++ ?>
                     <?php endforeach; ?>

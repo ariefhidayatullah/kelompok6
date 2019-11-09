@@ -1,1 +1,0 @@
-const judul = document.getElementById
