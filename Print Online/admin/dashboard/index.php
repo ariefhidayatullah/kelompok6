@@ -82,6 +82,13 @@ if (!isset($_SESSION['login'])) {
           <span>Data Produk</span></a>
       </li>
 
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="../databahan/databahan.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Data Bahan</span></a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="../auth/logout.php">
           <i class="fas fa-fw fa-power-off"></i>
