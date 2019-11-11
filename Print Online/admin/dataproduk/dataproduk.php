@@ -31,8 +31,8 @@ $bahan = query('SELECT * FROM produk');
   <!-- Custom styles for this page -->
   <script src="../assets/js/bootstrap.min.js"></script>
   <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <script src="../jquery-3.3.1.slim.min.js"></script>
-  <script src="../popper.min.js"></script>
+  <script src="../assets/jquery-3.3.1.slim.min.js"></script>
+  <script src="../assets/popper.min.js"></script>
 
 </head>
 
@@ -67,23 +67,35 @@ $bahan = query('SELECT * FROM produk');
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Daftar Akun</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="../auth/login.php">Login</a>
-            <a class="collapse-item" href="../auth/register.php">Register</a>
-            <a class="collapse-item" href="../auth/forgot-password.php">Forgot Password</a>
+            <h6 class="collapse-header">login Admin / User</h6>
+            <a class="collapse-item" href="../auth/register.php">tambah akun admin</a>
+            <a class="collapse-item" href="../auth/register.php">list user / pengguna</a>
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item active">
-        <a class="nav-link" href="tables.php">
+        <a class="nav-link" href="../dataproduk/dataproduk.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Data Produk</span></a>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="../databahan/databahan.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Data Bahan</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../auth/logout.php">
+          <i class="fas fa-fw fa-power-off"></i>
+          <span>Logout</span></a>
       </li>
 
       <!-- Divider -->
@@ -114,9 +126,9 @@ $bahan = query('SELECT * FROM produk');
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="cari disini..." aria-label="Search" aria-describedby="basic-addon2">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="cari disini..." aria-label="Search" aria-describedby="basic-addon2" id="keyword">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-primary" type="button" id="tombol-cari">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -152,9 +164,9 @@ $bahan = query('SELECT * FROM produk');
                         <td><?= $row['jenis_produk']; ?></td>
                         <td><img src="img/<?= $row['gambar']; ?>" width="100"></td>
                         <td>
-                          <span href="ubah.php?id=<?= $row['id_produk']; ?>"><button class="fa fa-edit btn btn-warning btn-sm">edit</button></span>
+                          <a href="ubah.php?id=<?= $row['id_produk']; ?>"><button class="btn btn-warning btn-sm">edit</button></a>
                           <a>||</a>
-                          <a href="hapus.php?id=<?= $row['id_produk']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="fa fa-trash btn btn-danger btn-sm">hapus</button></a>
+                          <a href="hapus.php?id=<?= $row['id_produk']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">hapus</button></a>
                         </td>
                       </tr>
                       <?php $i++ ?>
@@ -193,6 +205,7 @@ $bahan = query('SELECT * FROM produk');
   </a>
 
   <!-- Bootstrap core JavaScript-->
+  <script src="../assets/script.js"></script>
   <script src="../assets/vendor/jquery/jquery.min.js"></script>
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -204,7 +217,7 @@ $bahan = query('SELECT * FROM produk');
 
   <!-- Page level plugins -->
   <!-- <script src="vendor/datatables/jquery.dataTables.min.js"></script> -->
-  <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <!-- <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
 
   <!-- Page level custom scripts -->
   <script src="../assets/js/demo/datatables-demo.js"></script>

@@ -64,8 +64,7 @@ function ubah($data)
 
 
 	//query insert data
-	$query = "UPDATE produk SET 
-			id_produk = '$id_produk', 
+	$query = "UPDATE produk SET  
 			jenis_produk = '$jenis_produk',
 			gambar = '$gambar'
 			WHERE id_produk = '$id_produk'

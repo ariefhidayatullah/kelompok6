@@ -18,30 +18,32 @@ function query($query)
 	return $rows;
 }
 
-function tambah_bahan($data)
+function tambah($data)
 {
 	global $conn;
 	//ambil data dari tiap elemen dalam form
 	$id_bahan = $data['id_bahan'];
-	$nama_bahan = $data['nama_bahan'];
+	$nama_bahan = htmlspecialchars($data['nama_bahan']);
 	$id_produk = $data['id_produk'];
 	$stok = $data['stok'];
 	$harga_satuan = $data['harga_satuan'];
 
+
+	//query insert data
 	$query = "INSERT INTO bahan VALUES ('$id_bahan', '$nama_bahan', '$id_produk', '$stok', '$harga_satuan')";
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
 }
 
 
-function hapus_bahan($id)
-{
-	global $conn;
-	mysqli_query($conn, "DELETE FROM `bahan` WHERE id_bahan= $id");
-	return mysqli_affected_rows($conn);
-}
+// function hapus($id_produk)
+// {
+// 	global $conn;
+// 	mysqli_query($conn, "DELETE FROM produk WHERE id_produk = $id_produk");
+// 	return mysqli_affected_rows($conn);
+// }
 
-function ubah_bahan($data)
+function ubah($data)
 {
 	global $conn;
 
@@ -51,12 +53,14 @@ function ubah_bahan($data)
 	$stok = $data['stok'];
 	$harga_satuan = $data['harga_satuan'];
 
-	$query = "UPDATE mahasiswa SET 
-			nama_bahan = '$nama_bahan', 
+
+	//query insert data
+	$query = "UPDATE bahan SET 
+			nama_bahan = '$nama_bahan',
 			id_produk = '$id_produk',
-			stok = '$stok', 
-			harga_satuan = '$harga_satuan',
-			WHERE id_bahan = $id_bahan
+			stok = '$stok',
+			harga_satuan = '$harga_satuan'
+			WHERE id_bahan = '$id_bahan'
 			";
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
@@ -64,6 +68,23 @@ function ubah_bahan($data)
 
 function cari($key)
 {
-	$query = "SELECT * FROM bahan WHERE nama LIKE '%$key%'";
+	$query = "SELECT * FROM produk WHERE nama LIKE '%$key%'";
 	return query($query);
+}
+
+function registrasi($data)
+{
+	global $conn;
+
+	$username = strtolower(stripcslashes($data["username"]));
+	$password = mysqli_real_escape_string($conn, $data["password"]);
+	$password2 = mysqli_real_escape_string($conn, $data["password2"]);
+
+	// cek konfirmasi password
+	if ($password !== $password2) {
+		echo "<script>
+    alert('konfirmasi password tidak sesuai!');
+	</script>";
+		return false;
+	}
 }

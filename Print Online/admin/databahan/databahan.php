@@ -1,6 +1,6 @@
 <?php
 require 'function.php';
-$bahan = query('SELECT * FROM produk');
+$bahan = query('SELECT * FROM bahan');
 // foreach ($mahasiswa as $kel) {
 // 	echo $kel['id'];
 // }
@@ -86,7 +86,7 @@ $bahan = query('SELECT * FROM produk');
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="../databahan/databahan.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Data Bahan</span></a>
@@ -168,16 +168,16 @@ $bahan = query('SELECT * FROM produk');
                         <td><?= $row['stok']; ?></td>
                         <td><?= $row['harga_satuan']; ?></td>
                         <td>
-                          <span href="ubah.php?id=<?= $row['id_produk']; ?>"><button class="fa fa-edit btn btn-warning btn-sm">edit</button></span>
+                          <a href="ubah.php?id=<?= $row['id_bahan']; ?>"><button class="btn btn-warning btn-sm">edit</button></a>
                           <a>||</a>
-                          <a href="hapus.php?id=<?= $row['id_produk']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="fa fa-trash btn btn-danger btn-sm">hapus</button></a>
+                          <a href="hapus.php?id=<?= $row['id_bahan']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">hapus</button></a>
                         </td>
                       </tr>
                       <?php $i++ ?>
                     <?php endforeach; ?>
                   </thead>
                 </table>
-                <a href="tambah.php" class="btn btn-primary" role="button"> Tambah data </a>
+                <a href="tambah.php" class="btn btn-primary text-right" role="button"> Tambah data </a>
               </div>
             </div>
           </div>
