@@ -81,7 +81,7 @@ if ($datakode) {
       </li>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Daftar Akun</span>
@@ -89,7 +89,7 @@ if ($datakode) {
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">login Admin / User</h6>
-            <a class="collapse-item" href="../auth/register.php">tambah akun admin</a>
+            <a class="collapse-item active" href="../auth/register.php">tambah akun admin</a>
             <a class="collapse-item" href="../auth/register.php">list user / pengguna</a>
           </div>
         </div>
@@ -100,6 +100,13 @@ if ($datakode) {
         <a class="nav-link" href="../dataproduk/dataproduk.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Data Produk</span></a>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="../databahan/databahan.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Data Bahan</span></a>
       </li>
 
       <li class="nav-item">

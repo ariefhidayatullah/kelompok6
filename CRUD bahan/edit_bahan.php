@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>CRUD PHP dan MySQLi - WWW.MALASNGODING.COM</title>
 </head>
+
 <body>
 
 	<h2>CRUD DATA BAHAN</h2>
-	<br/>
+	<br />
 	<a href="index.php">KEMBALI</a>
-	<br/>
-	<br/>
+	<br />
+	<br />
 	<h3>EDIT DATA BAHAN</h3>
 
 	<?php
 	include 'koneksi.php';
-	$id_bahan = $_GET['id_bahan'];
-	$data = mysqli_query($koneksi,"select * from bahan where id_bahan='$id_bahan'");
-	while($d = mysqli_fetch_array($data)){
+	$id_bahan = $_GET['id'];
+	$data = mysqli_query($koneksi, "SELECT * from 'bahan' where id='$id_bahan'");
+	while ($d = mysqli_fetch_array($data)) {
 		?>
 		<form method="post" action="update.php">
 			<table>
-				<tr>			
+				<tr>
 					<td>Nama Bahan</td>
 					<td>
 						<input type="hidden" name="id_bahan" value="<?php echo $d['id_bahan']; ?>">
@@ -38,12 +40,13 @@
 				<tr>
 					<td></td>
 					<td><input type="submit" value="SIMPAN"></td>
-				</tr>		
+				</tr>
 			</table>
 		</form>
-		<?php 
+	<?php
 	}
 	?>
 
 </body>
+
 </html>

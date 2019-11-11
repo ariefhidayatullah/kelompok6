@@ -1,12 +1,12 @@
 <?php
 require 'function.php';
 
-$id_produk = $_GET['id'];
+$id_bahan = $_GET['id'];
 
 // var_dump($id);
 //query data mahasiswa berdasarkan ID
 
-$mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
+$mhs = query("SELECT * FROM bahan WHERE id_bahan = '$id_bahan'");
 
 if (isset($_POST["submit"])) {
     //cek data berhasil diubaahtau tidak
@@ -14,7 +14,7 @@ if (isset($_POST["submit"])) {
         echo "
 			<script>
 				alert('data berhasil diubah');
-					document.location.href = 'dataproduk.php';
+					document.location.href = 'databahan.php';
 			</script>
 		";
     } else {
@@ -50,10 +50,10 @@ if (isset($_POST["submit"])) {
 
     <!-- Custom styles for this page -->
     <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script src="../jquery-3.3.1.slim.min.js"></script>
-    <script src="../popper.min.js"></script>
-    <script src="../ajax.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../assets/jquery-3.3.1.slim.min.js"></script>
+    <script src="../assets/popper.min.js"></script>
+    <script src="../assets/ajax.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -77,7 +77,6 @@ if (isset($_POST["submit"])) {
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="../dashboard/index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -88,25 +87,36 @@ if (isset($_POST["submit"])) {
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <span>Daftar Akun</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="../auth/login.php">Login</a>
-                        <a class="collapse-item" href="../auth/register.php">Register</a>
-                        <a class="collapse-item" href="../auth/forgot-password.php">Forgot Password</a>
+                        <h6 class="collapse-header">login Admin / User</h6>
+                        <a class="collapse-item active" href="../auth/register.php">tambah akun admin</a>
+                        <a class="collapse-item" href="../auth/register.php">list user / pengguna</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item active">
-                <a class="nav-link" href="tables.php">
+            <li class="nav-item">
+                <a class="nav-link" href="../dataproduk/dataproduk.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data Produk</span></a>
             </li>
 
+            <!-- Nav Item - Tables -->
+            <li class="nav-item active">
+                <a class="nav-link" href="../databahan/databahan.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Data Bahan</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="../auth/logout.php">
+                    <i class="fas fa-fw fa-power-off"></i>
+                    <span>Logout</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -157,29 +167,39 @@ if (isset($_POST["submit"])) {
                                 <div class="col-lg-7">
                                     <div class="p-5">
                                         <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4">tambahkan akun!</h1>
+                                            <h1 class="h4 text-gray-900 mb-4"></h1>
                                             <?php foreach ($mhs as $row) : ?>
                                         </div>
                                         <form class="user" action="" method="POST" enctype="multipart/form-data">
                                             <input type="hidden" name="id" value="<?= $row['id']; ?>">
-                                            <input type="hidden" name="gambarLama" value="<?= $row['gambar']; ?>">
+
                                             <div class="form-group row">
                                                 <div class="col mb-3 mb-sm-0">
-                                                    <input class="form-control form-control-user" type="text" name="id_produk" id="id_produk" required value="<?= $row['id_produk']; ?>" readonly>
+                                                    <input class="form-control form-control-static" type="text" name="id_bahan" id="id_bahan" required value="<?= $row['id_bahan']; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col mb-3 mb-sm-0">
-                                                    <input class="form-control form-control-user" type="text" name="jenis_produk" id="jenis_produk" required value="<?= $row['jenis_produk']; ?>">
+                                                    <input class="form-control form-control-static" type="text" name="nama_bahan" id="nama_bahan" required value="<?= $row['nama_bahan']; ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col mb-3 mb-sm-0">
-                                                    <img src="img/<?= $row['gambar']; ?>" width="40"><input type="file" name="gambar" id="gambar">
+                                                    <input class="form-control form-control-static dropdown" type="text" name="id_produk" id="id_produk" required value="<?= $row['id_produk']; ?>">
                                                 </div>
                                             </div>
-                                            <button class="btn btn-primary" name="register" type="submit">
-                                                register
+                                            <div class="form-group row">
+                                                <div class="col mb-3 mb-sm-0">
+                                                    <input class="form-control form-control-static" type="text" name="stok" id="stok" required value="<?= $row['stok']; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col mb-3 mb-sm-0">
+                                                    <input class="form-control form-control-static" type="text" name="harga_satuan" id="harga_satuan" required value="<?= $row['harga_satuan']; ?>">
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-primary" name="submit" type="submit">
+                                                Ubah
                                             </button>
                                         </form>
                                     </div>

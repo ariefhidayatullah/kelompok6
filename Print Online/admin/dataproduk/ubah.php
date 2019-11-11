@@ -9,7 +9,7 @@ $id_produk = $_GET['id'];
 $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 
 if (isset($_POST["submit"])) {
-    //cek data berhasil diubaahtau tidak
+    //cek data berhasil diubah atau tidak
     if (ubah($_POST) > 0) {
         echo "
 			<script>
@@ -50,10 +50,10 @@ if (isset($_POST["submit"])) {
 
     <!-- Custom styles for this page -->
     <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script src="../jquery-3.3.1.slim.min.js"></script>
-    <script src="../popper.min.js"></script>
-    <script src="../ajax.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../assets/jquery-3.3.1.slim.min.js"></script>
+    <script src="../assets/popper.min.js"></script>
+    <script src="../assets/ajax.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -88,23 +88,35 @@ if (isset($_POST["submit"])) {
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <span>Daftar Akun</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="../auth/login.php">Login</a>
-                        <a class="collapse-item" href="../auth/register.php">Register</a>
-                        <a class="collapse-item" href="../auth/forgot-password.php">Forgot Password</a>
+                        <h6 class="collapse-header">login Admin / User</h6>
+                        <a class="collapse-item active" href="../auth/register.php">tambah akun admin</a>
+                        <a class="collapse-item" href="../auth/register.php">list user / pengguna</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="tables.php">
+                <a class="nav-link" href="../dataproduk/dataproduk.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data Produk</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="../databahan/databahan.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Data Bahan</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="../auth/logout.php">
+                    <i class="fas fa-fw fa-power-off"></i>
+                    <span>Logout</span></a>
             </li>
 
             <!-- Divider -->
@@ -148,16 +160,17 @@ if (isset($_POST["submit"])) {
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid text-center">
+                <div class="container ml-5">
 
-                    <div class="card o-hidden border-0 shadow-lg my-5">
-                        <div class="card-body p-0">
-                            <!-- Nested Row within Card Body -->
-                            <div class="row">
-                                <div class="col-lg-7">
-                                    <div class="p-5">
+                    <div class="col-lg-8 ml-5">
+
+                        <div class="card o-hidden border-0 shadow-lg my-5 ml-5">
+                            <div class="card-body p-0 ml-5">
+                                <!-- Nested Row within Card Body -->
+                                <div class="row ml-5">
+                                    <div class="col-lg">
                                         <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4">tambahkan akun!</h1>
+                                            <h1 class="h4 text-gray-900 mb-4">Ubah Data</h1>
                                             <?php foreach ($mhs as $row) : ?>
                                         </div>
                                         <form class="user" action="" method="POST" enctype="multipart/form-data">
@@ -165,12 +178,12 @@ if (isset($_POST["submit"])) {
                                             <input type="hidden" name="gambarLama" value="<?= $row['gambar']; ?>">
                                             <div class="form-group row">
                                                 <div class="col mb-3 mb-sm-0">
-                                                    <input class="form-control form-control-user" type="text" name="id_produk" id="id_produk" required value="<?= $row['id_produk']; ?>" readonly>
+                                                    <input class="form-control form-control-static" type="text" name="id_produk" id="id_produk" required value="<?= $row['id_produk']; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col mb-3 mb-sm-0">
-                                                    <input class="form-control form-control-user" type="text" name="jenis_produk" id="jenis_produk" required value="<?= $row['jenis_produk']; ?>">
+                                                    <input class="form-control form-control-static" type="text" name="jenis_produk" id="jenis_produk" required value="<?= $row['jenis_produk']; ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -178,9 +191,13 @@ if (isset($_POST["submit"])) {
                                                     <img src="img/<?= $row['gambar']; ?>" width="40"><input type="file" name="gambar" id="gambar">
                                                 </div>
                                             </div>
-                                            <button class="btn btn-primary" name="register" type="submit">
-                                                register
-                                            </button>
+                                            <div class="text-center">
+                                                <input class="btn btn-primary" name="submit" type="submit" value="ubah!">
+                                                </input>
+                                                <a href="dataproduk.php" class="btn btn-warning" name="submit" type="submit">
+                                                    kembali
+                                                </a>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
