@@ -1,10 +1,4 @@
-<?php 
- ?><!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -38,20 +32,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<option value="2">Indonesia</option>
 					  </select>
    				    </div>
-   				    <div class="box1">
+   				    <!-- <div class="box1">
    				        <select tabindex="4" class="dropdown">
 							<option value="" class="label" value="">Currency :</option>
 							<option value="1">$ Dollar</option>
 							<option value="2">Rupiah</option>
 						</select>
-   				    </div>
+   				    </div> -->
    				    <div class="clear"></div>
    			 </div>
 			 <div class="cssmenu">
 				<ul>
-					<li class="active"><a href="login.html">Account</a></li> |
-					<li><a href="login.html">Log In</a></li> |
-					<li><a href="register.html">Sign Up</a></li>
+					<li class="active"><a href="login.php">Account</a></li> |
+					<li><a href="login.php">Log In</a></li> |
+					<li><a href="register.php">Sign Up</a></li>
 				</ul>
 			</div>
 			<div class="clear"></div>
@@ -61,7 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	    <div class="wrap">
 			<div class="header-bottom-left">
 				<div class="logo">
-					<a href="index.html"><img src="images/king.jpg" alt=""/></a>
+					<a href="index.html"><img src="king.jpg" alt=""/></a>
 				</div>
 				<div class="menu">
 	            <ul class="megamenu skyblue"></ul>
@@ -141,7 +135,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		  	<h2 class="head">Featured Products</h2>
 			<div class="top-box">
 			 <div class="col_1_of_3 span_1_of_3"> 
-			   <a href="single.html">
+			   <a href="function.php">
 				<div class="inner_content clearfix">
 					<div class="product_image">
 						<img src="images/produk/idcard.jpg" alt=""/>
@@ -376,143 +370,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 		<div class="footer-middle">
 			<div class="wrap">
-			 <!-- <div class="section group">
-			  	<div class="f_10">
-					<div class="col_1_of_4 span_1_of_4">
-						<h3>Facebook</h3>
-						<script>(function(d, s, id) {
-						  var js, fjs = d.getElementsByTagName(s)[0];
-						  if (d.getElementById(id)) return;
-						  js = d.createElement(s); js.id = id;
-						  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-						  fjs.parentNode.insertBefore(js, fjs);
-						}(document, 'script', 'facebook-jssdk'));</script>
-						<div class="like_box">	
-							<div class="fb-like-box" data-href="http://www.facebook.com/w3layouts" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
-						</div>
-					</div>
-					<div class="col_1_of_4 span_1_of_4">
-						<h3>From Twitter</h3>
-						<div class="recent-tweet">
-							<div class="recent-tweet-icon">
-								<span> </span>
-							</div>
-							<div class="recent-tweet-info">
-								<p>Ds which don't look even slightly believable. If you are <a href="#">going to use nibh euismod</a> tincidunt ut laoreet adipisicing</p>
-							</div>
-							<div class="clear"> </div>
-						</div>
-						<div class="recent-tweet">
-							<div class="recent-tweet-icon">
-								<span> </span>
-							</div>
-							<div class="recent-tweet-info">
-								<p>Ds which don't look even slightly believable. If you are <a href="#">going to use nibh euismod</a> tincidunt ut laoreet adipisicing</p>
-							</div>
-							<div class="clear"> </div>
-						</div>
-					</div>
-				</div>
-				<div class="f_10">
-					<div class="col_1_of_4 span_1_of_4">
-					    <h3>Information</h3>
-						<ul class="f-list1">
-						    <li><a href="#">Duis autem vel eum iriure </a></li>
-				            <li><a href="#">anteposuerit litterarum formas </a></li>
-				            <li><a href="#">Tduis dolore te feugait nulla</a></li>
-				             <li><a href="#">Duis autem vel eum iriure </a></li>
-				            <li><a href="#">anteposuerit litterarum formas </a></li>
-				            <li><a href="#">Tduis dolore te feugait nulla</a></li>
-			         	</ul>
-					</div>
-					<div class="col_1_of_4 span_1_of_4">
-						<h3>Contact us</h3>
-						<div class="company_address">
-					                <p>500 Lorem Ipsum Dolor Sit,</p>
-							   		<p>22-56-2-9 Sit Amet, Lorem,</p>
-							   		<p>USA</p>
-					   		<p>Phone:(00) 222 666 444</p>
-					   		<p>Fax: (000) 000 00 00 0</p>
-					 	 	<p>Email: <span>mail[at]leoshop.com</span></p>
-					   		
-					   </div>
-					   <div class="social-media">
-						     <ul>
-						        <li> <span class="simptip-position-bottom simptip-movable" data-tooltip="Google"><a href="#" target="_blank"> </a></span></li>
-						        <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Linked in"><a href="#" target="_blank"> </a> </span></li>
-						        <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Rss"><a href="#" target="_blank"> </a></span></li>
-						        <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Facebook"><a href="#" target="_blank"> </a></span></li>
-						    </ul>
-					   </div>
-					</div>
-				<div class="clear"></div>
-			</div>
-			<div class="clear"></div>
-		  </div>-->
-		   
-		   
-		   
-		   
+
 		   
 		   <div class="section group example">
 			  <div class="col_1_of_f_1 span_1_of_f_1">
 				 <div class="section group example">
 				   <div class="col_1_of_f_2 span_1_of_f_2">
-				      <h3>PRINTONLINE</h3>
-						<script>(function(d, s, id) {
-						  var js, fjs = d.getElementsByTagName(s)[0];
-						  if (d.getElementById(id)) return;
-						  js = d.createElement(s); js.id = id;
-						  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-						  fjs.parentNode.insertBefore(js, fjs);
-						}(document, 'script', 'facebook-jssdk'));</script>
-						<div class="like_box">	
-							<div class="fb-like-box" data-href="http://www.facebook.com/w3layouts" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
-						</div>
  				  </div>
-				  <div class="col_1_of_f_2 span_1_of_f_2">
-						<h3>From Twitter</h3>
-				       <div class="recent-tweet">
-							<div class="recent-tweet-icon">
-								<span> </span>
-							</div>
-							<div class="recent-tweet-info">
-								<p>Ds which don't look even slightly believable. If you are <a href="#">going to use nibh euismod</a> tincidunt ut laoreet adipisicing</p>
-							</div>
-							<div class="clear"> </div>
-					   </div>
-					   <div class="recent-tweet">
-							<div class="recent-tweet-icon">
-								<span> </span>
-							</div>
-							<div class="recent-tweet-info">
-								<p>Ds which don't look even slightly believable. If you are <a href="#">going to use nibh euismod</a> tincidunt ut laoreet adipisicing</p>
-							</div>
-							<div class="clear"> </div>
-					  </div>
 				</div>
 				<div class="clear"></div>
 		      </div>
  			 </div>
-			 <div class="col_1_of_f_1 span_1_of_f_1">
+			 <div class="col_1_of_f_2 span_1_of_f_2">
 			   <div class="section group example">
 				 <div class="col_1_of_f_2 span_1_of_f_2">
 				    <h3>Information</h3>
 						<ul class="f-list1">
-						    <li><a href="#">Lorem ipsum dolor sit amet </a></li>
-				            <li><a href="#">Lorem ipsum dolor sit amet </a></li>
-				            <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-				             <li><a href="#">Lorem ipsum dolor sit amet </a></li>
-				            <li><a href="#">Lorem ipsum dolor sit amet </a></li>
-				            <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+						    <li><a href="#">Tentang Kami</a></li>
+				            <li><a href="#">Kebijakan Privasi</a></li>
+				            <li><a href="#">Syarat dan Ketentuan</a></li>
+				             <li><a href="#">Bantuan</a></li>
 			         	</ul>
  				 </div>
 				 <div class="col_1_of_f_2 span_1_of_f_2">
 				   <h3>Contact us</h3>
 						<div class="company_address">
-					                <p>500 Lorem Ipsum Dolor Sit,</p>
-							   		<p>22-56-2-9 Sit Amet, Lorem,</p>
-							   		<p>USA</p>
+					        <p>500 Lorem Ipsum Dolor Sit,</p>
+							<p>22-56-2-9 Sit Amet, Lorem,</p>
+							<p>USA</p>
 					   		<p>Phone:(+62) 8316 3071 145</p>
 					   		<p>Fax: (000) 000 00 00 0</p>
 					 	 	<p>Email: <span>Printonline.com</span></p>
@@ -537,7 +422,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="footer-bottom">
 			<div class="wrap">
 	             <div class="copy">
-			        <p>©printonline</p>
+			        <p>Copyright © The King 2019</p>
 		         </div>
 				<div class="f-list2">
 				 <ul>
