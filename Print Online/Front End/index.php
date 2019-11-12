@@ -55,7 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<ul>
 					<li class="active"><a href="login.html">Account</a></li> |
 					<li><a href="login.php">Log In</a></li> |
-					<li><a href="register.html">Sign Up</a></li>
+					<li><a href="register.php">Sign Up</a></li>
 				</ul>
 			</div>
 			<div class="clear"></div>
