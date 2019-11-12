@@ -158,93 +158,93 @@ if (isset($_POST["submit"])) {
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid text-center">
+                <div class="container text-center">
+                    <h1 class="h4 text-gray-900 mb-4">ubah data</h1>
+                    <?php foreach ($mhs as $row) : ?>
 
-                    <div class="card o-hidden border-0 shadow-lg my-5">
-                        <div class="card-body p-0">
-                            <!-- Nested Row within Card Body -->
-                            <div class="row">
-                                <div class="col-lg-7">
-                                    <div class="p-5">
-                                        <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4"></h1>
-                                            <?php foreach ($mhs as $row) : ?>
-                                        </div>
-                                        <form class="user" action="" method="POST" enctype="multipart/form-data">
-                                            <input type="hidden" name="id" value="<?= $row['id']; ?>">
+                        <form class="user" action="" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="<?= $row['id']; ?>">
 
-                                            <div class="form-group row">
-                                                <div class="col mb-3 mb-sm-0">
-                                                    <input class="form-control form-control-static" type="text" name="id_bahan" id="id_bahan" required value="<?= $row['id_bahan']; ?>" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col mb-3 mb-sm-0">
-                                                    <input class="form-control form-control-static" type="text" name="nama_bahan" id="nama_bahan" required value="<?= $row['nama_bahan']; ?>">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col mb-3 mb-sm-0">
-                                                    <input class="form-control form-control-static dropdown" type="text" name="id_produk" id="id_produk" required value="<?= $row['id_produk']; ?>">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col mb-3 mb-sm-0">
-                                                    <input class="form-control form-control-static" type="text" name="stok" id="stok" required value="<?= $row['stok']; ?>">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col mb-3 mb-sm-0">
-                                                    <input class="form-control form-control-static" type="text" name="harga_satuan" id="harga_satuan" required value="<?= $row['harga_satuan']; ?>">
-                                                </div>
-                                            </div>
-                                            <button class="btn btn-primary" name="submit" type="submit">
-                                                Ubah
-                                            </button>
-                                        </form>
-                                    </div>
+                            <div class="form-group row">
+                                <div class="col mb-3 mb-sm-0">
+                                    <input class="form-control form-control-static" type="text" name="id_bahan" id="id_bahan" required value="<?= $row['id_bahan']; ?>" readonly>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; The King 2019</span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- End of Footer -->
-
+                            <div class="form-group row">
+                                <div class="col mb-3 mb-sm-0">
+                                    <input class="form-control form-control-static" type="text" name="nama_bahan" id="nama_bahan" required value="<?= $row['nama_bahan']; ?>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col mb-3 mb-sm-0">
+                                    <select class="form-control" name="id_produk" id="id_produk">
+                                        <option value=" id_produk">pilih jenis produk</option>
+                                        <?php
+                                            $q = mysqli_query($conn, "SELECT * FROM produk");
+                                            while ($row = mysqli_fetch_array($q)) { ?>
+                                            <option value="<?= $row['id_produk']; ?>"><?= $row['jenis_produk'] ?></option>
+                                        <?php } ?>
+                                        <br>
+                                        ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col mb-3 mb-sm-0">
+                                    <input class="form-control form-control-static" type="text" name="stok" id="stok" required value="<?= $row['stok']; ?>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col mb-3 mb-sm-0">
+                                    <input class="form-control form-control-static" type="text" name="harga_satuan" id="harga_satuan" required value="<?= $row['harga_satuan']; ?>">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" name="submit" type="submit">
+                                Ubah
+                            </button>
+                        </form>
                 </div>
-                <!-- End of Content Wrapper -->
-
             </div>
-            <!-- End of Page Wrapper -->
+        </div>
+    </div>
+    </div>
+<?php endforeach; ?>
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; The King 2019</span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
 
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
+</div>
+<!-- End of Content Wrapper -->
 
-            <!-- Bootstrap core JavaScript-->
-            <script src="../assets/vendor/jquery/jquery.min.js"></script>
-            <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</div>
+<!-- End of Page Wrapper -->
 
-            <!-- Core plugin JavaScript-->
-            <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
-            <!-- Custom scripts for all pages-->
-            <script src="../assets/js/sb-admin-2.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-            <!-- Page level plugins -->
-            <!-- <script src="vendor/datatables/jquery.dataTables.min.js"></script> -->
-            <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-            <!-- Page level custom scripts -->
-            <script src="../assets/js/demo/datatables-demo.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="../assets/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<!-- <script src="vendor/datatables/jquery.dataTables.min.js"></script> -->
+<script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="../assets/js/demo/datatables-demo.js"></script>
 
 </body>
 

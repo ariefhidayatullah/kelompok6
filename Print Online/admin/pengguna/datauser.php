@@ -1,31 +1,9 @@
 <?php
 require 'function.php';
-
-$id_produk = $_GET['id'];
-
-// var_dump($id);
-//query data mahasiswa berdasarkan ID
-
-$mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
-
-if (isset($_POST["submit"])) {
-    //cek data berhasil diubah atau tidak
-    if (ubah($_POST) > 0) {
-        echo "
-			<script>
-				alert('data berhasil diubah');
-					document.location.href = 'dataproduk.php';
-			</script>
-		";
-    } else {
-        echo "
-			<script>
-				alert('data gagal diubah'); 
-			</script>
-		";
-    }
-}
-
+$bahan = query('SELECT * FROM user');
+// foreach ($mahasiswa as $kel) {
+// 	echo $kel['id'];
+// }
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +17,7 @@ if (isset($_POST["submit"])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>The king 2 - bahan</title>
 
     <!-- Custom fonts for this template -->
     <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -47,13 +25,14 @@ if (isset($_POST["submit"])) {
 
     <!-- Custom styles for this template -->
     <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- <link href="../assets/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Custom styles for this page -->
-    <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script src="../assets/jquery-3.3.1.slim.min.js"></script>
-    <script src="../assets/popper.min.js"></script>
-    <script src="../assets/ajax.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
+    <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="../jquery-3.3.1.slim.min.js"></script>
+    <script src="../popper.min.js"></script>
 
 </head>
 
@@ -85,7 +64,7 @@ if (isset($_POST["submit"])) {
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Daftar Akun</span>
@@ -93,14 +72,14 @@ if (isset($_POST["submit"])) {
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">login Admin / User</h6>
-                        <a class="collapse-item active" href="../auth/register.php">tambah akun admin</a>
+                        <a class="collapse-item" href="../auth/register.php">tambah akun admin</a>
                         <a class="collapse-item" href="../auth/register.php">list user / pengguna</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="../dataproduk/dataproduk.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data Produk</span></a>
@@ -160,80 +139,90 @@ if (isset($_POST["submit"])) {
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container">
-                    <div class="text-center">
-                        <h1 class="h4 text-gray-900 mb-4">Ubah Data</h1>
-                        <?php foreach ($mhs as $row) : ?>
+                <div class="container-fluid text-center">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Data user</h1>
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>id user</th>
+                                            <th>nama user</th>
+                                            <th>email</th>
+                                            <th>no hp user</th>
+                                            <th>alamat</th>
+                                            <th>kode pos</th>
+                                            <th>aksi</th>
+                                        </tr>
+                                        <?php $i = 1; ?>
+                                        <?php foreach ($bahan as $row) : ?>
+                                            <tr>
+                                                <td><?= $i; ?></td>
+                                                <td><?= $row['id_user']; ?></td>
+                                                <td><?= $row['nama_user']; ?></td>
+                                                <td><?= $row['email']; ?></td>
+                                                <td><?= $row['nohp_user']; ?></td>
+                                                <td><?= $row['alamat']; ?></td>
+                                                <td><?= $row['kodepos']; ?></td>
+                                                <td>
+                                                    <a href="hapus.php?id=<?= $row['id_user']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">hapus</button></a>
+                                                </td>
+                                            </tr>
+                                            <?php $i++ ?>
+                                        <?php endforeach; ?>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    <form class="user" action="" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="<?= $row['id']; ?>">
-                        <input type="hidden" name="gambarLama" value="<?= $row['gambar']; ?>">
-                        <div class="form-group row">
-                            <div class="col mb-3 mb-sm-0">
-                                <input class="form-control form-control-static" type="text" name="id_produk" id="id_produk" required value="<?= $row['id_produk']; ?>">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col mb-3 mb-sm-0">
-                                <input class="form-control form-control-static" type="text" name="jenis_produk" id="jenis_produk" required value="<?= $row['jenis_produk']; ?>">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col mb-3 mb-sm-0">
-                                <img src="img/<?= $row['gambar']; ?>" width="40"><input type="file" name="gambar" id="gambar">
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <input class="btn btn-primary" name="submit" type="submit" value="ubah!">
-                            </input>
-                            <a href="dataproduk.php" class="btn btn-warning" name="submit" type="submit">
-                                kembali
-                            </a>
-                        </div>
-                    </form>
                 </div>
+                <!-- /.container-fluid -->
+
             </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; The King 2019</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
         </div>
+        <!-- End of Content Wrapper -->
+
     </div>
-    </div>
-<?php endforeach; ?>
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; The King 2019</span>
-        </div>
-    </div>
-</footer>
-<!-- End of Footer -->
+    <!-- End of Page Wrapper -->
 
-</div>
-<!-- End of Content Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-</div>
-<!-- End of Page Wrapper -->
+    <!-- Bootstrap core JavaScript-->
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
+    <!-- Core plugin JavaScript-->
+    <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Bootstrap core JavaScript-->
-<script src="../assets/vendor/jquery/jquery.min.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="../assets/js/sb-admin-2.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugins -->
+    <!-- <script src="vendor/datatables/jquery.dataTables.min.js"></script> -->
+    <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="../assets/js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<!-- <script src="vendor/datatables/jquery.dataTables.min.js"></script> -->
-<script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="../assets/js/demo/datatables-demo.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="../assets/js/demo/datatables-demo.js"></script>
 
 </body>
 

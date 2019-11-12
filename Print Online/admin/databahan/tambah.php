@@ -167,75 +167,66 @@ if ($datakode) {
 				</nav>
 				<!-- End of Topbar -->
 
-				<div class="container ml-5">
-
-					<div class="col-lg-8 ml-5">
-
-						<div class="card o-hidden border-0 shadow-lg my-5 ml-5">
-							<div class="card-body p-0 ml-5">
-								<!-- Nested Row within Card Body -->
-								<div class="row ml-5">
-									<div class="col-lg">
-										<div class="text-center">
-											<h1 class="h4 text-gray-900 mb-4">Tambahkan Data!</h1>
-										</div>
-										<form class="user" method="post" action="">
-											<div class="form-group row">
-												<div class="col mb-3 mb-sm-0">
-													<input type="text" class="form-control form-control-static text-center" id="id_bahan" name="id_bahan" value="<?= $kode_otomatis; ?>" readonly>
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col mb-3 mb-sm-0">
-													<input type="text" class="form-control form-control-static text-center" id="nama_bahan" name="nama_bahan" placeholder="masukkan nama bahan....">
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col mb-3 mb-sm-0">
-													<select class="form-control" name="id_produk" id="id_produk">
-														<option value="id_produk">pilih jenis produk</option>
-														<?php
-														$q = mysqli_query($conn, "SELECT * FROM produk");
-														while ($row = mysqli_fetch_array($q)) { ?>
-															<option value="<?= $row['id_produk']; ?>"><?= $row['jenis_produk'] ?></option>
-														<?php } ?>
-														<br>
-														?>
-
-												</div>
-											</div>
-
-											<div class="form-group row">
-												<div class="col mb-3 mb-sm-0">
-													<input type="text" class="form-control form-control-static text-center" id="stok" name="stok" placeholder="masukkan jumlah stok....">
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col mb-3 mb-sm-0">
-													<input type="text" class="form-control form-control-static text-center" id="harga_satuan" name="harga_satuan" placeholder="masukkan jumlah harga....">
-												</div>
-											</div>
-											<div class="pull-right text-center">
-												<a href="databahan.php" class="btn btn-warning btn-xs mr-5">Kembali</a>
-												<input class="btn btn-primary ml-5" name="submit" type="submit" value="tambahkan!"></input>
-											</div>
-										</form>
-									</div>
-								</div>
+				<div class="container">
+					<div class="text-center">
+						<h1 class="h4 text-gray-900 mb-4">Tambahkan Data!</h1>
+					</div>
+					<form class="user" method="post" action="">
+						<div class="form-group row">
+							<div class="col mb-3 mb-sm-0">
+								<input type="text" class="form-control form-control-static text-center" id="id_bahan" name="id_bahan" value="<?= $kode_otomatis; ?>" readonly>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col mb-3 mb-sm-0">
+								<input type="text" class="form-control form-control-static text-center" id="nama_bahan" name="nama_bahan" placeholder="masukkan nama bahan....">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col mb-3 mb-sm-0">
+								<select class="form-control" name="id_produk" id="id_produk">
+									<option value="id_produk">pilih jenis produk</option>
+									<?php
+									$q = mysqli_query($conn, "SELECT * FROM produk");
+									while ($row = mysqli_fetch_array($q)) { ?>
+										<option value="<?= $row['id_produk']; ?>"><?= $row['jenis_produk'] ?></option>
+									<?php } ?>
+									<br>
+									?>
 							</div>
 						</div>
 
-					</div>
+						<div class="form-group row">
+							<div class="col mb-3 mb-sm-0">
+								<input type="text" class="form-control form-control-static text-center" id="stok" name="stok" placeholder="masukkan jumlah stok....">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col mb-3 mb-sm-0">
+								<input type="text" class="form-control form-control-static text-center" id="harga_satuan" name="harga_satuan" placeholder="masukkan jumlah harga....">
+							</div>
+						</div>
+						<div class="pull-right text-center">
+							<a href="databahan.php" class="btn btn-warning">Kembali</a>
+							<input class="btn btn-primary" name="submit" type="submit" value="tambahkan!"></input>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
-					<!-- Bootstrap core JavaScript-->
-					<script src="../assets/vendor/jquery/jquery.min.js"></script>
-					<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	</div>
 
-					<!-- Core plugin JavaScript-->
-					<script src="../vassets/endor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Bootstrap core JavaScript-->
+	<script src="../assets/vendor/jquery/jquery.min.js"></script>
+	<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-					<!-- Custom scripts for all pages-->
-					<script src="../assets/js/sb-admin-2.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="../vassets/endor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="../assets/js/sb-admin-2.min.js"></script>
 
 </body>
 

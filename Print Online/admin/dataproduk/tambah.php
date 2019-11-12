@@ -36,9 +36,9 @@ if ($datakode) {
 	// hasil untuk menambahkan kode 
 	// angka 3 untuk menambahkan tiga angka setelah B dan angka 0 angka yang berada di tengah
 	// atau angka sebelum $kode
-	$kode_otomatis = "P" . str_pad($kode, 4, "0", STR_PAD_LEFT);
+	$kode_otomatis = "P" . str_pad($kode, 3, "0", STR_PAD_LEFT);
 } else {
-	$kode_otomatis = "P0001";
+	$kode_otomatis = "P001";
 }
 
 ?>
@@ -167,55 +167,47 @@ if ($datakode) {
 				</nav>
 				<!-- End of Topbar -->
 
-				<div class="container ml-5">
-
-					<div class="col-lg-8 ml-5">
-
-						<div class="card o-hidden border-0 shadow-lg my-5 ml-5">
-							<div class="card-body p-0 ml-5">
-								<!-- Nested Row within Card Body -->
-								<div class="row ml-5">
-									<div class="col-lg">
-										<div class="text-center">
-											<h1 class="h4 text-gray-900 mb-4">Tambahkan Data!</h1>
-										</div>
-										<form class="user" method="post" action="">
-											<div class="form-group row">
-												<div class="col mb-3 mb-sm-0">
-													<input type="text" class="form-control form-control-static text-center" id="id_produk" name="id_produk" value="<?= $kode_otomatis; ?>" readonly>
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col mb-3 mb-sm-0">
-													<input type="text" class="form-control form-control-static text-center" id="jenis_produk" name="jenis_produk" placeholder="masukkan nama admin....">
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col mb-3 mb-sm-0">
-													<input type="file" id="gambar" name="gambar">
-												</div>
-											</div>
-											<div class="pull-right text-center">
-												<a href="dataproduk.php" class="btn btn-warning btn-xs">Kembali</a>
-												<input class="btn btn-primary ml-5" name="submit" type="submit" value="tambahkan!"></input>
-											</div>
-										</form>
-									</div>
-								</div>
+				<div class="container">
+					<div class="text-center">
+						<h1 class="h4 text-gray-900 mb-4">Tambahkan Data!</h1>
+					</div>
+					<form class="user" method="post" action="" enctype="multipart/form-data">
+						<div class="form-group row">
+							<div class="col mb-3 mb-sm-0">
+								<input type="text" class="form-control form-control-static text-center" id="id_produk" name="id_produk" value="<?= $kode_otomatis; ?>" readonly>
 							</div>
 						</div>
+						<div class="form-group row">
+							<div class="col mb-3 mb-sm-0">
+								<input type="text" class="form-control form-control-static text-center" id="jenis_produk" name="jenis_produk" required placeholder="masukkan jenis produk....">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col mb-3 mb-sm-0">
+								<input type="file" id="gambar" name="gambar">
+							</div>
+						</div>
+						<div class="pull-right text-center">
+							<a href="dataproduk.php" class="btn btn-warning btn-xs">Kembali</a>
+							<input class="btn btn-primary ml-5" name="submit" type="submit" value="tambahkan!"></input>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
-					</div>
+	</div>
 
-					<!-- Bootstrap core JavaScript-->
-					<script src="../assets/vendor/jquery/jquery.min.js"></script>
-					<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap core JavaScript-->
+	<script src="../assets/vendor/jquery/jquery.min.js"></script>
+	<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-					<!-- Core plugin JavaScript-->
-					<script src="../vassets/endor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="../vassets/endor/jquery-easing/jquery.easing.min.js"></script>
 
-					<!-- Custom scripts for all pages-->
-					<script src="../assets/js/sb-admin-2.min.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="../assets/js/sb-admin-2.min.js"></script>
 
 </body>
 

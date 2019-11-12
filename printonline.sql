@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Okt 2019 pada 11.31
--- Versi server: 10.1.37-MariaDB
--- Versi PHP: 7.3.0
+-- Generation Time: Nov 12, 2019 at 02:17 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,51 +25,57 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
   `id_admin` varchar(10) NOT NULL,
   `nama_admin` varchar(50) NOT NULL,
+  `username` varchar(15) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `email` varchar(50) NOT NULL,
   `nohp_admin` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `nohp_admin`) VALUES
-('ADM001', 'Erlan Subowo', 'erlansubowo@gmail.com', '082263736371'),
-('ADM002', 'Bima Bagaskara', 'bimakenong22@gmail.com', '087757221345');
+INSERT INTO `admin` (`id_admin`, `nama_admin`, `username`, `password`, `email`, `nohp_admin`) VALUES
+('ADM001', 'Erlan Subowo', '', '', 'erlansubowo@gmail.com', '082263736371'),
+('ADM002', 'Bima Bagaskara', '', '', 'bimakenong22@gmail.com', '087757221345'),
+('ADM003', 'mohammad arief hidayatullah', 'admin', '$2y$10$jHxQTAYyz.0JOoqxW2SsyuR', 'mzboy2606@gmail.com', ''),
+('ADM004', 'arfhdytllh', 'arfhdytllh', '$2y$10$uPHzVkO0Rd1F7Wj.AVuncuhGaNwiia1zjMaRnOMj6aJka6vJiYFha', 'mzboy2606@gmail.com', '087887879907'),
+('ADM005', 'mohammad arief hidayatullah', 'joss', '$2y$10$65qNMGdZ7FdkmxBWo72v3.vVyjSj5jwT.BY/713vVeajYCTPAxwxa', 'mzboy2606@gmail.com', '087887879907');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bahan`
+-- Table structure for table `bahan`
 --
 
 CREATE TABLE `bahan` (
   `id_bahan` varchar(10) NOT NULL,
   `nama_bahan` varchar(20) NOT NULL,
   `id_produk` varchar(10) NOT NULL,
-  `stok` int(11) NOT NULL
+  `stok` int(11) NOT NULL,
+  `harga_satuan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `bahan`
+-- Dumping data for table `bahan`
 --
 
-INSERT INTO `bahan` (`id_bahan`, `nama_bahan`, `id_produk`, `stok`) VALUES
-('BHN001', 'Finel 150 g', 'PRO001', 200),
-('BHN002', 'Finel 200 g', 'PRO001', 200),
-('BHN003', 'Frontlite 280 gr', 'PRO001', 200),
-('BHN004', 'Frontlite 310 gr', 'PRO001', 200);
+INSERT INTO `bahan` (`id_bahan`, `nama_bahan`, `id_produk`, `stok`, `harga_satuan`) VALUES
+('B001', 'Finel 150 g', 'P001', 200, 0),
+('B002', 'Finel 200 g', 'P001', 200, 0),
+('B003', 'Frontlite 280 gr', 'P001', 200, 0),
+('B004', 'Frontlite 310 gr', 'P001', 200, 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_pemesanan`
+-- Table structure for table `detail_pemesanan`
 --
 
 CREATE TABLE `detail_pemesanan` (
@@ -84,7 +90,7 @@ CREATE TABLE `detail_pemesanan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `karyawan`
+-- Table structure for table `karyawan`
 --
 
 CREATE TABLE `karyawan` (
@@ -95,7 +101,7 @@ CREATE TABLE `karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `karyawan`
+-- Dumping data for table `karyawan`
 --
 
 INSERT INTO `karyawan` (`id_krw`, `nama_krw`, `email`, `nohp_krw`) VALUES
@@ -105,7 +111,7 @@ INSERT INTO `karyawan` (`id_krw`, `nama_krw`, `email`, `nohp_krw`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `masuk_stokbahan`
+-- Table structure for table `masuk_stokbahan`
 --
 
 CREATE TABLE `masuk_stokbahan` (
@@ -119,7 +125,7 @@ CREATE TABLE `masuk_stokbahan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ongkir`
+-- Table structure for table `ongkir`
 --
 
 CREATE TABLE `ongkir` (
@@ -129,7 +135,7 @@ CREATE TABLE `ongkir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ongkir`
+-- Dumping data for table `ongkir`
 --
 
 INSERT INTO `ongkir` (`jangkauan`, `kodepos`, `ongkir`) VALUES
@@ -139,7 +145,7 @@ INSERT INTO `ongkir` (`jangkauan`, `kodepos`, `ongkir`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pembayaran`
+-- Table structure for table `pembayaran`
 --
 
 CREATE TABLE `pembayaran` (
@@ -155,7 +161,7 @@ CREATE TABLE `pembayaran` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pemesanan`
+-- Table structure for table `pemesanan`
 --
 
 CREATE TABLE `pemesanan` (
@@ -172,78 +178,78 @@ CREATE TABLE `pemesanan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk`
+-- Table structure for table `produk`
 --
 
 CREATE TABLE `produk` (
   `id_produk` varchar(10) NOT NULL,
   `jenis_produk` varchar(10) NOT NULL,
-  `harga_satuan` int(10) NOT NULL
+  `gambar` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `produk`
+-- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `jenis_produk`, `harga_satuan`) VALUES
-('PRO001', 'Banner', 17500),
-('PRO002', 'ID Card', 8000);
+INSERT INTO `produk` (`id_produk`, `jenis_produk`, `gambar`) VALUES
+('P001', 'Banner', '5dc906f06d3ae.png'),
+('P002', 'id card ', '5dc92eeab461e.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
   `id_user` varchar(10) NOT NULL,
-  `nama_user` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `nama_user` varchar(20) NOT NULL,
+  `email` varchar(25) NOT NULL,
   `nohp_user` varchar(15) NOT NULL,
   `alamat` varchar(100) NOT NULL,
   `kodepos` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `email`, `nohp_user`, `alamat`, `kodepos`) VALUES
-('USR001', 'Fabryzal Adam Pramudya', 'ryzaldm@gmail.com', '082229024685', 'Jl. R.E Martadinata gg4 RT 24/RW 05, Kec. Bondowoso', '68211'),
-('USR002', 'Mohammad Arief HIdayatullah', 'ariefhidayatullah@gmail.com', '087712178273', 'Kec. Tapen', '68212');
+('USR001', 'Fabryzal Adam Pramud', 'ryzaldm@gmail.com', '082229024685', 'Jl. R.E Martadinata gg4 RT 24/RW 05, Kec. Bondowoso', '68211'),
+('USR002', 'Mohammad Arief HIday', 'ariefhidayatullah@gmail.c', '087712178273', 'Kec. Tapen', '68212');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indeks untuk tabel `bahan`
+-- Indexes for table `bahan`
 --
 ALTER TABLE `bahan`
   ADD PRIMARY KEY (`id_bahan`),
   ADD KEY `id_produk` (`id_produk`);
 
 --
--- Indeks untuk tabel `detail_pemesanan`
+-- Indexes for table `detail_pemesanan`
 --
 ALTER TABLE `detail_pemesanan`
   ADD KEY `id_pesan` (`id_pesan`),
   ADD KEY `id_produk` (`id_produk`);
 
 --
--- Indeks untuk tabel `karyawan`
+-- Indexes for table `karyawan`
 --
 ALTER TABLE `karyawan`
   ADD PRIMARY KEY (`id_krw`);
 
 --
--- Indeks untuk tabel `masuk_stokbahan`
+-- Indexes for table `masuk_stokbahan`
 --
 ALTER TABLE `masuk_stokbahan`
   ADD PRIMARY KEY (`id_masuk`),
@@ -251,13 +257,13 @@ ALTER TABLE `masuk_stokbahan`
   ADD KEY `id_bahan` (`id_bahan`);
 
 --
--- Indeks untuk tabel `ongkir`
+-- Indexes for table `ongkir`
 --
 ALTER TABLE `ongkir`
   ADD PRIMARY KEY (`kodepos`);
 
 --
--- Indeks untuk tabel `pembayaran`
+-- Indexes for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id_bayar`),
@@ -265,7 +271,7 @@ ALTER TABLE `pembayaran`
   ADD KEY `kodepos` (`kodepos`);
 
 --
--- Indeks untuk tabel `pemesanan`
+-- Indexes for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
   ADD PRIMARY KEY (`id_pesan`),
@@ -273,50 +279,50 @@ ALTER TABLE `pemesanan`
   ADD KEY `id_krw` (`id_krw`);
 
 --
--- Indeks untuk tabel `produk`
+-- Indexes for table `produk`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`id_produk`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `bahan`
+-- Constraints for table `bahan`
 --
 ALTER TABLE `bahan`
   ADD CONSTRAINT `bahan_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`);
 
 --
--- Ketidakleluasaan untuk tabel `detail_pemesanan`
+-- Constraints for table `detail_pemesanan`
 --
 ALTER TABLE `detail_pemesanan`
   ADD CONSTRAINT `detail_pemesanan_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`),
   ADD CONSTRAINT `detail_pemesanan_ibfk_2` FOREIGN KEY (`id_pesan`) REFERENCES `pemesanan` (`id_pesan`);
 
 --
--- Ketidakleluasaan untuk tabel `masuk_stokbahan`
+-- Constraints for table `masuk_stokbahan`
 --
 ALTER TABLE `masuk_stokbahan`
   ADD CONSTRAINT `masuk_stokbahan_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`),
   ADD CONSTRAINT `masuk_stokbahan_ibfk_2` FOREIGN KEY (`id_bahan`) REFERENCES `bahan` (`id_bahan`);
 
 --
--- Ketidakleluasaan untuk tabel `pembayaran`
+-- Constraints for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`kodepos`) REFERENCES `ongkir` (`kodepos`),
   ADD CONSTRAINT `pembayaran_ibfk_2` FOREIGN KEY (`id_pesan`) REFERENCES `pemesanan` (`id_pesan`);
 
 --
--- Ketidakleluasaan untuk tabel `pemesanan`
+-- Constraints for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
   ADD CONSTRAINT `pemesanan_ibfk_1` FOREIGN KEY (`id_krw`) REFERENCES `karyawan` (`id_krw`),
