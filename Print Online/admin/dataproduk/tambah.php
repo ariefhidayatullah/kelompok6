@@ -167,7 +167,7 @@ if ($datakode) {
 				</nav>
 				<!-- End of Topbar -->
 
-				<div class="container">
+				<div class="container text-center">
 					<div class="text-center">
 						<h1 class="h4 text-gray-900 mb-4">Tambahkan Data!</h1>
 					</div>
