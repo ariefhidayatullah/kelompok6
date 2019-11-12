@@ -1,5 +1,9 @@
 <?php 
- ?><!--A Design by W3layouts
+require 'function.php';
+$sql = 'SELECT jenis_produk FROM produk order by rand()';
+		
+$bahan = mysqli_query($conn, $sql);
+?><!--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -148,7 +152,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
                     <div class="price">
 					   <div class="cart-left">
-							<p class="title">Lorem Ipsum simply</p>
+							<p class="title">
+							<?php 
+							$row = mysqli_fetch_array($bahan);
+							echo $row['jenis_produk'];
+							?>
+							</p>
 							<div class="price1">
 							  <span class="actual">Rp 12.000.00</span>
 							</div>
@@ -167,7 +176,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
                     <div class="price">
 					   <div class="cart-left">
-							<p class="title">Lorem Ipsum simply</p>
+							<p class="title">
+							<?php 
+							$row = mysqli_fetch_array($bahan);
+							echo $row['jenis_produk'];
+							?>
+							</p>
 							<div class="price1">
 							  <span class="actual">Rp 12.000.00</span>
 							</div>
@@ -186,7 +200,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
                     <div class="price">
 					   <div class="cart-left">
-							<p class="title">Lorem Ipsum simply</p>
+							<p class="title">
+							<?php 
+							$row = mysqli_fetch_array($bahan);
+							echo $row['jenis_produk'];
+							?>
+							</p>
 							<div class="price1">
 							  <span class="actual">Rp 12.000.00</span>
 							</div>
@@ -208,7 +227,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
                     <div class="price">
 					   <div class="cart-left">
-							<p class="title">Lorem Ipsum simply</p>
+							<p class="title">
+							<?php 
+							$row = mysqli_fetch_array($bahan);
+							echo $row['jenis_produk'];
+							?>
+							</p>
 							<div class="price1">
 							  <span class="actual">Rp 12.000.00</span>
 							</div>
@@ -227,7 +251,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>	
                     <div class="price">
 					   <div class="cart-left">
-							<p class="title">Lorem Ipsum simply</p>
+							<p class="title"><?echo $row['jenis_produk']; ?></p>
 							<div class="price1">
 							  <span class="actual">Rp 12.000.00</span>
 							</div>
