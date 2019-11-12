@@ -42,19 +42,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<option value="2">Indonesia</option>
 					  </select>
    				    </div>
-   				    <div class="box1">
+<!--    				    <div class="box1">
    				        <select tabindex="4" class="dropdown">
 							<option value="" class="label" value="">Currency :</option>
 							<option value="1">$ Dollar</option>
 							<option value="2">Rupiah</option>
 						</select>
-   				    </div>
+   				    </div> -->
    				    <div class="clear"></div>
    			 </div>
 			 <div class="cssmenu">
 				<ul>
 					<li class="active"><a href="login.html">Account</a></li> |
-					<li><a href="login.html">Log In</a></li> |
+					<li><a href="login.php">Log In</a></li> |
 					<li><a href="register.html">Sign Up</a></li>
 				</ul>
 			</div>
@@ -364,17 +364,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
              </div>
               <div class="btn"><a href="single.html">Check it Out</a></div>
              </div>
-           <div class="top-border"> </div>
-			<div class="sidebar-bottom">
-			    <h2 class="m_1">Newsletters<br> Signup</h2>
-			    <p class="m_text">Lorem ipsum dolor sit amet, consectetuer</p>
-			    <div class="subscribe">
-					 <form>
-					    <input name="userName" type="text" class="textbox">
-					    <input type="submit" value="Subscribe">
-					 </form>
-	  			</div>
-			</div>
 	    </div>
 	   <div class="clear"></div>
 	</div>
@@ -483,38 +472,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				 <div class="section group example">
 				   <div class="col_1_of_f_2 span_1_of_f_2">
 				      <h3>PRINTONLINE</h3>
-						<script>(function(d, s, id) {
-						  var js, fjs = d.getElementsByTagName(s)[0];
-						  if (d.getElementById(id)) return;
-						  js = d.createElement(s); js.id = id;
-						  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-						  fjs.parentNode.insertBefore(js, fjs);
-						}(document, 'script', 'facebook-jssdk'));</script>
-						<div class="like_box">	
-							<div class="fb-like-box" data-href="http://www.facebook.com/w3layouts" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
-						</div>
+
  				  </div>
-				  <div class="col_1_of_f_2 span_1_of_f_2">
-						<h3>From Twitter</h3>
-				       <div class="recent-tweet">
-							<div class="recent-tweet-icon">
-								<span> </span>
-							</div>
-							<div class="recent-tweet-info">
-								<p>Ds which don't look even slightly believable. If you are <a href="#">going to use nibh euismod</a> tincidunt ut laoreet adipisicing</p>
-							</div>
-							<div class="clear"> </div>
-					   </div>
-					   <div class="recent-tweet">
-							<div class="recent-tweet-icon">
-								<span> </span>
-							</div>
-							<div class="recent-tweet-info">
-								<p>Ds which don't look even slightly believable. If you are <a href="#">going to use nibh euismod</a> tincidunt ut laoreet adipisicing</p>
-							</div>
-							<div class="clear"> </div>
-					  </div>
-				</div>
+
 				<div class="clear"></div>
 		      </div>
  			 </div>
@@ -523,23 +483,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				 <div class="col_1_of_f_2 span_1_of_f_2">
 				    <h3>Information</h3>
 						<ul class="f-list1">
-						    <li><a href="#">Lorem ipsum dolor sit amet </a></li>
-				            <li><a href="#">Lorem ipsum dolor sit amet </a></li>
-				            <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-				             <li><a href="#">Lorem ipsum dolor sit amet </a></li>
-				            <li><a href="#">Lorem ipsum dolor sit amet </a></li>
-				            <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+						    <li><a href="#">Tentang Kami</a></li>
+				            <li><a href="#">Kebijakan Privasi</a></li>
+				            <li><a href="#">Syarat dan Ketentuan</a></li>
+				             <li><a href="#">Keuntungan Bergabung </a></li>
+				            <li><a href="#">Bantuan</a></li>
 			         	</ul>
  				 </div>
 				 <div class="col_1_of_f_2 span_1_of_f_2">
 				   <h3>Contact us</h3>
 						<div class="company_address">
-					                <p>500 Lorem Ipsum Dolor Sit,</p>
-							   		<p>22-56-2-9 Sit Amet, Lorem,</p>
-							   		<p>USA</p>
-					   		<p>Phone:(+62) 8316 3071 145</p>
-					   		<p>Fax: (000) 000 00 00 0</p>
-					 	 	<p>Email: <span>Printonline.com</span></p>
+					        <p>JL ki S Mangunsarkoro, No 52</p>
+							<p>Kampung Templek</p>
+							<p>Kec.Bondowoso</p>
+							<p>Kabupaten Bondowoso, Jawa timur</p>
+					   		<p>Phone:(+62) 8233 1116 981</p>
+					 	 	<p>Email: <span>digitaltheking@gmail.com</span></p>
 					   		
 					   </div>
 					   <div class="social-media">
