@@ -166,20 +166,21 @@ if (isset($_POST["submit"])) {
                         <?php foreach ($mhs as $row) : ?>
                     </div>
                     <form class="user" action="" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="<?= $row['id']; ?>">
                         <input type="hidden" name="gambarLama" value="<?= $row['gambar']; ?>">
                         <div class="form-group row">
                             <div class="col mb-3 mb-sm-0">
-                                <input class="form-control form-control-static" type="text" name="id_produk" id="id_produk" required value="<?= $row['id_produk']; ?>">
+                                <input class="form-control form-control-static" type="hidden" name="id_produk" id="id_produk" required value="<?= $row['id_produk']; ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col mb-3 mb-sm-0">
+                                <label for="jenis_produk">jenis produk : </label>
                                 <input class="form-control form-control-static" type="text" name="jenis_produk" id="jenis_produk" required value="<?= $row['jenis_produk']; ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col mb-3 mb-sm-0">
+                                <label for="gambar">gambar : </label>
                                 <img src="img/<?= $row['gambar']; ?>" width="40"><input type="file" name="gambar" id="gambar">
                             </div>
                         </div>
