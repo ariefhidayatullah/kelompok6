@@ -1,7 +1,8 @@
 <?php
 require 'function.php';
-$produk = query('SELECT * FROM produk order by rand()');
+$sql = 'SELECT * FROM produk order by rand()';
 
+$produk = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE HTML>
@@ -41,25 +42,16 @@ $produk = query('SELECT * FROM produk order by rand()');
 						<option value="" class="label" value="">Bahasa :</option>
 						<option value="1">English</option>
 						<option value="2">Indonesia</option>
-					</select>
-				</div>
-				<div class="box1">
-					<select tabindex="4" class="dropdown">
-						<option value="" class="label" value="">Currency :</option>
-						<option value="1">$ Dollar</option>
-						<option value="2">Rupiah</option>
+						<option value="3">Japan</option>
 					</select>
 				</div>
 				<div class="clear"></div>
 			</div>
 			<div class="cssmenu">
 				<ul>
-					<li class="active"><a href="login.html">Account</a></li> |
+					<li class="active"><a href="login.php">Account</a></li> |
 					<li><a href="login.php">Log In</a></li> |
 					<li><a href="register.php">Sign Up</a></li>
-					<li><a href="login.html">Log In</a></li> |
-					<li><a href="register.html">Sign Up</a></li>
-
 				</ul>
 			</div>
 			<div class="clear"></div>
@@ -68,7 +60,7 @@ $produk = query('SELECT * FROM produk order by rand()');
 	<div class="header-bottom">
 		<div class="wrap">
 			<div class="header-bottom-left">
-				<div class="logo">
+				<div class="logo"><br>
 					<a href="index.html"><img src="images/king.jpg" alt="" /></a>
 				</div>
 				<div class="menu">
@@ -157,20 +149,20 @@ $produk = query('SELECT * FROM produk order by rand()');
 			<div class="section group">
 				<div class="cont span_2_of_3">
 					<h2 class="head">Featured Products</h2>
-					<?php foreach ($produk as $row) : ?>
 						<div class="top-box">
 							<div class="col_1_of_3 span_1_of_3">
 								<a href="single.html">
 									<div class="inner_content clearfix">
 										<div class="product_image">
-											<img src="img/<?= $row['gambar']; ?>" alt="" />
+											<img src="images/produk/idcard.jpg" alt="" />
 										</div>
 										<div class="price">
 											<div class="cart-left">
 												<p class="title">
 													<?php
-														echo $row['jenis_produk'];
-														?>
+													$row = mysqli_fetch_array($produk);
+													echo $row['jenis_produk'];
+													?>
 												</p>
 												<div class="price1">
 													<span class="actual">Rp 12.000.00</span>
@@ -192,8 +184,9 @@ $produk = query('SELECT * FROM produk order by rand()');
 											<div class="cart-left">
 												<p class="title">
 													<?php
-														echo $row['jenis_produk'];
-														?>
+													$row = mysqli_fetch_array($produk);
+													echo $row['jenis_produk'];
+													?>
 												</p>
 												<div class="price1">
 													<span class="actual">Rp 12.000.00</span>
@@ -231,7 +224,6 @@ $produk = query('SELECT * FROM produk order by rand()');
 							</div>
 							<div class="clear"></div>
 						</div>
-					<?php endforeach; ?>
 					<div class="top-box">
 						<div class="col_1_of_3 span_1_of_3">
 							<a href="single.html">
@@ -297,7 +289,7 @@ $produk = query('SELECT * FROM produk order by rand()');
 						</div>
 						<div class="clear"></div>
 					</div>
-					<div class="top-box1">
+<!-- 					<div class="top-box1">
 						<div class="col_1_of_3 span_1_of_3">
 							<a href="single.html">
 								<div class="inner_content clearfix">
@@ -355,7 +347,7 @@ $produk = query('SELECT * FROM produk order by rand()');
 								</div>
 							</a>
 						</div>
-						<div class="clear"></div>
+ -->						<div class="clear"></div>
 					</div>
 				</div>
 				<div class="rsidebar span_1_of_left">
