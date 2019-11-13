@@ -3,17 +3,12 @@ require 'function.php';
 $produk = query('SELECT * FROM produk order by rand()');
 
 ?>
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE HTML>
 <html>
 
 <head>
-	<title>Printonline</title>
+	<title>THE KING Advertising</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -109,7 +104,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</li>
 					</ul>
 					<ul class="last">
-						<li><a href="#">Cart(0)</a></li>
+						<li><a href="#"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -127,11 +122,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="slide_content">
 					<div class="slide_content_wrap">
 						<!-- Text title -->
-						<h4 class="title">Selamat Datang di</h4>
+						<h4 class="title">THE KING</h4>
 						<!-- /Text title -->
 
 						<!-- Text description -->
-						<p class="description">Printonline</p>
+						<p class="description">Advertising</p>
 						<!-- /Text description -->
 					</div>
 				</div>
@@ -142,8 +137,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<img src="images/banner1.jpg" alt="" />
 				<div class="slide_content">
 					<div class="slide_content_wrap">
-						<h4 class="title">Ayo print di</h4>
-						<p class="description">Sobat Erman</p>
+						<h4 class="title">THE KING</h4>
+						<p class="description">Advertising</p>
 					</div>
 				</div>
 			</div>
