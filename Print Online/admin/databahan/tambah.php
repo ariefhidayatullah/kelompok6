@@ -167,43 +167,46 @@ if ($datakode) {
 				</nav>
 				<!-- End of Topbar -->
 
-				<div class="container">
+				<div class="container text-center">
 					<div class="text-center">
 						<h1 class="h4 text-gray-900 mb-4">Tambahkan Data!</h1>
 					</div>
 					<form class="user" method="post" action="">
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
-								<input type="text" class="form-control form-control-static text-center" id="id_bahan" name="id_bahan" value="<?= $kode_otomatis; ?>" readonly>
+								<input type="hidden" class="form-control form-control-static text-center" id="id_bahan" name="id_bahan" required value="<?= $kode_otomatis; ?>" readonly>
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
-								<input type="text" class="form-control form-control-static text-center" id="nama_bahan" name="nama_bahan" placeholder="masukkan nama bahan....">
+								<label for="nama_bahan">nama bahan :</label>
+								<input type="text" class="form-control form-control-static text-center" id="nama_bahan" name="nama_bahan" required placeholder="masukkan nama bahan....">
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
+								<label for="id_produk">id produk : </label>
 								<select class="form-control" name="id_produk" id="id_produk">
-									<option value="id_produk">pilih jenis produk</option>
+									<option>pilih produk : </option>
 									<?php
 									$q = mysqli_query($conn, "SELECT * FROM produk");
-									while ($row = mysqli_fetch_array($q)) { ?>
-										<option value="<?= $row['id_produk']; ?>"><?= $row['jenis_produk'] ?></option>
-									<?php } ?>
-									<br>
-									?>
+									while ($row = mysqli_fetch_array($q)) {
+										echo "<option value=$row[id_produk]>$row[jenis_produk]</option>";
+									} ?>
+								</select>
 							</div>
 						</div>
 
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
-								<input type="text" class="form-control form-control-static text-center" id="stok" name="stok" placeholder="masukkan jumlah stok....">
+								<label for="stok">stok :</label>
+								<input type="text" class="form-control form-control-static text-center" id="stok" name="stok" required placeholder="masukkan jumlah stok....">
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
-								<input type="text" class="form-control form-control-static text-center" id="harga_satuan" name="harga_satuan" placeholder="masukkan jumlah harga....">
+								<label for="harga_satuan">harga satuan :</label>
+								<input type="text" class="form-control form-control-static text-center" id="harga_satuan" name="harga_satuan" required placeholder="masukkan jumlah harga....">
 							</div>
 						</div>
 						<div class="pull-right text-center">

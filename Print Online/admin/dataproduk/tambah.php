@@ -167,18 +167,19 @@ if ($datakode) {
 				</nav>
 				<!-- End of Topbar -->
 
-				<div class="container">
+				<div class="container text-center">
 					<div class="text-center">
 						<h1 class="h4 text-gray-900 mb-4">Tambahkan Data!</h1>
 					</div>
 					<form class="user" method="post" action="" enctype="multipart/form-data">
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
-								<input type="text" class="form-control form-control-static text-center" id="id_produk" name="id_produk" value="<?= $kode_otomatis; ?>" readonly>
+								<input type="hidden" class="form-control form-control-static text-center" id="id_produk" name="id_produk" value="<?= $kode_otomatis; ?>" readonly>
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
+								<label for="jenis_produk">masukkan jenis produk : </label>
 								<input type="text" class="form-control form-control-static text-center" id="jenis_produk" name="jenis_produk" required placeholder="masukkan jenis produk....">
 							</div>
 						</div>

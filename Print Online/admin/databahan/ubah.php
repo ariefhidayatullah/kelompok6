@@ -163,41 +163,45 @@ if (isset($_POST["submit"])) {
                     <?php foreach ($mhs as $row) : ?>
 
                         <form class="user" action="" method="POST" enctype="multipart/form-data">
-                            <input type="hidden" name="id" value="<?= $row['id']; ?>">
-
-                            <div class="form-group row">
+                            <div class="form-group">
                                 <div class="col mb-3 mb-sm-0">
-                                    <input class="form-control form-control-static" type="text" name="id_bahan" id="id_bahan" required value="<?= $row['id_bahan']; ?>" readonly>
+                                    <input class="form-control form-control-static" type="hidden" name="id_bahan" id="id_bahan" required value="<?= $row['id_bahan']; ?>" readonly>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group">
                                 <div class="col mb-3 mb-sm-0">
+                                    <label for="nama_bahan">nama bahan : </label>
                                     <input class="form-control form-control-static" type="text" name="nama_bahan" id="nama_bahan" required value="<?= $row['nama_bahan']; ?>">
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group">
                                 <div class="col mb-3 mb-sm-0">
-                                    <select class="form-control" name="id_produk" id="id_produk">
-                                        <option value=" id_produk">pilih jenis produk</option>
-                                        <?php
-                                            $q = mysqli_query($conn, "SELECT * FROM produk");
-                                            while ($row = mysqli_fetch_array($q)) { ?>
-                                            <option value="<?= $row['id_produk']; ?>"><?= $row['jenis_produk'] ?></option>
-                                        <?php } ?>
-                                        <br>
-                                        ?>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col mb-3 mb-sm-0">
+                                    <label for="stok">stok : </label>
                                     <input class="form-control form-control-static" type="text" name="stok" id="stok" required value="<?= $row['stok']; ?>">
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group">
                                 <div class="col mb-3 mb-sm-0">
+                                    <label for="harga_satuan">harga satuan : </label>
                                     <input class="form-control form-control-static" type="text" name="harga_satuan" id="harga_satuan" required value="<?= $row['harga_satuan']; ?>">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="col mb-3 mb-sm-0">
+                                    <label for="id_produk">id produk : </label>
+                                    <select class="form-control" name="id_produk" id="id_produk">
+                                        <option>pilih produk : </option>
+                                        <?php
+                                            $q = mysqli_query($conn, "SELECT * FROM produk");
+                                            while ($row = mysqli_fetch_array($q)) {
+                                                echo "<option value=$row[id_produk]>$row[jenis_produk]</option>";
+                                            } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <a href="databahan.php" class="btn btn-warning">
+                                Kembali
+                            </a>
                             <button class="btn btn-primary" name="submit" type="submit">
                                 Ubah
                             </button>

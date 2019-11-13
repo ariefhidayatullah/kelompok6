@@ -1,3 +1,39 @@
+<?php
+
+require_once("function.php");
+
+if(isset($_POST['register'])){
+
+    // filter data yang diinputkan
+    $nama_user = filter_input(INPUT_POST, 'nama_user', FILTER_SANITIZE_STRING);
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    // enkripsi password
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+
+    // menyiapkan query
+    $sql = "INSERT INTO users (nama_user, email, alamat, password) 
+            VALUES (:nama, :email, :alamat, :password)";
+    $stmt = $db->prepare($sql);
+
+    // bind parameter ke query
+    $params = array(
+        ":nama_user" => $nama_user,
+        ":email" => $email,
+        ":alamat" => $alamat,
+        ":password" => $password,
+    );
+
+    // eksekusi query untuk menyimpan ke database
+    $saved = $stmt->execute($params);
+
+    // jika query simpan berhasil, maka user sudah terdaftar
+    // maka alihkan ke halaman login
+    if($saved) header("Location: login.php");
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,8 +79,8 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate="Name is required">
-						<span class="label-input100">Full Name</span>
-						<input class="input100" type="text" name="name" placeholder="Name...">
+						<span class="label-input100">Nama Lengkap</span>
+						<input class="input100" type="text" name="name" placeholder="Masukkan Nama...">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -55,8 +91,8 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Username is required">
-						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="username" placeholder="Username...">
+						<span class="label-input100">Alamat</span>
+						<input class="input100" type="text" name="username" placeholder="Alamat...">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -91,12 +127,12 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button a href="login.php" class="login100-form-btn">
 								Sign Up
 							</button>
 						</div>
 
-						<a href="#" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+						<a href="login.php" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
 							Sign in
 							<i class="fa fa-long-arrow-right m-l-5"></i>
 						</a>
