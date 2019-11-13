@@ -154,6 +154,7 @@ $bahan = query('SELECT * FROM user');
                                             <th>id user</th>
                                             <th>nama user</th>
                                             <th>email</th>
+                                            <th>password</th>
                                             <th>no hp user</th>
                                             <th>alamat</th>
                                             <th>kode pos</th>
@@ -166,6 +167,7 @@ $bahan = query('SELECT * FROM user');
                                                 <td><?= $row['id_user']; ?></td>
                                                 <td><?= $row['nama_user']; ?></td>
                                                 <td><?= $row['email']; ?></td>
+                                                <td><?= $row['password']; ?></td>
                                                 <td><?= $row['nohp_user']; ?></td>
                                                 <td><?= $row['alamat']; ?></td>
                                                 <td><?= $row['kodepos']; ?></td>

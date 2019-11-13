@@ -124,7 +124,7 @@ function upload()
 
 	//jika lolos dari seleksi
 
-	move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
+	move_uploaded_file($tmpName, '../../boighor/img/' . $namaFileBaru);
 
 	return $namaFileBaru;
 }
