@@ -85,8 +85,8 @@ $bahan = query('SELECT * FROM produk order by rand()');
 											<div class="switcher-options">
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
-														<span><a href="#">Sign In</a></span>
-														<span><a href="#">Log In</a></span>
+														<span><a href="login.php">Sign In</a></span>
+														<span><a href="login.php">Log In</a></span>
 													</div>
 												</div>
 											</div>

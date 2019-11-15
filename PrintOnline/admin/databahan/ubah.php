@@ -92,8 +92,8 @@ if (isset($_POST["submit"])) {
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">login Admin / User</h6>
-                        <a class="collapse-item active" href="../auth/register.php">tambah akun admin</a>
-                        <a class="collapse-item" href="../auth/register.php">list user / pengguna</a>
+                        <a class="collapse-item" href="../auth/register.php">tambah akun admin</a>
+                        <a class="collapse-item" href="../pengguna/datauser.php">list user / pengguna</a>
                     </div>
                 </div>
             </li>
