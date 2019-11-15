@@ -34,14 +34,12 @@ $bahan = query('SELECT * FROM produk order by rand()');
 </head>
 
 <body>
-	<!--[if lte IE 9]>
-		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-	<![endif]-->
+
 
 	<!-- Main wrapper -->
 	<div class="wrapper" id="wrapper">
 		<!-- Header -->
-		<header id="wn__header" class="header__area header-menu sticky__header">
+		<header id="wn__header" class="header__area header-menu header__absolute">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
@@ -56,7 +54,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 							<ul class="meninmenu d-flex">
 								<li class="drop"><a href="#">daftar produk</a>
 									<div class="megamenu mega03">
-										<ul class="item item03">
+										<ul class="item item01">
 											<li><a href="my-account.html">label</a></li>
 											<li><a href="cart.html">kartu nama</a></li>
 											<li><a href="checkout.html">undangan</a></li>
@@ -64,7 +62,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 											<li><a href="error404.html">poster</a></li>
 											<li><a href="faq.html">Foto</a></li>
 										</ul>
-										<ul class="item item03">
+										<ul class="item item01">
 											<li><a href="my-account.html">piagam</a></li>
 											<li><a href="cart.html">kemasan</a></li>
 											<li><a href="checkout.html">sticker</a></li>
@@ -78,69 +76,17 @@ $bahan = query('SELECT * FROM produk order by rand()');
 						</nav>
 					</div>
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
-						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">3
+						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
 							<!-- Start Shopping Cart -->
 							<li class="setting__bar__icon"><a class="setting__active" href="#"></a>
 								<div class="searchbar__content setting__block">
 									<div class="content-inner">
 										<div class="switcher-currency">
-											<strong class="label switcher-label">
-												<span>Currency</span>
-											</strong>
-											<div class="switcher-options">
-												<div class="switcher-currency-trigger">
-													<span class="currency-trigger">USD - US Dollar</span>
-													<ul class="switcher-dropdown">
-														<li>GBP - British Pound Sterling</li>
-														<li>EUR - Euro</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="switcher-currency">
-											<strong class="label switcher-label">
-												<span>Language</span>
-											</strong>
-											<div class="switcher-options">
-												<div class="switcher-currency-trigger">
-													<span class="currency-trigger">English01</span>
-													<ul class="switcher-dropdown">
-														<li>English02</li>
-														<li>English03</li>
-														<li>English04</li>
-														<li>English05</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="switcher-currency">
-											<strong class="label switcher-label">
-												<span>Select Store</span>
-											</strong>
-											<div class="switcher-options">
-												<div class="switcher-currency-trigger">
-													<span class="currency-trigger">Fashion Store</span>
-													<ul class="switcher-dropdown">
-														<li>Furniture</li>
-														<li>Shoes</li>
-														<li>Speaker Store</li>
-														<li>Furniture</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="switcher-currency">
-											<strong class="label switcher-label">
-												<span>My Account</span>
-											</strong>
 											<div class="switcher-options">
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
-														<span><a href="#">Compare Product</a></span>
-														<span><a href="#">My Account</a></span>
-														<span><a href="#">My Wishlist</a></span>
 														<span><a href="#">Sign In</a></span>
-														<span><a href="#">Create An Account</a></span>
+														<span><a href="#">Log In</a></span>
 													</div>
 												</div>
 											</div>
@@ -151,68 +97,8 @@ $bahan = query('SELECT * FROM produk order by rand()');
 						</ul>
 					</div>
 				</div>
-				<!-- Start Mobile Menu -->
-				<div class="row d-none">
-					<div class="col-lg-12 d-none">
-						<nav class="mobilemenu__nav">
-							<ul class="meninmenu">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="#">Pages</a>
-									<ul>
-										<li><a href="about.html">About Page</a></li>
-										<li><a href="portfolio.html">Portfolio</a>
-											<ul>
-												<li><a href="portfolio.html">Portfolio</a></li>
-												<li><a href="portfolio-details.html">Portfolio Details</a></li>
-											</ul>
-										</li>
-										<li><a href="my-account.html">My Account</a></li>
-										<li><a href="cart.html">Cart Page</a></li>
-										<li><a href="checkout.html">Checkout Page</a></li>
-										<li><a href="wishlist.html">Wishlist Page</a></li>
-										<li><a href="error404.html">404 Page</a></li>
-										<li><a href="faq.html">Faq Page</a></li>
-										<li><a href="team.html">Team Page</a></li>
-									</ul>
-								</li>
-								<li><a href="shop-grid.html">Shop</a>
-									<ul>
-										<li><a href="shop-grid.html">Shop Grid</a></li>
-										<li><a href="single-product.html">Single Product</a></li>
-									</ul>
-								</li>
-								<li><a href="blog.html">Blog</a>
-									<ul>
-										<li><a href="blog.html">Blog Page</a></li>
-										<li><a href="blog-details.html">Blog Details</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-				<!-- End Mobile Menu -->
-				<div class="mobile-menu d-block d-lg-none">
-				</div>
-				<!-- Mobile Menu -->
 			</div>
 		</header>
-		<!-- //Header -->
-		<!-- Start Search Popup -->
-		<div class="brown--color box-search-content search_active block-bg close__top">
-			<form id="search_mini_form" class="minisearch" action="#">
-				<div class="field__search">
-					<input type="text" placeholder="Search entire store here...">
-					<div class="action">
-						<a href="#"><i class="zmdi zmdi-search"></i></a>
-					</div>
-				</div>
-			</form>
-			<div class="close__wrap">
-				<span>close</span>
-			</div>
-		</div>
 		<!-- End Search Popup -->
 		<!-- Start Slider area -->
 		<div class="slider-area slider--15 slide__activation slide__arrow01 owl-carousel">
@@ -261,14 +147,13 @@ $bahan = query('SELECT * FROM produk order by rand()');
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="section__title text-center">
-							<h2 class="title__be--2">New <span class="color--theme">Products</span></h2>
-							<p>There are many variations of passages of Lorem Ipsum available, but the majority have
-								suffered lebmid alteration in some ledmid form</p>
+							<h2 class="title__be--2"><span class="color--theme">produk</span></h2>
+							<hr>
 						</div>
 					</div>
 				</div>
 				<!-- Start Single Tab Content -->
-				<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50">
+				<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50 ">
 					<!-- Start Single Product -->
 					<?php foreach ($bahan as $row) : ?>
 						<div class="product product__style--3">
@@ -285,11 +170,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 									<div class="action">
 										<div class="actions_inner">
 											<ul class="add_to_links">
-												<!-- <li><a class="cart" href="cart.html"><i class="bi bi-shopping-bag4"></i></a>
-												</li>
-												<li><a class="wishlist" href="wishlist.html"><i class="bi bi-shopping-cart-full"></i></a></li>
-												<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li> -->
-												<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
+												<li><a href="produk.php?id=<?= $row['id_produk']; ?>""><i class=" bi bi-search"></i></a></li>
 											</ul>
 										</div>
 									</div>
@@ -392,90 +273,9 @@ $bahan = query('SELECT * FROM produk order by rand()');
 		</footer>
 		<!-- //Footer Area -->
 		<!-- QUICKVIEW PRODUCT -->
-		<!-- Modal -->
-		<div class="modal fade" id="productmodal" tabindex="-1" role="dialog">
-			<div class="modal-dialog modal__container" role="document">
-				<div class="modal-content">
-					<div class="modal-header modal__header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					</div>
-					<div class="modal-body">
-
-						<div class="modal-product">
-							<!-- Start product images -->
-							<div class="product-images">
-								<div class="main-image images">
-									<img alt="big images" src="images/product/big-img/1.jpg">
-								</div>
-							</div>
-							<!-- end product images -->
-							<div class="product-info">
-								<h1><?= $row['jenis_produk']; ?></h1>
-								<div class="rating__and__review">
-									<ul class="rating">
-										<li><span class="ti-star"></span></li>
-										<li><span class="ti-star"></span></li>
-										<li><span class="ti-star"></span></li>
-										<li><span class="ti-star"></span></li>
-										<li><span class="ti-star"></span></li>
-									</ul>
-									<div class="review">
-										<a href="#">4 customer reviews</a>
-									</div>
-								</div>
-								<div class="price-box-3">
-									<div class="s-price-box">
-										<span class="new-price">$17.20</span>
-										<span class="old-price">$45.00</span>
-									</div>
-								</div>
-								<div class="quick-desc">
-									Designed for simplicity and made from high quality materials. Its sleek geometry
-									and material combinations creates a modern look.
-								</div>
-								<div class="select__color">
-									<h2>Select color</h2>
-									<ul class="color__list">
-										<li class="red"><a title="Red" href="#">Red</a></li>
-										<li class="gold"><a title="Gold" href="#">Gold</a></li>
-										<li class="orange"><a title="Orange" href="#">Orange</a></li>
-										<li class="orange"><a title="Orange" href="#">Orange</a></li>
-									</ul>
-								</div>
-								<div class="select__size">
-									<h2>Select size</h2>
-									<ul class="color__list">
-										<li class="l__size"><a title="L" href="#">L</a></li>
-										<li class="m__size"><a title="M" href="#">M</a></li>
-										<li class="s__size"><a title="S" href="#">S</a></li>
-										<li class="xl__size"><a title="XL" href="#">XL</a></li>
-										<li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
-									</ul>
-								</div>
-								<div class="social-sharing">
-									<div class="widget widget_socialsharing_widget">
-										<h3 class="widget-title-modal">Share this product</h3>
-										<ul class="social__net social__net--2 d-flex justify-content-start">
-											<li class="facebook"><a href="#" class="rss social-icon"><i class="zmdi zmdi-rss"></i></a></li>
-											<li class="linkedin"><a href="#" class="linkedin social-icon"><i class="zmdi zmdi-linkedin"></i></a></li>
-											<li class="pinterest"><a href="#" class="pinterest social-icon"><i class="zmdi zmdi-pinterest"></i></a></li>
-											<li class="tumblr"><a href="#" class="tumblr social-icon"><i class="zmdi zmdi-tumblr"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="addtocart-btn">
-									<a href="#">Add to cart</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<!-- END QUICKVIEW PRODUCT -->
 	</div>
 	<!-- //Main wrapper -->
-
 	<!-- JS Files -->
 	<script src="js/vendor/jquery-3.2.1.min.js"></script>
 	<script src="js/popper.min.js"></script>

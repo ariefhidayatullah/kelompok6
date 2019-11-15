@@ -838,28 +838,28 @@ a {
 }
 
 .bg-image--2 {
-  background-image: url(images/bg/2.jpg);
+  background-image: url(aa.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
 
 .bg-image--3 {
-  background-image: url(images/bg/3.jpg);
+  background-image: url(aa.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
 
 .bg-image--4 {
-  background-image: url(images/bg/4.jpg);
+  background-image: url(aa.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
 
 .bg-image--5 {
-  background-image: url(images/bg/5.jpg);
+  background-image: url(aa.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -2243,7 +2243,7 @@ Elements Styles
 
 .minicart-content-wrapper .mini_action .checkout__btn {
   background: #000 none repeat scroll 0 0;
-  color: #fff;
+  color: bl;
   display: block;
   padding: 10px 0;
   font-size: 14px;
@@ -2727,19 +2727,19 @@ Header Styles
 }
 
 .is-sticky.header__area .header__sidebar__right>li.shop_search>a {
-  background: rgba(0, 0, 0, 0) url("images/icons/search_white.png") no-repeat scroll 0 center;
+  background: rgba(0, 0, 0, 0) url("images/icons/search.png") no-repeat scroll 0 center;
 }
 
 .is-sticky.header__area .header__sidebar__right>li.wishlist>a {
-  background: rgba(0, 0, 0, 0) url("images/icons/button-wishlist_white.png") no-repeat scroll 0 center;
+  background: rgba(0, 0, 0, 0) url("images/icons/button-wishlist.png") no-repeat scroll 0 center;
 }
 
 .is-sticky.header__area .header__sidebar__right>li.shopcart>a {
-  background: rgba(0, 0, 0, 0) url("images/icons/cart_white.png") no-repeat scroll 0 center;
+  background: rgba(0, 0, 0, 0) url("images/icons/cart.png") no-repeat scroll 0 center;
 }
 
 .is-sticky.header__area .header__sidebar__right>li.setting__bar__icon>a {
-  background: transparent url("images/icons/icon_setting_white.png") no-repeat scroll left center;
+  background: transparent url("images/icons/icon_setting.png") no-repeat scroll left center;
 }
 
 .mainmenu__nav .meninmenu li:first-child a {
@@ -2747,23 +2747,23 @@ Header Styles
 }
 
 .oth-page .mainmenu__nav .meninmenu li a {
-  color: #fff;
+  color: black;
 }
 
 .oth-page.header__area .header__sidebar__right>li.shop_search>a {
-  background: rgba(0, 0, 0, 0) url("images/icons/search_white.png") no-repeat scroll 0 center;
+  background: rgba(0, 0, 0, 0) url("images/icons/search.png") no-repeat scroll 0 center;
 }
 
 .oth-page.header__area .header__sidebar__right>li.wishlist>a {
-  background: rgba(0, 0, 0, 0) url("images/icons/button-wishlist_white.png") no-repeat scroll 0 center;
+  background: rgba(0, 0, 0, 0) url("images/icons/button-wishlist.png") no-repeat scroll 0 center;
 }
 
 .oth-page.header__area .header__sidebar__right>li.setting__bar__icon>a {
-  background: transparent url("images/icons/icon_setting_white.png") no-repeat scroll left center;
+  background: transparent url("images/icons/icon_setting.png") no-repeat scroll left center;
 }
 
 .oth-page.header__area .header__sidebar__right>li.shopcart>a {
-  background: rgba(0, 0, 0, 0) url("images/icons/cart_white.png") no-repeat scroll 0 center;
+  background: rgba(0, 0, 0, 0) url("images/icons/cart.png") no-repeat scroll 0 center;
 }
 
 .oth-page.header__absolute {
@@ -5715,7 +5715,7 @@ h3.widget-title-modal {
   font-size: 24px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #fff;
+  color: black;
   line-height: 30px;
 }
 
@@ -5728,7 +5728,7 @@ h3.widget-title-modal {
   font-style: italic;
   font-weight: 400;
   text-transform: capitalize;
-  color: #fff;
+  color: black;
 }
 
 .bradcaump__inner .bradcaump-content .breadcrumb_item.active,
@@ -6711,21 +6711,7 @@ h3.widget-title-modal {
   text-transform: capitalize;
 }
 
-.gallery__menu button {
-  background: #fff none repeat scroll 0 0;
-  color: color: #333;
-  border: medium none;
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 45px;
-  margin-bottom: 5px;
-  margin-right: 2px;
-  padding: 0 20px;
-  position: relative;
-  transition: all 0.4s ease-out 0s;
-  z-index: 2;
-}
+
 
 .gallery__menu button::after {
   border-color: #fff #fff transparent transparent;
