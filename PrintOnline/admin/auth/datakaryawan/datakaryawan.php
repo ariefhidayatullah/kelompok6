@@ -20,19 +20,19 @@ $bahan = query('SELECT * FROM karyawan');
     <title>The king 2 - bahan</title>
 
     <!-- Custom fonts for this template -->
-    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../assets/css/sb-admin-2.min.css" rel="stylesheet">
     <!-- <link href="../assets/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Custom styles for this page -->
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script src="../jquery-3.3.1.slim.min.js"></script>
-    <script src="../popper.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <link href="../../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="../../jquery-3.3.1.slim.min.js"></script>
+    <script src="../../popper.min.js"></script>
 
 </head>
 
@@ -142,7 +142,7 @@ $bahan = query('SELECT * FROM karyawan');
                 <div class="container-fluid text-center">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Bahan</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Data Karyawan</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-body">
@@ -151,26 +151,24 @@ $bahan = query('SELECT * FROM karyawan');
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>id bahan</th>
-                                            <th>nama bahan</th>
-                                            <th>id produk</th>
-                                            <th>stok</th>
-                                            <th>harga satuan</th>
+                                            <th>id karyawan</th>
+                                            <th>nama karyawan</th>
+                                            <th>email</th>
+                                            <th>no hp karyawan</th>
                                             <th>aksi</th>
                                         </tr>
                                         <?php $i = 1; ?>
                                         <?php foreach ($bahan as $row) : ?>
                                             <tr>
                                                 <td><?= $i; ?></td>
-                                                <td><?= $row['id_bahan']; ?></td>
-                                                <td><?= $row['nama_bahan']; ?></td>
-                                                <td><?= $row['id_produk']; ?></td>
-                                                <td><?= $row['stok']; ?></td>
-                                                <td><?= $row['harga_satuan']; ?></td>
+                                                <td><?= $row['id_krw']; ?></td>
+                                                <td><?= $row['nama_krw']; ?></td>
+                                                <td><?= $row['email']; ?></td>
+                                                <td><?= $row['nohp_krw']; ?></td>
                                                 <td>
-                                                    <a href="ubah.php?id=<?= $row['id_bahan']; ?>"><button class="btn btn-warning btn-sm">edit</button></a>
+                                                    <a href="ubah.php?id=<?= $row['id_krw']; ?>"><button class="btn btn-warning btn-sm">edit</button></a>
                                                     <a>||</a>
-                                                    <a href="hapus.php?id=<?= $row['id_bahan']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">hapus</button></a>
+                                                    <a href="hapus.php?id=<?= $row['id_krw']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">hapus</button></a>
                                                 </td>
                                             </tr>
                                             <?php $i++ ?>
@@ -209,21 +207,21 @@ $bahan = query('SELECT * FROM karyawan');
     </a>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="../assets/vendor/jquery/jquery.min.js"></script>
-    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../assets/js/sb-admin-2.min.js"></script>
+    <script src="../../assets/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
     <!-- <script src="vendor/datatables/jquery.dataTables.min.js"></script> -->
-    <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="../../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="../assets/js/demo/datatables-demo.js"></script>
+    <script src="../../assets/js/demo/datatables-demo.js"></script>
 
 </body>
 
