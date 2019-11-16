@@ -1,8 +1,5 @@
 <?php
 session_start();
-if ( isset($_SESSION["LOGIN"])) {
-	header("Location : dashboard.php");
-}
 
 require 'function.php';
 
