@@ -57,4 +57,6 @@ function registrasi($data)
             </script>
 
             ";
+
+    return mysqli_affected_rows($conn);
 }

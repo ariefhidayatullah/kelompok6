@@ -134,9 +134,18 @@ function registrasi($data)
 {
 	global $conn;
 
-	$username = strtolower(stripcslashes($data["username"]));
+	$email = strtolower(stripcslashes($data["email"]));
 	$password = mysqli_real_escape_string($conn, $data["password"]);
 	$password2 = mysqli_real_escape_string($conn, $data["password2"]);
+
+	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+	if (mysqli_fetch_assoc($result)) {
+		echo "
+            <script>
+            alert ('mohon maaf username sudah terdaftar!');
+            </script>";
+		return false;
+	}
 
 	// cek konfirmasi password
 	if ($password !== $password2) {
@@ -145,4 +154,17 @@ function registrasi($data)
 	</script>";
 		return false;
 	}
+
+	$password = password_hash($password, PASSWORD_DEFAULT);
+	// tambahkan user baru ke database
+	mysqli_query($conn, "INSERT INTO user VALUES ('', '', '$email', '$password', '', '', '', '')");
+	echo "
+            <script>
+                    alert('anda berhasil daftar!');
+                    
+            </script>
+
+			";
+
+	return mysqli_affected_rows($conn);
 }

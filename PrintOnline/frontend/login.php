@@ -1,5 +1,41 @@
+<?php
+require 'function.php';
+
+if (isset($_POST["register"])) {
+	if (registrasi($_POST) > 0) {
+		echo "<script> alert('user baru berhasil ditambahkan!');</script>";
+	} else {
+		echo mysqli_error($conn);
+	}
+}
+
+if (isset($_POST["login"])) {
+	$email = $_POST["email"];
+	$password = $_POST["password"];
+
+	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+
+	if (mysqli_num_rows($result) === 1) {
+		$row = mysqli_fetch_assoc($result);
+		// cek password
+		if (password_verify($password, $row["password"])) {
+			// $_SESSION["login"] = $email;
+			header("Location:index.php");
+			exit;
+		}
+	}
+	$error  = true;
+	?>
+
+<?php
+}
+
+?>
+
+
 <!doctype html>
 <html class="no-js" lang="zxx">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -22,11 +58,12 @@
 	<link rel="stylesheet" href="style.css">
 
 	<!-- Cusom css -->
-   <link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" href="css/custom.css">
 
 	<!-- Modernizer js -->
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
 </head>
+
 <body>
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -45,257 +82,44 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-lg-8 d-none d-lg-block">
+					<div class="col d-none d-lg-block">
 						<nav class="mainmenu__nav">
-							<ul class="meninmenu d-flex justify-content-start">
-								<li class="drop with--one--item"><a href="index.html">Home</a></li>
-								<li class="drop"><a href="#">Shop</a>
+							<ul class="meninmenu d-flex">
+								<li class="drop"><a href="#">daftar produk</a>
 									<div class="megamenu mega03">
-										<ul class="item item03">
-											<li class="title">Shop Layout</li>
-											<li><a href="shop-grid.html">Shop Grid</a></li>
-											<li><a href="single-product.html">Single Product</a></li>
-										</ul>
-										<ul class="item item03">
-											<li class="title">Shop Page</li>
-											<li><a href="my-account.html">My Account</a></li>
-											<li><a href="cart.html">Cart Page</a></li>
-											<li><a href="checkout.html">Checkout Page</a></li>
-											<li><a href="wishlist.html">Wishlist Page</a></li>
-											<li><a href="error404.html">404 Page</a></li>
-											<li><a href="faq.html">Faq Page</a></li>
-										</ul>
-										<ul class="item item03">
-											<li class="title">Bargain Books</li>
-											<li><a href="shop-grid.html">Bargain Bestsellers</a></li>
-											<li><a href="shop-grid.html">Activity Kits</a></li>
-											<li><a href="shop-grid.html">B&N Classics</a></li>
-											<li><a href="shop-grid.html">Books Under $5</a></li>
-											<li><a href="shop-grid.html">Bargain Books</a></li>
-										</ul>
-									</div>
-								</li>
-								<li class="drop"><a href="shop-grid.html">Books</a>
-									<div class="megamenu mega03">
-										<ul class="item item03">
-											<li class="title">Categories</li>
-											<li><a href="shop-grid.html">Biography </a></li>
-											<li><a href="shop-grid.html">Business </a></li>
-											<li><a href="shop-grid.html">Cookbooks </a></li>
-											<li><a href="shop-grid.html">Health & Fitness </a></li>
-											<li><a href="shop-grid.html">History </a></li>
-										</ul>
-										<ul class="item item03">
-											<li class="title">Customer Favourite</li>
-											<li><a href="shop-grid.html">Mystery</a></li>
-											<li><a href="shop-grid.html">Religion & Inspiration</a></li>
-											<li><a href="shop-grid.html">Romance</a></li>
-											<li><a href="shop-grid.html">Fiction/Fantasy</a></li>
-											<li><a href="shop-grid.html">Sleeveless</a></li>
-										</ul>
-										<ul class="item item03">
-											<li class="title">Collections</li>
-											<li><a href="shop-grid.html">Science </a></li>
-											<li><a href="shop-grid.html">Fiction/Fantasy</a></li>
-											<li><a href="shop-grid.html">Self-Improvemen</a></li>
-											<li><a href="shop-grid.html">Home & Garden</a></li>
-											<li><a href="shop-grid.html">Humor Books</a></li>
-										</ul>
-									</div>
-								</li>
-								<li class="drop"><a href="shop-grid.html">Kids</a>
-									<div class="megamenu mega02">
-										<ul class="item item02">
-											<li class="title">Top Collections</li>
-											<li><a href="shop-grid.html">American Girl</a></li>
-											<li><a href="shop-grid.html">Diary Wimpy Kid</a></li>
-											<li><a href="shop-grid.html">Finding Dory</a></li>
-											<li><a href="shop-grid.html">Harry Potter</a></li>
-											<li><a href="shop-grid.html">Land of Stories</a></li>
-										</ul>
-										<ul class="item item02">
-											<li class="title">More For Kids</li>
-											<li><a href="shop-grid.html">B&N Educators</a></li>
-											<li><a href="shop-grid.html">B&N Kids' Club</a></li>
-											<li><a href="shop-grid.html">Kids' Music</a></li>
-											<li><a href="shop-grid.html">Toys & Games</a></li>
-											<li><a href="shop-grid.html">Hoodies</a></li>
-										</ul>
-									</div>
-								</li>
-								<li class="drop"><a href="#">Pages</a>
-									<div class="megamenu dropdown">
 										<ul class="item item01">
-											<li><a href="about.html">About Page</a></li>
-											<li class="label2"><a href="portfolio.html">Portfolio</a>
-												<ul>
-													<li><a href="portfolio.html">Portfolio</a></li>
-													<li><a href="portfolio-details.html">Portfolio Details</a></li>
-												</ul>
-											</li>
-											<li><a href="my-account.html">My Account</a></li>
-											<li><a href="cart.html">Cart Page</a></li>
-											<li><a href="checkout.html">Checkout Page</a></li>
-											<li><a href="wishlist.html">Wishlist Page</a></li>
-											<li><a href="error404.html">404 Page</a></li>
-											<li><a href="faq.html">Faq Page</a></li>
-											<li><a href="team.html">Team Page</a></li>
+											<li><a href="my-account.html">label</a></li>
+											<li><a href="cart.html">kartu nama</a></li>
+											<li><a href="checkout.html">undangan</a></li>
+											<li><a href="wishlist.html">brosur</a></li>
+											<li><a href="error404.html">poster</a></li>
+											<li><a href="faq.html">Foto</a></li>
 										</ul>
-									</div>
-								</li>
-								<li class="drop"><a href="blog.html">Blog</a>
-									<div class="megamenu dropdown">
 										<ul class="item item01">
-											<li><a href="blog.html">Blog Page</a></li>
-											<li><a href="blog-details.html">Blog Details</a></li>
+											<li><a href="my-account.html">piagam</a></li>
+											<li><a href="cart.html">kemasan</a></li>
+											<li><a href="checkout.html">sticker</a></li>
+											<li><a href="wishlist.html">kalender</a></li>
+											<li><a href="error404.html">buku</a></li>
+											<li><a href="faq.html">kartu sovenir</a></li>
 										</ul>
 									</div>
 								</li>
-								<li><a href="contact.html">Contact</a></li>
 							</ul>
 						</nav>
 					</div>
-					<div class="col-md-8 col-sm-8 col-5 col-lg-2">
+					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
 						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
-							<li class="shop_search"><a class="search__active" href="#"></a></li>
-							<li class="wishlist"><a href="#"></a></li>
-							<li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun">3</span></a>
-								<!-- Start Shopping Cart -->
-								<div class="block-minicart minicart__active">
-									<div class="minicart-content-wrapper">
-										<div class="micart__close">
-											<span>close</span>
-										</div>
-										<div class="items-total d-flex justify-content-between">
-											<span>3 items</span>
-											<span>Cart Subtotal</span>
-										</div>
-										<div class="total_amount text-right">
-											<span>$66.00</span>
-										</div>
-										<div class="mini_action checkout">
-											<a class="checkout__btn" href="cart.html">Go to Checkout</a>
-										</div>
-										<div class="single__items">
-											<div class="miniproduct">
-												<div class="item01 d-flex">
-													<div class="thumb">
-														<a href="product-details.html"><img src="images/product/sm-img/1.jpg" alt="product images"></a>
-													</div>
-													<div class="content">
-														<h6><a href="product-details.html">Voyage Yoga Bag</a></h6>
-														<span class="prize">$30.00</span>
-														<div class="product_prize d-flex justify-content-between">
-															<span class="qun">Qty: 01</span>
-															<ul class="d-flex justify-content-end">
-																<li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-																<li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-												<div class="item01 d-flex mt--20">
-													<div class="thumb">
-														<a href="product-details.html"><img src="images/product/sm-img/3.jpg" alt="product images"></a>
-													</div>
-													<div class="content">
-														<h6><a href="product-details.html">Impulse Duffle</a></h6>
-														<span class="prize">$40.00</span>
-														<div class="product_prize d-flex justify-content-between">
-															<span class="qun">Qty: 03</span>
-															<ul class="d-flex justify-content-end">
-																<li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-																<li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-												<div class="item01 d-flex mt--20">
-													<div class="thumb">
-														<a href="product-details.html"><img src="images/product/sm-img/2.jpg" alt="product images"></a>
-													</div>
-													<div class="content">
-														<h6><a href="product-details.html">Compete Track Tote</a></h6>
-														<span class="prize">$40.00</span>
-														<div class="product_prize d-flex justify-content-between">
-															<span class="qun">Qty: 03</span>
-															<ul class="d-flex justify-content-end">
-																<li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-																<li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="mini_action cart">
-											<a class="cart__btn" href="cart.html">View and edit cart</a>
-										</div>
-									</div>
-								</div>
-								<!-- End Shopping Cart -->
-							</li>
+							<!-- Start Shopping Cart -->
 							<li class="setting__bar__icon"><a class="setting__active" href="#"></a>
 								<div class="searchbar__content setting__block">
 									<div class="content-inner">
 										<div class="switcher-currency">
-											<strong class="label switcher-label">
-												<span>Currency</span>
-											</strong>
-											<div class="switcher-options">
-												<div class="switcher-currency-trigger">
-													<span class="currency-trigger">USD - US Dollar</span>
-													<ul class="switcher-dropdown">
-														<li>GBP - British Pound Sterling</li>
-														<li>EUR - Euro</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="switcher-currency">
-											<strong class="label switcher-label">
-												<span>Language</span>
-											</strong>
-											<div class="switcher-options">
-												<div class="switcher-currency-trigger">
-													<span class="currency-trigger">English01</span>
-													<ul class="switcher-dropdown">
-														<li>English02</li>
-														<li>English03</li>
-														<li>English04</li>
-														<li>English05</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="switcher-currency">
-											<strong class="label switcher-label">
-												<span>Select Store</span>
-											</strong>
-											<div class="switcher-options">
-												<div class="switcher-currency-trigger">
-													<span class="currency-trigger">Fashion Store</span>
-													<ul class="switcher-dropdown">
-														<li>Furniture</li>
-														<li>Shoes</li>
-														<li>Speaker Store</li>
-														<li>Furniture</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="switcher-currency">
-											<strong class="label switcher-label">
-												<span>My Account</span>
-											</strong>
 											<div class="switcher-options">
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
-														<span><a href="#">Compare Product</a></span>
-														<span><a href="#">My Account</a></span>
-														<span><a href="#">My Wishlist</a></span>
-														<span><a href="#">Sign In</a></span>
-														<span><a href="#">Create An Account</a></span>
+														<span><a href="cek_login.php">Sign In</a></span>
+														<span><a href="login.php">Log In</a></span>
 													</div>
 												</div>
 											</div>
@@ -348,45 +172,30 @@
 					</div>
 				</div>
 				<!-- End Mobile Menu -->
-	            <div class="mobile-menu d-block d-lg-none">
-	            </div>
-	            <!-- Mobile Menu -->	
-			</div>		
+				<div class="mobile-menu d-block d-lg-none">
+				</div>
+				<!-- Mobile Menu -->
+			</div>
 		</header>
 		<!-- //Header -->
-		<!-- Start Search Popup -->
-		<div class="box-search-content search_active block-bg close__top">
-			<form id="search_mini_form" class="minisearch" action="#">
-				<div class="field__search">
-					<input type="text" placeholder="Search entire store here...">
-					<div class="action">
-						<a href="#"><i class="zmdi zmdi-search"></i></a>
+		<!-- Start Bradcaump area -->
+		<div class="ht__bradcaump__area bg-image--6">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="bradcaump__inner text-center">
+							<h2 class="bradcaump-title">My Account</h2>
+							<nav class="bradcaump-content">
+								<a class="breadcrumb_item" href="index.html">Home</a>
+								<span class="brd-separetor">/</span>
+								<span class="breadcrumb_item active">My Account</span>
+							</nav>
+						</div>
 					</div>
 				</div>
-			</form>
-			<div class="close__wrap">
-				<span>close</span>
 			</div>
 		</div>
-		<!-- End Search Popup -->
-        <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area bg-image--6">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">My Account</h2>
-                            <nav class="bradcaump-content">
-                              <a class="breadcrumb_item" href="index.html">Home</a>
-                              <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active">My Account</span>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Bradcaump area -->
+		<!-- End Bradcaump area -->
 		<!-- Start My Account Area -->
 		<section class="my_account_area pt--80 pb--55 bg--white">
 			<div class="container">
@@ -394,24 +203,24 @@
 					<div class="col-lg-6 col-12">
 						<div class="my__account__wrapper">
 							<h3 class="account__title">Login</h3>
-							<form action="#">
+							<?php if (isset($error)) : ?>
+								<p style="color : red; font-style:italic">
+									username / password salah
+								</p>
+							<?php endif; ?>
+							<form class="user" action="" method="post">
 								<div class="account__form">
 									<div class="input__box">
 										<label>Username or email address <span>*</span></label>
-										<input type="text">
+										<input type="text" id="email" name="email" placeholder="Masukkan email anda..." required="" autofocus>
 									</div>
 									<div class="input__box">
 										<label>Password<span>*</span></label>
-										<input type="text">
+										<input type="text" id="password" name="password" required placeholder="Masukkan password anda">
 									</div>
 									<div class="form__btn">
-										<button>Login</button>
-										<label class="label-for-checkbox">
-											<input id="rememberme" class="input-checkbox" name="rememberme" value="forever" type="checkbox">
-											<span>Remember me</span>
-										</label>
+										<button type="submit" name="login" class="btn btn-user btn-primary btn-block">Login</button>
 									</div>
-									<a class="forget_pass" href="#">Lost your password?</a>
 								</div>
 							</form>
 						</div>
@@ -419,18 +228,22 @@
 					<div class="col-lg-6 col-12">
 						<div class="my__account__wrapper">
 							<h3 class="account__title">Register</h3>
-							<form action="#">
+							<form action="" method="post">
 								<div class="account__form">
 									<div class="input__box">
 										<label>Email address <span>*</span></label>
-										<input type="email">
+										<input type="email" name="email" id="email">
 									</div>
 									<div class="input__box">
 										<label>Password<span>*</span></label>
-										<input type="password">
+										<input type="password" name="password" id="password">
+									</div>
+									<div class="input__box">
+										<label>masukkan Password lagi<span>*</span></label>
+										<input type="password" name="password2" id="password2">
 									</div>
 									<div class="form__btn">
-										<button>Register</button>
+										<button type="submit" name="register">Register</button>
 									</div>
 								</div>
 							</form>
@@ -495,7 +308,7 @@
 			</div>
 		</footer>
 		<!-- //Footer Area -->
-		
+
 	</div>
 	<!-- //Main wrapper -->
 
@@ -505,6 +318,7 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/active.js"></script>
-	
+
 </body>
+
 </html>
