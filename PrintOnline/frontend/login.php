@@ -1,4 +1,9 @@
 <?php
+session_start();
+if ( isset($_SESSION["LOGIN"])) {
+	header("Location : dashboard.php");
+}
+
 require 'function.php';
 
 if (isset($_POST["register"])) {
@@ -19,8 +24,9 @@ if (isset($_POST["login"])) {
 		$row = mysqli_fetch_assoc($result);
 		// cek password
 		if (password_verify($password, $row["password"])) {
-			// $_SESSION["login"] = $email;
-			header("Location:index.php");
+
+			$_SESSION["LOGIN"] = true;
+			header("Location:dashboard.php");
 			exit;
 		}
 	}
@@ -211,7 +217,7 @@ if (isset($_POST["login"])) {
 							<form class="user" action="" method="post">
 								<div class="account__form">
 									<div class="input__box">
-										<label>Username or email address <span>*</span></label>
+										<label>Email address <span>*</span></label>
 										<input type="text" id="email" name="email" placeholder="Masukkan email anda..." required="" autofocus>
 									</div>
 									<div class="input__box">

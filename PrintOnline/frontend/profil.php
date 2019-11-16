@@ -1,12 +1,10 @@
 <?php
 session_start();
-require 'function.php';
-$bahan = query('SELECT * FROM produk order by rand()');
+$_SESSION["LOGIN"] = true;
 
-if ( !isset($_SESSION["LOGIN"])) {
-	header("Location : index.php");
-	# code...
-}
+require 'function.php';
+
+
 ?>
 
 <!doctype html>
@@ -92,8 +90,8 @@ if ( !isset($_SESSION["LOGIN"])) {
 											<div class="switcher-options">
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
-														<span><a href="profile.php">Profile</a></span>
-														<span><a href="logout.php">Log Out</a></span>
+														<span><a href="#">Profile</a></span>
+														<span><a href="#">Log Out</a></span>
 													</div>
 												</div>
 											</div>
@@ -128,6 +126,30 @@ if ( !isset($_SESSION["LOGIN"])) {
 				</div>
 			</div>
 			<!-- End Single Slide -->
+			<section class="my_account_area pt--80 pb--55 bg--white">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-12">
+						<div class="my__account__wrapper">
+							<h3 class="account__title">Lengkapi Data Anda</h3>
+							\
+							<form class="user" action="" method="post">
+								<div class="account__form">
+									<div class="input__box">
+										<label>Username or email address <span>*</span></label>
+										<input type="text" id="email" name="email" placeholder="Masukkan email anda..." required="" autofocus>
+									</div>
+									<div class="input__box">
+										<label>Password<span>*</span></label>
+										<input type="text" id="password" name="password" required placeholder="Masukkan password anda">
+									</div>
+									<div class="form__btn">
+										<button type="submit" name="login" class="btn btn-user btn-primary btn-block">Login</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
 			<!-- Start Single Slide -->
 			<div class="slide animation__style10 bg-image--1 fullscreen align__center--left">
 				<div class="container">
@@ -160,41 +182,7 @@ if ( !isset($_SESSION["LOGIN"])) {
 					</div>
 				</div>
 				<!-- Start Single Tab Content -->
-				<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50 ">
-					<!-- Start Single Product -->
-					<?php foreach ($bahan as $row) : ?>
-						<div class="product product__style--3">
-							<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-								<div class="product__thumb">
-									<a class="first__img" href="single-product.html"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
-									<a class="second__img animation1" href="single-product.html"><img src="img/<?= $row['gambar']; ?>" alt="product image"></a>
-									<div class="hot__box">
-										<span class="hot-label">BEST SELLER</span>
-									</div>
-								</div>
-								<div class="product__content content--center">
-									<h4><a href="single-product.html"><?= $row['jenis_produk']; ?></a></h4>
-									<div class="action">
-										<div class="actions_inner">
-											<ul class="add_to_links">
-												<li><a href="produk.php?id=<?= $row['id_produk']; ?>""><i class=" bi bi-search"></i></a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="product__hover--content">
-										<ul class="rating d-flex">
-											<li class="on"><i class="fa fa-star-o"></i></li>
-											<li class="on"><i class="fa fa-star-o"></i></li>
-											<li class="on"><i class="fa fa-star-o"></i></li>
-											<li><i class="fa fa-star-o"></i></li>
-											<li><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					<?php endforeach; ?>
-				</div>
+				
 				<!-- End Single Tab Content -->
 			</div>
 		</section>
