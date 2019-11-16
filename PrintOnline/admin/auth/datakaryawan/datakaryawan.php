@@ -17,7 +17,7 @@ $bahan = query('SELECT * FROM karyawan');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>The king 2 - bahan</title>
+    <title>The king 2 - karyawan</title>
 
     <!-- Custom fonts for this template -->
     <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -58,7 +58,7 @@ $bahan = query('SELECT * FROM karyawan');
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="../dashboard/index.php">
+                <a class="nav-link" href="../../dashboard/index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -72,24 +72,40 @@ $bahan = query('SELECT * FROM karyawan');
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">login Admin / User</h6>
-                        <a class="collapse-item" href="../auth/register.php">tambah akun admin</a>
-                        <a class="collapse-item" href="../pengguna/datauser.php">list user / pengguna</a>
+                        <a class="collapse-item" href="../register.php">tambah akun admin</a>
+                        <a class="collapse-item active" href="datakaryawan.php">data karyawan</a>
+                        <a class="collapse-item" href="../../pengguna/datauser.php">list user / pengguna</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="../dataproduk/dataproduk.php">
+                <a class="nav-link" href="../../dataproduk/dataproduk.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data Produk</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item active">
-                <a class="nav-link" href="../databahan/databahan.php">
+            <li class="nav-item">
+                <a class="nav-link" href="../../atabahan/databahan.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data Bahan</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagess" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>transaksi</span>
+                </a>
+                <div id="collapsePagess" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">detail pemesanan</h6>
+                        <a class="collapse-item" href="../../transaksi/keranjang/keranjang.php">keranjang user</a>
+                        <a class="collapse-item" href="../../transaksi/pembayaran/pembayaran.php">pembayaran</a>
+                        <a class="collapse-item" href="../../transaksi/pemesanan/pemesanan.php">pemesanan</a>
+                    </div>
+                </div>
             </li>
 
             <li class="nav-item">
