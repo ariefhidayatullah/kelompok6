@@ -1,15 +1,22 @@
 <?php 
 
-$host = "localhost";
-$user = "root" ;
-$password = "";
-$database = "printonline";
+//untuk koneksi
+$conn = mysqli_connect('localhost', 'root', '', 'printonline');
 
-$koneksi = mysqli_connect("$host","$user","$password","$database");
+//membuat function agar jadi satu, supaya jadi efektif dan efisien
+function query($query)
+{
+	//untuk memasukkan variabel $conn karena kalau langsung tidak bisa, grgr scope
+	global $conn;
+	//membuat array kosong untuk menampung data
+	$result = mysqli_query($conn, $query);
+	//untuk mengambil data dari database
+	$rows = [];
 
-// Check connection
-if ($koneksi -> connect_error) {
-	die("maaf koneksi gagal : " . $koneksi -> connect_error);
+	while ($row = mysqli_fetch_assoc($result)) {
+		$rows[] = $row;
+	}
+	return $rows;
 }
-echo"good koneksi berhasil";
-?>
+
+?> 
