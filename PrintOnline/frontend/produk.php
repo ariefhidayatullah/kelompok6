@@ -155,16 +155,42 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 											<h1><?= $row['jenis_produk']; ?></h1>
 											<div class="product-reviews-summary d-flex">
 												<ul class="rating-summary d-flex">
-													<li><i class="zmdi zmdi-star-outline"></i></li>
+													<!-- <li><i class="zmdi zmdi-star-outline"></i></li>
 													<li><i class="zmdi zmdi-star-outline"></i></li>
 													<li><i class="zmdi zmdi-star-outline"></i></li>
 													<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
-													<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
+													<li class="off"><i class="zmdi zmdi-star-outline"></i></li> -->
 												</ul>
-											</div>
-											<div class="price-box">
-												<span>$52.00</span>
-											</div>
+
+											<?php
+											$bahan = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk'");
+											$row = mysqli_fetch_array($bahan);
+											?>
+											<br>
+												<form action="" method="post">
+												<h4><select  name="han" class="drop"><a href="">Bahan</a>
+												<ul>
+													<?php foreach ($bahan as $p): ?>
+													<li><option><a href=""><?= $p['nama_bahan']; ?></a></option></li>	
+													<?php endforeach ?>
+												</ul>
+												</select>
+												<button type="submit" value="han">Cari Harga</button><br>
+												</form>
+												<a href="">Harga Satuan : Rp. </a><a href="">
+												<?php
+												$han = $_POST['han'];
+												?>
+												<?php
+												if (isset($_POST['han'])) {
+												$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
+												$row1 = mysqli_fetch_array($bahan1);
+												echo $row1['harga_satuan']; 
+												}
+												?></a>
+												</h4><br>
+												</div>
+												<span></span>
 											<div class="product__overview">
 												<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie
 													promises superior warmth with every wear. Thick material blocks out the
