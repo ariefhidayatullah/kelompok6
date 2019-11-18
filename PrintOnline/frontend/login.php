@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 
 require 'function.php';
 
@@ -22,8 +22,8 @@ if (isset($_POST["login"])) {
 		// cek password
 		if (password_verify($password, $row["password"])) {
 
-			$_SESSION["LOGIN"] = true;
-			header("Location:dashboard.php");
+			// $_SESSION["LOGIN"] = true;
+			header("Location:login.php");
 			exit;
 		}
 	}
