@@ -1,12 +1,11 @@
 <?php
-// session_start();
+session_start();
 require 'function.php';
 $bahan = query('SELECT * FROM produk order by rand()');
 
-// if ( !isset($_SESSION["LOGIN"])) {
-// 	header("Location : index.php");
-// 	# code...
-// }
+if ( !isset($_SESSION["LOGIN"])) {
+	header("Location : index.php");
+}
 ?>
 
 <!doctype html>
