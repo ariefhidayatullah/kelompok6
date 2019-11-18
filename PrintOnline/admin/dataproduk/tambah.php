@@ -21,26 +21,6 @@ if (isset($_POST["submit"])) {
 	}
 }
 
-$carikode = mysqli_query($conn, "SELECT id_produk from produk") or die(mysqli_error($id_produk));
-// menjadikannya array
-$datakode = mysqli_fetch_array($carikode);
-$jumlah_data = mysqli_num_rows($carikode);
-// jika $datakode
-if ($datakode) {
-	// membuat variabel baru untuk mengambil kode barang mulai dari 1
-	$nilaikode = substr($jumlah_data[0], 1);
-	// menjadikan $nilaikode ( int )
-	$kode = (int) $nilaikode;
-	// setiap $kode di tambah 1
-	$kode = $jumlah_data + 1;
-	// hasil untuk menambahkan kode 
-	// angka 3 untuk menambahkan tiga angka setelah B dan angka 0 angka yang berada di tengah
-	// atau angka sebelum $kode
-	$kode_otomatis = "P" . str_pad($kode, 3, "0", STR_PAD_LEFT);
-} else {
-	$kode_otomatis = "P001";
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -174,7 +154,7 @@ if ($datakode) {
 					<form class="user" method="post" action="" enctype="multipart/form-data">
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
-								<input type="hidden" class="form-control form-control-static text-center" id="id_produk" name="id_produk" value="<?= $kode_otomatis; ?>" readonly>
+								<input type="hidden" class="form-control form-control-static text-center" id="id_produk" name="id_produk" value="" readonly>
 							</div>
 						</div>
 						<div class="form-group row">

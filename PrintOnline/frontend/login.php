@@ -75,7 +75,7 @@ if (isset($_POST["login"])) {
 	<!-- Main wrapper -->
 	<div class="wrapper" id="wrapper">
 		<!-- Header -->
-		<header id="wn__header" class="oth-page header__area header__absolute sticky__header">
+		<header id="wn__header" class="header__area header-menu header__absolute">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-4 col-sm-4 col-7 col-lg-2">
