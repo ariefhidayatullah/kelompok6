@@ -23,7 +23,7 @@ if (isset($_POST["login"])) {
 		if (password_verify($password, $row["password"])) {
 
 			$_SESSION["LOGIN"] = true;
-			header("Location:login.php");
+			header("Location:dashboard.php");
 			exit;
 		}
 	}
