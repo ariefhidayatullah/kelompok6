@@ -838,21 +838,21 @@ a {
 }
 
 .bg-image--2 {
-  background-image: url(aa.jpg);
+  background-image: url(bb.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
 
 .bg-image--3 {
-  background-image: url(aa.jpg);
+  background-image: url(cc.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
 
 .bg-image--4 {
-  background-image: url(aa.jpg);
+  background-image: url(dd.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
