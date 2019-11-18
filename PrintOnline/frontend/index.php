@@ -44,7 +44,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
 						<div class="logo">
-							<a href="index.html">
+							<a href="index.php">
 								<img src="images/logo/logo.png" alt="">
 							</a>
 						</div>
@@ -96,9 +96,10 @@ $bahan = query('SELECT * FROM produk order by rand()');
 						<div class="col-lg-12">
 							<div class="slider__content">
 								<div class="contentbox">
-									<h2>Buy <span>your </span></h2>
-									<h2>favourite <span>Book </span></h2>
-									<h2>from <span>Here </span></h2>
+									<h2>Percayakan <span>kebutuhan </span></h2>
+									<h2>cetak <span>dokumen </span></h2>
+									<h2>anda <span>kepada </span></h2>
+									<h2><span>ahlinya </span></h2>
 									<a class="shopbtn" href="#">shop now</a>
 								</div>
 							</div>
@@ -114,9 +115,10 @@ $bahan = query('SELECT * FROM produk order by rand()');
 						<div class="col-lg-12">
 							<div class="slider__content">
 								<div class="contentbox">
-									<h2>Buy <span>your </span></h2>
-									<h2>favourite <span>Book </span></h2>
-									<h2>from <span>Here </span></h2>
+									<h2>Percayakan <span>kebutuhan </span></h2>
+									<h2>cetak <span>dokumen </span></h2>
+									<h2>anda <span>kepada </span></h2>
+									<h2><span>ahlinya </span></h2>
 									<a class="shopbtn" href="#">shop now</a>
 								</div>
 							</div>
