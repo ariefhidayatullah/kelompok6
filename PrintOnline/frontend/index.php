@@ -78,7 +78,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
 						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
 							<!-- Start Shopping Cart -->
-							<li class="setting__bar__icon"><a href="login.php"></a>
+							<li class="setting__bar__icon"><a href="profil/profil.php"></a>
 							</li>
 						</ul>
 					</div>
