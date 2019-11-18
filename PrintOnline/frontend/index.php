@@ -96,10 +96,10 @@ $bahan = query('SELECT * FROM produk order by rand()');
 						<div class="col-lg-12">
 							<div class="slider__content">
 								<div class="contentbox">
-									<h2>Percayakan <span>kebutuhan </span></h2>
-									<h2>cetak <span>dokumen </span></h2>
-									<h2>anda <span>kepada </span></h2>
-									<h2><span>ahlinya </span></h2>
+									<h2>Percayakan <span>Kebutuhan </span></h2>
+									<h2>Cetak <span>Dokumen </span></h2>
+									<h2>Anda <span>Kepada </span></h2>
+									<h2><span>Ahlinya </span></h2>
 									<a class="shopbtn" href="#">shop now</a>
 								</div>
 							</div>
@@ -115,10 +115,9 @@ $bahan = query('SELECT * FROM produk order by rand()');
 						<div class="col-lg-12">
 							<div class="slider__content">
 								<div class="contentbox">
-									<h2>Percayakan <span>kebutuhan </span></h2>
-									<h2>cetak <span>dokumen </span></h2>
-									<h2>anda <span>kepada </span></h2>
-									<h2><span>ahlinya </span></h2>
+									<h2>Buy <span>your </span></h2>
+									<h2>favourite <span>Book </span></h2>
+									<h2>from <span>Here </span></h2>
 									<a class="shopbtn" href="#">shop now</a>
 								</div>
 							</div>

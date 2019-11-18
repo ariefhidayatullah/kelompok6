@@ -1,9 +1,9 @@
 <?php
-session_start();
+// session_start();
 
 require 'function.php';
 
-if (isset($_POST["register"])) {
+if (isset($_POST["submit"])) {
 	if (registrasi($_POST) > 0) {
 		echo "<script> alert('user baru berhasil ditambahkan!');</script>";
 	} else {
@@ -22,8 +22,8 @@ if (isset($_POST["login"])) {
 		// cek password
 		if (password_verify($password, $row["password"])) {
 
-			$_SESSION["LOGIN"] = true;
-			header("Location:dashboard.php");
+			// $_SESSION["LOGIN"] = true;
+			header("Location:login.php");
 			exit;
 		}
 	}
@@ -215,7 +215,7 @@ if (isset($_POST["login"])) {
 								<div class="account__form">
 									<div class="input__box">
 										<label>Email address <span>*</span></label>
-										<input type="text" id="email" name="email" placeholder="Masukkan email anda..." required="" autofocus>
+										<input type="email" id="email" name="email" placeholder="Masukkan email anda..." required="" autofocus>
 									</div>
 									<div class="input__box">
 										<label>Password<span>*</span></label>
@@ -231,7 +231,7 @@ if (isset($_POST["login"])) {
 					<div class="col-lg-6 col-12">
 						<div class="my__account__wrapper">
 							<h3 class="account__title">Register</h3>
-							<form action="" method="post">
+							<form action="" method="post" class="user">
 								<div class="account__form">
 									<div class="input__box">
 										<label>Email address <span>*</span></label>
@@ -240,13 +240,15 @@ if (isset($_POST["login"])) {
 									<div class="input__box">
 										<label>Password<span>*</span></label>
 										<input type="password" name="password" id="password" placeholder="Masukkan password anda..." required>
+										<small>(minimal 8 character huruf besar, kecil, dan angka)</small>
 									</div>
 									<div class="input__box">
 										<label>konfirmasi Password <span>*</span></label>
 										<input type="password" name="password2" id="password2" placeholder="konfirmasi password anda..." required>
+										<small>(minimal 8 character huruf besar, kecil, dan angka)</small>
 									</div>
 									<div class="form__btn">
-										<button type="submit" name="register">Register</button>
+										<button type="submit" name="submit">Register</button>
 									</div>
 								</div>
 							</form>
