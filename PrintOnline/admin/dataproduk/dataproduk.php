@@ -33,6 +33,7 @@ $bahan = query('SELECT * FROM produk');
   <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="../assets/jquery-3.3.1.slim.min.js"></script>
   <script src="../assets/popper.min.js"></script>
+  <script src="../assets/libs/DataTables/datatables.min.js"></script>
 
 </head>
 
@@ -147,7 +148,7 @@ $bahan = query('SELECT * FROM produk');
           <div class="card shadow mb-4">
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" id="dokter">
                   <thead>
                     <tr>
                       <th>No.</th>
@@ -205,6 +206,37 @@ $bahan = query('SELECT * FROM produk');
   </a>
 
   <!-- Bootstrap core JavaScript-->
+  <script>
+    $(document).ready(function() {
+      $('#dokter').DataTable({
+        columnDefs: [{
+          "searchable": false,
+          "orderable": false,
+          "targets": [0, 6] //kayak aritmatika tapi array dari 0 itu kebawah 6 ke samping indeksnya maksudnya
+        }],
+        "order": [1, "asc"]
+      });
+      // nek mau ngeksplorasi di datatables.net iki
+      $('#select_all').on('click', function() {
+        if (this.checked) {
+          $('.check').each(function() {
+            this.checked = true;
+          })
+        } else {
+          $('.check').each(function() {
+            this.checked = false;
+          })
+        }
+      });
+      $('.check').on('click', function() {
+        if ($('.check:checked').length === $('.check').length) {
+          $('#select_all').prop('checked', true)
+        } else {
+          $('#select_all').prop('checked', false)
+        }
+      })
+    })
+  </script>
   <script src="../assets/script.js"></script>
   <script src="../assets/vendor/jquery/jquery.min.js"></script>
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

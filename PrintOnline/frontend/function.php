@@ -155,9 +155,20 @@ function registrasi($data)
 		return false;
 	}
 
+	$uppercase = preg_match('@[A-Z]@', $password);
+	$lowercase = preg_match('@[a-z]@', $password);
+	$number    = preg_match('@[0-9]@', $password);
+
+	if (!$uppercase || !$lowercase || !$number || strlen($password) <= 6) {
+		echo "<script>
+		alert('password harus lebih dari 6 karakter, mengandung huruf BESAR, huruf kecil dan angka');
+		</script>";
+		return false;
+	}
+
 	$password = password_hash($password, PASSWORD_DEFAULT);
 	// tambahkan user baru ke database
-	mysqli_query($conn, "INSERT INTO user VALUES ('', '', '$email', '$password', '', '', '', '')");
+	mysqli_query($conn, "INSERT INTO user VALUES ('', '', '$email', '$password', '', '', '', '', '')");
 	echo "
             <script>
                     alert('anda berhasil daftar!');

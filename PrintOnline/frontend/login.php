@@ -39,7 +39,7 @@ if (isset($_POST["login"])) {
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>My Account | Bookshop Responsive Bootstrap4 Template</title>
+	<title>My Account |</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -212,11 +212,11 @@ if (isset($_POST["login"])) {
 								<div class="account__form">
 									<div class="input__box">
 										<label>Username or email address <span>*</span></label>
-										<input type="text" id="email" name="email" placeholder="Masukkan email anda..." required="" autofocus>
+										<input type="email" id="email" name="email" placeholder="Masukkan email anda..." required="" autofocus>
 									</div>
 									<div class="input__box">
 										<label>Password<span>*</span></label>
-										<input type="text" id="password" name="password" required placeholder="Masukkan password anda">
+										<input type="password" id="password" name="password" required placeholder="Masukkan password anda">
 									</div>
 									<div class="form__btn">
 										<button type="submit" name="login" class="btn btn-user btn-primary btn-block">Login</button>
@@ -232,15 +232,15 @@ if (isset($_POST["login"])) {
 								<div class="account__form">
 									<div class="input__box">
 										<label>Email address <span>*</span></label>
-										<input type="email" name="email" id="email">
+										<input type="email" name="email" id="email" placeholder="Masukkan email anda..." required="" autofocus>
 									</div>
 									<div class="input__box">
 										<label>Password<span>*</span></label>
-										<input type="password" name="password" id="password">
+										<input type="password" name="password" id="password" placeholder="Masukkan password anda..." required>
 									</div>
 									<div class="input__box">
-										<label>masukkan Password lagi<span>*</span></label>
-										<input type="password" name="password2" id="password2">
+										<label>konfirmasi Password <span>*</span></label>
+										<input type="password" name="password2" id="password2" placeholder="konfirmasi password anda..." required>
 									</div>
 									<div class="form__btn">
 										<button type="submit" name="register">Register</button>
