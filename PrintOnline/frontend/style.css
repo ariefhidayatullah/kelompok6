@@ -866,7 +866,7 @@ a {
 }
 
 .bg-image--6 {
-  background-image: url(aa.jpg);
+  background-image: url(aa.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -5715,7 +5715,7 @@ h3.widget-title-modal {
   font-size: 24px;
   font-weight: 700;
   text-transform: uppercase;
-  color: black;
+  color: white;
   line-height: 30px;
 }
 
@@ -5728,7 +5728,7 @@ h3.widget-title-modal {
   font-style: italic;
   font-weight: 400;
   text-transform: capitalize;
-  color: black;
+  color: white;
 }
 
 .bradcaump__inner .bradcaump-content .breadcrumb_item.active,

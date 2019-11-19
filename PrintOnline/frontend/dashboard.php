@@ -3,7 +3,7 @@ session_start();
 require 'function.php';
 $bahan = query('SELECT * FROM produk order by rand()');
 
-if ( !isset($_SESSION["LOGIN"])) {
+if (!isset($_SESSION["LOGIN"])) {
 	header("Location : index.php");
 }
 ?>
@@ -59,22 +59,11 @@ if ( !isset($_SESSION["LOGIN"])) {
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex">
 								<li class="drop"><a href="#">daftar produk</a>
-									<div class="megamenu mega03">
+									<div class="megamenu mega02">
 										<ul class="item item01">
-											<li><a href="my-account.html">label</a></li>
-											<li><a href="cart.html">kartu nama</a></li>
-											<li><a href="checkout.html">undangan</a></li>
-											<li><a href="wishlist.html">brosur</a></li>
-											<li><a href="error404.html">poster</a></li>
-											<li><a href="faq.html">Foto</a></li>
-										</ul>
-										<ul class="item item01">
-											<li><a href="my-account.html">piagam</a></li>
-											<li><a href="cart.html">kemasan</a></li>
-											<li><a href="checkout.html">sticker</a></li>
-											<li><a href="wishlist.html">kalender</a></li>
-											<li><a href="error404.html">buku</a></li>
-											<li><a href="faq.html">kartu sovenir</a></li>
+											<?php foreach ($bahan as $row) : ?>
+												<li><a href="produk.php?id=<?= $row['id_produk']; ?>"><?= $row['jenis_produk']; ?></a></li>
+											<?php endforeach; ?>
 										</ul>
 									</div>
 								</li>
@@ -232,8 +221,7 @@ if ( !isset($_SESSION["LOGIN"])) {
 									<a href="index.html">
 										<img src="images/logo/3.png" alt="logo">
 									</a>
-									<p>There are many variations of passages of Lorem Ipsum available, but the majority
-										have suffered duskam alteration variations of passages</p>
+									<p>JL Ki S. Mngunsarkoro, No 52, Kampung Templek Kec. Bondowoso, Kabupaten Bondowoso, Jawa Timur 68211 </p>
 								</div>
 								<div class="footer__content">
 									<ul class="social__net social__net--2 d-flex justify-content-center">

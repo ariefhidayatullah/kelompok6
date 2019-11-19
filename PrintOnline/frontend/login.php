@@ -2,6 +2,7 @@
 session_start();
 
 require 'function.php';
+$bahan = query('SELECT * FROM produk order by rand()');
 
 if (isset($_POST["submit"])) {
 	if (registrasi($_POST) > 0) {
@@ -43,7 +44,7 @@ if (isset($_POST["login"])) {
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>My Account |</title>
+	<title> login register | The King Advertising</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -90,22 +91,11 @@ if (isset($_POST["login"])) {
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex">
 								<li class="drop"><a href="#">daftar produk</a>
-									<div class="megamenu mega03">
+									<div class="megamenu mega02">
 										<ul class="item item01">
-											<li><a href="my-account.html">label</a></li>
-											<li><a href="cart.html">kartu nama</a></li>
-											<li><a href="checkout.html">undangan</a></li>
-											<li><a href="wishlist.html">brosur</a></li>
-											<li><a href="error404.html">poster</a></li>
-											<li><a href="faq.html">Foto</a></li>
-										</ul>
-										<ul class="item item01">
-											<li><a href="my-account.html">piagam</a></li>
-											<li><a href="cart.html">kemasan</a></li>
-											<li><a href="checkout.html">sticker</a></li>
-											<li><a href="wishlist.html">kalender</a></li>
-											<li><a href="error404.html">buku</a></li>
-											<li><a href="faq.html">kartu sovenir</a></li>
+											<?php foreach ($bahan as $row) : ?>
+												<li><a href="produk.php?id=<?= $row['id_produk']; ?>"><?= $row['jenis_produk']; ?></a></li>
+											<?php endforeach; ?>
 										</ul>
 									</div>
 								</li>
@@ -206,7 +196,7 @@ if (isset($_POST["login"])) {
 				<div class="row">
 					<div class="col-lg-6 col-12">
 						<div class="my__account__wrapper">
-							<h3 class="account__title">Login</h3>
+							<h3 class="account__title">Masuk</h3>
 							<?php if (isset($error)) : ?>
 								<p style="color : red; font-style:italic">
 									username / password salah
@@ -223,7 +213,7 @@ if (isset($_POST["login"])) {
 										<input type="password" id="password" name="password" required placeholder="Masukkan password anda">
 									</div>
 									<div class="form__btn">
-										<button type="submit" name="login" class="btn btn-user btn-primary btn-block">Login</button>
+										<button type="submit" name="login">Login</button>
 									</div>
 								</div>
 							</form>
@@ -231,7 +221,7 @@ if (isset($_POST["login"])) {
 					</div>
 					<div class="col-lg-6 col-12">
 						<div class="my__account__wrapper">
-							<h3 class="account__title">Register</h3>
+							<h3 class="account__title">Daftar akun</h3>
 							<form action="" method="post" class="user">
 								<div class="account__form">
 									<div class="input__box">
@@ -270,7 +260,7 @@ if (isset($_POST["login"])) {
 									<a href="index.html">
 										<img src="images/logo/3.png" alt="logo">
 									</a>
-									<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered duskam alteration variations of passages</p>
+									<p>JL Ki S. Mngunsarkoro, No 52, Kampung Templek Kec. Bondowoso, Kabupaten Bondowoso, Jawa Timur 68211 </p>
 								</div>
 								<div class="footer__content">
 									<ul class="social__net social__net--2 d-flex justify-content-center">
