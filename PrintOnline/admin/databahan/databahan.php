@@ -56,14 +56,13 @@ $bahan = query('SELECT * FROM bahan');
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
+      <!-- Nav Item - Pages Collapse Menu -->
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="../dashboard/index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
-
-      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
@@ -73,6 +72,7 @@ $bahan = query('SELECT * FROM bahan');
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">login Admin / User</h6>
             <a class="collapse-item" href="../auth/register.php">tambah akun admin</a>
+            <a class="collapse-item" href="../auth/datakaryawan/datakaryawan.php">data karyawan</a>
             <a class="collapse-item" href="../pengguna/datauser.php">list user / pengguna</a>
           </div>
         </div>
@@ -90,6 +90,20 @@ $bahan = query('SELECT * FROM bahan');
         <a class="nav-link" href="../databahan/databahan.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Data Bahan</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagess" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>transaksi</span>
+        </a>
+        <div id="collapsePagess" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">detail pemesanan</h6>
+            <a class="collapse-item" href="../transaksi/pembayaran/pembayaran.php">pembayaran</a>
+            <a class="collapse-item" href="../transaksi/pemesanan/pemesanan.php">pemesanan</a>
+          </div>
+        </div>
       </li>
 
       <li class="nav-item">

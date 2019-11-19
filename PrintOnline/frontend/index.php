@@ -8,7 +8,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Home | Bookshop Responsive Bootstrap4 Template</title>
+	<title>Home | The King Advertising</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
