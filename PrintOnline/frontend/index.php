@@ -53,22 +53,11 @@ $bahan = query('SELECT * FROM produk order by rand()');
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex">
 								<li class="drop"><a href="#">daftar produk</a>
-									<div class="megamenu mega03">
+									<div class="megamenu mega02">
 										<ul class="item item01">
-											<li><a href="my-account.html">label</a></li>
-											<li><a href="cart.html">kartu nama</a></li>
-											<li><a href="checkout.html">undangan</a></li>
-											<li><a href="wishlist.html">brosur</a></li>
-											<li><a href="error404.html">poster</a></li>
-											<li><a href="faq.html">Foto</a></li>
-										</ul>
-										<ul class="item item01">
-											<li><a href="my-account.html">piagam</a></li>
-											<li><a href="cart.html">kemasan</a></li>
-											<li><a href="checkout.html">sticker</a></li>
-											<li><a href="wishlist.html">kalender</a></li>
-											<li><a href="error404.html">buku</a></li>
-											<li><a href="faq.html">kartu sovenir</a></li>
+											<?php foreach ($bahan as $row) : ?>
+												<li><a href="produk.php?id=<?= $row['id_produk']; ?>"><?= $row['jenis_produk']; ?></a></li>
+											<?php endforeach; ?>
 										</ul>
 									</div>
 								</li>
