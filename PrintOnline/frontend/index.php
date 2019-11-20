@@ -8,7 +8,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Home | Bookshop Responsive Bootstrap4 Template</title>
+	<title>Home | The King Advertising</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -53,22 +53,11 @@ $bahan = query('SELECT * FROM produk order by rand()');
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex">
 								<li class="drop"><a href="#">daftar produk</a>
-									<div class="megamenu mega03">
+									<div class="megamenu mega02">
 										<ul class="item item01">
-											<li><a href="my-account.html">label</a></li>
-											<li><a href="cart.html">kartu nama</a></li>
-											<li><a href="checkout.html">undangan</a></li>
-											<li><a href="wishlist.html">brosur</a></li>
-											<li><a href="error404.html">poster</a></li>
-											<li><a href="faq.html">Foto</a></li>
-										</ul>
-										<ul class="item item01">
-											<li><a href="my-account.html">piagam</a></li>
-											<li><a href="cart.html">kemasan</a></li>
-											<li><a href="checkout.html">sticker</a></li>
-											<li><a href="wishlist.html">kalender</a></li>
-											<li><a href="error404.html">buku</a></li>
-											<li><a href="faq.html">kartu sovenir</a></li>
+											<?php foreach ($bahan as $row) : ?>
+												<li><a href="produk.php?id=<?= $row['id_produk']; ?>"><?= $row['jenis_produk']; ?></a></li>
+											<?php endforeach; ?>
 										</ul>
 									</div>
 								</li>
@@ -180,7 +169,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 		</section>
 		<!-- Start BEst Seller Area -->
 		<!-- Start NEwsletter Area -->
-		<section class="wn__newsletter__area bg-image--2">
+		<section class="wn__newsletter__area bg-image--4">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-7 col-md-12 col-12 ptb--150">

@@ -5,9 +5,4 @@ if (!isset($_SESSION['login'])) {
     exit;
 } else {
     header("Location: dashboard");
-    echo "
-    <script>
-        alert('data berhasil ditambah');
-    </script>
-";
 }

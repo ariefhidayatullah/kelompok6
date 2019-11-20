@@ -98,7 +98,6 @@ if (!isset($_SESSION['login'])) {
         <div id="collapsePagess" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">detail pemesanan</h6>
-            <a class="collapse-item" href="../transaksi/keranjang/keranjang.php">keranjang user</a>
             <a class="collapse-item" href="../transaksi/pembayaran/pembayaran.php">pembayaran</a>
             <a class="collapse-item" href="../transaksi/pemesanan/pemesanan.php">pemesanan</a>
           </div>

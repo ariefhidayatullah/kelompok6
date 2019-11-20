@@ -113,6 +113,20 @@ if (isset($_POST["submit"])) {
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagess" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>transaksi</span>
+                </a>
+                <div id="collapsePagess" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">detail pemesanan</h6>
+                        <a class="collapse-item" href="../transaksi/pembayaran/pembayaran.php">pembayaran</a>
+                        <a class="collapse-item" href="../transaksi/pemesanan/pemesanan.php">pemesanan</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="../auth/logout.php">
                     <i class="fas fa-fw fa-power-off"></i>
                     <span>Logout</span></a>

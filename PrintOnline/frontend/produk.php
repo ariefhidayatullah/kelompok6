@@ -3,6 +3,7 @@ require 'function.php';
 
 $id_produk = $_GET['id'];
 
+$bahan = query('SELECT * FROM produk order by rand()');
 // var_dump($id);
 //query data mahasiswa berdasarkan ID
 
@@ -59,22 +60,12 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex">
 								<li class="drop"><a href="#">daftar produk</a>
-									<div class="megamenu mega03">
+									<div class="megamenu mega02">
 										<ul class="item item01">
-											<li><a href="my-account.html">label</a></li>
-											<li><a href="cart.html">kartu nama</a></li>
-											<li><a href="checkout.html">undangan</a></li>
-											<li><a href="wishlist.html">brosur</a></li>
-											<li><a href="error404.html">poster</a></li>
-											<li><a href="faq.html">Foto</a></li>
-										</ul>
-										<ul class="item item01">
-											<li><a href="my-account.html">piagam</a></li>
-											<li><a href="cart.html">kemasan</a></li>
-											<li><a href="checkout.html">sticker</a></li>
-											<li><a href="wishlist.html">kalender</a></li>
-											<li><a href="error404.html">buku</a></li>
-											<li><a href="faq.html">kartu sovenir</a></li>
+										<?php foreach ($bahan as $row) : ?>
+										<li><a href="produk.php?id=<?= $row['id_produk']; ?>">
+										<?= $row['jenis_produk']; ?></a></li>
+										<?php endforeach; ?>
 										</ul>
 									</div>
 								</li>
@@ -153,15 +144,41 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 									<div class="col-lg-6 col-12">
 										<div class="product__info__main">
 											<h1><?= $row['jenis_produk']; ?></h1>
-											<div class="product-reviews-summary d-flex">
-												<ul class="rating-summary d-flex">
+											<!-- div class="product-reviews-summary d-flex">
+												<ul class="rating-summary d-flex"> -->
 													<!-- <li><i class="zmdi zmdi-star-outline"></i></li>
 													<li><i class="zmdi zmdi-star-outline"></i></li>
 													<li><i class="zmdi zmdi-star-outline"></i></li>
 													<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
 													<li class="off"><i class="zmdi zmdi-star-outline"></i></li> -->
-												</ul>
-
+												<!-- </ul>
+												</div>
+												<span></span> -->
+												<a href="">Harga Satuan : Rp. </a><a href="">
+												<?php
+												$han = $_POST['han'];
+												?>
+												<?php
+												if (isset($_POST['han'])) {
+												$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
+												$row1 = mysqli_fetch_array($bahan1);
+												echo $row1['harga_satuan']; 
+												}
+												?></a>
+											<div class="product__overview">
+												<p>
+												<?php 
+												$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
+												$ba = mysqli_query($conn, $sql);
+												$ro = mysqli_fetch_array($ba);
+												echo "Kenapa harus mencetak ".$ro['jenis_produk']."?";
+												?>
+												<br>
+												<?php 
+												echo $ro['deskripsi'];
+												?>
+												</p>
+											</div>
 											<?php
 											$bahan = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk'");
 											$row = mysqli_fetch_array($bahan);
@@ -177,29 +194,10 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 												</select>
 												<button type="submit" value="han">Cari Harga</button><br>
 												</form>
-												<a href="">Harga Satuan : Rp. </a><a href="">
-												<?php
-												$han = $_POST['han'];
-												?>
-												<?php
-												if (isset($_POST['han'])) {
-												$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
-												$row1 = mysqli_fetch_array($bahan1);
-												echo $row1['harga_satuan']; 
-												}
-												?></a>
 												</h4><br>
-												</div>
-												<span></span>
-											<div class="product__overview">
-												<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie
-													promises superior warmth with every wear. Thick material blocks out the
-													wind as ribbed cuffs and bottom band seal in body heat.</p>
-												<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie
-													promises superior warmth with every wear. </p>
-											</div>
+											<br>
 											<div class="box-tocart d-flex">
-												<span>Qty</span>
+												<a>Quantity</a>
 												<input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty" type="number">
 												<div class="addtocart__actions">
 													<button class="tocart" type="submit" title="Add to Cart">Add to
