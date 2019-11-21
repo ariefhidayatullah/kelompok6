@@ -165,7 +165,7 @@ if (!isset($_SESSION["LOGIN"])) {
 									<div class="action">
 										<div class="actions_inner">
 											<ul class="add_to_links">
-												<li><a href="produk.php?id=<?= $row['id_produk']; ?>""><i class=" bi bi-search"></i></a></li>
+												<li><a href="produk-login.php?id=<?= $row['id_produk']; ?>""><i class=" bi bi-search"></i></a></li>
 											</ul>
 										</div>
 									</div>
@@ -221,7 +221,7 @@ if (!isset($_SESSION["LOGIN"])) {
 									<a href="index.html">
 										<img src="images/logo/3.png" alt="logo">
 									</a>
-									<p>JL Ki S. Mngunsarkoro, No 52, Kampung Templek Kec. Bondowoso, Kabupaten Bondowoso, Jawa Timur 68211 </p>
+									<p>JL K.I.S. Mngunsarkoro, No 52, Kampung Templek Kec. Bondowoso, Kabupaten Bondowoso, Jawa Timur 68211 </p>
 								</div>
 								<div class="footer__content">
 									<ul class="social__net social__net--2 d-flex justify-content-center">

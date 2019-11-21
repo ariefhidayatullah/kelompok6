@@ -81,16 +81,12 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 									<div class="content-inner">
 										<div class="switcher-currency">
 											<strong class="label switcher-label">
-												<span>My Account</span>
 											</strong>
 											<div class="switcher-options">
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
-														<span><a href="#">Compare Product</a></span>
-														<span><a href="#">My Account</a></span>
-														<span><a href="#">My Wishlist</a></span>
-														<span><a href="#">Sign In</a></span>
-														<span><a href="#">Create An Account</a></span>
+														<span><a href="profil.php">Profil</a></span>
+														<span><a href="logout.php">Log Out</a></span>
 													</div>
 												</div>
 											</div>
@@ -156,6 +152,7 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 												<span></span> -->
 												<a href="">Harga Satuan : Rp. </a><a href="">
 												<?php
+												$han = 0;
 												$han = $_POST['han'];
 												?>
 												<?php
@@ -188,15 +185,14 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 												<h4><select  name="han" class="drop"><a href="">Bahan</a>
 												<ul>
 													<?php foreach ($bahan as $p): ?>
-													<li><option><?= $p['nama_bahan']; ?></option></li>	
+													<li><option><a href=""><?= $p['nama_bahan']; ?></a></option></li>	
 													<?php endforeach ?>
 												</ul>
 												</select>
-												<button class="btn btn-danger" type="submit" value="han">Cari Harga</button><br>
+												<button type="submit" value="han">Cari Harga</button><br>
 												</form>
-											 	</h4><br>
-											<br>
-													<div>
+												</h4><br>
+												<div>
 													<button class="btn btn-info" type="submit" value="cart">Add to
 														Cart
 													</button>
@@ -209,6 +205,27 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 											</form>
 											<div class="product-share">
 												<ul>
+													<li class="categories-title">Share :</li>
+													<li>
+														<a href="#">
+															<i class="icon-social-twitter icons"></i>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<i class="icon-social-tumblr icons"></i>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<i class="icon-social-facebook icons"></i>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<i class="icon-social-linkedin icons"></i>
+														</a>
+													</li>
 												</ul>
 											</div>
 										</div>
