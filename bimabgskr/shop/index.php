@@ -75,7 +75,11 @@ unset($_SESSION['qty_array']);
 		//connection
 		$conn = new mysqli('localhost', 'root', '', 'printonline');
 
-		$sql = "SELECT * FROM produk";
+		$sql = "SELECT * produk.id_produk, produk.jenis_produk, produk.gambar,
+						bahan.id_baha, bahan.nama_bahan, bahan.id_produk, bahan.stok, bahan.harga_satuan
+						FROM produk
+						LEFT JOIN bahan ON bahan.id_produk = produk.id_produk
+						ORDER BY bahan.id_produk ";
 		
 		$query = $conn->query($sql);
 		$inc = 4;

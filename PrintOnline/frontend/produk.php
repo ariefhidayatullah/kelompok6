@@ -200,8 +200,7 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 												<a>Quantity</a>
 												<input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty" type="number">
 												<div class="addtocart__actions">
-													<button class="tocart" type="submit" title="Add to Cart">Add to
-														Cart</button>
+													<button class="tocart"  type="submit" title="Add to Cart"> <a href="../shop/index.php?id=<?php echo $row['id_produk']?>" > ADD TO CART </a></button>
 												</div>
 												<div class="product-addto-links clearfix">
 													<a class="wishlist" href="#"></a>

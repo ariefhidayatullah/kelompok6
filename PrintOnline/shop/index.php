@@ -74,11 +74,20 @@ unset($_SESSION['qty_array']);
 
 		//connection
 		$conn = new mysqli('localhost', 'root', '', 'printonline');
-
-		$sql = "SELECT * FROM produk";
-		$sql1 = "SELECT & FROM bahan WHERE id_bahan" ;
+		//cek data
+		$id_produk = $_GET['id'];
+		$cek_cart = "SELECT * from produk where id_produk ='$id_produk'";
+		$hasil_cek = $conn->query($cek_cart);
+		$jenis_produk = $hasil_cek['jenis_produk'];
+		$gambar		  = $hasil_cek['gambar'];
+		
+		//ss
+		$sql = "SELECT * FROM produk.id_produk, produk.jenis_produk, produk.gambar,
+		bahan.id_baha, bahan.nama_bahan, bahan.id_produk, bahan.stok, bahan.harga_satuan
+		FROM produk
+		LEFT JOIN bahan ON bahan.id_produk = produk.id_produk
+		ORDER BY bahan.id_produk ";
 		$query = $conn->query($sql);
-		$query = $conn->query($sql1);
 		$inc = 4;
 		while($row = $query->fetch_assoc()){
 			$inc = ($inc == 4) ? 1 : $inc + 1; 
