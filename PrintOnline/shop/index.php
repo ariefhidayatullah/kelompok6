@@ -76,8 +76,9 @@ unset($_SESSION['qty_array']);
 		$conn = new mysqli('localhost', 'root', '', 'printonline');
 
 		$sql = "SELECT * FROM produk";
-		
+		$sql1 = "SELECT & FROM bahan WHERE id_bahan" ;
 		$query = $conn->query($sql);
+		$query = $conn->query($sql1);
 		$inc = 4;
 		while($row = $query->fetch_assoc()){
 			$inc = ($inc == 4) ? 1 : $inc + 1; 
@@ -95,7 +96,7 @@ unset($_SESSION['qty_array']);
 						<div class="row product_footer">
 							
 							<p class="pull-left"><b><?php echo $row['harga_satuan']; ?></b></p>
-							<span class="pull-right"><a href="add_cart.php?id=<?php echo $row['id_produk']; ?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Cart</a></span>
+							<span class="pull-right"><a href="add_cart.php?id=<?php echo $row['id_bahan']; ?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Cart</a></span>
 						</div>
 					</div>
 				</div>

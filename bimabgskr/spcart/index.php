@@ -33,7 +33,7 @@ if(isset($_POST["add_to_cart"]))
 	}
 }z
 
-if(isset($_GET["action"]))
+if(isset($_GET["action"])) 
 {
 	if($_GET["action"] == "delete")
 	{
