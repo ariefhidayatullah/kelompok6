@@ -1,4 +1,5 @@
 <?php 
+/* code by webdevtrick ( https://webdevtrick.com ) */
 session_start();
 $connect = mysqli_connect("localhost", "root", "", "printonline");
 
@@ -12,7 +13,8 @@ if(isset($_POST["add_to_cart"]))
 			$count = count($_SESSION["shopping_cart"]);
 			$item_array = array(
 				'item_id'			=>	$_GET["id_produk"],
-				'item_name'			=>	$_POST["jenis_produk"],
+				'item_name'			=>	$_POST["hidden_name"],
+				'item_price'		=>	$_POST["hidden_price"],
 				'item_quantity'		=>	$_POST["quantity"]
 			);
 			$_SESSION["shopping_cart"][$count] = $item_array;
@@ -26,14 +28,15 @@ if(isset($_POST["add_to_cart"]))
 	{
 		$item_array = array(
 			'item_id'			=>	$_GET["id_produk"],
-			'item_name'			=>	$_GET["jenis_produk"],
+			'item_name'			=>	$_POST["jenis_produk"],
+			'item_price'		=>	$_POST["harga"],
 			'item_quantity'		=>	$_POST["quantity"]
 		);
 		$_SESSION["shopping_cart"][0] = $item_array;
 	}
-}z
+}
 
-if(isset($_GET["action"])) 
+if(isset($_GET["action"]))
 {
 	if($_GET["action"] == "delete")
 	{
@@ -81,13 +84,13 @@ if(isset($_GET["action"]))
 
 						<h4 class="text-info"><?php echo $row["jenis_produk"]; ?></h4>
 
-						
+						<h4 class="text-danger">$ <?php echo $row["harga"]; ?></h4>
 
 						<input type="text" name="quantity" value="1" class="form-control" />
 
 						<input type="hidden" name="hidden_name" value="<?php echo $row["jenis_produk"]; ?>" />
 
-						
+						<input type="hidden" name="hidden_price" value="<?php echo $row["harga"]; ?>" />
 
 						<input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
 
@@ -106,7 +109,7 @@ if(isset($_GET["action"]))
 					<tr>
 						<th width="40%">Item Name</th>
 						<th width="10%">Quantity</th>
-						
+						<th width="20%">Price</th>
 						<th width="15%">Total</th>
 						<th width="5%">Action</th>
 					</tr>
@@ -120,12 +123,12 @@ if(isset($_GET["action"]))
 					<tr>
 						<td><?php echo $values["item_name"]; ?></td>
 						<td><?php echo $values["item_quantity"]; ?></td>
-						
+						<td>$ <?php echo $values["item_price"]; ?></td>
 						<td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2);?></td>
 						<td><a href="index.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
 					</tr>
 					<?php
-							$total = $total + ($values["item_quantity"] );
+							$total = $total + ($values["item_quantity"] * $values["item_price"]);
 						}
 					?>
 					<tr>

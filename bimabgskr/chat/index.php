@@ -1,16 +1,21 @@
 <div style="overflow:auto; width:30%; height:320px; margin-left:35%;margin-right:35%;">
 	<table class="art-article" border="0" cellspacing="0" cellpadding="0" style=" margin: 0; width: 100%;">
 		<tbody>
-			<?php
-			//*koneksi ke database*//
-			$Open = mysql_connect("localhost","root","");
-				if (!$Open){
-					die ("MySQL E !<br>");
-				}
-			$Koneksi = mysql_select_db("widget");
-				if (!$Koneksi){
-					die ("DBase E !");
-				}
+		<?php 
+
+$host = "localhost";
+$user = "root" ;
+$password = "";
+$database = "printonline";
+
+$koneksi = mysqli_connect("$host","$user","$password","$database");
+
+// Check connection
+if ($koneksi -> connect_error) {
+	die("koneksi gagal : " . $koneksi -> connect_error);
+}
+echo"Mantap koneksi berhasil Sobat ERMAN";
+?>
 			$Tampil="SELECT * FROM chat ORDER BY waktu DESC LIMIT 99;";
 			$query = mysql_query($Tampil);
 			while (	$hasil = mysql_fetch_array ($query)) {
@@ -52,7 +57,7 @@
 		</tbody>
 	</table>  
 </div><br>
-<div style="width:30%; height:320px; margin-left:35%;margin-right:35%" ; > 
+<div style="width:30%; height:320px; margin-left:35%;margin-right:35%;">
 	<form method="POST" name="chat" action="#" enctype="application/x-www-form-urlencoded"><p>Post your chat:</p><br><p>Name</p><input type="text" placeholder=" Nama Anda" name="nama" maxlength="9" style="width: 95%;"></input><br><br><p>Email</p><input type="text" placeholder=" Alamat email Anda" name="email" maxlength="30" style="width: 95%;"></input><br><br><p>Chat</p><textarea placeholder=" Obrolan Anda" name="komen" rows="2" cols="40" maxlength="120" style="width: 95%;"></textarea><br><br><input type="checkbox" name="cek" value="cek" class="art-button"> Confirm you are NOT a spammer</input><br><br><input type="submit" name="submit" value="Send" class="art-button"></input>&nbsp;<input type="reset" name="reset" value="Clear" class="art-button"></input>
 	<?php
 		if (isset($_POST['submit'])) {
