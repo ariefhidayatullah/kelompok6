@@ -33,7 +33,8 @@ $bahan = query('SELECT * FROM produk');
   <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="../assets/jquery-3.3.1.slim.min.js"></script>
   <script src="../assets/popper.min.js"></script>
-  <script src="../assets/libs/DataTables/datatables.min.js"></script>
+  <link rel="stylesheet" href="../_assets/libs/DataTables/datatables.min.css">
+  <script src="../_assets/libs/DataTables/datatables.min.js"></script>
 
 </head>
 
@@ -43,86 +44,8 @@ $bahan = query('SELECT * FROM produk');
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">The King <sup>2</sup></div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="../dashboard/index.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Daftar Akun</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">login Admin / User</h6>
-            <a class="collapse-item" href="../auth/register.php">tambah akun admin</a>
-            <a class="collapse-item" href="../pengguna/datauser.php">list user / pengguna</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item active">
-        <a class="nav-link" href="../dataproduk/dataproduk.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Data Produk</span></a>
-      </li>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="../databahan/databahan.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Data Bahan</span></a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagess" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>transaksi</span>
-        </a>
-        <div id="collapsePagess" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">detail pemesanan</h6>
-            <a class="collapse-item" href="../transaksi/pembayaran/pembayaran.php">pembayaran</a>
-            <a class="collapse-item" href="../transaksi/pemesanan/pemesanan.php">pemesanan</a>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="../auth/logout.php">
-          <i class="fas fa-fw fa-power-off"></i>
-          <span>Logout</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
-    <!-- End of Sidebar -->
+    <?php include '_header.php';
+    ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -222,51 +145,9 @@ $bahan = query('SELECT * FROM produk');
   <!-- Bootstrap core JavaScript-->
   <script>
     $(document).ready(function() {
-      $('#dokter').DataTable({
-        columnDefs: [{
-          "searchable": false,
-          "orderable": false,
-          "targets": [0, 6] //kayak aritmatika tapi array dari 0 itu kebawah 6 ke samping indeksnya maksudnya
-        }],
-        "order": [1, "asc"]
-      });
-      // nek mau ngeksplorasi di datatables.net iki
-      $('#select_all').on('click', function() {
-        if (this.checked) {
-          $('.check').each(function() {
-            this.checked = true;
-          })
-        } else {
-          $('.check').each(function() {
-            this.checked = false;
-          })
-        }
-      });
-      $('.check').on('click', function() {
-        if ($('.check:checked').length === $('.check').length) {
-          $('#select_all').prop('checked', true)
-        } else {
-          $('#select_all').prop('checked', false)
-        }
-      })
-    })
+      $('#dataTable').DataTable();
+    });
   </script>
-  <script src="../assets/script.js"></script>
-  <script src="../assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="../assets/js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <!-- <script src="vendor/datatables/jquery.dataTables.min.js"></script> -->
-  <!-- <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
-
-  <!-- Page level custom scripts -->
-  <script src="../assets/js/demo/datatables-demo.js"></script>
 
 </body>
 

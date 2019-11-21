@@ -62,10 +62,10 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 								<li class="drop"><a href="#">daftar produk</a>
 									<div class="megamenu mega02">
 										<ul class="item item01">
-										<?php foreach ($bahan as $row) : ?>
-										<li><a href="produk.php?id=<?= $row['id_produk']; ?>">
-										<?= $row['jenis_produk']; ?></a></li>
-										<?php endforeach; ?>
+											<?php foreach ($bahan as $row) : ?>
+												<li><a href="produk.php?id=<?= $row['id_produk']; ?>">
+														<?= $row['jenis_produk']; ?></a></li>
+											<?php endforeach; ?>
 										</ul>
 									</div>
 								</li>
@@ -134,30 +134,20 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 						<div class="col">
 							<div class="wn__single__product">
 								<div class="row">
-									<div class="col-lg-6 col-12">
+									<div class="col-lg-6 col-6">
 										<div class="wn__fotorama__wrapper">
 											<div class="fotorama wn__fotorama__action" data-nav="thumbs">
 												<a href="1.jpg"><img src="img/<?= $row['gambar']; ?>" alt=""></a>
 											</div>
 										</div>
 									</div>
-									<div class="col-lg-6 col-12">
+									<div class="col-lg-6 col-6">
 										<div class="product__info__main">
 											<h1><?= $row['jenis_produk']; ?></h1>
-											<!-- div class="product-reviews-summary d-flex">
-												<ul class="rating-summary d-flex"> -->
-													<!-- <li><i class="zmdi zmdi-star-outline"></i></li>
-													<li><i class="zmdi zmdi-star-outline"></i></li>
-													<li><i class="zmdi zmdi-star-outline"></i></li>
-													<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
-													<li class="off"><i class="zmdi zmdi-star-outline"></i></li> -->
-												<!-- </ul>
-												</div>
-												<span></span> -->
-												<a href="">Harga Satuan : Rp. </a><a href="">
+											<a href="">Harga Satuan : Rp. </a><a href="">
 												<?php
-												$han = $_POST['han'];
-												?>
+													$han = $_POST['han'];
+													?>
 												<?php
 												if (isset($_POST['han'])) {
 												$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
@@ -166,23 +156,30 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 												}
 												?></a>
 												<div class="product__overview">
+													if (isset($_POST['han'])) {
+														$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
+														$row1 = mysqli_fetch_array($bahan1);
+														echo $row1['harga_satuan'];
+													}
+													?></a>
+											<div class="product__overview">
 												<p>
-												<?php 
-												$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
-												$ba = mysqli_query($conn, $sql);
-												$ro = mysqli_fetch_array($ba);
-												echo "Kenapa harus mencetak ".$ro['jenis_produk']."?";
-												?>
-												<br>
-												<?php 
-												echo $ro['deskripsi'];
-												?>
+													<?php
+														$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
+														$ba = mysqli_query($conn, $sql);
+														$ro = mysqli_fetch_array($ba);
+														echo "Kenapa harus mencetak " . $ro['jenis_produk'] . "?";
+														?>
+													<br>
+													<?php
+														echo $ro['deskripsi'];
+														?>
 												</p>
 											</div>
 											<?php
-											$bahan = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk'");
-											$row = mysqli_fetch_array($bahan);
-											?>
+												$bahan = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk'");
+												$row = mysqli_fetch_array($bahan);
+												?>
 											<br>
 												<form action="" method="post">
 												<h4><select  name="han" class="drop"><a href="">Bahan</a>
@@ -205,6 +202,25 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 													<button type="submit" class="btn btn-success" value="checkout">Checkout Sekarang
 													</button>
 													</form>
+											<form action="" method="post">
+												<h4><select name="han" class="drop"><a href="">Bahan</a>
+														<ul>
+															<?php foreach ($bahan as $p) : ?>
+																<li>
+																	<option><a href=""><?= $p['nama_bahan']; ?></a></option>
+																</li>
+															<?php endforeach ?>
+														</ul>
+													</select>
+													<button type="submit" value="han">Cari Harga</button><br>
+											</form>
+											</h4><br>
+											<br>
+											<div class="box-tocart d-flex">
+												<a>Quantity</a>
+												<input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty" type="number">
+												<div class="addtocart__actions">
+													<button class="tocart"  type="submit" title="Add to Cart"> <a href="../shop/index.php?id=<?php echo $row['id_produk']?>" > ADD TO CART </a></button>
 												</div>
 											</form>
 											<div class="product-share">

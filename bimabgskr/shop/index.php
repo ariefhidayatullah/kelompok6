@@ -41,7 +41,7 @@ unset($_SESSION['qty_array']);
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Simple Shopping Cart</a>
+					<a class="navbar-brand" href="#">The KING Cart</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -73,9 +73,14 @@ unset($_SESSION['qty_array']);
 
 
 		//connection
-		$conn = new mysqli('localhost', 'root', '', 'wewe');
+		$conn = new mysqli('localhost', 'root', '', 'printonline');
 
-		$sql = "SELECT * FROM products";
+		$sql = "SELECT * produk.id_produk, produk.jenis_produk, produk.gambar,
+						bahan.id_baha, bahan.nama_bahan, bahan.id_produk, bahan.stok, bahan.harga_satuan
+						FROM produk
+						LEFT JOIN bahan ON bahan.id_produk = produk.id_produk
+						ORDER BY bahan.id_produk ";
+		
 		$query = $conn->query($sql);
 		$inc = 4;
 		while($row = $query->fetch_assoc()){
@@ -86,14 +91,15 @@ unset($_SESSION['qty_array']);
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="row product_image">
-							<img src="<?php echo $row['photo'] ?>" width="80%" height="auto">
+							<img src="<?php echo $row['gambar'] ?>" width="80%" height="auto">
 						</div>
 						<div class="row product_name">
-							<h4><?php echo $row['name']; ?></h4>
+							<h4><?php echo $row['jenis_produk']; ?></h4>
 						</div>
 						<div class="row product_footer">
-							<p class="pull-left"><b><?php echo $row['price']; ?></b></p>
-							<span class="pull-right"><a href="add_cart.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Cart</a></span>
+							
+							<p class="pull-left"><b><?php echo $row['harga_satuan']; ?></b></p>
+							<span class="pull-right"><a href="add_cart.php?id=<?php echo $row['id_produk']; ?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Cart</a></span>
 						</div>
 					</div>
 				</div>
@@ -117,15 +123,15 @@ unset($_SESSION['qty_array']);
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
 							<div class="form-group">
-								<label>Product Name</label>
+								<label>Nama Produk</label>
 								<input class="form-control" type="text" name="name">
 							</div>
 							<div class="form-group">
-								<label>Product Price</label>
+								<label>Harga Produk</label>
 								<input class="form-control" type="number" name="price">
 							</div>
 							<div class="form-group">
-								<label>Product Photo</label>
+								<label>Foto Produk</label>
 								<input class="form-control" type="file" name="photo">
 							</div>
 						</div>

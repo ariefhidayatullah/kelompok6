@@ -13,8 +13,8 @@ $bahan = query('SELECT * FROM produk order by rand()');
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/icon.png">
+	<link rel="shortcut icon" href="images/logo/3.png">
+	<link rel="apple-touch-icon" href="images/logo/3.png">
 
 	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
@@ -146,7 +146,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 									<div class="action">
 										<div class="actions_inner">
 											<ul class="add_to_links">
-												<li><a href="produk.php?id=<?= $row['id_produk']; ?>""><i class=" bi bi-search"></i></a></li>
+												<li><a href="produk/<?= $row['jenis_produk']; ?>.php?id=<?= $row['id_produk']; ?>""><i class=" bi bi-search"></i></a></li>
 											</ul>
 										</div>
 									</div>
@@ -177,11 +177,10 @@ $bahan = query('SELECT * FROM produk order by rand()');
 							<h2>tetap bersama kami</h2>
 						</div>
 						<div class="newsletter__block text-center">
-							<p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest
-								lookbooks and exclusive offers.</p>
+							<p>ngeue.</p>
 							<form action="#">
 								<div class="newsletter__box">
-									<input type="email" placeholder="Enter your e-mail">
+									<input type="email">
 									<button>Subscribe</button>
 								</div>
 							</form>
@@ -232,7 +231,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 						<div class="col-lg-6 col-md-6 col-sm-12">
 							<div class="copyright">
 								<div class="copy__right__inner text-left">
-									<p>Copyright <i class="fa fa-copyright"></i> <a href="https://freethemescloud.com/">The King.</a> </p>
+									<p>Copyright <i class="fa fa-instagram"></i> <a href="https://www.instagram.com/arfhdytllh_/">.arfhdytllh_</a> </p>
 								</div>
 							</div>
 						</div>
