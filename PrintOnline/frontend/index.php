@@ -181,7 +181,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 								lookbooks and exclusive offers.</p>
 							<form action="#">
 								<div class="newsletter__box">
-									<input type="email" placeholder="Enter your e-mail">
+									<input type="email">
 									<button>Subscribe</button>
 								</div>
 							</form>
