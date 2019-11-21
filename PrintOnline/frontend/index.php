@@ -180,7 +180,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 							<p>ngeue.</p>
 							<form action="#">
 								<div class="newsletter__box">
-									<input type="email" placeholder="Enter your e-mail">
+									<input type="email">
 									<button>Subscribe</button>
 								</div>
 							</form>
