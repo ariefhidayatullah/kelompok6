@@ -5,7 +5,7 @@
 			$_SESSION['qty_array'][$key] = $_POST['qty_'.$key];
 		}
 
-		$_SESSION['message'] = 'Cart updated successfully';
+		$_SESSION['message'] = 'Cart Selesai di Update';
 		header('location: view_cart.php');
 	}
 ?>

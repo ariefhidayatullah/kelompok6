@@ -117,15 +117,15 @@ unset($_SESSION['qty_array']);
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
 							<div class="form-group">
-								<label>Product Name</label>
+								<label>Nama Produk</label>
 								<input class="form-control" type="text" name="name">
 							</div>
 							<div class="form-group">
-								<label>Product Price</label>
+								<label>Harga Produk</label>
 								<input class="form-control" type="number" name="price">
 							</div>
 							<div class="form-group">
-								<label>Product Photo</label>
+								<label>Foto Produk</label>
 								<input class="form-control" type="file" name="photo">
 							</div>
 						</div>

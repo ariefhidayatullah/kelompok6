@@ -17,7 +17,7 @@
  
 				if(move_uploaded_file($tmp_file, $location)){
 					$conn->query("INSERT INTO `products` VALUES('', '$name', '$price', '$new_location')");
-					echo "<script>alert('Data Insert')</script>";
+					echo "<script>alert('Data Telah masuk')</script>";
 					echo "<script>window.location = 'index.php'</script>";
 				}
  

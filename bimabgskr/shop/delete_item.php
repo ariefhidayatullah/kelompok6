@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	//remove the id from our cart array
+	//hapus id dari array cart
 	$key = array_search($_GET['id'], $_SESSION['cart']);	
 	unset($_SESSION['cart'][$key]);
 
@@ -9,6 +9,6 @@
 	//rearrange array after unset
 	$_SESSION['qty_array'] = array_values($_SESSION['qty_array']);
 
-	$_SESSION['message'] = "Product deleted from cart";
+	$_SESSION['message'] = "Produk sudah terhapus";
 	header('location: view_cart.php');
 ?>

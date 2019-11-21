@@ -1,5 +1,4 @@
 <?php 
-/* code by webdevtrick ( https://webdevtrick.com ) */
 session_start();
 $connect = mysqli_connect("localhost", "root", "", "printonline");
 
@@ -13,8 +12,7 @@ if(isset($_POST["add_to_cart"]))
 			$count = count($_SESSION["shopping_cart"]);
 			$item_array = array(
 				'item_id'			=>	$_GET["id_produk"],
-				'item_name'			=>	$_POST["hidden_name"],
-				
+				'item_name'			=>	$_POST["jenis_produk"],
 				'item_quantity'		=>	$_POST["quantity"]
 			);
 			$_SESSION["shopping_cart"][$count] = $item_array;
@@ -29,12 +27,11 @@ if(isset($_POST["add_to_cart"]))
 		$item_array = array(
 			'item_id'			=>	$_GET["id_produk"],
 			'item_name'			=>	$_GET["jenis_produk"],
-			
 			'item_quantity'		=>	$_POST["quantity"]
 		);
 		$_SESSION["shopping_cart"][0] = $item_array;
 	}
-}
+}z
 
 if(isset($_GET["action"]))
 {
