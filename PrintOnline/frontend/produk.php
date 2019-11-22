@@ -144,8 +144,8 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 									<div class="col-lg-6 col-6">
 										<div class="product__info__main">
 											<h1><?= $row['jenis_produk']; ?></h1>
-											<a href="">Harga Satuan : Rp. </a><a href="">
-												<?php
+											<a href="">Harga Satuan : Rp.
+												"<?php 
 													$han = $_POST['han'];
 													?>
 												<?php
@@ -154,16 +154,9 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 												$row1 = mysqli_fetch_array($bahan1);
 												echo $row1['harga_satuan']; 
 												}
-												?></a>
+												?>
+												</a>
 												<div class="product__overview">
-													if (isset($_POST['han'])) {
-														$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
-														$row1 = mysqli_fetch_array($bahan1);
-														echo $row1['harga_satuan'];
-													}
-													?></a>
-											<div class="product__overview">
-												<p>
 													<?php
 														$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
 														$ba = mysqli_query($conn, $sql);
@@ -199,29 +192,11 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 													</button>
 													<form action="checkout.php" method="get">
 													<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
+													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
 													<button type="submit" class="btn btn-success" value="checkout">Checkout Sekarang
 													</button>
 													</form>
-											<form action="" method="post">
-												<h4><select name="han" class="drop"><a href="">Bahan</a>
-														<ul>
-															<?php foreach ($bahan as $p) : ?>
-																<li>
-																	<option><a href=""><?= $p['nama_bahan']; ?></a></option>
-																</li>
-															<?php endforeach ?>
-														</ul>
-													</select>
-													<button type="submit" value="han">Cari Harga</button><br>
-											</form>
-											</h4><br>
 											<br>
-											<div class="box-tocart d-flex">
-												<a>Quantity</a>
-												<input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty" type="number">
-												<div class="addtocart__actions">
-													<button class="tocart"  type="submit" title="Add to Cart"> <a href="../shop/index.php?id=<?php echo $row['id_produk']?>" > ADD TO CART </a></button>
-												</div>
 											</form>
 											<div class="product-share">
 												<ul>

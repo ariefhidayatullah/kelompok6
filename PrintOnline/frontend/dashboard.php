@@ -4,7 +4,7 @@ require 'function.php';
 $bahan = query('SELECT * FROM produk order by rand()');
 
 if (!isset($_SESSION["LOGIN"])) {
-	header("Location : index.php");
+	header("Location : login.php");
 }
 ?>
 
@@ -165,7 +165,7 @@ if (!isset($_SESSION["LOGIN"])) {
 									<div class="action">
 										<div class="actions_inner">
 											<ul class="add_to_links">
-												<li><a href="produk-login.php?id=<?= $row['id_produk']; ?>""><i class=" bi bi-search"></i></a></li>
+												<li><a href="produk-login.php?id=<?= $row['id_produk'];?>"><i class=" bi bi-search"></i></a></li>
 											</ul>
 										</div>
 									</div>

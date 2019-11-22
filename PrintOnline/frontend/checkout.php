@@ -1,14 +1,14 @@
 <?php 
-session_start();
+// session_start();
 
-if (!isset($_SESSION["LOGIN"])) {
-	header("Location : login.php");
-}
+// if (!isset($_SESSION["LOGIN"])) {
+// 	header("Location : login.php");
+// }
 
 require 'function.php';
 
 $id_bahan = $_GET['id_bahan'];
-
+$id_produk = $_GET['id_produk'];
 
 ?>
 <!DOCTYPE html>
@@ -402,6 +402,9 @@ $id_bahan = $_GET['id_bahan'];
         </div>
         <!-- End Bradcaump area -->
         <!-- Start Checkout Area -->
+        <?php 
+
+         ?>
         <section class="wn__checkout__area section-padding--lg bg__white">
         	<div class="container">
         		<div class="row">
@@ -413,7 +416,7 @@ $id_bahan = $_GET['id_bahan'];
         					</div>
         					<div class="checkout_login">
         						<form class="wn__checkout__form" action="#">
-        							<p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing & Shipping section.</p>
+        							<p>Jika anda pernah berbelanja disini silakan login terlebih dahulu :</p>
 
         							<div class="input__box">
         								<label>Username or email <span>*</span></label>
@@ -452,34 +455,50 @@ $id_bahan = $_GET['id_bahan'];
         		<div class="row">
         			<div class="col-lg-6 col-12">
         				<div class="customer_details">
-        					<h3>DETAIL PEMESANAN</h3>
+ <?php
+$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$id_bahan'");
+$row1 = mysqli_fetch_array($bahan1);
+
+$produk = mysqli_query($conn, "SELECT * FROM produk where id_produk = '$id_produk'");
+$row2 = mysqli_fetch_array($produk);
+?>
+
+        					<h2>DETAIL PEMESANAN</h2>
         					<div class="customar__field">
-        						<div class="margin_between">
-	        						<div class="input_box space_between">
-	        							<label>First name <span>*</span></label>
-	        							<input type="text">
+        						<br>
+        						<h4>Data Pelanggan</h4>
+	        						<div class="input_box">
+	        							<label>Nama <span>*</span></label>
+	        							<input type="text" disabled value="<?php echo $_SESSION?>">
+	        							<label>Tempat, Tanggal Lahir <span>*</span></label>
+	        							<input type="date" value="">
 	        						</div>
-	        						<div class="input_box space_between">
-	        							<label>last name <span>*</span></label>
-	        							<input type="text">
+	        						<br>
+	        						<h4>Alamat Pengiriman</h4>
+	        						<div class="input_box">
+	        							<label>Kecamatan<span>*</span></label>
+	        							<select class="select__option">
+										<option>Pilih kecamatan…</option>
+										<option>Bondowoso</option>
+										<option>Nangkaan</option>
+										<option>Tapen</option>
+										<option>Prajekan</option>
+										</select>
 	        						</div>
-        						</div>
         						<div class="input_box">
-        							<label>Company name <span>*</span></label>
-        							<input type="text">
-        						</div>
-        						<div class="input_box">
-        							<label>Country<span>*</span></label>
+        							<label>Desa / Kelurahan<span>*</span></label>
         							<select class="select__option">
-										<option>Select a country…</option>
-										<option>Afghanistan</option>
-										<option>American Samoa</option>
-										<option>Anguilla</option>
-										<option>American Samoa</option>
-										<option>Antarctica</option>
-										<option>Antigua and Barbuda</option>
+										<option>Pilih desa  kelurahan…</option>
+										<option>Tangsil Wetan</option>
+										<option>Tangsil Kulon</option>
+										<option>Dabasah</option>
+										<option>Blindungan</option>
         							</select>
         						</div>
+        						<div class="input_box">
+	        							<label>Alamat<span>*</span></label>
+	        							<input type="text" placeholder="Alamat lengkap">
+	        						</div>
         						<div class="input_box">
         							<label>Address <span>*</span></label>
         							<input type="text" placeholder="Street address">
@@ -598,17 +617,15 @@ $id_bahan = $_GET['id_bahan'];
         			</div>
         			<div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
         				<div class="wn__order__box">
-        					<h3 class="onder__title">Your order</h3>
+        					<h3 class="onder__title">PESANAN ANDA</h3>
         					<ul class="order__total">
-        						<li>Product</li>
-        						<li>Total</li>
+        						<li>Deskripsi</li>
         					</ul>
         					<ul class="order_product">
-        						<li>Buscipit at magna × 1<span>$48.00</span></li>
-        						<li>Buscipit at magna × 1<span>$48.00</span></li>
-        						<li>Buscipit at magna × 1<span>$48.00</span></li>
-        						<li>Buscipit at magna × 1<span>$48.00</span></li>
-        					</ul>
+        						<li><span><?php echo $row2['jenis_produk'] ?></span>Jenis Produk : </li>
+        						<li><span><?php echo $row1['nama_bahan'] ?></span>Bahan : </li>
+								<li><span><?php echo $row1['harga_satuan'] ?></span>Harga Satuan : </li>
+								<li><span><input type="number" name="qty" min="1" max="1000"></span>QTY : </li>
         					<ul class="shipping__method">
         						<li>Cart Subtotal <span>$48.00</span></li>
         						<li>Shipping 
