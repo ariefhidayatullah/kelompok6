@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'function.php';
 include 'include/_header.php';
 $bahan = query('SELECT * FROM produk order by rand()');

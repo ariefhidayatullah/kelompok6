@@ -33,12 +33,8 @@
                                     <div class="switcher-options">
                                         <div class="switcher-currency-trigger">
                                             <div class="setting__menu">
-                                                <?php if (isset($_SESSION["LOGIN"])) : ?>
-                                                    <span><a href="logout.php">Log Out</a></span>
-                                                    <span><a href="profil.php">Profile</a></span>
-                                                <?php else : ?>
-                                                    <span><a href="login.php">login</a></span>
-                                                <?php endif ?>
+                                                <span><a href="profil.php">Profile</a></span>
+                                                <span><a href="logout.php">Log Out</a></span>
                                             </div>
                                         </div>
                                     </div>
