@@ -1,4 +1,19 @@
-﻿<!doctype html>
+﻿<?php 
+// session_start();
+
+// if (!isset($_SESSION["LOGIN"])) {
+// 	header("Location : login.php");
+// }
+
+require 'function.php';
+
+$id_bahan = $_GET['id_bahan'];
+$id_produk = $_GET['id_produk'];
+$username = $_SESSION["LOGIN"];
+
+?>
+
+<!doctype html>
 <html class="no-js" lang="zxx">
 
 <head>

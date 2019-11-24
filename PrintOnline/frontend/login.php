@@ -24,7 +24,11 @@ if (isset($_POST["login"])) {
 		// cek password
 		if (password_verify($password, $row["password"])) {
 
-			$_SESSION["LOGIN"] = true;
+		$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+		$row0 = mysqli_fetch_array();
+		$username = $row0['nama_user'];
+
+			$_SESSION["LOGIN"] = $username;
 			header("Location:dashboard.php");
 			exit;
 		}
