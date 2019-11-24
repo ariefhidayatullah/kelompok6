@@ -4,6 +4,7 @@ require 'function.php';
 $bahan = query('SELECT * FROM produk order by rand()');
 
 include 'include/_header.php';
+$username = $_SESSION["LOGIN"];
 ?>
 
 <!-- Main wrapper -->
@@ -58,6 +59,8 @@ include 'include/_header.php';
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section__title text-center">
+						<h1 class="title__be--2"><span class="color--theme">Selamat Datang <?php echo $username ?></span></h1>
+						<br><br>
 						<h2 class="title__be--2"><span class="color--theme">produk</span></h2>
 						<hr>
 					</div>

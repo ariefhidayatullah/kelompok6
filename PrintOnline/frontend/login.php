@@ -17,19 +17,19 @@ if (isset($_POST["login"])) {
 	$email = $_POST["email"];
 	$password = $_POST["password"];
 
-	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' OR username = '$email' ");
 
 	if (mysqli_num_rows($result) === 1) {
 		$row = mysqli_fetch_assoc($result);
 		// cek password
 		if (password_verify($password, $row["password"])) {
 
-			$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+			$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' or username ='email");
 			$row0 = mysqli_fetch_array($result0);
 			$username = $row0['nama_user'];
 
 			$_SESSION["LOGIN"] = $username;
-			header("Location:index.php");
+			header("Location:dashboard.php");
 			exit;
 		}
 	}
@@ -117,7 +117,7 @@ if (isset($_POST["login"])) {
 								<div class="account__form">
 									<div class="input__box">
 										<label>Email address <span>*</span></label>
-										<input type="email" id="email" name="email" placeholder="Masukkan email anda..." required="" autofocus>
+										<input type="text" id="email" name="email" placeholder="Masukkan email atau username anda..." required="" autofocus>
 									</div>
 									<div class="input__box">
 										<label>Password<span>*</span></label>

@@ -108,13 +108,6 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 										</form>
 										</h4><br>
 										<div>
-											<form action="cart.php" method="get">
-												<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
-												<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
-												<button type="submit" class="btn btn-info" value="cart">Add to
-												Cart
-											</button>
-											</form>
 											<form action="checkout.php" method="get">
 												<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
 												<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
@@ -122,7 +115,14 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 												</button>
 											</form>
 										</div>
-										</form>
+										<div>
+											<form action="cart.php" method="get">
+												<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
+												<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
+												<button type="submit" class="btn btn-info" value="cart">Add to
+												Cart
+												</button>
+											</form>
 										<div class="product-share">
 											<ul>
 												<li class="categories-title">Share :</li>

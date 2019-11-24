@@ -61,14 +61,11 @@ $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
 								</ul>
 								<div class="tab-content ml-1" id="myTabContent">
 									<div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
-
-
 										<div class="row">
 											<div class="col-sm-3 col-md-2 col-5">
 												<label style="font-weight:bold;">Username</label>
 											</div>
-											<div class="col-md-8 col-6">
-												<?= $row['nama_user']; ?>
+											<div class="col-md-8 col-6"><input type="" name="" placeholder="<?= $row['nama_user']; ?>">	
 											</div>
 										</div>
 										<hr />

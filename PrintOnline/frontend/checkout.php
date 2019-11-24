@@ -1,5 +1,5 @@
 <?php 
-// session_start();
+session_start();
 
 // if (!isset($_SESSION["LOGIN"])) {
 // 	header("Location : login.php");
@@ -9,7 +9,7 @@ require 'function.php';
 
 $id_bahan = $_GET['id_bahan'];
 $id_produk = $_GET['id_produk'];
-
+$username = $_SESSION["LOGIN"];
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
@@ -469,7 +469,7 @@ $row2 = mysqli_fetch_array($produk);
         						<h4>Data Pelanggan</h4>
 	        						<div class="input_box">
 	        							<label>Nama <span>*</span></label>
-	        							<input type="text" disabled value="<?php echo $_SESSION?>">
+	        							<input type="text" disabled value="<?php echo $username ?>">
 	        							<label>Tempat, Tanggal Lahir <span>*</span></label>
 	        							<input type="date" value="">
 	        						</div>
