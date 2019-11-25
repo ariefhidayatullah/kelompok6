@@ -3,13 +3,12 @@ session_start();
 require 'function.php';
 
 
-if (isset($_SESSION["LOGIN"])) {
-$username = $_SESSION["LOGIN"];
-}
+// if (isset($_SESSION["LOGIN"])){
+// header("Location:login.php")}
 
 $id_bahan = $_GET['id_bahan'];
 $id_produk = $_GET['id_produk'];
-
+$username = $_SESSION["LOGIN"];
 
 $query = "INSERT INTO pemesanan VALUES ('','','$username','','','',' ','','0')";
 mysqli_query($conn, $query);
