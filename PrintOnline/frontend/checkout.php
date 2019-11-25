@@ -1,9 +1,9 @@
 <?php 
 session_start();
 
-// if (!isset($_SESSION["LOGIN"])) {
-// 	header("Location : login.php");
-// }
+if (!isset($_SESSION["LOGIN"])) {
+header("Location : login.php");
+ }
 
 require 'function.php';
 
@@ -626,7 +626,7 @@ $row2 = mysqli_fetch_array($produk);
         						<li><span><?php echo $row2['jenis_produk'] ?></span>Jenis Produk : </li>
         						<li><span><?php echo $row1['nama_bahan'] ?></span>Bahan : </li>
 								<li><span><?php echo $row1['harga_satuan'] ?></span>Harga Satuan : </li>
-								<li><span><input type="number" name="qty" min="1" max="1000"></span>QTY : </li>
+								<li><span><input type="number" name="qty" min="1" max="1000" required></span>QTY : </li>
         					<ul class="shipping__method">
         						<li>Cart Subtotal <span>$48.00</span></li>
         						<li>Shipping 
