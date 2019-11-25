@@ -7,29 +7,29 @@ $bahan = query('SELECT * FROM produk order by rand()');
 if (isset($_POST["submit"])) {
 	if (registrasi($_POST) > 0) {
 		echo "<script> alert('user baru berhasil ditambahkan!');</script>
-		header('Location:dashboard.php');";
+		header('Location:index.php');";
 	} else {
 		echo mysqli_error($conn);
 	}
 }
 
-if (isset($_POST["login"])) {
+if (isset($_POST["LOGIN"])) {
 	$email = $_POST["email"];
 	$password = $_POST["password"];
 
-	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' OR username = '$email' ");
+	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
 
 	if (mysqli_num_rows($result) === 1) {
 		$row = mysqli_fetch_assoc($result);
 		// cek password
 		if (password_verify($password, $row["password"])) {
 
-			$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' or username ='email");
+			$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
 			$row0 = mysqli_fetch_array($result0);
-			$username = $row0['nama_user'];
+			$email = $row0['email'];
 
-			$_SESSION["LOGIN"] = $username;
-			header("Location:dashboard.php");
+			$_SESSION["LOGIN"] = $email;
+			header("Location:index.php");
 			exit;
 		}
 	}
@@ -116,7 +116,7 @@ if (isset($_POST["login"])) {
 							<form class="user" action="" method="post">
 								<div class="account__form">
 									<div class="input__box">
-										<label>Email address <span>*</span></label>
+										<label>Email address / Username<span>*</span></label>
 										<input type="text" id="email" name="email" placeholder="Masukkan email atau username anda..." required="" autofocus>
 									</div>
 									<div class="input__box">
@@ -124,7 +124,7 @@ if (isset($_POST["login"])) {
 										<input type="password" id="password" name="password" required placeholder="Masukkan password anda">
 									</div>
 									<div class="form__btn">
-										<button type="submit" name="login">Login</button>
+										<button type="submit" name="LOGIN">Login</button>
 									</div>
 								</div>
 							</form>

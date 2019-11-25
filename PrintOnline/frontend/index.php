@@ -25,7 +25,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 								<h2>Cetak <span>Dokumen </span></h2>
 								<h2>Anda <span>Kepada </span></h2>
 								<h2><span>Ahlinya </span></h2>
-								<a class="shopbtn" href="#">shop now</a>
+								<a class="shopbtn" href="produk.php">shop now</a>
 							</div>
 						</div>
 					</div>

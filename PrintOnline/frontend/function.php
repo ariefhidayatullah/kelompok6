@@ -173,7 +173,7 @@ function registrasi($data)
             <script>
                     alert('anda berhasil daftar!');
             </script>
-
+			header('Location:dashboard.php');
 			";
 
 	return mysqli_affected_rows($conn);
