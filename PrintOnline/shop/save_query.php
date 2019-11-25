@@ -2,7 +2,7 @@
 	$conn = new mysqli('localhost', 'root', '', 'printonline');
  
 	if(ISSET($_POST['save'])){
-		if(!empty($_POST['name']) && !empty($_POST['price'])){
+		if(!empty($_POST['jenis_produk']) && !empty($_POST['price'])){
 			$name = addslashes($_POST['name']);
 			$price = $_POST['price'];
  

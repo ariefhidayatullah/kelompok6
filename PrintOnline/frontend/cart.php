@@ -1,5 +1,13 @@
-﻿<!doctype html>
+﻿<?php
+require 'function.php';
+
+$id_bahan = $_GET['id_bahan'];
+$id_produk = $_GET['id_produk'];
+
+
+<!doctype html>
 <html class="no-js" lang="zxx">
+?>
 
 <head>
 	<meta charset="utf-8">
@@ -539,3 +547,4 @@
 </body>
 
 </html>
+
