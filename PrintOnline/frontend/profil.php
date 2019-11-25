@@ -3,7 +3,7 @@ session_start();
 require 'function.php';
 include 'include/_header.php';
 $id_user = $_SESSION["LOGIN"];
-
+$id_user = $_GET['id'];
 $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
 ?>
 
@@ -11,7 +11,7 @@ $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
 <!-- Main wrapper -->
 <div class="wrapper" id="wrapper">
 	<!-- Header -->
-	<?php include 'include/navbar-login.php'; ?>
+	<?php include 'include/navbar.php'; ?>
 	<!-- //Header -->
 	<!-- Start Bradcaump area -->
 	<div class="ht__bradcaump__area bg-image--4">
@@ -65,7 +65,7 @@ $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
 											<div class="col-sm-3 col-md-2 col-5">
 												<label style="font-weight:bold;">Username</label>
 											</div>
-											<div class="col-md-8 col-6"><input type="" name="" placeholder="<?= $row['nama_user']; ?>">	
+											<div class="col-md-8 col-6"><input type="" name="" placeholder="<?= $row['nama_user']; ?>">
 											</div>
 										</div>
 										<hr />
