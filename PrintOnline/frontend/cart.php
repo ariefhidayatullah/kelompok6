@@ -1,10 +1,3 @@
-﻿<?php
-require 'function.php';
-
-$id_bahan = $_GET['id_bahan'];
-$id_produk = $_GET['id_produk'];
-
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 ?>
@@ -409,7 +402,7 @@ $id_produk = $_GET['id_produk'];
 									<thead>
 										<tr class="title-top">
 											<th class="product-thumbnail">Image</th>
-											<th class="product-name">Product</th>
+											<th class="product-name"><?php echo $username ?></th>
 											<th class="product-price">Price</th>
 											<th class="product-quantity">Quantity</th>
 											<th class="product-subtotal">Total</th>

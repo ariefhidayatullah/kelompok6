@@ -1,283 +1,152 @@
 <?php
 session_start();
-$_SESSION["LOGIN"] = true;
-
 require 'function.php';
-
-
+include 'include/_header.php';
+$id_user = $_SESSION["LOGIN"];
+$id_user = $_GET['id'];
+$bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
 ?>
 
-<!doctype html>
-<html class="no-js" lang="zxx">
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Home | Bookshop Responsive Bootstrap4 Template</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/icon.png">
-
-	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/plugins.css">
-	<link rel="stylesheet" href="style.css">
-
-	<!-- Cusom css -->
-	<link rel="stylesheet" href="css/custom.css">
-
-	<!-- Modernizer js -->
-	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
-</head>
-
-<body>
-
-
-	<!-- Main wrapper -->
-	<div class="wrapper" id="wrapper">
-		<!-- Header -->
-		<header id="wn__header" class="header__area header-menu header__absolute">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
-						<div class="logo">
-							<a href="index.html">
-								<img src="images/logo/logo.png" alt="">
-							</a>
-						</div>
-					</div>
-					<div class="col d-none d-lg-block">
-						<nav class="mainmenu__nav">
-							<ul class="meninmenu d-flex">
-								<li class="drop"><a href="#">daftar produk</a>
-									<div class="megamenu mega03">
-										<ul class="item item01">
-											<li><a href="my-account.html">label</a></li>
-											<li><a href="cart.html">kartu nama</a></li>
-											<li><a href="checkout.html">undangan</a></li>
-											<li><a href="wishlist.html">brosur</a></li>
-											<li><a href="error404.html">poster</a></li>
-											<li><a href="faq.html">Foto</a></li>
-										</ul>
-										<ul class="item item01">
-											<li><a href="my-account.html">piagam</a></li>
-											<li><a href="cart.html">kemasan</a></li>
-											<li><a href="checkout.html">sticker</a></li>
-											<li><a href="wishlist.html">kalender</a></li>
-											<li><a href="error404.html">buku</a></li>
-											<li><a href="faq.html">kartu sovenir</a></li>
-										</ul>
-									</div>
-								</li>
-							</ul>
+<!-- Main wrapper -->
+<div class="wrapper" id="wrapper">
+	<!-- Header -->
+	<?php include 'include/navbar.php'; ?>
+	<!-- //Header -->
+	<!-- Start Bradcaump area -->
+	<div class="ht__bradcaump__area bg-image--4">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="bradcaump__inner text-center">
+						<h2 class="bradcaump-title">Profil</h2>
+						<nav class="bradcaump-content">
+							<a class="breadcrumb_item" href="dashboard.php">Home</a>
+							<span class="brd-separetor">/</span>
+							<span class="breadcrumb_item active">Profil</span>
 						</nav>
 					</div>
-					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
-						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
-							<!-- Start Shopping Cart -->
-							<li class="setting__bar__icon"><a class="setting__active" href="#"></a>
-								<div class="searchbar__content setting__block">
-									<div class="content-inner">
-										<div class="switcher-currency">
-											<div class="switcher-options">
-												<div class="switcher-currency-trigger">
-													<div class="setting__menu">
-														<span><a href="#">Profile</a></span>
-														<span><a href="#">Log Out</a></span>
-													</div>
-												</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<?php foreach ($bahan as $row) : ?>
+			<div class="col-12">
+				<div class="card">
+
+					<div class="card-body">
+						<div class="card-title mb-4">
+							<div class="d-flex justify-content-start">
+								<div class="image-container">
+									<img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+									<div class="middle">
+										<input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" />
+										<input type="file" style="display: none;" id="profilePicture" name="file" />
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-12">
+								<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+									<li class="nav-item">
+										<a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">Connected Services</a>
+									</li>
+								</ul>
+								<div class="tab-content ml-1" id="myTabContent">
+									<div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+										<div class="row">
+											<div class="col-sm-3 col-md-2 col-5">
+												<label style="font-weight:bold;">Username</label>
+											</div>
+											<div class="col-md-8 col-6"><input type="" name="" placeholder="<?= $row['nama_user']; ?>">
 											</div>
 										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</header>
-		<!-- End Search Popup -->
-		<!-- Start Slider area -->
-		<div class="slider-area slider--15 slide__activation slide__arrow01 owl-carousel">
+										<hr />
 
-			<!-- Start Single Slide -->
-			<div class="slide animation__style09 bg-image--1 fullscreen align__center--left">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="slider__content">
-								<div class="contentbox">
-									<h2>Buy <span>your </span></h2>
-									<h2>favourite <span>Book </span></h2>
-									<h2>from <span>Here </span></h2>
-									<a class="shopbtn" href="#">shop now</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Single Slide -->
-			<section class="my_account_area pt--80 pb--55 bg--white">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 col-12">
-						<div class="my__account__wrapper">
-							<h3 class="account__title">Lengkapi Data Anda</h3>
-							\
-							<form class="user" action="" method="post">
-								<div class="account__form">
-									<div class="input__box">
-										<label>Username or email address <span>*</span></label>
-										<input type="text" id="email" name="email" placeholder="Masukkan email anda..." required="" autofocus>
+										<div class="row">
+											<div class="col-sm-3 col-md-2 col-5">
+												<label style="font-weight:bold;">email</label>
+											</div>
+											<div class="col-md-8 col-6">
+												<?= $row['email']; ?>
+											</div>
+										</div>
+										<hr />
+
+
+										<div class="row">
+											<div class="col-sm-3 col-md-2 col-5">
+												<label style="font-weight:bold;">password</label>
+											</div>
+											<div class="col-md-8 col-6">
+												<?= $row['password']; ?>
+											</div>
+										</div>
+										<hr />
+										<div class="row">
+											<div class="col-sm-3 col-md-2 col-5">
+												<label style="font-weight:bold;">jenis kelamin</label>
+											</div>
+											<div class="col-md-8 col-6">
+												<?= $row['jenis_kelamin']; ?>
+											</div>
+										</div>
+										<hr />
+										<div class="row">
+											<div class="col-sm-3 col-md-2 col-5">
+												<label style="font-weight:bold;">no hp</label>
+											</div>
+											<div class="col-md-8 col-6">
+												<?= $row['nohp_user']; ?>
+											</div>
+										</div>
+										<hr />
+										<div class="row">
+											<div class="col-sm-3 col-md-2 col-5">
+												<label style="font-weight:bold;">alamat</label>
+											</div>
+											<div class="col-md-8 col-6">
+												<?= $row['alamat']; ?>
+											</div>
+										</div>
+										<hr />
+										<div class="row">
+											<div class="col-sm-3 col-md-2 col-5">
+												<label style="font-weight:bold;">kode pos</label>
+											</div>
+											<div class="col-md-8 col-6">
+												<?= $row['kodepos']; ?>
+											</div>
+										</div>
+										<hr />
+
 									</div>
-									<div class="input__box">
-										<label>Password<span>*</span></label>
-										<input type="text" id="password" name="password" required placeholder="Masukkan password anda">
-									</div>
-									<div class="form__btn">
-										<button type="submit" name="login" class="btn btn-user btn-primary btn-block">Login</button>
+									<div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
+										Facebook, Google, Twitter Account that are connected to this account
 									</div>
 								</div>
-							</form>
-						</div>
-					</div>
-			<!-- Start Single Slide -->
-			<div class="slide animation__style10 bg-image--1 fullscreen align__center--left">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="slider__content">
-								<div class="contentbox">
-									<h2>Buy <span>your </span></h2>
-									<h2>favourite <span>Book </span></h2>
-									<h2>from <span>Here </span></h2>
-									<a class="shopbtn" href="#">shop now</a>
-								</div>
 							</div>
 						</div>
+
+
 					</div>
+
 				</div>
 			</div>
-			<!-- End Single Slide -->
-		</div>
-		<!-- End Slider area -->
-		<!-- Start BEst Seller Area -->
-		<section class="wn__product__area brown--color pt--80  pb--30">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="section__title text-center">
-							<h2 class="title__be--2"><span class="color--theme">produk</span></h2>
-							<hr>
-						</div>
-					</div>
-				</div>
-				<!-- Start Single Tab Content -->
-				
-				<!-- End Single Tab Content -->
-			</div>
-		</section>
-		<!-- Start BEst Seller Area -->
-		<!-- Start NEwsletter Area -->
-		<section class="wn__newsletter__area bg-image--2">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-7 col-md-12 col-12 ptb--150">
-						<div class="section__title text-center">
-							<h2>tetap bersama kami</h2>
-						</div>
-						<div class="newsletter__block text-center">
-							<p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest
-								lookbooks and exclusive offers.</p>
-							<form action="#">
-								<div class="newsletter__box">
-									<input type="email" placeholder="Enter your e-mail">
-									<button>Subscribe</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Best Sale Area Area -->
-		<!-- Footer Area -->
-		<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
-			<div class="footer-static-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="footer__widget footer__menu">
-								<div class="ft__logo">
-									<a href="index.html">
-										<img src="images/logo/3.png" alt="logo">
-									</a>
-									<p>There are many variations of passages of Lorem Ipsum available, but the majority
-										have suffered duskam alteration variations of passages</p>
-								</div>
-								<div class="footer__content">
-									<ul class="social__net social__net--2 d-flex justify-content-center">
-										<li><a href="#"><i class="bi bi-facebook"></i></a></li>
-										<li><a href="#"><i class="bi bi-google"></i></a></li>
-										<li><a href="#"><i class="bi bi-twitter"></i></a></li>
-										<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-										<li><a href="#"><i class="bi bi-youtube"></i></a></li>
-									</ul>
-									<ul class="mainmenu d-flex justify-content-center">
-										<li><a href="index.html">Trending</a></li>
-										<li><a href="index.html">Best Seller</a></li>
-										<li><a href="index.html">All Product</a></li>
-										<li><a href="index.html">Wishlist</a></li>
-										<li><a href="index.html">Blog</a></li>
-										<li><a href="index.html">Contact</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="copyright__wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="copyright">
-								<div class="copy__right__inner text-left">
-									<p>Copyright <i class="fa fa-copyright"></i> <a href="https://freethemescloud.com/">Free themes Cloud.</a> All Rights
-										Reserved</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="payment text-right">
-								<img src="images/icons/payment.png" alt="" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- //Footer Area -->
-		<!-- QUICKVIEW PRODUCT -->
-		<!-- END QUICKVIEW PRODUCT -->
+		<?php endforeach; ?>
 	</div>
-	<!-- //Main wrapper -->
-	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/active.js"></script>
 
-</body>
 
-</html>
+</div>
+
+
+<?php
+include 'include/_footer.php';
+?>

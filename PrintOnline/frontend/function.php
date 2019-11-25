@@ -168,13 +168,14 @@ function registrasi($data)
 
 	$password = password_hash($password, PASSWORD_DEFAULT);
 	// tambahkan user baru ke database
-	mysqli_query($conn, "INSERT INTO user VALUES ('', '', '$email', '$password', '', '', '', '', '')");
+	mysqli_query($conn, "INSERT INTO user VALUES ('', '', '', '$email', '', '$password', '', '', '', '')");
 	echo "
             <script>
                     alert('anda berhasil daftar!');
             </script>
-
 			";
 
+	header('Location:login.php');
 	return mysqli_affected_rows($conn);
 }
+?>

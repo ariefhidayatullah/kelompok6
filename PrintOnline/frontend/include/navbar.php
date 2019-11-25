@@ -26,7 +26,27 @@
             <div class="col-md-6 col-sm-6 col-6 col-lg-2">
                 <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
                     <!-- Start Shopping Cart -->
-                    <li class="setting__bar__icon"><a href="login.php"></a>
+                    <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
+                        <div class="searchbar__content setting__block">
+                            <div class="content-inner">
+                                <div class="switcher-currency">
+                                    <div class="switcher-options">
+                                        <div class="switcher-currency-trigger">
+                                            <div class="setting__menu">
+                                                <?php if (isset($_SESSION["LOGIN"])) : ?>
+                                                    <span><a href="logout.php">Log Out</a></span>
+                                                    <?php foreach ($user as $row) : ?>
+                                                        <span><a href="profil.php?id=<?= $row['id_user']; ?>"><?= $row['email']; ?></a></span>
+                                                    <?php endforeach; ?>
+                                                <?php else : ?>
+                                                    <span><a href="login.php">login</a></span>
+                                                <?php endif ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
