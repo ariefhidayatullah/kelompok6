@@ -1,21 +1,6 @@
-﻿<?php 
-session_start();
-require 'function.php';
-
-
-// if (isset($_SESSION["LOGIN"])){
-// header("Location:login.php")}
-
-$id_bahan = $_GET['id_bahan'];
-$id_produk = $_GET['id_produk'];
-$username = $_SESSION["LOGIN"];
-
-$query = "INSERT INTO pemesanan VALUES ('','','$username','','','',' ','','0')";
-mysqli_query($conn, $query);
-?>
-
 <!doctype html>
 <html class="no-js" lang="zxx">
+?>
 
 <head>
 	<meta charset="utf-8">
@@ -555,3 +540,4 @@ mysqli_query($conn, $query);
 </body>
 
 </html>
+
