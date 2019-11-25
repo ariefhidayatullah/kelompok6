@@ -1,23 +1,17 @@
 <?php 
 session_start();
-
-// if (!isset($_SESSION["LOGIN"])) {
-// header("Location : login.php");
-//  }
-
 require 'function.php';
-
-$id_bahan = $_GET['id_bahan'];
-$id_produk = $_GET['id_produk'];
 $username = $_SESSION["LOGIN"];
-?>
+$id_produk = $_GET["id_produk"];
+$id_bahan = $_GET["id_bahan"];
 
-<!DOCTYPE html>
+ ?>
+ <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Checkout | Bookshop Responsive Bootstrap4 Template</title>
+	<title>CHECKOUT | Bookshop Responsive Bootstrap4 Template</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -198,7 +192,7 @@ $username = $_SESSION["LOGIN"];
 														<a href="product-details.html"><img src="images/product/sm-img/1.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
-														<h6><a href="product-details.html"></a></h6>
+														<h6><a href="product-details.html">Voyage Yoga Bag</a></h6>
 														<span class="prize">$30.00</span>
 														<div class="product_prize d-flex justify-content-between">
 															<span class="qun">Qty: 01</span>
@@ -403,9 +397,6 @@ $username = $_SESSION["LOGIN"];
         </div>
         <!-- End Bradcaump area -->
         <!-- Start Checkout Area -->
-        <?php 
-
-         ?>
         <section class="wn__checkout__area section-padding--lg bg__white">
         	<div class="container">
         		<div class="row">
@@ -417,7 +408,7 @@ $username = $_SESSION["LOGIN"];
         					</div>
         					<div class="checkout_login">
         						<form class="wn__checkout__form" action="#">
-        							<p>Jika anda pernah berbelanja disini silakan login terlebih dahulu :</p>
+        							<p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing & Shipping section.</p>
 
         							<div class="input__box">
         								<label>Username or email <span>*</span></label>
@@ -456,240 +447,89 @@ $username = $_SESSION["LOGIN"];
         		<div class="row">
         			<div class="col-lg-6 col-12">
         				<div class="customer_details">
- <?php
-$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$id_bahan'");
-$row1 = mysqli_fetch_array($bahan1);
-
-$produk = mysqli_query($conn, "SELECT * FROM produk where id_produk = '$id_produk'");
-$row2 = mysqli_fetch_array($produk);
-?>
-
-        					<h2>DETAIL PEMESANAN</h2>
+        					<h3>Detail Pemesanan</h3>
         					<div class="customar__field">
-        						<br>
-        						<h4>Data Pelanggan</h4>
+        						<div class="input_box space_between">
+        							<label>Tanggal</label>
+        							<input type="text" name="nama" disabled value="<?php echo date('d-m-Y') ?>">
+        						</div>
 	        						<div class="input_box">
 	        							<label>Nama <span>*</span></label>
-	        							<input type="text" disabled value="<?php echo $username ?>">
-	        							<label>Tempat, Tanggal Lahir <span>*</span></label>
-	        							<input type="date" value="">
+	        							<input type="text" name="nama" disabled value="<?php 
+	        							$sql = " Select * FROM user where email = '$username'";
+	        							$hasil = mysqli_query($conn, $sql);
+	        							$row = mysqli_fetch_array($hasil);
+	        							echo $row['nama_user'];
+	        							?>">
 	        						</div>
-	        						<br>
-	        						<h4>Alamat Pengiriman</h4>
 	        						<div class="input_box">
-	        							<label>Kecamatan<span>*</span></label>
-	        							<select class="select__option">
-										<option>Pilih kecamatan…</option>
-										<option>Bondowoso</option>
-										<option>Nangkaan</option>
-										<option>Tapen</option>
-										<option>Prajekan</option>
-										</select>
+	        							<label>Email <span>*</span></label>
+	        							<input type="text" name="nama" disabled value="<?php echo $username ?>">
+	        						</div>
+	        						<div class="input_box">
+	        							<label>No HP <span>*</span></label>
+	        							<input type="text" name="nama" disabled value="<?php echo $row['nohp_user']; ?>">
 	        						</div>
         						<div class="input_box">
-        							<label>Desa / Kelurahan<span>*</span></label>
-        							<select class="select__option">
-										<option>Pilih desa  kelurahan…</option>
-										<option>Tangsil Wetan</option>
-										<option>Tangsil Kulon</option>
-										<option>Dabasah</option>
-										<option>Blindungan</option>
-        							</select>
-        						</div>
-        						<div class="input_box">
-	        							<label>Alamat<span>*</span></label>
-	        							<input type="text" placeholder="Alamat lengkap">
-	        						</div>
-        						<div class="input_box">
-        							<label>Address <span>*</span></label>
-        							<input type="text" placeholder="Street address">
-        						</div>
-        						<div class="input_box">
-        							<input type="text" placeholder="Apartment, suite, unit etc. (optional)">
-        						</div>
-        						<div class="input_box">
-        							<label>District<span>*</span></label>
-        							<select class="select__option">
-										<option>Select a country…</option>
-										<option>Afghanistan</option>
-										<option>American Samoa</option>
-										<option>Anguilla</option>
-										<option>American Samoa</option>
-										<option>Antarctica</option>
-										<option>Antigua and Barbuda</option>
-        							</select>
-        						</div>
+        							<label>Alamat pengiriman<span>*</span></label>
+        							<input type="text" name="alamat" maxlength="100" placeholder="masukkan alamat lengkap . . .">
 								<div class="input_box">
-									<label>Postcode / ZIP <span>*</span></label>
-									<input type="text">
-								</div>
-								<div class="margin_between">
-									<div class="input_box space_between">
-										<label>Phone <span>*</span></label>
-										<input type="text">
-									</div>
-
-									<div class="input_box space_between">
-										<label>Email address <span>*</span></label>
-										<input type="email">
+									<label>Kode Pos<span>*</span></label>
+									<input type="text" name="kodepos" maxlength="7" placeholder="masukkan kode pos . . ."><br><br>
+									<div class="col-12">
+										<button class="btn btn-success"> Pesan Sekarang </button>
+										<button class="btn btn-danger"> Batalkan Pesanan </button>
 									</div>
 								</div>
         					</div>
-        					<div class="create__account">
-        						<div class="wn__accountbox">
-	        						<input class="input-checkbox" name="createaccount" value="1" type="checkbox">
-	        						<span>Create an account ?</span>
-        						</div>
-        						<div class="account__field">
-        							<form action="#">
-        								<label>Account password <span>*</span></label>
-        								<input type="text" placeholder="password">
         							</form>
         						</div>
         					</div>
         				</div>
-        				<div class="customer_details mt--20">
-        					<div class="differt__address">
-	        					<input name="ship_to_different_address" value="1" type="checkbox">
-	        					<span>Ship to a different address ?</span>
-        					</div>
-        					<div class="customar__field differt__form mt--40">
-        						<div class="margin_between">
-	        						<div class="input_box space_between">
-	        							<label>First name <span>*</span></label>
-	        							<input type="text">
-	        						</div>
-	        						<div class="input_box space_between">
-	        							<label>last name <span>*</span></label>
-	        							<input type="text">
-	        						</div>
-        						</div>
-        						<div class="input_box">
-        							<label>Company name <span>*</span></label>
-        							<input type="text">
-        						</div>
-        						<div class="input_box">
-        							<label>Country<span>*</span></label>
-        							<select class="select__option">
-										<option>Select a country…</option>
-										<option>Afghanistan</option>
-										<option>American Samoa</option>
-										<option>Anguilla</option>
-										<option>American Samoa</option>
-										<option>Antarctica</option>
-										<option>Antigua and Barbuda</option>
-        							</select>
-        						</div>
-        						<div class="input_box">
-        							<label>Address <span>*</span></label>
-        							<input type="text" placeholder="Street address">
-        						</div>
-        						<div class="input_box">
-        							<input type="text" placeholder="Apartment, suite, unit etc. (optional)">
-        						</div>
-        						<div class="input_box">
-        							<label>District<span>*</span></label>
-        							<select class="select__option"> 
-										<option>Select a country…</option>
-										<option>Afghanistan</option>
-										<option>American Samoa</option>
-										<option>Anguilla</option>
-										<option>American Samoa</option>
-										<option>Antarctica</option>
-										<option>Antigua and Barbuda</option>
-        							</select>
-        						</div>
-								<div class="input_box">
-									<label>Postcode / ZIP <span>*</span></label>
-									<input type="text">
-								</div>
-								<div class="margin_between">
-									<div class="input_box space_between">
-										<label>Phone <span>*</span></label>
-										<input type="text">
-									</div>
-									<div class="input_box space_between">
-										<label>Email address <span>*</span></label>
-										<input type="email">
-									</div>
-								</div>
-        					</div>
-        				</div>
-        			</div>
-        			<div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
+        			<div class="col-lg-6 col-3 md-mt-40 sm-mt-40">
         				<div class="wn__order__box">
-        					<h3 class="onder__title">PESANAN ANDA</h3>
+        					<h3 class="onder__title">Pesanan Anda</h3>
         					<ul class="order__total">
-        						<li>Deskripsi</li>
+        						<li>Produk</li>
+        						<li>Rincian</li>
         					</ul>
         					<ul class="order_product">
-        						<li><span><?php echo $row2['jenis_produk'] ?></span>Jenis Produk : </li>
-        						<li><span><?php echo $row1['nama_bahan'] ?></span>Bahan : </li>
-								<li><span><?php echo $row1['harga_satuan'] ?></span>Harga Satuan : </li>
-								<li><span><input type="number" name="qty" min="1" max="1000" required></span>QTY : </li>
+        					<?php 
+        					$sql0 ="Select * from produk where id_produk = '$id_produk'";
+        					$hasil0 = mysqli_query($conn, $sql0);
+        					$row0 = mysqli_fetch_array($hasil0);
+
+							$sql1 ="Select * from bahan where nama_bahan = '$id_bahan'";
+        					$hasil1 = mysqli_query($conn, $sql1);
+        					$row1 = mysqli_fetch_array($hasil1);
+
+        					?>
+        						<li>Jenis Produk<span><?php echo $row0['jenis_produk']; ?></span></li>
+        						<li>Nama Bahan<span><?php echo $id_bahan ?></span></li>
+        						<li>Harga Satuan<span><?php echo $row1['harga_satuan']; ?></span></li>
+        					<li>Jumlah Pesanan<span><input type="number" min="1" max="1000" name="qty"></span></li>
+        						<li>Desain<span><button class="btn btn-warning btn-sm" type="submit">Lihat desain</button><button class="btn btn-info btn-sm" type="submit">Upload desain</button></span></li>
+        					</ul>
         					<ul class="shipping__method">
-        						<li>Cart Subtotal <span>$48.00</span></li>
-        						<li>Shipping 
+        						<li>Harga Total <span>Rp 17500</span></li>
+        						<li>Pengiriman
         							<ul>
         								<li>
         									<input name="shipping_method[0]" data-index="0" value="legacy_flat_rate" checked="checked" type="radio">
-        									<label>Flat Rate: $48.00</label>
+        									<label>JNE : Rp 2500</label>
         								</li>
         								<li>
-        									<input name="shipping_method[0]" data-index="0" value="legacy_flat_rate" checked="checked" type="radio">
-        									<label>Flat Rate: $48.00</label>
+        									<input name="shipping_method[0]" data-index="0" value="legacy_flat_rate" type="radio">
+        									<label>J&T : $ 2000</label>
         								</li>
         							</ul>
         						</li>
         					</ul>
         					<ul class="total__amount">
-        						<li>Order Total <span>$223.00</span></li>
+        						<li>Order Total <span>Rp. 20000</span></li>
         					</ul>
         				</div>
-					    <div id="accordion" class="checkout_accordion mt--30" role="tablist">
-						    <div class="payment">
-						        <div class="che__header" role="tab" id="headingOne">
-						          	<a class="checkout__title" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						                <span>Direct Bank Transfer</span>
-						          	</a>
-						        </div>
-						        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-					            	<div class="payment-body">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</div>
-						        </div>
-						    </div>
-						    <div class="payment">
-						        <div class="che__header" role="tab" id="headingTwo">
-						          	<a class="collapsed checkout__title" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-							            <span>Cheque Payment</span>
-						          	</a>
-						        </div>
-						        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-					          		<div class="payment-body">Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</div>
-						        </div>
-						    </div>
-						    <div class="payment">
-						        <div class="che__header" role="tab" id="headingThree">
-						          	<a class="collapsed checkout__title" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-							            <span>Cash on Delivery</span>
-						          	</a>
-						        </div>
-						        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-					          		<div class="payment-body">Pay with cash upon delivery.</div>
-						        </div>
-						    </div>
-						    <div class="payment">
-						        <div class="che__header" role="tab" id="headingFour">
-						          	<a class="collapsed checkout__title" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-							            <span>PayPal <img src="images/icons/payment.png" alt="payment images"> </span>
-						          	</a>
-						        </div>
-						        <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
-					          		<div class="payment-body">Pay with cash upon delivery.</div>
-						        </div>
-						    </div>
-					    </div>
-
-        			</div>
+					</div>
         		</div>
         	</div>
         </section>
