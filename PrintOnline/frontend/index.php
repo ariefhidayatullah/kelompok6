@@ -3,7 +3,7 @@ session_start();
 require 'function.php';
 include 'include/_header.php';
 $bahan = query('SELECT * FROM produk order by rand()');
-$user = query('SELECT * FROM user ');
+$user = query("SELECT * FROM user");
 ?>
 
 
@@ -40,12 +40,10 @@ $user = query('SELECT * FROM user ');
 					<div class="col-lg-12">
 						<div class="slider__content">
 							<div class="contentbox">
-								<h2>The King <span>Advertising </span></h2>
-								<h2>Digital <span>Printing </span></h2>
-								<h2>
-									<--------<span>---------> </span>
-								</h2>
-								<a class="shopbtn" href="#">produk kami</a>
+								<h2>Buy <span>your </span></h2>
+								<h2>favourite <span>Book </span></h2>
+								<h2>from <span>Here </span></h2>
+								<a class="shopbtn" href="#">shop now</a>
 							</div>
 						</div>
 					</div>

@@ -39,7 +39,7 @@
                                                         <span><a href="profil.php?id=<?= $row['id_user']; ?>">profil</a></span>
                                                     <?php endforeach; ?> -->
                                                 <?php else : ?>
-                                                    <span><a href="login.php">Masuk / Daftar</a></span>
+                                                    <span><a href="login.php">login</a></span>
                                                 <?php endif ?>
                                             </div>
                                         </div>

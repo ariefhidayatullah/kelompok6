@@ -144,10 +144,10 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 									<div class="col-lg-6 col-6">
 										<div class="product__info__main">
 											<h1><?= $row['jenis_produk']; ?></h1>
-											<h5>Harga Satuan : Rp.
-												<?php 
-												$han = $_POST['han'];
-												?>
+											<a href="">Harga Satuan : Rp.
+												"<?php 
+													$han = $_POST['han'];
+													?>
 												<?php
 												if (isset($_POST['han'])) {
 												$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
@@ -155,7 +155,7 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 												echo $row1['harga_satuan']; 
 												}
 												?>
-												</h5>
+												</a>
 												<div class="product__overview">
 													<?php
 														$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
@@ -187,21 +187,20 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 											 	</h4><br>
 											<br>
 												<div>
-													<div><form action="cart.php" method="get">
-													<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
+													<form action="cart.php" method="get">
 													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
-													<button type="submit" class="btn btn-info" value="cart">Add to
-													Cart
-													</button>
-													</form>
-												<br>
+													<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
+												<button type="submit" class="btn btn-info" value="cart">Add to
+												Cart
+											</button>
+											</form>
+
 													<form action="checkout.php" method="get">
 													<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
 													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
 													<button type="submit" class="btn btn-success" value="checkout">Checkout Sekarang
 													</button>
 													</form>
-												</div>
 											<br>
 											</form>
 											<div class="product-share">

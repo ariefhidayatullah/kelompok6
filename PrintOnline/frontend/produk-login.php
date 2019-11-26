@@ -65,6 +65,7 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 												<span></span> -->
 										<a href="">Harga Satuan : Rp. </a><a href="">
 											<?php
+												$han = 0;
 												$han = $_POST['han'];
 												?>
 											<?php
@@ -80,7 +81,7 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 													$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
 													$ba = mysqli_query($conn, $sql);
 													$ro = mysqli_fetch_array($ba);
-													echo "Kenapa harus mencetak " . $ro['jenis_produk'] . " ?";
+													echo "Kenapa harus mencetak " . $ro['jenis_produk'] . "?";
 													?>
 												<br>
 												<?php
@@ -107,24 +108,21 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 										</form>
 										</h4><br>
 										<div>
-											<div>
 											<form action="checkout.php" method="get">
 												<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
 												<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
 												<button type="submit" class="btn btn-success" value="checkout">Checkout Sekarang
 												</button>
 											</form>
-											</div>
-											<div>
-												<form action="cart.php" method="get">
+										</div>
+										<div>
+											<form action="cart.php" method="get">
 												<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
 												<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
 												<button type="submit" class="btn btn-info" value="cart">Add to
 												Cart
 												</button>
 											</form>
-											</div>
-										</div>
 										<div class="product-share">
 											<ul>
 												<li class="categories-title">Share :</li>
