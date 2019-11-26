@@ -3,6 +3,7 @@ session_start();
 require 'function.php';
 include 'include/_header.php';
 $bahan = query('SELECT * FROM produk order by rand()');
+$user = query('SELECT * FROM user ');
 ?>
 
 
@@ -41,7 +42,9 @@ $bahan = query('SELECT * FROM produk order by rand()');
 							<div class="contentbox">
 								<h2>The King <span>Advertising </span></h2>
 								<h2>Digital <span>Printing </span></h2>
-								<h2><--------<span>---------> </span></h2>
+								<h2>
+									<--------<span>---------> </span>
+								</h2>
 								<a class="shopbtn" href="#">produk kami</a>
 							</div>
 						</div>
@@ -59,14 +62,14 @@ $bahan = query('SELECT * FROM produk order by rand()');
 				<div class="col-lg-12">
 					<div class="section__title text-center">
 						<h5>Selamat Datang
-						 <?php 
-						 if (isset($_SESSION["LOGIN"])) {
-						$username = $_SESSION["LOGIN"];
-						echo $username; }
-						else {
-						echo "Silakan login/daftar terlebih dahulu";
-						}
-						?></h5>
+							<?php
+							if (isset($_SESSION["LOGIN"])) {
+								$username = $_SESSION["LOGIN"];
+								echo $username;
+							} else {
+								echo "Silakan login/daftar terlebih dahulu";
+							}
+							?></h5>
 						<br><br>
 						<h2 class="title__be--2"><span class="color--theme">produk</span></h2>
 						<hr>

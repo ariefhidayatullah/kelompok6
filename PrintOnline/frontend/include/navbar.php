@@ -35,8 +35,8 @@
                                             <div class="setting__menu">
                                                 <?php if (isset($_SESSION["LOGIN"])) : ?>
                                                     <span><a href="logout.php">Keluar</a></span>
-                                                    <!-- <?php foreach ($user as $row) : ?>
-                                                        <span><a href="profil.php?id=<?= $row['id_user']; ?>"><?= $row['email']; ?></a></span>
+                                                    <?php foreach ($user as $row) : ?>
+                                                        <span><a href="profil.php?id=<?= $row['id_user']; ?>">profil</a></span>
                                                     <?php endforeach; ?> -->
                                                 <?php else : ?>
                                                     <span><a href="login.php">Masuk / Daftar</a></span>
