@@ -109,11 +109,11 @@ $id_bahan = $_GET["id_bahan"];
 							<div class="input_box">
 								<label>Nama <span>*</span></label>
 								<input type="text" name="nama" disabled value="<?php
-																				$sql = " Select * FROM user where email = '$username'";
-																				$hasil = mysqli_query($conn, $sql);
-																				$row = mysqli_fetch_array($hasil);
-																				echo $row['nama_user'];
-																				?>">
+								$sql = " Select * FROM user where email = '$username'";
+								$hasil = mysqli_query($conn, $sql);
+								$row = mysqli_fetch_array($hasil);
+								echo $row['nama_user'];
+								?>">
 							</div>
 							<div class="input_box">
 								<label>Email <span>*</span></label>
@@ -121,14 +121,14 @@ $id_bahan = $_GET["id_bahan"];
 							</div>
 							<div class="input_box">
 								<label>No HP <span>*</span></label>
-								<input type="text" name="nama" disabled value="<?php echo $row['nohp_user']; ?>">
+								<input type="text" name="nama" disabled value="<?php echo $row['nohp_user']; ?>" required>
 							</div>
 							<div class="input_box">
 								<label>Alamat pengiriman<span>*</span></label>
-								<input type="text" name="alamat" maxlength="100" placeholder="masukkan alamat lengkap . . .">
+								<input type="text" name="alamat" maxlength="100" placeholder="masukkan alamat lengkap . . ." required>
 								<div class="input_box">
 									<label>Kode Pos<span>*</span></label>
-									<input type="text" name="kodepos" maxlength="7" placeholder="masukkan kode pos . . ."><br><br>
+									<input type="text" name="kodepos" maxlength="7" placeholder="masukkan kode pos . . ." required><br><br>
 									<div class="col-12">
 										<button class="btn btn-success"> Pesan Sekarang </button>
 										<button class="btn btn-danger"> Batalkan Pesanan </button>
@@ -173,7 +173,7 @@ $id_bahan = $_GET["id_bahan"];
 									</li>
 									<li>
 										<input name="shipping_method[0]" data-index="0" value="legacy_flat_rate" type="radio">
-										<label>J&T : $ 2000</label>
+										<label>J&T : Rp 2000</label>
 									</li>
 								</ul>
 							</li>

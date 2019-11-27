@@ -30,7 +30,7 @@ if (isset($_POST["LOGIN"])) {
 			$email = $row0['email'];
 
 			$_SESSION["LOGIN"] = $email;
-			header("Location:profil.php");
+			header("Location:index.php");
 			exit;
 		}
 	}

@@ -1,9 +1,10 @@
 <?php
 session_start();
+$email =$_SESSION["LOGIN"];
 require 'function.php';
 include 'include/_header.php';
 $bahan = query('SELECT * FROM produk order by rand()');
-$user = query("SELECT * FROM user");
+$user = query("SELECT * FROM user where email = '$email'");
 ?>
 
 
