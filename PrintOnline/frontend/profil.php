@@ -60,7 +60,7 @@ $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
 								<div class="input__box">
 									<label>jenis kelamin <span>:</span></label>
 								</div>
-								<div class="input__box"><?= $row['jenis_kelamin']; ?>
+								<div class="input__box"><?= $row['jk_user']; ?>
 								</div>
 								<div class="input__box">
 									<label>no hp <span>:</span></label>
