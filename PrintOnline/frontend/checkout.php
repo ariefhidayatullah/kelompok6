@@ -131,7 +131,7 @@ $id_bahan = $_GET["id_bahan"];
 									<input type="text" name="kodepos" maxlength="7" placeholder="masukkan kode pos . . ." required><br><br>
 									<div class="col-12">
 										<button class="btn btn-success"> Pesan Sekarang </button>
-										<button class="btn btn-danger"> Batalkan Pesanan </button>
+										<a class="btn btn-danger" href="produk.php?id=<?= $id_produk ?>"> Batalkan Pesanan </a>
 									</div>
 								</div>
 							</div>

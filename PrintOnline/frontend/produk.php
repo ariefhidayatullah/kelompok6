@@ -145,7 +145,7 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 										<div class="product__info__main">
 											<h1><?= $row['jenis_produk']; ?></h1>
 											<a href="">Harga Satuan : Rp.
-												"<?php 
+												<?php 
 													$han = $_POST['han'];
 													?>
 												<?php
