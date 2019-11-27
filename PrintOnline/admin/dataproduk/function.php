@@ -24,6 +24,7 @@ function tambah($data)
 	//ambil data dari tiap elemen dalam form
 	$id_produk = $data['id_produk'];
 	$jenis_produk = $data['jenis_produk'];
+	$deskripsi = $data['deskripsi'];
 
 	//upload Gambar
 
@@ -33,7 +34,7 @@ function tambah($data)
 	}
 
 	//query insert data
-	$query = "INSERT INTO produk VALUES ('$id_produk', '$jenis_produk', '$gambar')";
+	$query = "INSERT INTO produk VALUES ('$id_produk', '$jenis_produk','$deskripsi' ,'$gambar')";
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
 }
