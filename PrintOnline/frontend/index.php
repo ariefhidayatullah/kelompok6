@@ -123,7 +123,7 @@ $user = query("SELECT * FROM user");
 						<h2>tetap bersama kami</h2>
 					</div>
 					<div class="newsletter__block text-center">
-						<p>ngeue.</p>
+						<p>.</p>
 						<form action="#">
 							<div class="newsletter__box">
 								<input type="email">

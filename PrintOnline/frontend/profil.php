@@ -35,52 +35,51 @@ $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
 			<?php foreach ($bahan as $row) : ?>
 				<div class="col-lg-6 col-12 offset-3">
 					<div class="my__account__wrapper">
-						<form class="user" action="" method="post">
-							<div class="account__form">
-								<div class="input__box">
-									<label>nama <span>:</span></label>
-								</div>
-								<div class="input__box"><?= $row['nama_user']; ?>
-								</div>
-								<div class="input__box">
-									<label>email <span>:</span></label>
-								</div>
-								<div class="input__box"><?= $row['email']; ?>
-								</div>
-								<div class="input__box">
-									<label>username <span>:</span></label>
-								</div>
-								<div class="input__box"><?= $row['username']; ?>
-								</div>
-								<div class="input__box">
-									<label>password <span>:</span></label>
-								</div>
-								<div class="input__box">*****
-								</div>
-								<div class="input__box">
-									<label>jenis kelamin <span>:</span></label>
-								</div>
-								<div class="input__box"><?= $row['jk_user']; ?>
-								</div>
-								<div class="input__box">
-									<label>no hp <span>:</span></label>
-								</div>
-								<div class="input__box"><?= $row['nohp_user']; ?>
-								</div>
-								<div class="input__box">
-									<label>alamat <span>:</span></label>
-								</div>
-								<div class="input__box"><?= $row['alamat']; ?>
-								</div>
-								<div class="input__box">
-									<label>kode pos <span>:</span></label>
-								</div>
-								<div class="input__box"><?= $row['kodepos']; ?>
-								</div>
-								<div class="form__btn">
-									<a href="ubahprofil1.php?id=<?= $row['id_user']; ?>"><button>edit profil</button></a>
-								</div>
+						<div class="account__form">
+							<div class="input__box">
+								<label>nama <span>:</span></label>
 							</div>
+							<div class="input__box"><?= $row['nama_user']; ?>
+							</div>
+							<div class="input__box">
+								<label>email <span>:</span></label>
+							</div>
+							<div class="input__box"><?= $row['email']; ?>
+							</div>
+							<div class="input__box">
+								<label>username <span>:</span></label>
+							</div>
+							<div class="input__box"><?= $row['username']; ?>
+							</div>
+							<div class="input__box">
+								<label>password <span>:</span></label>
+							</div>
+							<div class="input__box">*****
+							</div>
+							<div class="input__box">
+								<label>jenis kelamin <span>:</span></label>
+							</div>
+							<div class="input__box"><?= $row['jenis_kelamin']; ?>
+							</div>
+							<div class="input__box">
+								<label>no hp <span>:</span></label>
+							</div>
+							<div class="input__box"><?= $row['nohp_user']; ?>
+							</div>
+							<div class="input__box">
+								<label>alamat <span>:</span></label>
+							</div>
+							<div class="input__box"><?= $row['alamat']; ?>
+							</div>
+							<div class="input__box">
+								<label>kode pos <span>:</span></label>
+							</div>
+							<div class="input__box"><?= $row['kodepos']; ?>
+							</div>
+							<div class="form__btn">
+								<a href="ubahprofil.php?id=<?= $row['id_user']; ?>"><button>edit profil</button></a>
+							</div>
+						</div>
 						</form>
 					</div>
 				</div>
