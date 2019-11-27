@@ -40,13 +40,6 @@ function tambah($data)
 }
 
 
-// function hapus($id_produk)
-// {
-// 	global $conn;
-// 	mysqli_query($conn, "DELETE FROM produk WHERE id_produk = $id_produk");
-// 	return mysqli_affected_rows($conn);
-// }
-
 function ubah($data)
 {
 	global $conn;

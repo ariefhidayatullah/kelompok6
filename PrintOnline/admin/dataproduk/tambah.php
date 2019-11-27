@@ -176,12 +176,6 @@ if (isset($_POST["submit"])) {
 								<label for="jenis_produk">masukkan jenis produk : </label>
 								<input type="text" class="form-control form-control-static text-center" id="jenis_produk" name="jenis_produk" required placeholder="masukkan jenis produk....">
 							</div>
-						<div class="form-group row">
-							<div class="col mb-3 mb-sm-0">
-								<label for="deskripsi">Tambahkan Deskripsi : </label>
-								<input type="text" class="form-control form-control-static text-center" id="deskripsi" name="deskripsi" required placeholder="Tambahkan Deskripsi....">
-							</div>
-							
 						</div>
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
