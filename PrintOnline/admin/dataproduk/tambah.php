@@ -179,6 +179,12 @@ if (isset($_POST["submit"])) {
 						</div>
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
+								<label for="jenis_produk">masukkan deskripsi produk : </label>
+								<input type="text" class="form-control form-control-static text-center" id="deskripsi" name="deskripsi" value="">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col mb-3 mb-sm-0">
 								<input type="file" id="gambar" name="gambar">
 							</div>
 						</div>

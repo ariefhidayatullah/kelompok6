@@ -92,6 +92,7 @@ $bahan = query('SELECT * FROM produk');
                       <th>id produk</th>
                       <th>jenis produk</th>
                       <th>gambar</th>
+                      <th>deskripsi</th>
                       <th>aksi</th>
                     </tr>
                     <?php $i = 1; ?>
@@ -101,6 +102,7 @@ $bahan = query('SELECT * FROM produk');
                         <td><?= $row['id_produk']; ?></td>
                         <td><?= $row['jenis_produk']; ?></td>
                         <td><img src="../../frontend/img/<?= $row['gambar']; ?>" width="100"></td>
+                        <td><?= $row['deskripsi']; ?></td>
                         <td>
                           <a href="ubah.php?id=<?= $row['id_produk']; ?>"><button class="btn btn-warning btn-sm">edit</button></a>
                           <a>||</a>

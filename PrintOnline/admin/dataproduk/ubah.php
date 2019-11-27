@@ -194,6 +194,12 @@ if (isset($_POST["submit"])) {
                         </div>
                         <div class="form-group row">
                             <div class="col mb-3 mb-sm-0">
+                                <label for="jenis_produk">deskripsi produk : </label>
+                                <input class="form-control form-control-static" type="text" name="deskripsi" id="deskripsi" required value="<?= $row['deskripsi']; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col mb-3 mb-sm-0">
                                 <label for="gambar">gambar : </label>
                                 <img src="img/<?= $row['gambar']; ?>" width="40"><input type="file" name="gambar" id="gambar">
                             </div>

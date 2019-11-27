@@ -24,6 +24,7 @@ function tambah($data)
 	//ambil data dari tiap elemen dalam form
 	$id_produk = $data['id_produk'];
 	$jenis_produk = $data['jenis_produk'];
+	$deskripsi = $data['deskripsi'];
 
 	//upload Gambar
 
@@ -33,7 +34,7 @@ function tambah($data)
 	}
 
 	//query insert data
-	$query = "INSERT INTO produk VALUES ('$id_produk', '$jenis_produk', '$gambar')";
+	$query = "INSERT INTO produk VALUES ('$id_produk', '$jenis_produk', '$gambar', '$deskripsi')";
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
 }
@@ -52,6 +53,7 @@ function ubah($data)
 
 	$id_produk = $data['id_produk'];
 	$jenis_produk = $data['jenis_produk'];
+	$deskripsi = $data['deskripsi'];
 	$gambarLama = $data['gambarLama'];
 
 	//cek
@@ -66,7 +68,8 @@ function ubah($data)
 	//query insert data
 	$query = "UPDATE produk SET  
 			jenis_produk = '$jenis_produk',
-			gambar = '$gambar'
+			gambar = '$gambar',
+			deskripsi = '$deskripsi'
 			WHERE id_produk = '$id_produk'
 			";
 	mysqli_query($conn, $query);
