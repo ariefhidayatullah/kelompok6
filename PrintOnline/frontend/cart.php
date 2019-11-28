@@ -1,37 +1,46 @@
-<?php
-session_start();
-require 'function.php';
-$bahan = query('SELECT * FROM produk order by rand()');
-$username = $_SESSION["LOGIN"];
+﻿<?php
 
-include 'include/_header.php'; 
-include 'include/navbar.php';
 
-$user = query("SELECT * FROM user where email = '$username'");
-$bahan = query('SELECT * FROM produk order by rand()');
 
-if (isset($_GET["cart"])) {
-	$id_produk = $_GET["id_bahan"];
-
-	//cek data berhasil ditambah atau tidak
-	if (tambahcart($_GET) > 0) {
-		echo "
-			<script>
-				alert('data berhasil masuk keranjang');
-					document.location.href = 'cart.php';
-			</script>
-		";
-	} else {
-		echo "
-			<script>
-				alert('data gagal masuk keranjang'); 
-				document.location.href = 'index.php ?>';
-			</script>
-		";
-	}
-}
 ?>
-	
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Shopping Cart | Bookshop Responsive Bootstrap4 Template</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/icon.png">
+
+	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/plugins.css">
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Cusom css -->
+	<link rel="stylesheet" href="css/custom.css">
+
+	<!-- Modernizer js -->
+	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+</head>
+
+<body>
+	<!--[if lte IE 9]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	<![endif]-->
+
+	<!-- Main wrapper -->
 	<div class="wrapper" id="wrapper">
 
 		<!-- Header -->

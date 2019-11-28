@@ -186,29 +186,31 @@ if (isset($_POST["submit"])) {
                                 <input class="form-control form-control-static" type="hidden" name="id_produk" id="id_produk" required value="<?= $row['id_produk']; ?>">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        
                             <div class="col mb-3 mb-sm-0">
-                                <label for="jenis_produk">jenis produk : </label>
+                                <label for="jenis_produk">Jenis Produk : </label>
                                 <input class="form-control form-control-static" type="text" name="jenis_produk" id="jenis_produk" required value="<?= $row['jenis_produk']; ?>">
                             </div>
-                        </div>
-                        <div class="form-group row">
+                        
                             <div class="col mb-3 mb-sm-0">
-                                <label for="jenis_produk">deskripsi produk : </label>
+                                <label for="deskripsi">Deskripsi Produk : </label>
                                 <input class="form-control form-control-static" type="text" name="deskripsi" id="deskripsi" required value="<?= $row['deskripsi']; ?>">
                             </div>
-                        </div>
-                        <div class="form-group row">
+
+                        
                             <div class="col mb-3 mb-sm-0">
-                                <label for="gambar">gambar : </label>
+                                <label for="gambar">Gambar : </label>
                                 <img src="img/<?= $row['gambar']; ?>" width="40"><input type="file" name="gambar" id="gambar">
-                            </div>
+                            
+                        
+                        </div>
+                        
                         </div>
                         <div class="text-center">
-                            <input class="btn btn-primary" name="submit" type="submit" value="ubah!">
+                            <input class="btn btn-primary" name="submit" type="submit" value="Ubah">
                             </input>
                             <a href="dataproduk.php" class="btn btn-warning" name="submit" type="submit">
-                                kembali
+                                Kembali
                             </a>
                         </div>
                     </form>
