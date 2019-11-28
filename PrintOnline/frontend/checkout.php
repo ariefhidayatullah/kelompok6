@@ -2,11 +2,19 @@
 session_start();
 require 'function.php';
 include 'include/_header.php';
+
+if (isset($_SESSION["LOGIN"])) {
+$username = $_SESSION["LOGIN"];
+$user = query("SELECT * FROM user where email = '$username'");
 $bahan = query('SELECT * FROM produk order by rand()');
 $user = query("SELECT * FROM user");
 $username = $_SESSION["LOGIN"];
 $id_produk = $_GET["id_produk"];
 $id_bahan = $_GET["id_bahan"];
+}else{
+	header("Location:login.php");
+}
+
 
 ?>
 
