@@ -111,15 +111,15 @@ include 'include/navbar.php';
 									<div class="col-lg-6 col-6">
 										<div class="product__info__main">
 											<h1><?= $row['jenis_produk']; ?></h1>
-											<a href="">Harga Satuan : Rp.
-												<?php 
-													$han = $_POST['han'];
-													?>
+											<a href="">
 												<?php
 												if (isset($_POST['han'])) {
+												$han = $_POST['han'];
 												$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
 												$row1 = mysqli_fetch_array($bahan1);
-												echo $row1['harga_satuan']; 
+												echo "Harga Satuan : Rp. ".$row1['harga_satuan'];
+												}else{
+													echo "Silahkan Pilih Bahan";
 												}
 												?>
 												</a>
@@ -149,7 +149,7 @@ include 'include/navbar.php';
 													<?php endforeach ?>
 												</ul>
 												</select>
-												<button class="btn btn-danger" type="submit" value="han">Cari Harga</button><br>
+												<button class="btn btn-danger" type="submit" value="han">Pilih Bahan</button><br>
 												</form>
 											 	</h4><br>
 											<br>
