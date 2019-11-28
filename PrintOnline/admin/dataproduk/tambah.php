@@ -168,7 +168,7 @@ if (isset($_POST["submit"])) {
 					<form class="user" method="post" action="" enctype="multipart/form-data">
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
-								<input type="show" class="form-control form-control-static text-center" id="id_produk" name="id_produk" value="" readonly>
+								<input type="hidden" class="form-control form-control-static text-center" id="id_produk" name="id_produk" value="" readonly>
 							</div>
 						</div>
 						<div class="form-group row">

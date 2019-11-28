@@ -89,11 +89,11 @@ $bahan = query('SELECT * FROM produk');
                   <thead>
                     <tr>
                       <th>No.</th>
-                      <th>id produk</th>
-                      <th>jenis produk</th>
-                      <th>deskripsi</th>
-                      <th>gambar</th>
-                      <th>aksi</th>
+                      <th>Id Produk</th>
+                      <th>Jenis Produk</th>
+                      <th>Deskripsi</th>
+                      <th>Gambar</th>
+                      <th>Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
                     <?php foreach ($bahan as $row) : ?>
