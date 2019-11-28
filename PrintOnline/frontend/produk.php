@@ -157,7 +157,7 @@ include 'include/navbar.php';
 													<form action="cart.php" method="get">
 													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
 													<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
-												<button type="submit" class="btn btn-info" value="cart">Add to
+												<button type="submit" class="btn btn-info" name="cart" value="cart">Add to
 												Cart
 											</button>
 											</form>

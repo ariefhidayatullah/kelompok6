@@ -178,4 +178,19 @@ function registrasi($data)
 	header('Location:login.php');
 	return mysqli_affected_rows($conn);
 }
+
+function tambahcart($data)
+{
+	global $conn;
+	//ambil data dari tiap elemen dalam form
+	$id_produk = $data['id_produk'];
+	$id_bahan = $data['id_bahan'];
+	$username = $_SESSION["LOGIN"];
+	
+
+	//query insert data
+	$query = "INSERT INTO keranjang VALUES ('', '$username', '$id_produk', '$id_bahan')";
+	mysqli_query($conn, $query);
+	return  mysqli_affected_rows($conn);
+}
 ?>
