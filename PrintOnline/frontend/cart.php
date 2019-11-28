@@ -393,46 +393,20 @@ if (isset($_GET["cart"])) {
 				<div class="row">
 					<div class="col-md-12 col-sm-12 ol-lg-12">
 						<form action="#">
-							<div class="table-content wnro__table table-responsive">
-								<table>
-									<thead>
-										<tr class="title-top">
-											<th class="product-thumbnail">Image</th>
-											<th class="product-name"><?php echo $username ?></th>
-											<th class="product-price">Price</th>
-											<th class="product-quantity">Quantity</th>
-											<th class="product-subtotal">Total</th>
-											<th class="product-remove">Remove</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td class="product-thumbnail"><a href="#"><img src="images/product/sm-3/1.jpg" alt="product img"></a></td>
-											<td class="product-name"><a href="#">Natoque penatibus</a></td>
-											<td class="product-price"><span class="amount">$165.00</span></td>
-											<td class="product-quantity"><input type="number" value="1"></td>
-											<td class="product-subtotal">$165.00</td>
-											<td class="product-remove"><a href="#">X</a></td>
-										</tr>
-										<tr>
-											<td class="product-thumbnail"><a href="#"><img src="images/product/sm-3/2.jpg" alt="product img"></a></td>
-											<td class="product-name"><a href="#">Quisque fringilla</a></td>
-											<td class="product-price"><span class="amount">$50.00</span></td>
-											<td class="product-quantity"><input type="number" value="1"></td>
-											<td class="product-subtotal">$50.00</td>
-											<td class="product-remove"><a href="#">X</a></td>
-										</tr>
-										<tr>
-											<td class="product-thumbnail"><a href="#"><img src="images/product/sm-3/3.jpg" alt="product img"></a></td>
-											<td class="product-name"><a href="#">Vestibulum suscipit</a></td>
-											<td class="product-price"><span class="amount">$50.00</span></td>
-											<td class="product-quantity"><input type="number" value="1"></td>
-											<td class="product-subtotal">$50.00</td>
-											<td class="product-remove"><a href="#">X</a></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+                   		<?php 
+                   		$cart = query("SELECT * FROM keranjang where email = '$username'");
+                   		?>
+						
+                   				 <?php foreach ($cart as $row) : ?>
+                     			<?= $row['id_produk']; ?></td>
+                    			    <?= $row['id_produk']; ?>
+                     				<?= $row['nama_bahan']; ?>
+                    				<?= $row['id_produk']; ?>
+                    				<button class="btn btn-warning btn-sm">Checkout</button>
+                          			<button class="btn btn-danger btn-sm">hapus</button>
+                 
+                   				<?php endforeach; ?>
+							
 						</form>
 						<div class="cartbox__btn">
 							<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
