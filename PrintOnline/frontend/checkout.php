@@ -3,20 +3,24 @@ session_start();
 require 'function.php';
 include 'include/_header.php';
 
+if (!isset($_SESSION["LOGIN"])) { }
+
 if (isset($_SESSION["LOGIN"])) {
-$username = $_SESSION["LOGIN"];
-$user = query("SELECT * FROM user where email = '$username'");
-$bahan = query('SELECT * FROM produk order by rand()');
-$username = $_SESSION["LOGIN"];
-$id_produk = $_GET["id_produk"];
-$id_bahan = $_GET["id_bahan"];
-}else{
-	header("Location:login.php");
+	$username = $_SESSION["LOGIN"];
+	$user = query("SELECT * FROM user where email = '$username'");
+	$bahan = query('SELECT * FROM produk order by rand()');
+	$username = $_SESSION["LOGIN"];
+	$id_produk = $_GET["id_produk"];
+	$id_bahan = $_GET["id_bahan"];
+} else {
+	echo "<script> alert('silahkan login terlebih dahulu!');</script>";
+	echo "<script>Location ='login.php'; </script>";
+	return false;
 }
 
 
-?>
 
+?>
 
 <!-- Main wrapper -->
 <div class="wrapper" id="wrapper">
@@ -116,11 +120,11 @@ $id_bahan = $_GET["id_bahan"];
 							<div class="input_box">
 								<label>Nama <span>*</span></label>
 								<input type="text" name="nama" disabled value="<?php
-								$sql = " Select * FROM user where email = '$username'";
-								$hasil = mysqli_query($conn, $sql);
-								$row = mysqli_fetch_array($hasil);
-								echo $row['nama_user'];
-								?>">
+																				$sql = " Select * FROM user where email = '$username'";
+																				$hasil = mysqli_query($conn, $sql);
+																				$row = mysqli_fetch_array($hasil);
+																				echo $row['nama_user'];
+																				?>">
 							</div>
 							<div class="input_box">
 								<label>Email <span>*</span></label>
