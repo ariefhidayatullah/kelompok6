@@ -186,11 +186,55 @@ function tambahcart($data)
 	$id_produk = $data['id_produk'];
 	$id_bahan = $data['id_bahan'];
 	$username = $_SESSION["LOGIN"];
-	
+
 
 	//query insert data
 	$query = "INSERT INTO keranjang VALUES ('', '$username', '$id_produk', '$id_bahan')";
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
 }
-?>
+
+function ubahprofil($data)
+{
+	global $conn;
+	// ambil data dari tiap elemen
+	$id_user = $data['id_user'];
+	$gambaruser = $data['gambarLama'];
+	$nama_user = $data['nama_user'];
+	$email = $data['email'];
+	$username = $data['username'];
+	$password = $data['password'];
+	$jenis_kelamin = $data['jenis_kelamin'];
+	$nohp_user = $data['nohp_user'];
+	$provinsi = $data['provinsi'];
+	$kabupaten = $data['kabupaten'];
+	$kecamatan = $data['kecamatan'];
+	$alamat = $data['alamat'];
+	$kodepos = $data['kodepos'];
+	//cek
+
+	if ($_FILES['gambar']['error'] === 4) {
+		$profil_user = $gambaruser;
+	} else {
+		$profil_user = upload();
+	}
+
+	//query insert data
+	$query = "UPDATE user SET  
+			profil_user = '$gambaruser',
+			nama_user = '$nama_user' ,
+			email = '$email',
+			username = '$username',
+			password = '$password',
+			jenis_kelamin = '$jenis_kelamin',
+			nohp_user = '$nohp_user',
+			provinsi = '$provinsi',
+			kabupaten = '$kabupaten',
+			kecamatan = '$kecamatan',
+			alamat = '$alamat',
+			kodepos = '$kodepos'
+			WHERE id_user = '$id_user'
+			";
+	mysqli_query($conn, $query);
+	return  mysqli_affected_rows($conn);
+}

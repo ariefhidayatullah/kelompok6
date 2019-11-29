@@ -4,6 +4,25 @@ require 'function.php';
 include 'include/_header.php';
 $id_user = $_GET['id'];
 $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
+
+if (isset($_POST["submit"])) {
+    //cek data berhasil diubah atau tidak
+    if (ubahprofil($_POST) > 0) {
+        echo "
+			<script>
+				alert('data berhasil diubah');
+					document.location.href = 'dataproduk.php';
+			</script>
+		";
+    } else {
+        echo "
+			<script>
+				alert('data gagal diubah'); 
+			</script>
+		";
+    }
+}
+
 ?>
 
 
@@ -30,71 +49,103 @@ $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <?php foreach ($bahan as $row) : ?>
-                <div class="col-lg-12 col-12">
-                    <div class="contact-form-wrap">
-                        <form class="user" action="" method="POST">
-                            <div class="account__form">
-                                <input type="hidden" name="id_user" id="id_user" value="<?= $row['id_user']; ?>">
-                                <div class="single-contact-form">
-                                    <label>nama <span>:</span></label>
+    <section class="wn_contact_area bg--white pt--80 pb--80">
+        <div class="container">
+            <div class="row">
+                <?php foreach ($bahan as $row) : ?>
+                    <div class="col-lg-10 col-12 offset-1">
+                        <div class="account__form">
+                            <form class="user" action="" method="POST">
+                                <div class="contact-form-wrap">
+                                    <input type="hidden" name="id_user" id="id_user" value="<?= $row['id_user']; ?>">
+                                    <div class="single-contact-form space-between">
+                                        <label>nama <span>:</span> <input class="input__box" name="nama_user" id="nama_user" value="<?= $row['nama_user']; ?>"></label>
+                                        <label>email <span>:</span><input class="input__box" name="email" id="email" value="<?= $row['email']; ?>"></label>
+                                    </div>
+                                    <div class="single-contact-form space-between">
+                                        <label>username <span>:</span><input class="input__box" name="username" id="username" value="<?= $row['username']; ?>"></label>
+                                        <label>password <span>:</span><input class="input__box" name="password" id="password" value="<?= $row['password']; ?>"></label>
+                                    </div>
+                                    <div class="single-contact-form space-between">
+                                        <label>jenis kelamin <span>:</span><input class="input__box" name="jenis_kelamin" id="jenis_kelamin" value="<?= $row['jenis_kelamin']; ?>"></label>
+                                        <label>no hp <span>:</span><input class="input__box" name="nohp_user" id="nohp_user" value="<?= $row['nohp_user']; ?>"></label>
+                                    </div>
+                                    <div class="single-contact-form space-between">
+                                        <label for="Provinsi">Provinsi <select class="form-control" id="provinsi" name="provinsi"></select></label>
+                                        <label for="Kabupaten">Kabupaten <select class="form-control" id="kabupaten" name="kabupaten"></select></label>
+                                        <label for="Kecamatan">Kecamatan<select class="form-control" id="kecamatan" name="kecamatan"></select></label>
+
+                                    </div>
+                                    <div class="single-contact-form space-between">
+                                        <label>alamat <span>:</span><input class="input__box" name="alamat" id="alamat" value="<?= $row['alamat']; ?>"></label>
+                                        <label>kode pos <span>:</span><input class="input__box" name="kodepos" id="kodepos" value="<?= $row['kodepos']; ?>"></label>
+                                    </div>
+                                    <div class="form__btn">
+                                        <button name="submit" type="submit">edit profil</button>
+                                    </div>
                                 </div>
-                                <div class="single-contact-form space-between">
-                                    <input class="input__box" name="nama_user" id="nama_user" value="<?= $row['nama_user']; ?>">
-                                </div>
-                                <div class="single-contact-form space-between">
-                                    <label>email <span>:</span></label>
-                                </div>
-                                <div class="single-contact-form space-between">
-                                    <input class="input__box" name="email" id="email" value="<?= $row['email']; ?>">
-                                </div>
-                                <div class="single-contact-form space-between">
-                                    <label>username <span>:</span></label>
-                                </div>
-                                <div class="single-contact-form space-between">
-                                    <input class="input__box" name="username" id="username" value="<?= $row['username']; ?>">
-                                </div>
-                                <div class="single-contact-form space-between">
-                                    <label>password <span>:</span></label>
-                                </div>
-                                <div class="input__box">*****
-                                </div>
-                                <div class="single-contact-form space-between">
-                                    <label>jenis kelamin <span>:</span></label>
-                                </div>
-                                <div class="single-contact-form space-between">
-                                    <input class="input__box" name="jenis_kelamin" id="jenis_kelamin" value="<?= $row['jenis_kelamin']; ?>">
-                                </div>
-                                <div class="single-contact-form space-between">
-                                    <label>no hp <span>:</span></label>
-                                </div>
-                                <div class="single-contact-form space-between">
-                                    <input class="input__box" name="nohp_user" id="nohp_user" value="<?= $row['nohp_user']; ?>">
-                                </div>
-                            </div>
-                            <div class="input__box">
-                                <label>alamat <span>:</span></label>
-                            </div>
-                            <div class="input__box"><?= $row['alamat']; ?>
-                            </div>
-                            <div class="input__box">
-                                <label>kode pos <span>:</span></label>
-                            </div>
-                            <div class="input__box"><?= $row['kodepos']; ?>
-                            </div>
-                            <div class="form__btn">
-                                <button name="submit" type="submit">edit profil</button>
-                            </div>
+                            </form>
+                        </div>
                     </div>
-                    </form>
-                </div>
-        </div>
-    <?php endforeach; ?>
-    </div>
+                <?php endforeach; ?>
+            </div>
+    </section>
 </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#provinsi").append('<option value="">Pilih</option>');
+        $("#kabupaten").html('');
+        $("#kecamatan").html('');
+        $("#kabupaten").append('<option value="">Pilih</option>');
+        $("#kecamatan").append('<option value="">Pilih</option>');
+        url = 'include/get_provinsi.php';
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function(result) {
+                for (var i = 0; i < result.length; i++)
+                    $("#provinsi").append('<option value="' + result[i].id_prov + '">' + result[
+                        i].nama_prov + '</option>');
+            }
+        });
+    });
+    $("#provinsi").change(function() {
+        var id_prov = $("#provinsi").val();
+        var url = 'include/get_kabupaten.php?id_prov=' + id_prov;
+        $("#kabupaten").html('');
+        $("#kecamatan").html('');
+        $("#kabupaten").append('<option value="">Pilih</option>');
+        $("#kecamatan").append('<option value="">Pilih</option>');
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function(result) {
+                for (var i = 0; i < result.length; i++)
+                    $("#kabupaten").append('<option value="' + result[i].id_kabkot + '">' + result[
+                        i].nama_kabkot + '</option>');
+            }
+        });
+    });
+    $("#kabupaten").change(function() {
+        var id_kabkot = $("#kabupaten").val();
+        var url = 'include/get_kecamatan.php?id_kabkot=' + id_kabkot;
+        $("#kecamatan").html('');
+        $("#kecamatan").append('<option value="">Pilih</option>');
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function(result) {
+                for (var i = 0; i < result.length; i++)
+                    $("#kecamatan").append('<option value="' + result[i].id_kec + '">' + result[
+                        i].nama_kec + '</option>');
+            }
+        });
+    });
+</script>
 
 <?php
 include 'include/_footer.php';
