@@ -100,9 +100,9 @@ if ($datakode) {
 				<div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">login Admin / User</h6>
-						<a class="collapse-item" href="../auth/register.php">tambah akun admin</a>
-						<a class="collapse-item" href="../auth/datakaryawan/datakaryawan.php">data karyawan</a>
-						<a class="collapse-item" href="../pengguna/datauser.php">list user / pengguna</a>
+						<a class="collapse-item" href="../auth/register.php">Tambah Akun Admin</a>
+						<a class="collapse-item" href="../auth/datakaryawan/datakaryawan.php">Data Karyawan</a>
+						<a class="collapse-item" href="../pengguna/datauser.php">List user / Pengguna</a>
 					</div>
 				</div>
 			</li>
@@ -194,15 +194,15 @@ if ($datakode) {
 						</div>
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
-								<label for="nama_bahan">nama bahan :</label>
-								<input type="text" class="form-control form-control-static text-center" id="nama_bahan" name="nama_bahan" required placeholder="masukkan nama bahan....">
+								<label for="nama_bahan">Nama Bahan :</label>
+								<input type="text" class="form-control form-control-static text-center" id="nama_bahan" name="nama_bahan" required placeholder="Masukkan Nama Bahan">
 							</div>
 						</div>
-						<div class="form-group row">
+						<div class="form-group row  " >
 							<div class="col mb-3 mb-sm-0">
-								<label for="id_produk">id produk : </label>
+								<label for="id_produk">Id Produk : </label>
 								<select class="form-control" name="id_produk" id="id_produk">
-									<option>pilih produk : </option>
+									<option> Pilih Produk : </option>
 									<?php
 									$q = mysqli_query($conn, "SELECT * FROM produk");
 									while ($row = mysqli_fetch_array($q)) {
@@ -214,19 +214,19 @@ if ($datakode) {
 
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
-								<label for="stok">stok :</label>
-								<input type="text" class="form-control form-control-static text-center" id="stok" name="stok" required placeholder="masukkan jumlah stok....">
+								<label for="stok">Stok :</label>
+								<input type="text" class="form-control form-control-static text-center" id="stok" name="stok" required placeholder="Masukkan Jumlah Stok">
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
-								<label for="harga_satuan">harga satuan :</label>
-								<input type="text" class="form-control form-control-static text-center" id="harga_satuan" name="harga_satuan" required placeholder="masukkan jumlah harga....">
+								<label for="harga_satuan">Harga Satuan :</label>
+								<input type="text" class="form-control form-control-static text-center" id="harga_satuan" name="harga_satuan" required placeholder="Masukkan Jumlah Harga">
 							</div>
 						</div>
 						<div class="pull-right text-center">
 							<a href="databahan.php" class="btn btn-warning">Kembali</a>
-							<input class="btn btn-primary" name="submit" type="submit" value="tambahkan!"></input>
+							<input class="btn btn-primary" name="submit" type="submit" value="Tambahkan!"></input>
 						</div>
 					</form>
 				</div>

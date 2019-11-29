@@ -92,9 +92,9 @@ if (isset($_POST["submit"])) {
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">login Admin / User</h6>
-                        <a class="collapse-item active" href="../auth/register.php">tambah akun admin</a>
-                        <a class="collapse-item" href="../auth/register.php">list user / pengguna</a>
+                        <h6 class="collapse-header">Login Admin / User</h6>
+                        <a class="collapse-item active" href="../auth/register.php">Tambah Akun Admin</a>
+                        <a class="collapse-item" href="../auth/register.php">List User / Pengguna</a>
                     </div>
                 </div>
             </li>
@@ -209,7 +209,7 @@ if (isset($_POST["submit"])) {
                         <div class="text-center">
                             <input class="btn btn-primary" name="submit" type="submit" value="Ubah">
                             </input>
-                            <a href="dataproduk.php" class="btn btn-warning" name="submit" type="submit">
+                            <a href="dataproduk.php" class="btn btn-Warning" name="submit" type="submit">
                                 Kembali
                             </a>
                         </div>
