@@ -1,35 +1,48 @@
-<?php
-session_start();
-require 'function.php';
-$bahan = query('SELECT * FROM produk order by rand()');
-$username = $_SESSION["LOGIN"];
+﻿<?php
 
 include 'include/_header.php';
 
-$user = query("SELECT * FROM user where email = '$username'");
-$bahan = query('SELECT * FROM produk order by rand()');
 
-if (isset($_GET["cart"])) {
-	$id_produk = $_GET["id_bahan"];
-
-	//cek data berhasil ditambah atau tidak
-	if (tambahcart($_GET) > 0) {
-		echo "
-			<script>
-				alert('data berhasil masuk keranjang');
-					document.location.href = 'cart.php';
-			</script>
-		";
-	} else {
-		echo "
-			<script>
-				alert('data gagal masuk keranjang'); 
-				document.location.href = 'index.php ?>';
-			</script>
-		";
-	}
-}
 ?>
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Shopping Cart | Bookshop Responsive Bootstrap4 Template</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/icon.png">
+
+	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/plugins.css">
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Cusom css -->
+	<link rel="stylesheet" href="css/custom.css">
+
+	<!-- Modernizer js -->
+	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+</head>
+
+<body>
+	<!--[if lte IE 9]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	<![endif]-->
+
+	<!-- Main wrapper -->
+	<div class="wrapper" id="wrapper">
 
 <div class="wrapper" id="wrapper">
 
@@ -154,21 +167,40 @@ if (isset($_GET["cart"])) {
 		<div class="footer-static-top">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-12">
-						<div class="footer__widget footer__menu">
-							<div class="ft__logo">
-								<a href="index.html">
-									<img src="images/logo/3.png" alt="logo">
-								</a>
-								<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered duskam alteration variations of passages</p>
-							</div>
-							<div class="footer__content">
-								<ul class="social__net social__net--2 d-flex justify-content-center">
-									<li><a href="#"><i class="bi bi-facebook"></i></a></li>
-									<li><a href="#"><i class="bi bi-google"></i></a></li>
-									<li><a href="#"><i class="bi bi-twitter"></i></a></li>
-									<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-									<li><a href="#"><i class="bi bi-youtube"></i></a></li>
+					<div class="col-md-12 col-sm-12 ol-lg-12">
+						<form action="#">
+                   		<?php 
+                   		$cart = query("SELECT * FROM keranjang where email = '$username'");
+                   		?>
+						
+                   				 <?php foreach ($cart as $row) : ?>
+                     			<?= $row['id_produk']; ?></td>
+                    			    <?= $row['id_produk']; ?>
+                     				<?= $row['nama_bahan']; ?>
+                    				<?= $row['id_produk']; ?>
+                    				<button class="btn btn-warning btn-sm">Checkout</button>
+                          			<button class="btn btn-danger btn-sm">hapus</button>
+                 
+                   				<?php endforeach; ?>
+							
+						</form>
+						<div class="cartbox__btn">
+							<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
+								<li><a href="#">Coupon Code</a></li>
+								<li><a href="#">Apply Code</a></li>
+								<li><a href="#">Update Cart</a></li>
+								<li><a href="#">Check Out</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 offset-lg-6">
+						<div class="cartbox__total__area">
+							<div class="cartbox-total d-flex justify-content-between">
+								<ul class="cart__total__list">
+									<li>Cart total</li>
+									<li>Sub Total</li>
 								</ul>
 								<ul class="mainmenu d-flex justify-content-center">
 									<li><a href="index.html">Trending</a></li>

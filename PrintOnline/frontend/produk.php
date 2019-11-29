@@ -47,19 +47,18 @@ include 'include/navbar.php';
 											<a href="1.jpg"><img src="img/<?= $row['gambar']; ?>" alt=""></a>
 										</div>
 									</div>
-								</div>
-								<div class="col-lg-6 col-6">
-									<div class="product__info__main">
-										<h1><?= $row['jenis_produk']; ?></h1>
-										<a href="">Harga Satuan : Rp.
-											<?php
-												$han = $_POST['han'];
-												?>
-											<?php
+									<div class="col-lg-6 col-6">
+										<div class="product__info__main">
+											<h1><?= $row['jenis_produk']; ?></h1>
+											<a href="">
+												<?php
 												if (isset($_POST['han'])) {
-													$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
-													$row1 = mysqli_fetch_array($bahan1);
-													echo $row1['harga_satuan'];
+												$han = $_POST['han'];
+												$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
+												$row1 = mysqli_fetch_array($bahan1);
+												echo "Harga Satuan : Rp. ".$row1['harga_satuan'];
+												}else{
+													echo "Silahkan Pilih Bahan";
 												}
 												?>
 										</a>
@@ -91,14 +90,14 @@ include 'include/navbar.php';
 														<?php endforeach ?>
 													</ul>
 												</select>
-												<button class="btn btn-danger" type="submit" value="han">Cari Harga</button><br>
-										</form>
-										</h4><br>
-										<br>
-										<div>
-											<form action="cart.php" method="get">
-												<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
-												<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
+												<button class="btn btn-danger" type="submit" value="han">Pilih Bahan</button><br>
+												</form>
+											 	</h4><br>
+											<br>
+												<div>
+													<form action="cart.php" method="get">
+													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
+													<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
 												<button type="submit" class="btn btn-info" name="cart" value="cart">Add to
 													Cart
 												</button>

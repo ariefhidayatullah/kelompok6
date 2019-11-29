@@ -34,7 +34,7 @@ function tambah($data)
 	}
 
 	//query insert data
-	$query = "INSERT INTO produk VALUES ('$id_produk', '$jenis_produk', '$gambar', '$deskripsi')";
+	$query = "INSERT INTO produk VALUES ('$id_produk', '$jenis_produk', '$deskripsi', '$gambar')";
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
 }
@@ -61,8 +61,8 @@ function ubah($data)
 	//query insert data
 	$query = "UPDATE produk SET  
 			jenis_produk = '$jenis_produk',
-			gambar = '$gambar',
-			deskripsi = '$deskripsi'
+			deskripsi = '$deskripsi' ,
+			gambar = '$gambar'
 			WHERE id_produk = '$id_produk'
 			";
 	mysqli_query($conn, $query);

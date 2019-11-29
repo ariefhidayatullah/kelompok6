@@ -89,11 +89,11 @@ $bahan = query('SELECT * FROM produk');
                   <thead>
                     <tr>
                       <th>No.</th>
-                      <th>id produk</th>
-                      <th>jenis produk</th>
-                      <th>gambar</th>
-                      <th>deskripsi</th>
-                      <th>aksi</th>
+                      <th>Id Produk</th>
+                      <th>Jenis Produk</th>
+                      <th>Deskripsi</th>
+                      <th>Gambar</th>
+                      <th>Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
                     <?php foreach ($bahan as $row) : ?>
@@ -101,8 +101,9 @@ $bahan = query('SELECT * FROM produk');
                         <td><?= $i; ?></td>
                         <td><?= $row['id_produk']; ?></td>
                         <td><?= $row['jenis_produk']; ?></td>
-                        <td><img src="../../frontend/img/<?= $row['gambar']; ?>" width="100"></td>
                         <td><?= $row['deskripsi']; ?></td>
+                        <td><img src="../../frontend/img/<?= $row['gambar']; ?>" width="100"></td>
+                        
                         <td>
                           <a href="ubah.php?id=<?= $row['id_produk']; ?>"><button class="btn btn-warning btn-sm">edit</button></a>
                           <a>||</a>
