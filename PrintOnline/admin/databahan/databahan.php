@@ -1,6 +1,7 @@
 <?php
 require 'function.php';
 $bahan = query('SELECT * FROM bahan');
+$produk = query('SELECT * FROM produk where jenis_produk');
 // foreach ($mahasiswa as $kel) {
 // 	echo $kel['id'];
 // }
@@ -168,6 +169,7 @@ $bahan = query('SELECT * FROM bahan');
                       <th>Id Bahan</th>
                       <th>Nama Bahan</th>
                       <th>Id Produk</th>
+                      <th>Nama Produk</th>
                       <th>Stok</th>
                       <th>Sarga Satuan</th>
                       <th>Aksi</th>
@@ -177,8 +179,9 @@ $bahan = query('SELECT * FROM bahan');
                       <tr>
                         <td><?= $i; ?></td>
                         <td><?= $row['id_bahan']; ?></td>
-                        <td><?= $row['nama_bahan']; ?></td>
+                        <td><?= $row['nama_bahan']; ?></td> 
                         <td><?= $row['id_produk']; ?></td>
+                        <td><?= $row['nama_produk']; ?></td> 
                         <td><?= $row['stok']; ?></td>
                         <td><?= $row['harga_satuan']; ?></td>
                         <td>

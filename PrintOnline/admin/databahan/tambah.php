@@ -198,11 +198,11 @@ if ($datakode) {
 								<input type="text" class="form-control form-control-static text-center" id="nama_bahan" name="nama_bahan" required placeholder="Masukkan Nama Bahan">
 							</div>
 						</div>
-						<div class="form-group row  " >
+						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
 								<label for="id_produk">Id Produk : </label>
 								<select class="form-control" name="id_produk" id="id_produk">
-									<option> Pilih Produk : </option>
+									<option>Pilih Produk : </option>
 									<?php
 									$q = mysqli_query($conn, "SELECT * FROM produk");
 									while ($row = mysqli_fetch_array($q)) {
