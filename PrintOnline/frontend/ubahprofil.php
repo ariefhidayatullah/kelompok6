@@ -59,26 +59,29 @@ if (isset($_POST["submit"])) {
                                 <div class="contact-form-wrap">
                                     <input type="hidden" name="id_user" id="id_user" value="<?= $row['id_user']; ?>">
                                     <div class="single-contact-form space-between">
-                                        <label>nama <span>:</span> <input class="input__box" name="nama_user" id="nama_user" value="<?= $row['nama_user']; ?>"></label>
-                                        <label>email <span>:</span><input class="input__box" name="email" id="email" value="<?= $row['email']; ?>"></label>
+                                        <label>nama <span>:</span> <input class="input__box" name="nama_user" id="nama_user" required value="<?= $row['nama_user']; ?>"></label>
+                                        <label>email <span>:</span><input class="input__box" name="email" id="email" required value="<?= $row['email']; ?>"></label>
                                     </div>
                                     <div class="single-contact-form space-between">
-                                        <label>username <span>:</span><input class="input__box" name="username" id="username" value="<?= $row['username']; ?>"></label>
-                                        <label>password <span>:</span><input class="input__box" name="password" id="password" value="<?= $row['password']; ?>"></label>
+                                        <label>username <span>:</span><input class="input__box" name="username" id="username" required value="<?= $row['username']; ?>"></label>
+                                        <label>password <span>:</span><input class="input__box" name="password" id="password" required></label>
+                                    </div>
+                                    <div class=" single-contact-form space-between">
+                                        <label>jenis kelamin <span>:</span><input class="input__box" name="jenis_kelamin" id="jenis_kelamin" required value="<?= $row['jenis_kelamin']; ?>"></label>
+                                        <label>no hp <span>:</span><input class="input__box" name="nohp_user" id="nohp_user" required value="<?= $row['nohp_user']; ?>"></label>
                                     </div>
                                     <div class="single-contact-form space-between">
-                                        <label>jenis kelamin <span>:</span><input class="input__box" name="jenis_kelamin" id="jenis_kelamin" value="<?= $row['jenis_kelamin']; ?>"></label>
-                                        <label>no hp <span>:</span><input class="input__box" name="nohp_user" id="nohp_user" value="<?= $row['nohp_user']; ?>"></label>
-                                    </div>
-                                    <div class="single-contact-form space-between">
-                                        <label for="Provinsi">Provinsi <select class="form-control" id="provinsi" name="provinsi"></select></label>
-                                        <label for="Kabupaten">Kabupaten <select class="form-control" id="kabupaten" name="kabupaten"></select></label>
-                                        <label for="Kecamatan">Kecamatan<select class="form-control" id="kecamatan" name="kecamatan"></select></label>
+                                        <label for="Provinsi">Provinsi <select class="form-control" id="provinsi" name="provinsi" required></select></label>
+                                        <label for="Kabupaten">Kabupaten <select class="form-control" id="kabupaten" name="kabupaten" required></select></label>
+                                        <label for="Kecamatan">Kecamatan<select class="form-control" id="kecamatan" name="kecamatan" required></select></label>
 
                                     </div>
                                     <div class="single-contact-form space-between">
-                                        <label>alamat <span>:</span><input class="input__box" name="alamat" id="alamat" value="<?= $row['alamat']; ?>"></label>
-                                        <label>kode pos <span>:</span><input class="input__box" name="kodepos" id="kodepos" value="<?= $row['kodepos']; ?>"></label>
+                                        <label>alamat <span>:</span><input class="input__box" name="alamat" id="alamat" required value="<?= $row['alamat']; ?>"></label>
+                                        <label>kode pos <span>:</span><input class="input__box" name="kodepos" id="kodepos" required value="<?= $row['kodepos']; ?>"></label>
+                                    </div>
+                                    <div class="space-between">
+                                        <input type="file" id="gambar" name="gambar">
                                     </div>
                                     <div class="form__btn">
                                         <button name="submit" type="submit">edit profil</button>

@@ -174,7 +174,7 @@ if (isset($_POST["submit"])) {
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
 								<label for="jenis_produk">Masukkan Jenis Produk : </label>
-								<input type="text" class="form-control form-control-static text-center" id="jenis_produk" name="jenis_produk" required placeholder="Masukkan">
+								<input type="text" class="form-control form-control-static text-center" id="jenis_produk" name="jenis_produk" required placeholder="Masukkan jenis produk">
 							</div>
 					
 						
