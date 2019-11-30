@@ -34,6 +34,7 @@ include 'include/navbar.php';
 	</div>
 	<!-- End Bradcaump area -->
 	<!-- Start main Content -->
+	<div>
 	<div class="maincontent bg--white pt--80 pb--55">
 		<?php foreach ($mhs as $row) : ?>
 			<div class="container">
@@ -47,7 +48,7 @@ include 'include/navbar.php';
 											<a href="1.jpg"><img src="img/<?= $row['gambar']; ?>" alt=""></a>
 										</div>
 									</div>
-									<div class="col-lg-6 col-6">
+									<div class="col-lg-6 col-12">
 										<div class="product__info__main">
 											<h1><?= $row['jenis_produk']; ?></h1>
 											<a href="">
@@ -75,6 +76,7 @@ include 'include/navbar.php';
 												?>
 											</p>
 										</div>
+									</div>
 										<?php
 											$bahan = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk'");
 											$row = mysqli_fetch_array($bahan);

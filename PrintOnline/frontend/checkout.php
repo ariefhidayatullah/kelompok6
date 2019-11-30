@@ -120,11 +120,11 @@ if (isset($_SESSION["LOGIN"])) {
 							<div class="input_box">
 								<label>Nama <span>*</span></label>
 								<input type="text" name="nama" disabled value="<?php
-																				$sql = " Select * FROM user where email = '$username'";
-																				$hasil = mysqli_query($conn, $sql);
-																				$row = mysqli_fetch_array($hasil);
-																				echo $row['nama_user'];
-																				?>">
+								$sql = " Select * FROM user where email = '$username'";
+								$hasil = mysqli_query($conn, $sql);
+								$row = mysqli_fetch_array($hasil);
+								echo $row['nama_user'];
+								?>">
 							</div>
 							<div class="input_box">
 								<label>Email <span>*</span></label>

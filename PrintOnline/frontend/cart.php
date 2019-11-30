@@ -1,8 +1,38 @@
 ﻿<?php
-
+session_start();
 include 'include/_header.php';
+require 'function.php';
 
+if (isset($_SESSION["LOGIN"])) {
 
+	$username = $_SESSION["LOGIN"];
+	$user = query("SELECT * FROM user where email = '$username'");
+	$bahan = query('SELECT * FROM produk order by rand()');
+
+if (isset($_GET["cart"])) {
+
+	//cek data berhasil ditambah atau tidak
+	if (tambahcart($_GET) > 0) {
+		echo "
+			<script>
+				alert('data berhasil ditambah');
+				document.location.href = 'cart.php';
+			</script>
+		";
+	} else {
+		echo "
+			<script>
+				alert('data gagal ditambah'); 
+				
+			</script>
+		";
+	}
+}
+} else {
+echo "<script> alert('silahkan login terlebih dahulu!');</script>";
+echo "<script>Location ='login.php'; </script>";
+
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -89,75 +119,7 @@ include 'include/_header.php';
 				<div class="col-md-12 col-sm-12 ol-lg-12">
 					<form action="#">
 						<div class="table-content wnro__table table-responsive">
-							<table>
-								<thead>
-									<tr class="title-top">
-										<th class="product-thumbnail">Image</th>
-										<th class="product-name"><?php echo $username ?></th>
-										<th class="product-price">Price</th>
-										<th class="product-quantity">Quantity</th>
-										<th class="product-subtotal">Total</th>
-										<th class="product-remove">Remove</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="product-thumbnail"><a href="#"><img src="images/product/sm-3/1.jpg" alt="product img"></a></td>
-										<td class="product-name"><a href="#">Natoque penatibus</a></td>
-										<td class="product-price"><span class="amount">$165.00</span></td>
-										<td class="product-quantity"><input type="number" value="1"></td>
-										<td class="product-subtotal">$165.00</td>
-										<td class="product-remove"><a href="#">X</a></td>
-									</tr>
-									<tr>
-										<td class="product-thumbnail"><a href="#"><img src="images/product/sm-3/2.jpg" alt="product img"></a></td>
-										<td class="product-name"><a href="#">Quisque fringilla</a></td>
-										<td class="product-price"><span class="amount">$50.00</span></td>
-										<td class="product-quantity"><input type="number" value="1"></td>
-										<td class="product-subtotal">$50.00</td>
-										<td class="product-remove"><a href="#">X</a></td>
-									</tr>
-									<tr>
-										<td class="product-thumbnail"><a href="#"><img src="images/product/sm-3/3.jpg" alt="product img"></a></td>
-										<td class="product-name"><a href="#">Vestibulum suscipit</a></td>
-										<td class="product-price"><span class="amount">$50.00</span></td>
-										<td class="product-quantity"><input type="number" value="1"></td>
-										<td class="product-subtotal">$50.00</td>
-										<td class="product-remove"><a href="#">X</a></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</form>
-					<div class="cartbox__btn">
-						<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
-							<li><a href="#">Coupon Code</a></li>
-							<li><a href="#">Apply Code</a></li>
-							<li><a href="#">Update Cart</a></li>
-							<li><a href="#">Check Out</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
 			<div class="row">
-				<div class="col-lg-6 offset-lg-6">
-					<div class="cartbox__total__area">
-						<div class="cartbox-total d-flex justify-content-between">
-							<ul class="cart__total__list">
-								<li>Cart total</li>
-								<li>Sub Total</li>
-							</ul>
-							<ul class="cart__total__tk">
-								<li>$70</li>
-								<li>$70</li>
-							</ul>
-						</div>
-						<div class="cart__total__amount">
-							<span>Grand Total</span>
-							<span>$140</span>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -168,22 +130,33 @@ include 'include/_header.php';
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 col-sm-12 ol-lg-12">
-						<form action="#">
-                   		<?php 
-                   		$cart = query("SELECT * FROM keranjang where email = '$username'");
-                   		?>
-						
-                   				 <?php foreach ($cart as $row) : ?>
-                     			<?= $row['id_produk']; ?></td>
-                    			    <?= $row['id_produk']; ?>
-                     				<?= $row['nama_bahan']; ?>
-                    				<?= $row['id_produk']; ?>
-                    				<button class="btn btn-warning btn-sm">Checkout</button>
-                          			<button class="btn btn-danger btn-sm">hapus</button>
-                 
-                   				<?php endforeach; ?>
-							
-						</form>
+						<table>
+							<tr>
+								<th>Jenis Produk</th>
+								<th>Nama Bahan</th>
+								<th>Pilihan</th>
+							</tr>
+			<?php
+			$query = mysqli_query($conn, "SELECT * FROM keranjang WHERE username = '$username'");
+			while ($data = mysqli_fetch_array($query)) {
+            $id_produk     = $data['id_produk'];
+            $nama_bahan       = $data['nama_bahan'];
+            ?>
+            <tr>
+            	<td><?php 
+				$ba = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
+				$ro = mysqli_fetch_array($ba);
+				echo $ro['jenis_produk'];
+            	 ?></td>
+            	<td><?php echo $nama_bahan ?></td>
+            	<td>
+            		<button class="btn btn-success btn-sm">Checkout</button></a>
+                    <a onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
+            	</td>
+            </tr>
+    	    <?php } ?>
+					</table>
+                   	</div>
 						<div class="cartbox__btn">
 							<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
 								<li><a href="#">Coupon Code</a></li>
@@ -202,14 +175,14 @@ include 'include/_header.php';
 									<li>Cart total</li>
 									<li>Sub Total</li>
 								</ul>
-								<ul class="mainmenu d-flex justify-content-center">
+								<!-- <ul class="mainmenu d-flex justify-content-center">
 									<li><a href="index.html">Trending</a></li>
 									<li><a href="index.html">Best Seller</a></li>
 									<li><a href="index.html">All Product</a></li>
 									<li><a href="index.html">Wishlist</a></li>
 									<li><a href="index.html">Blog</a></li>
 									<li><a href="index.html">Contact</a></li>
-								</ul>
+								</ul> -->
 							</div>
 						</div>
 					</div>
