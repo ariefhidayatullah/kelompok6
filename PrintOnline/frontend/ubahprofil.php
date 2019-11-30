@@ -11,7 +11,7 @@ if (isset($_POST["submit"])) {
         echo "
 			<script>
 				alert('data berhasil diubah');
-					document.location.href = 'dataproduk.php';
+					document.location.href = 'profil.php';
 			</script>
 		";
     } else {
@@ -64,16 +64,16 @@ if (isset($_POST["submit"])) {
                                     </div>
                                     <div class="single-contact-form space-between">
                                         <label>username <span>:</span><input class="input__box" name="username" id="username" required value="<?= $row['username']; ?>"></label>
-                                        <label>password <span>:</span><input class="input__box" name="password" id="password" required></label>
+                                        <label>password <span>:</span><input class="input__box" name="password" id="password" required value="<?= $row['password']; ?>"></label>
                                     </div>
                                     <div class=" single-contact-form space-between">
                                         <label>jenis kelamin <span>:</span><input class="input__box" name="jenis_kelamin" id="jenis_kelamin" required value="<?= $row['jenis_kelamin']; ?>"></label>
                                         <label>no hp <span>:</span><input class="input__box" name="nohp_user" id="nohp_user" required value="<?= $row['nohp_user']; ?>"></label>
                                     </div>
                                     <div class="single-contact-form space-between">
-                                        <label for="Provinsi">Provinsi <select class="form-control" id="provinsi" name="provinsi" required></select></label>
-                                        <label for="Kabupaten">Kabupaten <select class="form-control" id="kabupaten" name="kabupaten" required></select></label>
-                                        <label for="Kecamatan">Kecamatan<select class="form-control" id="kecamatan" name="kecamatan" required></select></label>
+                                        <label for="Provinsi">Provinsi <select class="form-control" id="provinsi" name="provinsi" required value="<?= $row['nama_prov']; ?>"></select></label>
+                                        <label for="Kabupaten">Kabupaten <select class="form-control" id="kabupaten" name="kabupaten" required value="<?= $row['nama_kabkot']; ?>"></select></label>
+                                        <label for="Kecamatan">Kecamatan<select class="form-control" id="kecamatan" name="kecamatan" required value="<?= $row['nama_kec']; ?>"></select></label>
 
                                     </div>
                                     <div class="single-contact-form space-between">
@@ -152,4 +152,3 @@ if (isset($_POST["submit"])) {
 
 <?php
 include 'include/_footer.php';
-?>
