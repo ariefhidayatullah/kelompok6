@@ -168,7 +168,7 @@ function registrasi($data)
 
 	$password = password_hash($password, PASSWORD_DEFAULT);
 	// tambahkan user baru ke database
-	mysqli_query($conn, "INSERT INTO user VALUES ('', '', '', '$email', '', '$password', '', '', '', '')");
+	mysqli_query($conn, "INSERT INTO user VALUES ('', '', '', '$email', '', '$password', '', '', '', '', '', '', '')");
 	echo "
             <script>
                     alert('anda berhasil daftar!');
@@ -199,7 +199,7 @@ function ubahprofil($data)
 	global $conn;
 	// ambil data dari tiap elemen
 	$id_user = $data['id_user'];
-	$gambaruser = $data['gambarLama'];
+	$gambar = upload();
 	$nama_user = $data['nama_user'];
 	$email = $data['email'];
 	$username = $data['username'];
@@ -211,12 +211,11 @@ function ubahprofil($data)
 	$kecamatan = $data['kecamatan'];
 	$alamat = $data['alamat'];
 	$kodepos = $data['kodepos'];
+
 	//cek
 
-	if ($_FILES['gambar']['error'] === 4) {
-		$profil_user = $gambaruser;
-	} else {
-		$profil_user = upload();
+	if ($gambar == false) {
+		return false;
 	}
 
 	//query insert data

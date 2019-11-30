@@ -1,7 +1,7 @@
 <?php
 require 'function.php';
 $bahan = query('SELECT * FROM bahan');
-$produk = query('SELECT * FROM produk where jenis_produk');
+$produk = query('SELECT * FROM produk where id_produk');
 // foreach ($mahasiswa as $kel) {
 // 	echo $kel['id'];
 // }
@@ -175,23 +175,34 @@ $produk = query('SELECT * FROM produk where jenis_produk');
                       <th>Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
-                    <?php foreach ($bahan as $row) : ?>
+                    <?php
+                    $query = mysqli_query($conn, "SELECT * FROM bahan");
+                    while ($data = mysqli_fetch_array($query)) {
+                    $id_bahan    = $data['id_bahan'];
+                    $nama_bahan  = $data['nama_bahan'];
+                    $id_produk   = $data['id_produk'];
+                    $stok        = $data['stok'];
+                    $harga_satuan= $data['harga_satuan'];
+                    ?>
                       <tr>
-                        <td><?= $i; ?></td>
-                        <td><?= $row['id_bahan']; ?></td>
-                        <td><?= $row['nama_bahan']; ?></td> 
-                        <td><?= $row['id_produk']; ?></td>
-                        <td><?= $row['nama_produk']; ?></td> 
-                        <td><?= $row['stok']; ?></td>
-                        <td><?= $row['harga_satuan']; ?></td>
+                        <td><?php echo $i++; ?></td>
+                        <td><?php echo $id_bahan; ?></td>
+                        <td><?php echo $nama_bahan; ?></td> 
+                        <td><?php echo $id_produk; ?></td>
+                        <td><?php 
+                        $ba = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
+                        $ba1 = mysqli_fetch_array($ba);
+                        echo $ba1['jenis_produk'];
+                        ?></td> 
+                        <td><?php echo $stok; ?></td>
+                        <td><?php echo $harga_satuan; ?></td>
                         <td>
-                          <a href="ubah.php?id=<?= $row['id_bahan']; ?>"><button class="btn btn-warning btn-sm">Edit</button></a>
+                          <a href="ubah.php?id=<?php echo $id_bahan; ?>"><button class="btn btn-warning btn-sm">Edit</button></a>
                           <a>||</a>
                           <a href="hapus.php?id=<?= $row['id_bahan']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
                         </td>
                       </tr>
-                      <?php $i++ ?>
-                    <?php endforeach; ?>
+                    <?php } ?>
                   </thead>
                 </table>
                 <a href="tambah.php" class="btn btn-primary text-right" role="button"> Tambah data </a>

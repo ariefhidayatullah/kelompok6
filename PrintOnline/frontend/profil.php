@@ -32,24 +32,35 @@ $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
 
 	<div class="container">
 		<div class="row">
-			<?php foreach ($bahan as $row) : ?>
-				<div class="col-lg-6 col-12 offset-3">
-					<div class="my__account__wrapper">
-						<div class="account__form">
+			<div class="col-lg-6 col-12 offset-3">
+				<div class="my__account__wrapper">
+					<div class="account__form">
+						<?php
+						$query = mysqli_query($conn, "SELECT * FROM user WHERE id_user = '$id_user'");
+						while ($data = mysqli_fetch_array($query)) {
+							$nama    = $data['nama_user'];
+							$email   = $data['email'];
+							$username = $data['username'];
+							$jk		 = $data['jk_user'];
+							$nohp 	 = $data['nohp_user'];
+							$provinsi 	 = $data['provinsi'];
+							$kabupaten 	 = $data['kabupaten'];
+							$kecamatan	 = $data['kecamatan'];
+							?>
 							<div class="input__box">
 								<label>nama <span>:</span></label>
 							</div>
-							<div class="input__box"><?= $row['nama_user']; ?>
+							<div class="input__box"><?php echo $nama; ?>
 							</div>
 							<div class="input__box">
 								<label>email <span>:</span></label>
 							</div>
-							<div class="input__box"><?= $row['email']; ?>
+							<div class="input__box"><?php echo $email; ?>
 							</div>
 							<div class="input__box">
 								<label>username <span>:</span></label>
 							</div>
-							<div class="input__box"><?= $row['username']; ?>
+							<div class="input__box"><?php echo $username; ?>
 							</div>
 							<div class="input__box">
 								<label>password <span>:</span></label>
@@ -59,12 +70,39 @@ $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
 							<div class="input__box">
 								<label>jenis kelamin <span>:</span></label>
 							</div>
-							<div class="input__box"><?= $row['jenis_kelamin']; ?>
+							<div class="input__box"><?php echo $jk; ?>
 							</div>
 							<div class="input__box">
 								<label>no hp <span>:</span></label>
 							</div>
-							<div class="input__box"><?= $row['nohp_user']; ?>
+							<div class="input__box"><?php echo $nohp; ?>
+							</div>
+							<div class="input__box">
+								<label>provinsi <span>:</span></label>
+							</div>
+							<div class="input__box"><?php
+														$prov = mysqli_query($conn, "SELECT * FROM prov WHERE id_prov = '$provinsi'");
+														$provi = mysqli_fetch_array($prov);
+														echo $provi['nama_prov'];
+														?>
+							</div>
+							<div class="input__box">
+								<label>kabupaten <span>:</span></label>
+							</div>
+							<div class="input__box"><?php
+														$kab = mysqli_query($conn, "SELECT * FROM kabkot WHERE id_kabkot = '$kabupaten'");
+														$kot = mysqli_fetch_array($kab);
+														echo $kot['nama_kabkot'];
+														?>
+							</div>
+							<div class="input__box">
+								<label>kecamatan <span>:</span></label>
+							</div>
+							<div class="input__box"><?php
+														$kec = mysqli_query($conn, "SELECT * FROM kec WHERE id_kec = '$kecamatan'");
+														$kecam = mysqli_fetch_array($kec);
+														echo $kecam['nama_kec'];
+														?>
 							</div>
 							<div class="input__box">
 								<label>alamat <span>:</span></label>
@@ -79,11 +117,11 @@ $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
 							<div class="form__btn">
 								<a href="ubahprofil.php?id=<?= $row['id_user']; ?>"><button>edit profil</button></a>
 							</div>
-						</div>
-						</form>
 					</div>
+					</form>
 				</div>
-			<?php endforeach; ?>
+			</div>
+		<?php }  ?>
 		</div>
 	</div>
 

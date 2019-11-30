@@ -5,7 +5,7 @@ require 'function.php';
 include 'include/_header.php';
 
 
-if (isset($_POST["submit"])) {
+if (isset($_POST["SUBMIT"])) {
 	if (registrasi($_POST) > 0) {
 		echo "<script> alert('user baru berhasil ditambahkan!');</script>
 		header('Location:index.php');";
@@ -77,7 +77,7 @@ if (isset($_POST["LOGIN"])) {
 								username / password salah
 							</p>
 						<?php endif; ?>
-						<form class="user" action="" method="post">
+						<form class="user" action="" method="POST">
 							<div class="account__form">
 								<div class="input__box">
 									<label>Email address / Username<span>*</span></label>
@@ -97,7 +97,7 @@ if (isset($_POST["LOGIN"])) {
 				<div class="col-lg-6 col-12">
 					<div class="my__account__wrapper">
 						<h3 class="account__title">Daftar akun</h3>
-						<form action="" method="post" class="user">
+						<form action="" method="POST">
 							<div class="account__form">
 								<div class="input__box">
 									<label>Email address <span>*</span></label>
@@ -114,7 +114,7 @@ if (isset($_POST["LOGIN"])) {
 									<small>(minimal 8 character huruf besar, kecil, dan angka)</small>
 								</div>
 								<div class="form__btn">
-									<button type="submit" name="submit">Register</button>
+									<button type="submit" name="SUBMIT">Register</button>
 								</div>
 							</div>
 						</form>
