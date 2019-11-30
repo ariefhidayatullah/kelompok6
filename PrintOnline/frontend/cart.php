@@ -130,10 +130,11 @@ echo "<script>Location ='login.php'; </script>";
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 col-sm-12 ol-lg-12">
-						<table>
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 							<tr>
 								<th>Jenis Produk</th>
 								<th>Nama Bahan</th>
+								<th>Harga Satuan</th>
 								<th>Pilihan</th>
 							</tr>
 			<?php
@@ -149,6 +150,11 @@ echo "<script>Location ='login.php'; </script>";
 				echo $ro['jenis_produk'];
             	 ?></td>
             	<td><?php echo $nama_bahan ?></td>
+            	<td><?php 
+				$ba1 = mysqli_query($conn, "SELECT * FROM bahan WHERE nama_bahan = '$nama_bahan'");
+				$ro1 = mysqli_fetch_array($ba1);
+				echo $ro1['harga_satuan'];
+            	 ?></td>
             	<td>
             		<button class="btn btn-success btn-sm">Checkout</button></a>
                     <a onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
@@ -157,24 +163,13 @@ echo "<script>Location ='login.php'; </script>";
     	    <?php } ?>
 					</table>
                    	</div>
-						<div class="cartbox__btn">
-							<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
-								<li><a href="#">Coupon Code</a></li>
-								<li><a href="#">Apply Code</a></li>
-								<li><a href="#">Update Cart</a></li>
-								<li><a href="#">Check Out</a></li>
-							</ul>
-						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-lg-6 offset-lg-6">
 						<div class="cartbox__total__area">
 							<div class="cartbox-total d-flex justify-content-between">
-								<ul class="cart__total__list">
-									<li>Cart total</li>
-									<li>Sub Total</li>
-								</ul>
+								
 								<!-- <ul class="mainmenu d-flex justify-content-center">
 									<li><a href="index.html">Trending</a></li>
 									<li><a href="index.html">Best Seller</a></li>
