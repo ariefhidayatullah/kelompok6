@@ -105,9 +105,9 @@ $bahan = query('SELECT * FROM produk');
                         <td><img src="../../frontend/img/<?= $row['gambar']; ?>" width="100"></td>
                         
                         <td>
-                          <a href="ubah.php?id=<?= $row['id_produk']; ?>"><button class="btn btn-warning btn-sm">edit</button></a>
+                          <a href="ubah.php?id=<?= $row['id_produk']; ?>"><button class="btn btn-warning btn-sm">Edit</button></a>
                           <a>||</a>
-                          <a href="hapus.php?id=<?= $row['id_produk']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">hapus</button></a>
+                          <a href="hapus.php?id=<?= $row['id_produk']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
                         </td>
                       </tr>
                       <?php $i++ ?>

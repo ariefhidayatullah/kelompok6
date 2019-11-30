@@ -1,6 +1,7 @@
 <?php
 require 'function.php';
 $bahan = query('SELECT * FROM bahan');
+$produk = query('SELECT * FROM produk where jenis_produk');
 // foreach ($mahasiswa as $kel) {
 // 	echo $kel['id'];
 // }
@@ -70,10 +71,10 @@ $bahan = query('SELECT * FROM bahan');
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">login Admin / User</h6>
-            <a class="collapse-item" href="../auth/register.php">tambah akun admin</a>
-            <a class="collapse-item" href="../auth/datakaryawan/datakaryawan.php">data karyawan</a>
-            <a class="collapse-item" href="../pengguna/datauser.php">list user / pengguna</a>
+            <h6 class="collapse-header">Login Admin / User</h6>
+            <a class="collapse-item" href="../auth/register.php">Tambah Akun Admin</a>
+            <a class="collapse-item" href="../auth/datakaryawan/datakaryawan.php">Data Karyawan</a>
+            <a class="collapse-item" href="../pengguna/datauser.php">List User / Pengguna</a>
           </div>
         </div>
       </li>
@@ -165,26 +166,28 @@ $bahan = query('SELECT * FROM bahan');
                   <thead>
                     <tr>
                       <th>No.</th>
-                      <th>id bahan</th>
-                      <th>nama bahan</th>
-                      <th>id produk</th>
-                      <th>stok</th>
-                      <th>harga satuan</th>
-                      <th>aksi</th>
+                      <th>Id Bahan</th>
+                      <th>Nama Bahan</th>
+                      <th>Id Produk</th>
+                      <th>Nama Produk</th>
+                      <th>Stok</th>
+                      <th>Sarga Satuan</th>
+                      <th>Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
                     <?php foreach ($bahan as $row) : ?>
                       <tr>
                         <td><?= $i; ?></td>
                         <td><?= $row['id_bahan']; ?></td>
-                        <td><?= $row['nama_bahan']; ?></td>
+                        <td><?= $row['nama_bahan']; ?></td> 
                         <td><?= $row['id_produk']; ?></td>
+                        <td><?= $row['nama_produk']; ?></td> 
                         <td><?= $row['stok']; ?></td>
                         <td><?= $row['harga_satuan']; ?></td>
                         <td>
-                          <a href="ubah.php?id=<?= $row['id_bahan']; ?>"><button class="btn btn-warning btn-sm">edit</button></a>
+                          <a href="ubah.php?id=<?= $row['id_bahan']; ?>"><button class="btn btn-warning btn-sm">Edit</button></a>
                           <a>||</a>
-                          <a href="hapus.php?id=<?= $row['id_bahan']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">hapus</button></a>
+                          <a href="hapus.php?id=<?= $row['id_bahan']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
                         </td>
                       </tr>
                       <?php $i++ ?>
