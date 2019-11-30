@@ -197,7 +197,7 @@ $produk = query('SELECT * FROM produk where id_produk');
                         <td><?php echo $stok; ?></td>
                         <td><?php echo $harga_satuan; ?></td>
                         <td>
-                          <a href="ubah.php?id=<?= $row['id_bahan']; ?>"><button class="btn btn-warning btn-sm">Edit</button></a>
+                          <a href="ubah.php?id=<?php echo $id_bahan; ?>"><button class="btn btn-warning btn-sm">Edit</button></a>
                           <a>||</a>
                           <a href="hapus.php?id=<?= $row['id_bahan']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
                         </td>
