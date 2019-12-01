@@ -141,7 +141,7 @@ if (isset($_SESSION["LOGIN"])) {
             	 ?></td>
             	<td>
             		<button class="btn btn-success btn-sm">Checkout</button></a>
-					<a href="hapus.php?id=<?php echo $id_cart; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
+					<a class="btn btn-danger btn-sm" href="hapus.php?id=<?php echo $id_cart; ?>">Hapus</a>
             	</td>
             </tr>
     	    <?php } ?>
