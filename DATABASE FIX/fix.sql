@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Nov 2019 pada 17.15
+-- Waktu pembuatan: 01 Des 2019 pada 09.16
 -- Versi server: 10.1.36-MariaDB
 -- Versi PHP: 7.2.11
 
@@ -7436,17 +7436,10 @@ INSERT INTO `kec` (`id_kec`, `id_prov`, `id_kabkot`, `nama_kec`) VALUES
 
 CREATE TABLE `keranjang` (
   `id_cart` int(11) NOT NULL,
-  `email` varchar(40) NOT NULL,
+  `username` varchar(40) NOT NULL,
   `id_produk` varchar(10) NOT NULL,
-  `id_bahan` varchar(5) NOT NULL
+  `nama_bahan` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `keranjang`
---
-
-INSERT INTO `keranjang` (`id_cart`, `email`, `id_produk`, `id_bahan`) VALUES
-(33, 'joss@polije.ac.id', 'P001', 'Finel');
 
 -- --------------------------------------------------------
 
@@ -7609,6 +7602,9 @@ CREATE TABLE `user` (
   `password` varchar(60) NOT NULL,
   `jenis_kelamin` varchar(1) NOT NULL,
   `nohp_user` varchar(15) NOT NULL,
+  `provinsi` varchar(20) NOT NULL,
+  `kabupaten` varchar(20) NOT NULL,
+  `kecamatan` varchar(20) NOT NULL,
   `alamat` varchar(80) NOT NULL,
   `kodepos` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -7617,9 +7613,8 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `profil_user`, `nama_user`, `email`, `username`, `password`, `jenis_kelamin`, `nohp_user`, `alamat`, `kodepos`) VALUES
-(1, '', 'Fabryzal Adam Pramudya', 'ryzaldm@gmail.com', 'ryzaladam', '$2y$10$45qTSFdZ7Fdkm2xBWo72v3.vVy435jS5j5jwT.BYG/713vVea', 'L', '082229024685', 'Dabasah,Bondowoso', '68211'),
-(3, '', 'Mohammad Arief', 'joss@polije.ac.id', 'arfhdytllh', '$2y$10$nXjZbawcKRcFwC6nUtfmme9vGigEMaZijix9rcgsFoXYPrSOwiyBq', 'L', '082229024685', 'Tapen, Bondowoso', '68212');
+INSERT INTO `user` (`id_user`, `profil_user`, `nama_user`, `email`, `username`, `password`, `jenis_kelamin`, `nohp_user`, `provinsi`, `kabupaten`, `kecamatan`, `alamat`, `kodepos`) VALUES
+(10, '', '', 'aku@gmail.com', '', '$2y$10$ZLLAbUdzdpX7rLGQ4nnlHO5VWK6ChrimkrOZsoR.zuNBeDD4hrYZu', '', '', '', '', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -7739,7 +7734,7 @@ ALTER TABLE `kabkot`
 -- AUTO_INCREMENT untuk tabel `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemesanan`
@@ -7757,7 +7752,7 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

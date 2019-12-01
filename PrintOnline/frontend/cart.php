@@ -141,7 +141,8 @@ echo "<script>Location ='login.php'; </script>";
 			$query = mysqli_query($conn, "SELECT * FROM keranjang WHERE username = '$username'");
 			while ($data = mysqli_fetch_array($query)) {
             $id_produk     = $data['id_produk'];
-            $nama_bahan       = $data['nama_bahan'];
+			$nama_bahan       = $data['nama_bahan'];
+			$id_cart = $data['id_cart'];
             ?>
             <tr>
             	<td><?php 
@@ -157,7 +158,8 @@ echo "<script>Location ='login.php'; </script>";
             	 ?></td>
             	<td>
             		<button class="btn btn-success btn-sm">Checkout</button></a>
-                    <a onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
+                    <a onclick="return confirm('apakah anda yakin ? ');">
+					<a href="hapus.php?id=<?php echo $id_cart; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
             	</td>
             </tr>
     	    <?php } ?>
