@@ -92,19 +92,76 @@ if (isset($_SESSION["LOGIN"])) {
 					<span>close</span>
 				</div>
 			</div>
-			<!-- End Search Popup -->
-			<!-- Start Bradcaump area -->
-			<div class="ht__bradcaump__area bg-image--3">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="bradcaump__inner text-center">
-								<h2 class="bradcaump-title">Shopping Cart</h2>
-								<nav class="bradcaump-content">
-									<a class="breadcrumb_item" href="index.html">Home</a>
-									<span class="brd-separetor">/</span>
-									<span class="breadcrumb_item active">Shopping Cart</span>
-								</nav>
+		</div>
+	</div>
+	<!-- End Bradcaump area -->
+	<!-- cart-main-area start -->
+	<div class="cart-main-area section-padding--lg bg--white">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 ol-lg-12">
+					<form action="#">
+						<div class="table-content wnro__table table-responsive">
+			<div class="row">
+			</div>
+		</div>
+	</div>
+	<!-- cart-main-area end -->
+	<!-- Footer Area -->
+	<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
+		<div class="footer-static-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 ol-lg-12">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+							<tr>
+								<th>Jenis Produk</th>
+								<th>Nama Bahan</th>
+								<th>Harga Satuan</th>
+								<th>Pilihan</th>
+							</tr>
+			<?php
+			$query = mysqli_query($conn, "SELECT * FROM keranjang WHERE username = '$username'");
+			while ($data = mysqli_fetch_array($query)) {
+            $id_produk     = $data['id_produk'];
+			$nama_bahan       = $data['nama_bahan'];
+			$id_cart = $data['id_cart'];
+            ?>
+            <tr>
+            	<td><?php 
+				$ba = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
+				$ro = mysqli_fetch_array($ba);
+				echo $ro['jenis_produk'];
+            	 ?></td>
+            	<td><?php echo $nama_bahan ?></td>
+            	<td><?php 
+				$ba1 = mysqli_query($conn, "SELECT * FROM bahan WHERE nama_bahan = '$nama_bahan'");
+				$ro1 = mysqli_fetch_array($ba1);
+				echo $ro1['harga_satuan'];
+            	 ?></td>
+            	<td>
+            		<button class="btn btn-success btn-sm">Checkout</button></a>
+					<a href="hapus.php?id=<?php echo $id_cart; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
+            	</td>
+            </tr>
+    	    <?php } ?>
+					</table>
+                   	</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 offset-lg-6">
+						<div class="cartbox__total__area">
+							<div class="cartbox-total d-flex justify-content-between">
+								
+								<!-- <ul class="mainmenu d-flex justify-content-center">
+									<li><a href="index.html">Trending</a></li>
+									<li><a href="index.html">Best Seller</a></li>
+									<li><a href="index.html">All Product</a></li>
+									<li><a href="index.html">Wishlist</a></li>
+									<li><a href="index.html">Blog</a></li>
+									<li><a href="index.html">Contact</a></li>
+								</ul> -->
 							</div>
 						</div>
 					</div>
