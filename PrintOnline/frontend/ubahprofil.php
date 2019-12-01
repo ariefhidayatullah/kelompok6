@@ -11,7 +11,7 @@ if (isset($_POST["submit"])) {
         echo "
 			<script>
 				alert('data berhasil diubah');
-					document.location.href = 'profil.php';
+					
 			</script>
 		";
     } else {
@@ -24,8 +24,6 @@ if (isset($_POST["submit"])) {
 }
 
 ?>
-
-
 <!-- Main wrapper -->
 <div class="wrapper" id="wrapper">
     <!-- Header -->
@@ -55,7 +53,7 @@ if (isset($_POST["submit"])) {
                 <?php foreach ($bahan as $row) : ?>
                     <div class="col-lg-10 col-12 offset-1">
                         <div class="account__form">
-                            <form class="user" action="" method="POST">
+                            <form class="user" action="" method="POST" enctype="multipart/form-data">
                                 <div class="contact-form-wrap">
                                     <input type="hidden" name="id_user" id="id_user" value="<?= $row['id_user']; ?>">
                                     <div class="single-contact-form space-between">

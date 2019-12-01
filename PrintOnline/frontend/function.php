@@ -95,7 +95,7 @@ function upload()
 
 	//jika yg di upload bukan gambar
 
-	$valid = ['jpg', 'jpeg', 'png'];
+	$valid = ['jpg', 'jpeg', 'png', 'jfif'];
 
 	//explode untuk mengubah string menjadi array(memecah)
 	// '.' yang mau di pecah selanjutnya
@@ -220,7 +220,7 @@ function ubahprofil($data)
 
 	//query insert data
 	$query = "UPDATE user SET  
-			profil_user = '$gambaruser',
+			gambar = '$gambar',
 			nama_user = '$nama_user' ,
 			email = '$email',
 			username = '$username',

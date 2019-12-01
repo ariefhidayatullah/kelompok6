@@ -3,7 +3,7 @@ session_start();
 require 'function.php';
 include 'include/_header.php';
 $id_user = $_GET['id'];
-$bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
+$bahan = query('SELECT * FROM produk order by rand()');
 ?>
 
 
@@ -38,15 +38,23 @@ $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
 						<?php
 						$query = mysqli_query($conn, "SELECT * FROM user WHERE id_user = '$id_user'");
 						while ($data = mysqli_fetch_array($query)) {
+							$gambar    = $data['gambar'];
 							$nama    = $data['nama_user'];
 							$email   = $data['email'];
 							$username = $data['username'];
-							$jk		 = $data['jk_user'];
+							$jk		 = $data['jenis_kelamin'];
 							$nohp 	 = $data['nohp_user'];
 							$provinsi 	 = $data['provinsi'];
 							$kabupaten 	 = $data['kabupaten'];
 							$kecamatan	 = $data['kecamatan'];
+							$alamat = $data['alamat'];
+							$kodepos = $data['kodepos'];
 							?>
+							<div class="input__box">
+								<label>gambar <span>:</span></label>
+							</div>
+							<div class="input__box"><img src="img/<?= $gambar ?>" width="100">
+							</div>
 							<div class="input__box">
 								<label>nama <span>:</span></label>
 							</div>
@@ -107,15 +115,15 @@ $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
 							<div class="input__box">
 								<label>alamat <span>:</span></label>
 							</div>
-							<div class="input__box"><?= $row['alamat']; ?>
+							<div class="input__box"><?= $alamat ?>
 							</div>
 							<div class="input__box">
 								<label>kode pos <span>:</span></label>
 							</div>
-							<div class="input__box"><?= $row['kodepos']; ?>
+							<div class="input__box"><?= $kodepos ?>
 							</div>
 							<div class="form__btn">
-								<a href="ubahprofil.php?id=<?= $row['id_user']; ?>"><button>edit profil</button></a>
+								<a href="ubahprofil.php?id=<?= $id_user ?>"><button>edit profil</button></a>
 							</div>
 					</div>
 					</form>
