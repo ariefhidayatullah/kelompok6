@@ -134,9 +134,11 @@ function registrasi($data)
 {
 	global $conn;
 
+	$nama_user = strtolower(stripcslashes($data["nama_user"]));
 	$email = strtolower(stripcslashes($data["email"]));
 	$password = mysqli_real_escape_string($conn, $data["password"]);
 	$password2 = mysqli_real_escape_string($conn, $data["password2"]);
+	$nohp_user = strtolower(stripcslashes($data["nohp_user"]));
 
 	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
 	if (mysqli_fetch_assoc($result)) {
@@ -168,7 +170,7 @@ function registrasi($data)
 
 	$password = password_hash($password, PASSWORD_DEFAULT);
 	// tambahkan user baru ke database
-	mysqli_query($conn, "INSERT INTO user VALUES ('', '', '', '$email', '', '$password', '', '', '', '', '', '', '')");
+	mysqli_query($conn, "INSERT INTO user VALUES ('', '', '$nama_user', '$email', '', '$password', '', '$nohp_user', '', '', '', '', '')");
 	echo "
             <script>
                     alert('anda berhasil daftar!');
