@@ -158,7 +158,6 @@ echo "<script>Location ='login.php'; </script>";
             	 ?></td>
             	<td>
             		<button class="btn btn-success btn-sm">Checkout</button></a>
-                    <a onclick="return confirm('apakah anda yakin ? ');">
 					<a href="hapus.php?id=<?php echo $id_cart; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
             	</td>
             </tr>
