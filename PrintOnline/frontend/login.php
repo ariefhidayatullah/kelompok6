@@ -100,6 +100,10 @@ if (isset($_POST["LOGIN"])) {
 						<form action="" method="POST">
 							<div class="account__form">
 								<div class="input__box">
+									<label>nama : <span>*</span></label>
+									<input type="text" name="nama_user" id="nama_user" placeholder="Masukkan nama anda..." required="" autofocus>
+								</div>
+								<div class="input__box">
 									<label>Email address <span>*</span></label>
 									<input type="email" name="email" id="email" placeholder="Masukkan email anda..." required="" autofocus>
 								</div>
@@ -112,6 +116,10 @@ if (isset($_POST["LOGIN"])) {
 									<label>konfirmasi Password <span>*</span></label>
 									<input type="password" name="password2" id="password2" placeholder="konfirmasi password anda..." required>
 									<small>(minimal 8 character huruf besar, kecil, dan angka)</small>
+								</div>
+								<div class="input__box">
+									<label>no hp <span>*</span></label>
+									<input type="text" name="nohp_user" id="nohp_user" placeholder="Masukkan no hp anda..." required="" autofocus>
 								</div>
 								<div class="form__btn">
 									<button type="submit" name="SUBMIT">Register</button>
