@@ -34,7 +34,6 @@ include 'include/navbar.php';
 	</div>
 	<!-- End Bradcaump area -->
 	<!-- Start main Content -->
-	<div>
 	<div class="maincontent bg--white pt--80 pb--55">
 		<?php foreach ($mhs as $row) : ?>
 			<div class="container">
@@ -53,30 +52,30 @@ include 'include/navbar.php';
 											<h1><?= $row['jenis_produk']; ?></h1>
 											<a href="">
 												<?php
-												if (isset($_POST['han'])) {
-												$han = $_POST['han'];
-												$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
-												$row1 = mysqli_fetch_array($bahan1);
-												echo "Harga Satuan : Rp. ".$row1['harga_satuan'];
-												}else{
-													echo "Silahkan Pilih Bahan";
-												}
-												?>
-										</a>
-										<div class="product__overview">
-											<?php
-												$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
-												$ba = mysqli_query($conn, $sql);
-												$ro = mysqli_fetch_array($ba);
-												echo "Kenapa harus mencetak " . $ro['jenis_produk'] . "?";
-												?>
-											<br>
-											<?php
-												echo $ro['deskripsi'];
-												?>
-											</p>
+													if (isset($_POST['han'])) {
+														$han = $_POST['han'];
+														$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
+														$row1 = mysqli_fetch_array($bahan1);
+														echo "Harga Satuan : Rp. " . $row1['harga_satuan'];
+													} else {
+														echo "Silahkan Pilih Bahan";
+													}
+													?>
+											</a>
+											<div class="product__overview">
+												<?php
+													$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
+													$ba = mysqli_query($conn, $sql);
+													$ro = mysqli_fetch_array($ba);
+													echo "Kenapa harus mencetak " . $ro['jenis_produk'] . "?";
+													?>
+												<br>
+												<?php
+													echo $ro['deskripsi'];
+													?>
+												</p>
+											</div>
 										</div>
-									</div>
 										<?php
 											$bahan = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk'");
 											$row = mysqli_fetch_array($bahan);
@@ -93,13 +92,13 @@ include 'include/navbar.php';
 													</ul>
 												</select>
 												<button class="btn btn-danger" type="submit" value="han">Pilih Bahan</button><br>
-												</form>
-											 	</h4><br>
-											<br>
-												<div>
-													<form action="cart.php" method="get">
-													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
-													<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
+										</form>
+										</h4><br>
+										<br>
+										<div>
+											<form action="cart.php" method="get">
+												<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
+												<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
 												<button type="submit" class="btn btn-info" name="cart" value="cart">Add to
 													Cart
 												</button>
