@@ -18,14 +18,14 @@ if (isset($_POST["LOGIN"])) {
 	$email = $_POST["email"];
 	$password = $_POST["password"];
 
-	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' OR username = '$email'");
 
 	if (mysqli_num_rows($result) === 1) {
 		$row = mysqli_fetch_assoc($result);
 		// cek password
 		if (password_verify($password, $row["password"])) {
 
-			$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+			$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' OR username = '$email'");
 			$row0 = mysqli_fetch_array($result0);
 			$email = $row0['email'];
 

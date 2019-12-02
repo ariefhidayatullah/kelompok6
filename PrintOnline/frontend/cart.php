@@ -94,9 +94,9 @@ if (isset($_SESSION["LOGIN"])) {
 													echo $ro1['harga_satuan'];
 													?></td>
 											<td>
-												<button class="btn btn-success btn-sm">Checkout</button></a>
-												<a onclick="return confirm('apakah anda yakin ? ');">
-													<a class="btn btn-danger btn-sm" href="hapus.php?id=<?php echo $id_cart; ?>">Hapus</a>
+												<a class="btn btn-success btn-sm" href="checkout.php?id_produk=<?php echo $id_produk; ?>&id_bahan=<?php echo $nama_bahan; ?>">Checkout</a>
+												<a onclick="return confirm('apakah anda yakin ? ');"
+													class="btn btn-danger btn-sm" href="hapus.php?id=<?php echo $id_cart; ?>">Hapus</a>
 											</td>
 										</tr>
 									<?php } ?>

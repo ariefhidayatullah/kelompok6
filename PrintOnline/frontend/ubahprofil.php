@@ -3,6 +3,8 @@ session_start();
 require 'function.php';
 include 'include/_header.php';
 $id_user = $_GET['id'];
+$username = $_SESSION["LOGIN"];
+$user = query("SELECT * FROM user where email = '$username'");
 $bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
 
 if (isset($_POST["submit"])) {
@@ -11,9 +13,9 @@ if (isset($_POST["submit"])) {
         echo "
 			<script>
 				alert('data berhasil diubah');
-					
 			</script>
 		";
+        header("Location:index.php");
     } else {
         echo "
 			<script>
@@ -21,9 +23,24 @@ if (isset($_POST["submit"])) {
 			</script>
 		";
     }
+
 }
 
 ?>
+
+<script>
+     $(document).ready(function(){
+        $('#submit').on('click',function(){
+            $('#idtest').val(<?= $id_user ?>);
+            $('#formKirim').submit();
+        });
+    });
+</script>
+
+<form action="profil.php" method="POST" id="formKirim">
+    <input type="text" name="idtest" id="idtest" hidden>
+</form>
+
 <!-- Main wrapper -->
 <div class="wrapper" id="wrapper">
     <!-- Header -->
@@ -82,7 +99,7 @@ if (isset($_POST["submit"])) {
                                         <input type="file" id="gambar" name="gambar">
                                     </div>
                                     <div class="form__btn">
-                                        <button name="submit" type="submit">edit profil</button>
+                                        <button name="submit" type="submit" id="submit">edit profil</button>
                                     </div>
                                 </div>
                             </form>
