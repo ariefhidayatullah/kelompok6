@@ -5,8 +5,8 @@ require 'function.php';
 include 'include/_header.php';
 
 
-if (isset($_POST["SUBMIT"])) {
-	if (registrasi($_POST) > 0) {
+if (isset($_POST["submit"])) {
+	if (registrasi($_POST) === 0) {
 		echo "<script> alert('user baru berhasil ditambahkan!');</script>
 		header('Location:index.php');";
 	} else {
@@ -81,11 +81,11 @@ if (isset($_POST["LOGIN"])) {
 							<div class="account__form">
 								<div class="input__box">
 									<label>Email address / Username<span>*</span></label>
-									<input type="text" id="email" name="email" placeholder="Masukkan email atau username anda..." required="" autofocus>
+									<input type="text" id="emaill" name="email" placeholder="Masukkan email atau username anda..." required="" autofocus>
 								</div>
 								<div class="input__box">
 									<label>Password<span>*</span></label>
-									<input type="password" id="password" name="password" required placeholder="Masukkan password anda">
+									<input type="password" id="passwordd" name="password" required placeholder="Masukkan password anda">
 								</div>
 								<div class="form__btn">
 									<button type="submit" name="LOGIN">Login</button>
@@ -97,32 +97,35 @@ if (isset($_POST["LOGIN"])) {
 				<div class="col-lg-6 col-12">
 					<div class="my__account__wrapper">
 						<h3 class="account__title">Daftar akun</h3>
-						<form action="" method="POST">
+						<form action="" method="post">
 							<div class="account__form">
 								<div class="input__box">
 									<label>nama : <span>*</span></label>
 									<input type="text" name="nama_user" id="nama_user" placeholder="Masukkan nama anda..." required="" autofocus>
+									<small class="nama_user"></small>
 								</div>
 								<div class="input__box">
 									<label>Email address <span>*</span></label>
 									<input type="email" name="email" id="email" placeholder="Masukkan email anda..." required="" autofocus>
+									<small class="email"></small>
 								</div>
 								<div class="input__box">
 									<label>Password<span>*</span></label>
 									<input type="password" name="password" id="password" placeholder="Masukkan password anda..." required>
-									<small>(minimal 8 character huruf besar, kecil, dan angka)</small>
+									<small class="password"></small>
 								</div>
 								<div class="input__box">
 									<label>konfirmasi Password <span>*</span></label>
 									<input type="password" name="password2" id="password2" placeholder="konfirmasi password anda..." required>
-									<small>(minimal 8 character huruf besar, kecil, dan angka)</small>
+									<small class="password2"></small>
 								</div>
 								<div class="input__box">
 									<label>no hp <span>*</span></label>
 									<input type="text" name="nohp_user" id="nohp_user" placeholder="Masukkan no hp anda..." required="" autofocus>
+									<small class="nohp_user"></small>
 								</div>
 								<div class="form__btn">
-									<button type="submit" name="SUBMIT">Register</button>
+									<button type="submit" name="submit">Register</button>
 								</div>
 							</div>
 						</form>
@@ -131,73 +134,72 @@ if (isset($_POST["LOGIN"])) {
 			</div>
 		</div>
 	</section>
-	<!-- End My Account Area -->
-	<!-- Footer Area -->
-	<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
-		<div class="footer-static-top">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="footer__widget footer__menu">
-							<div class="ft__logo">
-								<a href="index.html">
-									<img src="images/logo/3.png" alt="logo">
-								</a>
-								<p>JL Ki S. Mngunsarkoro, No 52, Kampung Templek Kec. Bondowoso, Kabupaten Bondowoso, Jawa Timur 68211 </p>
-							</div>
-							<div class="footer__content">
-								<ul class="social__net social__net--2 d-flex justify-content-center">
-									<li><a href="#"><i class="bi bi-facebook"></i></a></li>
-									<li><a href="#"><i class="bi bi-google"></i></a></li>
-									<li><a href="#"><i class="bi bi-twitter"></i></a></li>
-									<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-									<li><a href="#"><i class="bi bi-youtube"></i></a></li>
-								</ul>
-								<ul class="mainmenu d-flex justify-content-center">
-									<li><a href="index.html">Trending</a></li>
-									<li><a href="index.html">Best Seller</a></li>
-									<li><a href="index.html">All Product</a></li>
-									<li><a href="index.html">Wishlist</a></li>
-									<li><a href="index.html">Blog</a></li>
-									<li><a href="index.html">Contact</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="copyright__wrapper">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 col-md-6 col-sm-12">
-						<div class="copyright">
-							<div class="copy__right__inner text-left">
-								<p>Copyright <i class="fa fa-copyright"></i> <a href="https://freethemescloud.com/">Free themes Cloud.</a> All Rights Reserved</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-6 col-sm-12">
-						<div class="payment text-right">
-							<img src="images/icons/payment.png" alt="" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- //Footer Area -->
-
 </div>
 <!-- //Main wrapper -->
+<script>
+	$(document).ready(function() {
 
-<!-- JS Files -->
-<script src="js/vendor/jquery-3.2.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/active.js"></script>
+		// Validasi Nama Lengkap
+		$('#nama_user').on('keyup', function() {
+			var regex = /^[a-z A-Z]+$/;
+			if (regex.test(this.value) !== true) {
+				this.value = this.value.replace(/[^a-zA-Z]+/, '');
+			} else if ($(this).val().length < 5) {
+				$('.nama_user').text('Anda Yakin Nama Anda Terdiri Dari ' + $(this).val().length + ' Huruf?');
+			} else {
+				$('.nama_user').text('');
+			}
+			if ($(this).val().length == 0) {
+				$('.nama_user').text('Nama Harus Di isi!');
+			}
+		});
 
-</body>
+		// validasi email
+		$('#email').on('keyup', function() {
+			var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (!this.value.match(valid)) {
+				$('.email').text('Isi Email dengan Benar!');
+			} else {
+				$('.email').text('');
+			}
+		});
 
-</html>
+		// validasi nohp
+		$('#nohp_user').on('keyup', function() {
+			var regex = /^[0-9]+$/;
+			if (regex.test(this.value) !== true) {
+				this.value = this.value.replace(/[^0-9]+/, '');
+			} else {
+				$('.nohp_user').text('');
+			}
+
+			if ($(this).val().length < 12) {
+				$('.nohp_user').text('maksimal 12 angka!');
+			} else {
+				$('.nohp_user').text('');
+			}
+
+		});
+
+		// validasi kata sandi
+		$('#password').on('keyup', function() {
+			if ($(this).val().length < 8) {
+				$('.password').text('Password Minimal 8 digit');
+			} else {
+				$('.password').text('');
+			}
+		});
+		$('#password2').on('keyup', function() {
+			if ($(this).val() != $('#password').val()) {
+				$('.password2').text('Password Tidak Sama');
+			} else {
+				$('.password2').text('');
+			}
+		});
+
+	});
+</script>
+
+<?php
+include 'include/_footer.php';
+?>

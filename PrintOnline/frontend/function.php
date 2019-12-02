@@ -144,7 +144,7 @@ function registrasi($data)
 	if (mysqli_fetch_assoc($result)) {
 		echo "
             <script>
-            alert ('mohon maaf username sudah terdaftar!');
+            alert ('mohon maaf email sudah terdaftar!');
             </script>";
 		return false;
 	}
@@ -171,11 +171,9 @@ function registrasi($data)
 	$password = password_hash($password, PASSWORD_DEFAULT);
 	// tambahkan user baru ke database
 	mysqli_query($conn, "INSERT INTO user VALUES ('', '', '$nama_user', '$email', '', '$password', '', '$nohp_user', '', '', '', '', '')");
-	echo "
-            <script>
-                    alert('anda berhasil daftar!');
-            </script>
-			";
+	echo "<script>
+    alert('selamat anda sudah terdaftar!');
+	</script>";
 
 	header('Location:login.php');
 	return mysqli_affected_rows($conn);

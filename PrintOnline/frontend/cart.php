@@ -2,7 +2,7 @@
 session_start();
 include 'include/_header.php';
 require 'function.php';
-$bahan = query('SELECT * FROM keranjang');
+
 
 if (isset($_SESSION["LOGIN"])) {
 
