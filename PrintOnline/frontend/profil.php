@@ -6,7 +6,6 @@ $id_user = $_GET['id'];
 $bahan = query('SELECT * FROM produk order by rand()');
 ?>
 
-
 <!-- Main wrapper -->
 <div class="wrapper" id="wrapper">
 	<!-- Header -->
@@ -104,7 +103,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 														?>
 							</div>
 							<div class="input__box">
-								<label>kecamatan <span>:</span></label>
+								<label>kecamatan <span>:</span></label> 
 							</div>
 							<div class="input__box"><?php
 														$kec = mysqli_query($conn, "SELECT * FROM kec WHERE id_kec = '$kecamatan'");

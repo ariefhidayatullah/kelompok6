@@ -45,9 +45,9 @@ if (isset($_SESSION["LOGIN"])) {
 					<div class="col-lg-12">
 						<div class="slider__content">
 							<div class="contentbox">
-								<h2>Buy <span>your </span></h2>
-								<h2>favourite <span>Book </span></h2>
-								<h2>from <span>Here </span></h2>
+								<h2>The <span>King </span></h2>
+								<h2>Adver<span>tising </span></h2>
+								<h2>Digital <span>Printing </span></h2>
 								<a class="shopbtn" href="#">shop now</a>
 							</div>
 						</div>
@@ -68,7 +68,10 @@ if (isset($_SESSION["LOGIN"])) {
 							<?php
 							if (isset($_SESSION["LOGIN"])) {
 								$username = $_SESSION["LOGIN"];
-								echo $username;
+								$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$username' OR username = '$username'");
+								$row0 = mysqli_fetch_array($result0);
+								$email = $row0['nama_user'];
+								echo $email;
 							} else {
 								echo "Silakan login/daftar terlebih dahulu";
 							}
