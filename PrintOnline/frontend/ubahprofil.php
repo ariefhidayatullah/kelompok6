@@ -5,7 +5,7 @@ include 'include/_header.php';
 $id_user = $_GET['id'];
 $username = $_SESSION["LOGIN"];
 $user = query("SELECT * FROM user where email = '$username'");
-$bahan = query("SELECT * FROM user WHERE id_user = '$id_user'");
+$user = query("SELECT * FROM user WHERE id_user = '$id_user'");
 
 if (isset($_POST["submit"])) {
     //cek data berhasil diubah atau tidak
@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
 				alert('data berhasil diubah');
 			</script>
 		";
-        header("Location:index.php");
+        header("Location:ubahprofil.php");
     } else {
         echo "
 			<script>
@@ -23,24 +23,9 @@ if (isset($_POST["submit"])) {
 			</script>
 		";
     }
-
 }
 
 ?>
-
-<script>
-     $(document).ready(function(){
-        $('#submit').on('click',function(){
-            $('#idtest').val(<?= $id_user ?>);
-            $('#formKirim').submit();
-        });
-    });
-</script>
-
-<form action="profil.php" method="POST" id="formKirim">
-    <input type="text" name="idtest" id="idtest" hidden>
-</form>
-
 <!-- Main wrapper -->
 <div class="wrapper" id="wrapper">
     <!-- Header -->
@@ -67,40 +52,41 @@ if (isset($_POST["submit"])) {
     <section class="wn_contact_area bg--white pt--80 pb--80">
         <div class="container">
             <div class="row">
-                <?php foreach ($bahan as $row) : ?>
+                <?php foreach ($user as $row) : ?>
                     <div class="col-lg-10 col-12 offset-1">
-                        <div class="account__form">
+                        <div class="container">
                             <form class="user" action="" method="POST" enctype="multipart/form-data">
                                 <div class="contact-form-wrap">
                                     <input type="hidden" name="id_user" id="id_user" value="<?= $row['id_user']; ?>">
                                     <div class="single-contact-form space-between">
-                                        <label>nama <span>:</span> <input class="input__box" name="nama_user" id="nama_user" required value="<?= $row['nama_user']; ?>"></label>
-                                        <label>email <span>:</span><input class="input__box" name="email" id="email" required value="<?= $row['email']; ?>"></label>
+                                        <label>nama <span>:</span> <input class="input__box" name="nama_user" id="nama_user" required value="<?= $row['nama_user']; ?>"><small class="nama_user" style="color: red;"></small></label>
+                                        <label>email <span>:</span><input class="input__box" name="email" id="email" required value="<?= $row['email']; ?>"><small class="email" style="color: red;"></small></label>
                                     </div>
                                     <div class="single-contact-form space-between">
                                         <label>username <span>:</span><input class="input__box" name="username" id="username" required value="<?= $row['username']; ?>"></label>
                                         <label>password <span>:</span><input class="input__box" name="password" id="password" required value="<?= $row['password']; ?>"></label>
                                     </div>
                                     <div class=" single-contact-form space-between">
-                                        <label>jenis kelamin <span>:</span><input class="input__box" name="jenis_kelamin" id="jenis_kelamin" required value="<?= $row['jenis_kelamin']; ?>"></label>
-                                        <label>no hp <span>:</span><input class="input__box" name="nohp_user" id="nohp_user" required value="<?= $row['nohp_user']; ?>"></label>
+                                        <label>jenis kelamin <span>:</span><input class="input__box" name="jenis_kelamin" id="jenis_kelamin" required value="<?= $row['jenis_kelamin']; ?>"><small class="jenis_kelamin" style="color: red;"></small></label>
+                                        <label>no hp <span>:</span><input class="input__box" name="nohp_user" id="nohp_user" required value="<?= $row['nohp_user']; ?>"><small class="nohp_user" style="color: red;"></small></label>
                                     </div>
                                     <div class="single-contact-form space-between">
-                                        <label for="Provinsi">Provinsi <select class="form-control" id="provinsi" name="provinsi" required value="<?= $row['nama_prov']; ?>"></select></label>
-                                        <label for="Kabupaten">Kabupaten <select class="form-control" id="kabupaten" name="kabupaten" required value="<?= $row['nama_kabkot']; ?>"></select></label>
-                                        <label for="Kecamatan">Kecamatan<select class="form-control" id="kecamatan" name="kecamatan" required value="<?= $row['nama_kec']; ?>"></select></label>
+                                        <label for="Provinsi">Provinsi <select class="form-control" id="provinsi" name="provinsi" required value="<?= $row['provinsi']; ?>"></select></label>
+                                        <label for="Kabupaten">Kabupaten <select class="form-control" id="kabupaten" name="kabupaten" required value="<?= $row['kabupaten']; ?>"></select></label>
+                                        <label for="Kecamatan">Kecamatan<select class="form-control" id="kecamatan" name="kecamatan" required value="<?= $row['kecamatan']; ?>"></select></label>
 
                                     </div>
                                     <div class="single-contact-form space-between">
                                         <label>alamat <span>:</span><input class="input__box" name="alamat" id="alamat" required value="<?= $row['alamat']; ?>"></label>
-                                        <label>kode pos <span>:</span><input class="input__box" name="kodepos" id="kodepos" required value="<?= $row['kodepos']; ?>"></label>
+                                        <label>kode pos <span>:</span><input class="input__box" name="kodepos" id="kodepos" required value="<?= $row['kodepos']; ?>"><small class="kodepos" style="color: red;"></small></label>
                                     </div>
                                     <div class="space-between">
                                         <input type="file" id="gambar" name="gambar">
                                     </div>
-                                    <div class="form__btn">
-                                        <button name="submit" type="submit" id="submit">edit profil</button>
-                                    </div>
+                                </div>
+                                <div class="form__btn">
+                                    <button name="submit" type="submit" id="submit">edit profil</button>
+                                    <button>kembali</button>
                                 </div>
                             </form>
                         </div>
@@ -109,9 +95,86 @@ if (isset($_POST["submit"])) {
             </div>
     </section>
 </div>
-</div>
 <script type="text/javascript">
     $(document).ready(function() {
+
+        // Validasi Nama Lengkap
+        $('#nama_user').on('keyup', function() {
+            var regex = /^[a-z A-Z]+$/;
+            if (regex.test(this.value) !== true) {
+                this.value = this.value.replace(/[^a-zA-Z]+/, '');
+            } else if ($(this).val().length < 5) {
+                $('.nama_user').text('Anda Yakin Nama Anda Terdiri Dari ' + $(this).val().length + ' Huruf?');
+            } else {
+                $('.nama_user').text('');
+            }
+            if ($(this).val().length == 0) {
+                $('.nama_user').text('Nama Harus Di isi!');
+            }
+        });
+
+
+        // validasi email
+        $('#email').on('keyup', function() {
+            var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!this.value.match(valid)) {
+                $('.email').text('Isi Email dengan Benar!');
+            } else {
+                $('.email').text('');
+            }
+        });
+
+
+        // validasi nohp
+        $('#nohp_user').on('keyup', function() {
+            var regex = /^[0-9]+$/;
+            if (regex.test(this.value) !== true) {
+                this.value = this.value.replace(/[^0-9]+/, '');
+            } else {
+                $('.nohp_user').text('');
+            }
+
+            if ($(this).val().length < 12) {
+                $('.nohp_user').text('maksimal 12 angka!');
+            } else {
+                $('.nohp_user').text('');
+            }
+
+        });
+
+
+        // validasi kode pos
+        $('#kodepos').on('keyup', function() {
+            var regex = /^[0-9]+$/;
+            if (regex.test(this.value) !== true) {
+                this.value = this.value.replace(/[^0-9]+/, '');
+            } else {
+                $('.kodepos').text('');
+            }
+
+            if ($(this).val().length < 5) {
+                $('.kodepos').text('minimal 5 angka!');
+            } else {
+                $('.kodepos').text('');
+            }
+
+        });
+
+
+        // Validasi Nama Lengkap
+        $('#jenis_kelamin').on('keyup', function() {
+            var regex = /^[L  P l  p]+$/;
+            if (regex.test(this.value) !== true) {
+                this.value = this.value.replace(/[^L P]+/, '');
+            } else {
+                $('.jenis_kelamin').text('');
+            }
+            if ($(this).val().length == 0) {
+                $('.jenis_kelamin').text('laki laki (L) atau perempuan (P)!');
+            }
+        });
+
+
         $("#provinsi").append('<option value="">Pilih</option>');
         $("#kabupaten").html('');
         $("#kecamatan").html('');
@@ -162,6 +225,8 @@ if (isset($_POST["submit"])) {
                         i].nama_kec + '</option>');
             }
         });
+
+
     });
 </script>
 

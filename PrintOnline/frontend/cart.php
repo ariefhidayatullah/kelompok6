@@ -16,7 +16,7 @@ if (isset($_SESSION["LOGIN"])) {
 			echo "
 			<script>
 				alert('data berhasil ditambah');
-				document.location.href = 'cart.php';
+				
 			</script>
 		";
 		} else {
@@ -32,6 +32,25 @@ if (isset($_SESSION["LOGIN"])) {
 	echo "<script> alert('silahkan login terlebih dahulu!');</script>";
 	echo "<script>Location ='login.php'; </script>";
 }
+
+if (isset($_POST["submit"])) {
+	//cek data berhasil diubah atau tidak
+	if (uploaddesain($_POST) > 0) {
+		echo "
+			<script>
+				alert('data berhasil diubah');
+			</script>
+		";
+		header("Location:index.php");
+	} else {
+		echo "
+			<script>
+				alert('data gagal diubah'); 
+			</script>
+		";
+	}
+}
+
 ?>
 
 <!-- Main wrapper -->
@@ -66,12 +85,14 @@ if (isset($_SESSION["LOGIN"])) {
 				<div class="footer-static-top">
 					<div class="container">
 						<div class="row">
-							<div class="col">
+							<div class="col text-center">
 								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 									<tr>
 										<th>Jenis Produk</th>
 										<th>Nama Bahan</th>
-										<th>Harga Satuan</th>
+										<th>Harga</th>
+										<th>jumlah</th>
+										<th>gambar desain</th>
 										<th>Pilihan</th>
 									</tr>
 									<?php
@@ -80,6 +101,7 @@ if (isset($_SESSION["LOGIN"])) {
 										$id_produk     = $data['id_produk'];
 										$nama_bahan       = $data['nama_bahan'];
 										$id_cart = $data['id_cart'];
+										$qty = $data['qty'];
 										?>
 										<tr>
 											<td><?php
@@ -93,14 +115,17 @@ if (isset($_SESSION["LOGIN"])) {
 													$ro1 = mysqli_fetch_array($ba1);
 													echo $ro1['harga_satuan'];
 													?></td>
+											<td><?php echo $qty ?></td>
+											<td>..</td>
 											<td>
 												<a class="btn btn-success btn-sm" href="checkout.php?id_produk=<?php echo $id_produk; ?>&id_bahan=<?php echo $nama_bahan; ?>">Checkout</a>
-												<a onclick="return confirm('apakah anda yakin ? ');"
-													class="btn btn-danger btn-sm" href="hapus.php?id=<?php echo $id_cart; ?>">Hapus</a>
+												<a onclick="return confirm('apakah anda yakin ? ');" class="btn btn-danger btn-sm" href="hapus.php?id=<?php echo $id_cart; ?>">Hapus</a>
 											</td>
 										</tr>
 									<?php } ?>
 								</table>
+								<a class="btn btn-primary btn-sm" href="daftarproduk.php">lanjut belanja</a>
+								<a class="btn btn-primary btn-sm" href="uploaddesain.php">upload desain</a>
 							</div>
 						</div>
 					</div>

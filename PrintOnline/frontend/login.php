@@ -5,7 +5,7 @@ require 'function.php';
 include 'include/_header.php';
 
 
-if (isset($_POST["submit"])) {
+if (isset($_POST["register"])) {
 	if (registrasi($_POST) === 0) {
 		echo "<script> alert('user baru berhasil ditambahkan!');</script>
 		header('Location:index.php');";
@@ -18,18 +18,19 @@ if (isset($_POST["LOGIN"])) {
 	$email = $_POST["email"];
 	$password = $_POST["password"];
 
-	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' OR username = '$email'");
+	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
 
 	if (mysqli_num_rows($result) === 1) {
 		$row = mysqli_fetch_assoc($result);
 		// cek password
 		if (password_verify($password, $row["password"])) {
 
-			$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' OR username = '$email'");
+			$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
 			$row0 = mysqli_fetch_array($result0);
 			$email = $row0['email'];
 
 			$_SESSION["LOGIN"] = $email;
+			echo "<script> alert('user baru berhasil ditambahkan!');</script>";
 			header("Location:index.php");
 			exit;
 		}
@@ -102,30 +103,30 @@ if (isset($_POST["LOGIN"])) {
 								<div class="input__box">
 									<label>nama : <span>*</span></label>
 									<input type="text" name="nama_user" id="nama_user" placeholder="Masukkan nama anda..." required="" autofocus>
-									<small class="nama_user"></small>
+									<small class="nama_user" style="color: red;"></small>
 								</div>
 								<div class="input__box">
 									<label>Email address <span>*</span></label>
 									<input type="email" name="email" id="email" placeholder="Masukkan email anda..." required="" autofocus>
-									<small class="email"></small>
+									<small class="email" style="color: red;"></small>
 								</div>
 								<div class="input__box">
 									<label>Password<span>*</span></label>
 									<input type="password" name="password" id="password" placeholder="Masukkan password anda..." required>
-									<small class="password"></small>
+									<small class="password" style="color: red;"></small>
 								</div>
 								<div class="input__box">
 									<label>konfirmasi Password <span>*</span></label>
 									<input type="password" name="password2" id="password2" placeholder="konfirmasi password anda..." required>
-									<small class="password2"></small>
+									<small class="password2" style="color: red;"></small>
 								</div>
 								<div class="input__box">
 									<label>no hp <span>*</span></label>
 									<input type="text" name="nohp_user" id="nohp_user" placeholder="Masukkan no hp anda..." required="" autofocus>
-									<small class="nohp_user"></small>
+									<small class="nohp_user" style="color: red;"></small>
 								</div>
 								<div class="form__btn">
-									<button type="submit" name="submit">Register</button>
+									<button type="submit" name="register">Register</button>
 								</div>
 							</div>
 						</form>

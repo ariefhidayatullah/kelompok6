@@ -200,7 +200,7 @@ if ($datakode) {
 						</div>
 						<div class="form-group row">
 							<div class="col mb-3 mb-sm-0">
-								<label for="id_produk">Id Produk : </label>
+								<label for="id_produk">nama Produk : </label>
 								<select class="form-control" name="id_produk" id="id_produk">
 									<option>Pilih Produk : </option>
 									<?php

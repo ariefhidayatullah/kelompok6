@@ -1,3 +1,4 @@
+<?php $bahan = query('SELECT * FROM produk order by rand()'); ?>
 <header id="wn__header" class="header__area header-menu header__absolute">
     <div class="container-fluid">
         <div class="row">
@@ -20,6 +21,11 @@
                                 </ul>
                             </div>
                         </li>
+                        <?php if (isset($_SESSION["LOGIN"])) : ?>
+                            <li class="drop"><a href="cart.php">keranjang belanja</a></li>
+                        <?php else : ?>
+                        <?php endif ?>
+                        <li class="drop"><a href="cart.php">Tentang kami</a></li>
                     </ul>
                 </nav>
             </div>

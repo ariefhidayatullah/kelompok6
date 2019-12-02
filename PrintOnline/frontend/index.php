@@ -23,7 +23,7 @@ if (isset($_SESSION["LOGIN"])) {
 		<div class="slide animation__style09 bg-image--1 fullscreen align__center--left">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-12">  
+					<div class="col-lg-12">
 						<div class="slider__content">
 							<div class="contentbox">
 								<h2>Percayakan <span>Kebutuhan </span></h2>
