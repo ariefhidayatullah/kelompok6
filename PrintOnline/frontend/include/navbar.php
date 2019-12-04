@@ -1,4 +1,6 @@
-<?php $bahan = query('SELECT * FROM produk order by rand()'); ?>
+<?php $bahan = query('SELECT * FROM produk order by rand()');
+
+?>
 <header id="wn__header" class="header__area header-menu header__absolute">
     <div class="container-fluid">
         <div class="row">

@@ -190,9 +190,23 @@ function tambahcart($data)
 	$username = $_SESSION["LOGIN"];
 
 
-	//query insert data
-	$query = "INSERT INTO keranjang VALUES ('', '$username', '$id_produk', '$id_bahan', '$qty', '')";
-	mysqli_query($conn, $query);
+
+
+	//di cek dulu apakah barang yang di beli sudah ada di tabel keranjang
+	$sql = mysql_query($conn, "SELECT id_cart FROM keranjang WHERE username = $username");
+	$ketemu = mysql_num_rows($sql);
+	if ($ketemu == 0) {
+		// kalau barang belum ada, maka di jalankan perintah insert
+		mysqli_query($conn, "INSERT INTO keranjang (id_cart, username, id_produk, id_bahan, qty, gambar)
+                VALUES ('', '$username', '$id_produk', '$id_bahan', '$qty', '')");
+	} else {
+		//  kalau barang ada, maka di jalankan perintah update
+		 mysql_query("UPDATE keranjang
+                SET qty = qty + 1
+                WHERE username = $username");
+	}
+	header('Location:keranjang.php');
+	mysqli_query($conn, $ketemu);
 	return  mysqli_affected_rows($conn);
 }
 

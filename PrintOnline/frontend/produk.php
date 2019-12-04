@@ -10,8 +10,7 @@ $produk = query('SELECT * FROM produk order by rand()');
 $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 
 if (isset($_SESSION["LOGIN"])) {
-	$username = $_SESSION["LOGIN"];
-	$user = query("SELECT * FROM user where email = '$username'");
+	$user = query("SELECT * FROM user");
 }
 
 ?>
@@ -103,11 +102,11 @@ if (isset($_SESSION["LOGIN"])) {
 										</h4><br>
 										<br>
 										<div class="box-tocart d-flex">
-											<form action="cart.php" method="get">
+											<form action="cart.php" method="POST">
 												<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
 												<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
 												<div class="addtocart__actions">
-													<button class="tocart" type="submit" name="cart" id="cart" title="Add to Cart">Add to Cart</button>
+													<button class="tocart" type="submit" name="cart" id="cart" title="Add to Cart"><a href="beli.php?id=<?= $row['id_produk']; ?>">Add to Cart</a></button>
 												</div>
 												<span>Qty</span>
 												<input id="qty" class="input-text qty" name="qty" min="1" max="12" value="1" title="Qty" type="number">
