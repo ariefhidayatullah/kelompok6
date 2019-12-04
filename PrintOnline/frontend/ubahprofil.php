@@ -71,8 +71,26 @@ if (isset($_POST["submit"])) {
                                         <label>no hp <span>:</span><input class="input__box" name="nohp_user" id="nohp_user" required value="<?= $row['nohp_user']; ?>"><small class="nohp_user" style="color: red;"></small></label>
                                     </div>
                                     <div class="single-contact-form space-between">
-                                        <label for="Provinsi">Provinsi <select class="form-control" id="provinsi" name="provinsi" required value="<?= $row['provinsi']; ?>"></select></label>
-                                        <label for="Kabupaten">Kabupaten <select class="form-control" id="kabupaten" name="kabupaten" required value="<?= $row['kabupaten']; ?>"></select></label>
+                                        <label for="Provinsi">Provinsi <select name="provinsi" id="provinsi" class="form-control" required>
+                                                <?php
+                                                    $sat            = "SELECT * FROM prov ";
+                                                    $result         = mysqli_query($conn, $sat);
+                                                    while ($datasat  = mysqli_fetch_array($result)) {
+                                                        echo "<option value='$datasat[id_prov]'" . ($row['provinsi'] == $datasat['id_prov'] ? ' selected' : '') . ">$datasat[nama_prov]</option>";
+                                                    }
+                                                    ?>
+                                            </select></label>
+                                        <label for="Kabupaten">Kabupaten <select class="form-control" id="kabupaten" name="kabupaten" required>
+                                                <?php
+                                                    $id_prov = $row['provinsi'];
+                                                    $sat1          = "SELECT * FROM kabkot WHERE id_prov = '$id_prov' ";
+                                                    $result1         = mysqli_query($conn, $sat1);
+                                                    while ($datasat1  = mysqli_fetch_array($result1)) {
+                                                        echo "<option value='$datasat1[id_kabkot]'" . ($row['kabupaten'] == $datasat1['id_kabkot'] ? ' selected' : '') . ">$datasat1[nama_kabkot]</option>";
+                                                    }
+                                                    echo $datasat1['id_kabkot'];
+                                                    ?>
+                                            </select></label>
                                         <label for="Kecamatan">Kecamatan<select class="form-control" id="kecamatan" name="kecamatan" required value="<?= $row['kecamatan']; ?>"></select></label>
 
                                     </div>

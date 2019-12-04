@@ -4,11 +4,6 @@ require 'function.php';
 include 'include/_header.php';
 $bahan = query('SELECT * FROM produk order by rand()');
 
-if (isset($_SESSION["LOGIN"])) {
-	$username = $_SESSION["LOGIN"];
-	$user = query("SELECT * FROM user where email = '$username'");
-}
-
 ?>
 
 
@@ -61,27 +56,6 @@ if (isset($_SESSION["LOGIN"])) {
 	<!-- Start BEst Seller Area -->
 	<section class="wn__product__area brown--color pt--80  pb--30">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="section__title text-center">
-						<h5>Selamat Datang
-							<?php
-							if (isset($_SESSION["LOGIN"])) {
-								$username = $_SESSION["LOGIN"];
-								$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$username' OR username = '$username'");
-								$row0 = mysqli_fetch_array($result0);
-								$email = $row0['nama_user'];
-								echo $email;
-							} else {
-								echo "Silakan login/daftar terlebih dahulu";
-							}
-							?></h5>
-						<br><br>
-						<h2 class="title__be--2"><span class="color--theme">produk</span></h2>
-						<hr>
-					</div>
-				</div>
-			</div>
 			<!-- Start Single Tab Content -->
 			<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50 ">
 				<!-- Start Single Product -->
