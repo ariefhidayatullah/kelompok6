@@ -55,21 +55,21 @@ $bahan = query('SELECT * FROM produk order by rand()');
                                     <!-- Start Single Product -->
                                     <div class="product product__style--3 col-lg-3 col-md-3 col-sm-3 col-12">
                                         <div class="product__thumb">
-                                            <a class="first__img" href="produk.php?id=<?= $row['id_produk']; ?>"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
-                                            <a class="second__img animation1" href="produk.php?id=<?= $row['id_produk']; ?>"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
+                                            <a class="first__img"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
+                                            <a class="second__img animation1"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
                                             <div class="hot__box">
                                                 <span class="hot-label">BEST SELLER</span>
                                             </div>
                                         </div>
                                         <div class="product__content content--center">
-                                            <h4><a href="produk.php?id=<?= $row['id_produk']; ?>"><?= $row['jenis_produk']; ?></a></h4>
+                                            <h4><a><?= $row['jenis_produk']; ?></a></h4>
                                             <ul class="prize d-flex">
-                                                <li><?= $row['harga']; ?></li>
+                                                <li><?= $row['harga']; ?></li><li>Rp. <?= number_format($row['harga']); ?></li>
                                             </ul>
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a href="produk.php?id=<?= $row['id_produk']; ?>"><i class=" bi bi-search"></i></a></li>
+                                                        <li><a href="produk.php?id=<?= base64_encode($row['id_produk']); ?>"><i class=" bi bi-search"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -78,7 +78,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
                                                     <li class="on"><i class="fa fa-star-o"></i></li>
                                                     <li class="on"><i class="fa fa-star-o"></i></li>
                                                     <li class="on"><i class="fa fa-star-o"></i></li>
-                                                    <li><i class="fa fa-star-o"></i></li>
+                                                    <li class="on"><i class="fa fa-star-o"></i></li>
                                                     <li><i class="fa fa-star-o"></i></li>
                                                 </ul>
                                             </div>

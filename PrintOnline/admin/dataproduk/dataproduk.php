@@ -91,7 +91,6 @@ $bahan = query('SELECT * FROM produk');
                       <th>No.</th>
                       <th>Id Produk</th>
                       <th>Jenis Produk</th>
-                      <th>nama bahan</th>
                       <th>Deskripsi</th>
                       <th>Gambar</th>
                       <th>Aksi</th>
@@ -102,7 +101,6 @@ $bahan = query('SELECT * FROM produk');
                         <td><?= $i; ?></td>
                         <td><?= $row['id_produk']; ?></td>
                         <td><?= $row['jenis_produk']; ?></td>
-                        <td><?= $row['nama_bahan']; ?></td>
                         <td><?= $row['deskripsi']; ?></td>
                         <td><img src="../../frontend/img/<?= $row['gambar']; ?>" width="100"></td>
 

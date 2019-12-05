@@ -64,7 +64,7 @@ if (isset($_POST["submit"])) {
                                     </div>
                                     <div class="single-contact-form space-between">
                                         <label>username <span>:</span><input class="input__box" name="username" id="username" required value="<?= $row['username']; ?>"></label>
-                                        <label>password <span>:</span><input class="input__box" name="password" id="password" required value="<?= $row['password']; ?>"></label>
+                                        <label>password <span>:</span><input class="input__box" type="password" name="password" id="password" required value=""></label>
                                     </div>
                                     <div class=" single-contact-form space-between">
                                         <label>jenis kelamin <span>:</span><input class="input__box" name="jenis_kelamin" id="jenis_kelamin" required value="<?= $row['jenis_kelamin']; ?>"><small class="jenis_kelamin" style="color: red;"></small></label>

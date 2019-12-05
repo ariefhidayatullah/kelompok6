@@ -1,4 +1,6 @@
-<?php $bahan = query('SELECT * FROM produk order by rand()');
+<?php
+
+$user = query('SELECT * FROM user');
 
 ?>
 <header id="wn__header" class="header__area header-menu header__absolute">
@@ -18,7 +20,7 @@
                             <div class="megamenu mega02">
                                 <ul class="item item01">
                                     <?php foreach ($bahan as $row) : ?>
-                                        <li><a href="produk.php?id=<?= $row['id_produk']; ?>"><?= $row['jenis_produk']; ?></a></li>
+                                        <li><a href="produk.php?id=<?= base64_encode($row['id_produk']); ?>"><?= $row['jenis_produk']; ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
@@ -27,7 +29,7 @@
                             <li class="drop"><a href="cart.php">keranjang belanja</a></li>
                         <?php else : ?>
                         <?php endif ?>
-                        <li class="drop"><a href="cart.php">Tentang kami</a></li>
+                        <li class="drop"><a href="">Tentang kami</a></li>
                     </ul>
                 </nav>
             </div>

@@ -4,13 +4,29 @@ require 'function.php';
 include 'include/_header.php';
 
 
-$id_produk = $_GET['id'];
+$id_produk = base64_decode($_GET['id']);
 
 $produk = query('SELECT * FROM produk order by rand()');
 $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 
 if (isset($_SESSION["LOGIN"])) {
 	$user = query("SELECT * FROM user");
+}
+if (isset($_POST["cart"])) {
+	//cek data berhasil diubaahtau tidak
+	if (ubah($_POST) > 0) {
+		echo "
+			<script>
+				alert('data berhasil diubah');
+			</script>
+		";
+	} else {
+		echo "
+			<script>
+				alert('data gagal diubah'); 
+			</script>
+		";
+	}
 }
 
 ?>
@@ -73,6 +89,10 @@ if (isset($_SESSION["LOGIN"])) {
 												$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
 												$ba = mysqli_query($conn, $sql);
 												$ro = mysqli_fetch_array($ba);
+
+												$jenis_produk = $ro['jenis_produk'];
+												$deskripsi = $ro['deskripsi'];
+												$gambar = $ro['gambar'];
 												echo "Kenapa harus mencetak " . $ro['jenis_produk'] . "?";
 												?>
 											<br>
@@ -102,14 +122,15 @@ if (isset($_SESSION["LOGIN"])) {
 										</h4><br>
 										<br>
 										<div class="box-tocart d-flex">
-											<form action="cart.php" method="POST">
-												<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
-												<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
-												<div class="addtocart__actions">
-													<button class="tocart" type="submit" name="cart" id="cart" title="Add to Cart"><a href="beli.php?id=<?= $row['id_produk']; ?>">Add to Cart</a></button>
-												</div>
-												<span>Qty</span>
-												<input id="qty" class="input-text qty" name="qty" min="1" max="12" value="1" title="Qty" type="number">
+											<div class="addtocart__actions">
+												<form action="" method="POST">
+													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
+													<input type="text" name="jenis_produk" value="<?php echo $jenis_produk ?>" hidden>
+													<input type="text" name="deskripsi" value="<?php echo $deskripsi ?>" hidden>
+													<input type="text" name="harga" value="<?php echo $han ?>" hidden>
+													<input type="text" name="gambar" value="<?php echo $gambar ?>" hidden>
+													<button class="tocart" type="submit" name="cart" id="cart" title="Add to Cart"><a href="beli.php?id=<?= $row['id_produk']; ?>" name="cart" id="cart">Add to Cart</a></button>
+											</div>
 											</form>
 
 											<form action="checkout.php" method="get">
