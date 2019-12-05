@@ -70,7 +70,7 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
 												<td><?= $jumlah; ?></td>
 												<td><?= number_format($subharga); ?></td>
 												<td>
-													<a href="hapuskeranjang.php?id=<?= $id_produk ?>" onclick="return confirm('yakin menghapus produk dari keranjang ? ');">hapus</a>
+													<a href="hapuskeranjang.php?id=<?= $id_produk ?> "class="btn btn-primary" onclick="return confirm('yakin menghapus produk dari keranjang ? ');">hapus</a>
 												</td>
 											</tr>
 											<?php $nomor++; ?>

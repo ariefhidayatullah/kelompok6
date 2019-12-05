@@ -51,7 +51,7 @@ $user = query("SELECT * FROM user");
                                             <a class="first__img"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
                                             <a class="second__img animation1"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
                                             <div class="hot__box">
-                                                <span class="hot-label">BEST SALLER</span>
+                                                <span class="hot-label">BEST SELLER</span>
                                             </div>
                                         </div>
                                         <div class="product__content content--center">
