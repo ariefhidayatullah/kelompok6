@@ -2,9 +2,16 @@
 session_start();
 require 'function.php';
 include 'include/_header.php';
-$bahan = query('SELECT * FROM produk order by rand()');
+
 $user = query("SELECT * FROM user");
 
+if (ISSET($_GET['submit'])){
+$cari = $_GET['cari'];
+$query2 = "SELECT * FROM produk WHERE jenis_produk LIKE '%$cari%'";
+$bahan = mysqli_query($conn, $query2);
+}else{
+$bahan = query('SELECT * FROM produk order by rand()');
+}
 ?>
 
 <div class="wrapper" id="wrapper">
@@ -57,8 +64,7 @@ $user = query("SELECT * FROM user");
                                         <div class="product__content content--center">
                                             <h4><a href="produk.php?id=<?= $row['id_produk']; ?>"><?= $row['jenis_produk']; ?></a></h4>
                                             <ul class="prize d-flex">
-                                                <li>$35.00</li>
-                                                <li class="old_prize">$35.00</li>
+                                                <li><?= $row['harga']; ?></li>
                                             </ul>
                                             <div class="action">
                                                 <div class="actions_inner">

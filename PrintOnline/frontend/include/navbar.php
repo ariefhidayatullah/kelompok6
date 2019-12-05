@@ -32,8 +32,10 @@
                 </nav>
             </div>
             <div class="col-md-6 col-sm-6 col-6 col-lg-2">
+
                 <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
                     <!-- Start Shopping Cart -->
+                    <li class="shop_search"><a class="search__active" href="#"></a></li>
                     <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
                         <div class="searchbar__content setting__block">
                             <div class="content-inner">
@@ -60,4 +62,16 @@
             </div>
         </div>
     </div>
+    <div class="brown--color box-search-content search_active block-bg close__top">
+            <form id="search_mini_form" class="minisearch" action="daftarproduk.php" method="get">
+                <div class="field__search">
+                    <input type="text" name="cari" placeholder="Cari produk disini ...">
+                    <div class="action">
+                        <button class="btn btn-warning" type="submit" value="submit"><i class="zmdi zmdi-search"></i></button>
+                    </div>
+                </div>
+            </form>
+            <div class="close__wrap">
+                <span>close</span>
+            </div>
 </header>
