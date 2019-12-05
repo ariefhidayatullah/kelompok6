@@ -86,6 +86,7 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
                                 <form action="" method="POST">
                                     <div class="row contact-form-wrap">
                                         <div class="col-md-4">
+                                            <input type="hidden" id="id_pesan" name="id_pesan" required value="" readonly>
                                             <div class=" single-contact-form">
                                                 <input type="text" readonly value="<?= $_SESSION["LOGIN"]["nama_user"] ?>" class="input__box">
                                             </div>
@@ -103,31 +104,36 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
                                                 $result1 = mysqli_query($conn, $queryy);
                                                 $row1 = mysqli_fetch_array($result1);
                                                 ?>
-                                                <input type="text" readonly value="<?= $row1['jne_reg'] ?>" class="input__box" name="id_ongkir" id="id_ongkir">
+                                                <input type="text" readonly value="<?= $row1['id_kabkot'] ?>" class="input__box" name="id_ongkir" id="id_ongkir">
                                             </div>
                                         </div>
                                     </div>
                                     <button class="btn btn-primary" name="chekout">chekout</button>
                                 </form>
                                 <?php
-                                if (isset($_POST["chekout"])) {
-                                    $id_userr = $_SESSION["LOGIN"]["id_user"];
-                                    $nama_userr = $_SESSION["LOGIN"]["nama_user"];
-                                    $id_ongkir = $_POST["id_ongkir"];
-                                    $tanggal_pembelian = date("y-m-d");
-                                    $emaill = $_SESSION["LOGIN"]["email"];
-                                    $nohp_userr = $_SESSION["LOGIN"]["nohp_user"];
+                                if (isset($_POST['chekout'])) {
+                                    $id_pesan = $_POST['id_pesan'];
+                                    $id_pelanggan = $_SESSION['LOGIN']['id_user'];
+                                    $nama_user = $_SESSION['LOGIN']['nama_user'];
+                                    $email = $_SESSION['LOGIN']['email'];
+                                    $nohp_user = $_SESSION['LOGIN']['nohp_user'];
+                                    $id_kabkot = $_POST['id_ongkir'];
+                                    $tanggal_pembelian = date("Y-m-d");
 
-                                    $ambilll = $conn->query("SELECT * FROM kabkot WHERE id_kabkot = '$id_ongkir'");
-                                    $arrayongkir = $ambilll->fetch_assoc();
+                                    $ambil = $conn->query("SELECT * FROM kabkot WHERE id_kabkot ='$id_kabkot'");
+                                    $arrayongkir = $ambil->fetch_assoc();
                                     $tarif = $arrayongkir['jne_reg'];
 
                                     $total_pembelian = $totalbelanja + $tarif;
 
-                                    // menyimpan ke data pemesanan 
-                                    mysqli_query($conn, "INSERT INTO 'pemesanan' (id_pesan, id_user, nama_user, tgl_pesan, email, nohp_user, id_krw, total_harga, )
-                                    VALUES ('', '$id_userr', '$nama_userr', '$tanggal_pembelian', '$emaill', '$nohp_userr', '', '$total_pembelian', '')");
+                                    # 1. simpan data ke tabel pembelian
+                                    $query = "INSERT INTO pemesanan VALUES ('$id_pesan','$id_pelanggan','$nama_user','$email','$nohp_user','$id_kabkot','$total_pembelian' )";
+
+                                    mysqli_query($conn, $query);
+                                    return  mysqli_affected_rows($conn);
                                 }
+
+                                var_dump($total_pembelian);
                                 ?>
                             </div>
                         </div>

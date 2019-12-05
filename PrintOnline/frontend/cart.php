@@ -61,14 +61,12 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
 												$pecah = $ambil->fetch_assoc();
 												?>
 											<?php
-												$kab = mysqli_query($conn, "SELECT * FROM bahan WHERE id_produk = '$id_produk'");
-												$kot = $kab->fetch_assoc();
-												$subharga = $kot["harga_satuan"] * $jumlah;
+												$subharga = $pecah["harga"] * $jumlah;
 												?>
 											<tr>
 												<td><?= $nomor; ?></td>
 												<td><?= $pecah["jenis_produk"]; ?></td>
-												<td>Rp. <?= number_format($kot["harga_satuan"]); ?></td>
+												<td>Rp. <?= number_format($pecah["harga"]); ?></td>
 												<td><?= $jumlah; ?></td>
 												<td><?= number_format($subharga); ?></td>
 												<td>

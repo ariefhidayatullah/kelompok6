@@ -63,8 +63,8 @@ $bahan = query('SELECT * FROM produk order by rand()');
 					<div class="product product__style--3">
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 							<div class="product__thumb">
-								<a class="first__img" href="produk.php?id=<?= $row['id_produk']; ?>"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
-								<a class="second__img animation1" href="produk.php?id=<?= $row['id_produk']; ?>"><img src="img/<?= $row['gambar']; ?>" alt="product image"></a>
+								<a class="first__img"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
+								<a class="second__img animation1"><img src="img/<?= $row['gambar']; ?>" alt="product image"></a>
 								<div class="hot__box">
 									<span class="hot-label">BEST SELLER</span>
 								</div>
@@ -74,7 +74,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 								<div class="action">
 									<div class="actions_inner">
 										<ul class="add_to_links">
-											<li><a href="produk.php?id=<?= $row['id_produk']; ?>"><i class=" bi bi-search"></i></a></li>
+											<li><a href="produk.php?id=<?= base64_encode($row['id_produk']); ?>"><i class=" bi bi-search"></i></a></li>
 										</ul>
 									</div>
 								</div>
