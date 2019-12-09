@@ -76,8 +76,13 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
 									<?php endforeach ?>
 								</tbody>
 							</table>
-							<a href="daftarproduk.php" class="btn btn-primary">Lanjutkan belanja</a>
-							<a href="chekout.php" class="btn btn-secondary">chekout</a>
+							<div class="cartbox__btn">
+								<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
+									<li><a href="daftarproduk.php">Lanjutkan belanja</a></li>
+									<li><a href="#">Update Cart</a></li>
+									<li><a href="chekout.php">chekout</a></li>
+								</ul>
+							</div>
 						</div>
 				</div>
 			</div>

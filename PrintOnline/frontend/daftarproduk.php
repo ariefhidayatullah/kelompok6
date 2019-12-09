@@ -5,12 +5,12 @@ include 'include/_header.php';
 
 $user = query("SELECT * FROM user");
 
-if (ISSET($_GET['submit'])){
-$cari = $_GET['cari'];
-$query2 = "SELECT * FROM produk WHERE jenis_produk LIKE '%$cari%'";
-$bahan = mysqli_query($conn, $query2);
-}else{
-$bahan = query('SELECT * FROM produk order by rand()');
+if (isset($_GET['submit'])) {
+    $cari = $_GET['cari'];
+    $query2 = "SELECT * FROM produk WHERE jenis_produk LIKE '%$cari%'";
+    $bahan = mysqli_query($conn, $query2);
+} else {
+    $bahan = query('SELECT * FROM produk order by rand()');
 }
 ?>
 
@@ -64,7 +64,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
                                         <div class="product__content content--center">
                                             <h4><a><?= $row['jenis_produk']; ?></a></h4>
                                             <ul class="prize d-flex">
-                                                <li><?= $row['harga']; ?></li><li>Rp. <?= number_format($row['harga']); ?></li>
+                                                <li>Rp. <?= number_format($row['harga']); ?></li>
                                             </ul>
                                             <div class="action">
                                                 <div class="actions_inner">
