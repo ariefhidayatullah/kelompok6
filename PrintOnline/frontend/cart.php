@@ -47,6 +47,7 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
 										<tr>
 											<th>no</th>
 											<th>produk</th>
+											<th>bahan</th>
 											<th>Harga</th>
 											<th>jumlah</th>
 											<th>subharga</th>
@@ -66,11 +67,12 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
 											<tr>
 												<td><?= $nomor; ?></td>
 												<td><?= $pecah["jenis_produk"]; ?></td>
+												<td><?= $pecah["jenis_bahan"]; ?></td>
 												<td>Rp. <?= number_format($pecah["harga"]); ?></td>
 												<td><?= $jumlah; ?></td>
 												<td><?= number_format($subharga); ?></td>
 												<td>
-													<a href="hapuskeranjang.php?id=<?= $id_produk ?> "class="btn btn-primary" onclick="return confirm('yakin menghapus produk dari keranjang ? ');">hapus</a>
+													<a href="hapuskeranjang.php?id=<?= $id_produk ?> " class="btn btn-primary" onclick="return confirm('yakin menghapus produk dari keranjang ? ');">hapus</a>
 												</td>
 											</tr>
 											<?php $nomor++; ?>

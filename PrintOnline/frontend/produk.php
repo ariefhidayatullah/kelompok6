@@ -71,14 +71,15 @@ if (isset($_POST["cart"])) {
 								</div>
 								<div class="col-lg-6 col-12">
 									<div class="product__info__main">
-										<h1><?= $row['jenis_produk']; ?></h1>
+										<h1><?= $row['jenis_produk']; ?></h1> </a>
 										<a href="">
 											<?php
 												if (isset($_POST['han'])) {
 													$han = $_POST['han'];
 													$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
 													$row1 = mysqli_fetch_array($bahan1);
-													echo "Harga Satuan : Rp. " . $row1['harga_satuan'];
+													$nama_bahan = $row1['nama_bahan'];
+													echo "Harga : Rp. " . $row1['harga_satuan'];
 												} else {
 													echo "Silahkan Pilih Bahan";
 												}
@@ -92,11 +93,13 @@ if (isset($_POST["cart"])) {
 
 												$jenis_produk = $ro['jenis_produk'];
 												$deskripsi = $ro['deskripsi'];
+												$ukuran = $ro['ukuran'];
 												$gambar = $ro['gambar'];
 												echo "Kenapa harus mencetak " . $ro['jenis_produk'] . "?";
 												?>
 											<br>
 											<?php
+												echo $ro['ukuran'];
 												echo $ro['deskripsi'];
 												?>
 											</p>
@@ -126,8 +129,10 @@ if (isset($_POST["cart"])) {
 												<form action="" method="POST">
 													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
 													<input type="text" name="jenis_produk" value="<?php echo $jenis_produk ?>" hidden>
+													<input type="text" name="nama_bahan" value="<?php echo $nama_bahan ?>" hidden>
 													<input type="text" name="deskripsi" value="<?php echo $deskripsi ?>" hidden>
 													<input type="text" name="harga" value="<?php echo $han ?>" hidden>
+													<input type="text" name="ukuran" value="<?php echo $ukuran ?>" hidden>
 													<input type="text" name="gambar" value="<?php echo $gambar ?>" hidden>
 													<button class="tocart" type="submit" name="cart" id="cart" title="Add to Cart"><a href="beli.php?id=<?= $row['id_produk']; ?>" name="cart" id="cart">Add to Cart</a></button>
 											</div>

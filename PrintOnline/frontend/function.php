@@ -45,6 +45,8 @@ function ubah($data)
 
 	$id_produk = $data['id_produk'];
 	$jenis_produk = $data['jenis_produk'];
+	$nama_bahan = $data['nama_bahan'];
+	$ukuran = $data['ukuran'];
 	$deskripsi = $data['deskripsi'];
 	$gambar = $data['gambar'];
 	$harga = $data['harga'];
@@ -57,8 +59,10 @@ function ubah($data)
 	//query insert data
 	$query = "UPDATE produk SET 
 			jenis_produk = '$jenis_produk',
+			jenis_bahan = '$nama_bahan',
 			deskripsi = '$deskripsi',
 			harga = '$harga_bahan',
+			ukuran = '$ukuran',
 			gambar = '$gambar'
 			WHERE id_produk = '$id_produk'
 			";

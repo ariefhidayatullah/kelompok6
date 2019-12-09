@@ -2,6 +2,8 @@
 
 $user = query('SELECT * FROM user');
 
+$daftarproduk = query('SELECT * FROM produk order by rand()');
+
 ?>
 <header id="wn__header" class="header__area header-menu header__absolute">
     <div class="container-fluid">
@@ -19,7 +21,7 @@ $user = query('SELECT * FROM user');
                         <li class="drop"><a href="#">daftar produk</a>
                             <div class="megamenu mega02">
                                 <ul class="item item01">
-                                    <?php foreach ($bahan as $row) : ?>
+                                    <?php foreach ($daftarproduk as $row) : ?>
                                         <li><a href="produk.php?id=<?= base64_encode($row['id_produk']); ?>"><?= $row['jenis_produk']; ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
@@ -65,15 +67,15 @@ $user = query('SELECT * FROM user');
         </div>
     </div>
     <div class="brown--color box-search-content search_active block-bg close__top">
-            <form id="search_mini_form" class="minisearch" action="daftarproduk.php" method="get">
-                <div class="field__search">
-                    <input type="text" name="cari" placeholder="Cari produk disini ...">
-                    <div class="action">
-                        <button class="btn btn-warning" type="submit" value="submit"><i class="zmdi zmdi-search"></i></button>
-                    </div>
+        <form id="search_mini_form" class="minisearch" action="daftarproduk.php" method="get">
+            <div class="field__search">
+                <input type="text" name="cari" placeholder="Cari produk disini ...">
+                <div class="action">
+                    <button class="btn btn-warning" type="submit" value="submit"><i class="zmdi zmdi-search"></i></button>
                 </div>
-            </form>
-            <div class="close__wrap">
-                <span>close</span>
             </div>
+        </form>
+        <div class="close__wrap">
+            <span>close</span>
+        </div>
 </header>

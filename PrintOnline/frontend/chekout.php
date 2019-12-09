@@ -21,11 +21,11 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="bradcaump__inner text-center">
-                        <h2 class="bradcaump-title">Keranjang Belanja</h2>
+                        <h2 class="bradcaump-title">chekout</h2>
                         <nav class="bradcaump-content">
                             <a class="breadcrumb_item" href="dashboard.php">Home</a>
                             <span class="brd-separetor">/</span>
-                            <span class="breadcrumb_item active">Keranjang Belanja</span>
+                            <span class="breadcrumb_item active">chekout</span>
                         </nav>
                     </div>
                 </div>
@@ -47,9 +47,11 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
                                         <tr>
                                             <th>no</th>
                                             <th>produk</th>
+                                            <th>bahan</th>
                                             <th>Harga</th>
                                             <th>jumlah</th>
                                             <th>subharga</th>
+                                            <th>Pilihan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -61,16 +63,18 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
                                                 $pecah = $ambil->fetch_assoc();
                                                 ?>
                                             <?php
-                                                $kab = mysqli_query($conn, "SELECT * FROM bahan WHERE id_produk = '$id_produk'");
-                                                $kot = $kab->fetch_assoc();
-                                                $subharga = $kot["harga_satuan"] * $jumlah;
+                                                $subharga = $pecah["harga"] * $jumlah;
                                                 ?>
                                             <tr>
                                                 <td><?= $nomor; ?></td>
                                                 <td><?= $pecah["jenis_produk"]; ?></td>
-                                                <td>Rp. <?= number_format($kot["harga_satuan"]); ?></td>
+                                                <td><?= $pecah["jenis_bahan"]; ?></td>
+                                                <td>Rp. <?= number_format($pecah["harga"]); ?></td>
                                                 <td><?= $jumlah; ?></td>
                                                 <td><?= number_format($subharga); ?></td>
+                                                <td>
+                                                    <a href="hapuskeranjang.php?id=<?= $id_produk ?> " class="btn btn-primary" onclick="return confirm('yakin menghapus produk dari keranjang ? ');">hapus</a>
+                                                </td>
                                             </tr>
                                             <?php $nomor++; ?>
                                             <?php $totalbelanja += $subharga; ?>
@@ -78,7 +82,7 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th colspan="4">total belanja</th>
+                                            <th colspan="6">total belanja</th>
                                             <th>Rp. <?= number_format($totalbelanja) ?> </th>
                                         </tr>
                                     </tfoot>
@@ -100,11 +104,13 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
                                             <div class=" single-contact-form">
                                                 <?php
                                                 $id_userrr = $_SESSION["LOGIN"]["id_user"];
-                                                $queryy = "SELECT kabkot.id_kabkot, kabkot.jne_reg FROM user left join kabkot on user.kabupaten = kabkot.id_kabkot WHERE id_user = '$id_userrr'";
+                                                $queryy = "SELECT kabkot.id_kabkot, kabkot.nama_kabkot, kabkot.jne_reg FROM user left join kabkot on user.kabupaten = kabkot.id_kabkot WHERE id_user = '$id_userrr'";
                                                 $result1 = mysqli_query($conn, $queryy);
                                                 $row1 = mysqli_fetch_array($result1);
+                                                var_dump($row1);
                                                 ?>
-                                                <input type="text" readonly value="<?= $row1['id_kabkot'] ?>" class="input__box" name="id_ongkir" id="id_ongkir">
+                                                <input type="hidden" readonly value="<?= $row1['id_kabkot'] ?>" class="input__box" name="id_ongkir" id="id_ongkir">
+                                                <input type="text" readonly value="<?= $row1['nama_kabkot'] ?>" class="input__box">
                                             </div>
                                         </div>
                                     </div>
@@ -127,13 +133,31 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
                                     $total_pembelian = $totalbelanja + $tarif;
 
                                     # 1. simpan data ke tabel pembelian
-                                    $query = "INSERT INTO pemesanan VALUES ('$id_pesan','$id_pelanggan','$nama_user','$email','$nohp_user','$id_kabkot','$total_pembelian' )";
+                                    $query = "INSERT INTO pesan VALUES ('$id_pesan','$id_pelanggan','$nama_user','$email','$nohp_user','$id_kabkot','$tanggal_pembelian', '$total_pembelian' )";
 
                                     mysqli_query($conn, $query);
-                                    return  mysqli_affected_rows($conn);
+
+                                    $id_pesan_barusan = $conn->insert_id;
+
+                                    foreach ($_SESSION["keranjang"] as $id_produk => $jumlah) {
+                                        $value = $conn->query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
+                                        $row2 = $value->fetch_assoc();
+
+                                        $jenis_produk = $row2["jenis_produk"];
+                                        $jenis_bahan = $row2["jenis_bahan"];
+                                        $ukuran = $row2["ukuran"];
+
+                                        $conn->query("INSERT INTO `detail_pemesanan`(`id_pesan`, `id_produk`, `jenis_produk`, `nama_bahan`, `ukuran`, `qty`, `harga_satuan`) VALUES ('$id_pesan_barusan','$id_produk','$jenis_produk','$jenis_bahan','$ukuran','$jumlah','$subharga' )");
+                                    }
+
+                                    #kosongkan keranjang belanja
+                                    unset($_SESSION['keranjang']);
+
+                                    #tampilan dialihkan ke nota, nota pembelian baru terjadi
+                                    echo "<script>alert('Pembelian Berhasil !');</script>";
+                                    echo "<script>location='nota.php?id=$id_pesan_barusan';</script>";
                                 }
 
-                                var_dump($total_pembelian);
                                 ?>
                             </div>
                         </div>
