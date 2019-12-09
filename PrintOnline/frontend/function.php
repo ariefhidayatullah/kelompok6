@@ -39,33 +39,30 @@ function tambah($data)
 }
 
 
-// function hapus($id_produk)
-// {
-// 	global $conn;
-// 	mysqli_query($conn, "DELETE FROM produk WHERE id_produk = $id_produk");
-// 	return mysqli_affected_rows($conn);
-// }
-
 function ubah($data)
 {
 	global $conn;
 
 	$id_produk = $data['id_produk'];
 	$jenis_produk = $data['jenis_produk'];
-	$gambarLama = $data['gambarLama'];
+	$nama_bahan = $data['nama_bahan'];
+	$ukuran = $data['ukuran'];
+	$deskripsi = $data['deskripsi'];
+	$gambar = $data['gambar'];
+	$harga = $data['harga'];
 
-	//cek
-
-	if ($_FILES['gambar']['error'] === 4) {
-		$gambar = $gambarLama;
-	} else {
-		$gambar = upload();
-	}
-
+	$sql = "SELECT * FROM bahan WHERE nama_bahan = '$harga'";
+	$ba = mysqli_query($conn, $sql);
+	$ro = mysqli_fetch_array($ba);
+	$harga_bahan = $ro['harga_satuan'];
 
 	//query insert data
-	$query = "UPDATE produk SET  
+	$query = "UPDATE produk SET 
 			jenis_produk = '$jenis_produk',
+			jenis_bahan = '$nama_bahan',
+			deskripsi = '$deskripsi',
+			harga = '$harga_bahan',
+			ukuran = '$ukuran',
 			gambar = '$gambar'
 			WHERE id_produk = '$id_produk'
 			";
@@ -190,9 +187,23 @@ function tambahcart($data)
 	$username = $_SESSION["LOGIN"];
 
 
-	//query insert data
-	$query = "INSERT INTO keranjang VALUES ('', '$username', '$id_produk', '$id_bahan', '$qty', '')";
-	mysqli_query($conn, $query);
+
+
+	//di cek dulu apakah barang yang di beli sudah ada di tabel keranjang
+	$sql = mysql_query($conn, "SELECT id_cart FROM keranjang WHERE username = $username");
+	$ketemu = mysql_num_rows($sql);
+	if ($ketemu == 0) {
+		// kalau barang belum ada, maka di jalankan perintah insert
+		mysqli_query($conn, "INSERT INTO keranjang (id_cart, username, id_produk, id_bahan, qty, gambar)
+                VALUES ('', '$username', '$id_produk', '$id_bahan', '$qty', '')");
+	} else {
+		//  kalau barang ada, maka di jalankan perintah update
+		mysql_query("UPDATE keranjang
+                SET qty = qty + 1
+                WHERE username = $username");
+	}
+	header('Location:keranjang.php');
+	mysqli_query($conn, $ketemu);
 	return  mysqli_affected_rows($conn);
 }
 

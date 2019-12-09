@@ -27,10 +27,9 @@ if (isset($_POST["LOGIN"])) {
 
 			$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
 			$row0 = mysqli_fetch_array($result0);
-			$email = $row0['email'];
 
-			$_SESSION["LOGIN"] = $email;
-			echo "<script> alert('user baru berhasil ditambahkan!');</script>";
+			$_SESSION["LOGIN"] = $row0;
+			echo "<script> alert('user baru berhasil login!');</script>";
 			header("Location:index.php");
 			exit;
 		}

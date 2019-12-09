@@ -3,8 +3,6 @@ session_start();
 require 'function.php';
 include 'include/_header.php';
 $id_user = $_GET['id'];
-$username = $_SESSION["LOGIN"];
-$user = query("SELECT * FROM user where email = '$username'");
 $user = query("SELECT * FROM user WHERE id_user = '$id_user'");
 
 if (isset($_POST["submit"])) {
@@ -64,15 +62,15 @@ if (isset($_POST["submit"])) {
                                     </div>
                                     <div class="single-contact-form space-between">
                                         <label>username <span>:</span><input class="input__box" name="username" id="username" required value="<?= $row['username']; ?>"></label>
-                                        <label>password <span>:</span><input class="input__box" name="password" id="password" required value="<?= $row['password']; ?>"></label>
+                                        <label>password <span>:</span><input class="input__box" type="password" name="password" id="password" required value=""></label>
                                     </div>
                                     <div class=" single-contact-form space-between">
                                         <label>jenis kelamin <span>:</span><input class="input__box" name="jenis_kelamin" id="jenis_kelamin" required value="<?= $row['jenis_kelamin']; ?>"><small class="jenis_kelamin" style="color: red;"></small></label>
                                         <label>no hp <span>:</span><input class="input__box" name="nohp_user" id="nohp_user" required value="<?= $row['nohp_user']; ?>"><small class="nohp_user" style="color: red;"></small></label>
                                     </div>
                                     <div class="single-contact-form space-between">
-                                        <label for="Provinsi">Provinsi <select class="form-control" id="provinsi" name="provinsi" required value="<?= $row['provinsi']; ?>"></select></label>
-                                        <label for="Kabupaten">Kabupaten <select class="form-control" id="kabupaten" name="kabupaten" required value="<?= $row['kabupaten']; ?>"></select></label>
+                                        <label for="Provinsi">Provinsi <select name="provinsi" id="provinsi" class="form-control" required></select></label>
+                                        <label for="Kabupaten">Kabupaten <select class="form-control" id="kabupaten" name="kabupaten" required></select></label>
                                         <label for="Kecamatan">Kecamatan<select class="form-control" id="kecamatan" name="kecamatan" required value="<?= $row['kecamatan']; ?>"></select></label>
 
                                     </div>

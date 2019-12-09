@@ -103,7 +103,7 @@ $bahan = query('SELECT * FROM produk');
                         <td><?= $row['jenis_produk']; ?></td>
                         <td><?= $row['deskripsi']; ?></td>
                         <td><img src="../../frontend/img/<?= $row['gambar']; ?>" width="100"></td>
-                        
+
                         <td>
                           <a href="ubah.php?id=<?= $row['id_produk']; ?>"><button class="btn btn-warning btn-sm">Edit</button></a>
                           <a>||</a>

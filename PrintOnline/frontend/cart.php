@@ -3,56 +3,12 @@ session_start();
 include 'include/_header.php';
 require 'function.php';
 
-
-if (isset($_SESSION["LOGIN"])) {
-
-	$username = $_SESSION["LOGIN"];
-	$user = query("SELECT * FROM user where email = '$username'");
-
-	if (isset($_GET["cart"])) {
-
-		//cek data berhasil ditambah atau tidak
-		if (tambahcart($_GET) > 0) {
-			echo "
-			<script>
-				alert('data berhasil ditambah');
-				
-			</script>
-		";
-		} else {
-			echo "
-			<script>
-				alert('data gagal ditambah'); 
-				
-			</script>
-		";
-		}
-	}
-} else {
-	echo "<script> alert('silahkan login terlebih dahulu!');</script>";
-	echo "<script>Location ='login.php'; </script>";
-}
-
-if (isset($_POST["submit"])) {
-	//cek data berhasil diubah atau tidak
-	if (uploaddesain($_POST) > 0) {
-		echo "
-			<script>
-				alert('data berhasil diubah');
-			</script>
-		";
-		header("Location:index.php");
-	} else {
-		echo "
-			<script>
-				alert('data gagal diubah'); 
-			</script>
-		";
-	}
+if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
+	echo "<script> alert ('keranjang kosong, silahkan belanja dahulu') ; </script>";
+	echo "<script>location='daftarproduk.php'; </script>";
 }
 
 ?>
-
 <!-- Main wrapper -->
 <div class="wrapper" id="wrapper">
 
@@ -79,58 +35,57 @@ if (isset($_POST["submit"])) {
 
 	<div class="cart-main-area section-padding--lg bg--white">
 		<div class="container">
-			<!-- cart-main-area end -->
-			<!-- Footer Area -->
-			<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
-				<div class="footer-static-top">
-					<div class="container">
-						<div class="row">
-							<div class="col text-center">
-								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 ol-lg-12">
+					<form action="#">
+						<div class="table-content wnro__table table-responsive">
+							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<thead>
 									<tr>
-										<th>Jenis Produk</th>
-										<th>Nama Bahan</th>
+										<th>no</th>
+										<th>produk</th>
+										<th>bahan</th>
 										<th>Harga</th>
 										<th>jumlah</th>
-										<th>gambar desain</th>
+										<th>subharga</th>
 										<th>Pilihan</th>
 									</tr>
-									<?php
-									$query = mysqli_query($conn, "SELECT * FROM keranjang WHERE username = '$username'");
-									while ($data = mysqli_fetch_array($query)) {
-										$id_produk     = $data['id_produk'];
-										$nama_bahan       = $data['nama_bahan'];
-										$id_cart = $data['id_cart'];
-										$qty = $data['qty'];
-										?>
+								</thead>
+								<tbody>
+									<?php $nomor = 1; ?>
+									<?php foreach ($_SESSION["keranjang"] as $id_produk => $jumlah) : ?>
+										<?php
+											$ambil = $conn->query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
+											$pecah = $ambil->fetch_assoc();
+											?>
+										<?php
+											$subharga = $pecah["harga"] * $jumlah;
+											?>
 										<tr>
-											<td><?php
-													$ba = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
-													$ro = mysqli_fetch_array($ba);
-													echo $ro['jenis_produk'];
-													?></td>
-											<td><?php echo $nama_bahan ?></td>
-											<td><?php
-													$ba1 = mysqli_query($conn, "SELECT * FROM bahan WHERE nama_bahan = '$nama_bahan'");
-													$ro1 = mysqli_fetch_array($ba1);
-													echo $ro1['harga_satuan'];
-													?></td>
-											<td><?php echo $qty ?></td>
-											<td>..</td>
-											<td>
-												<a class="btn btn-success btn-sm" href="checkout.php?id_produk=<?php echo $id_produk; ?>&id_bahan=<?php echo $nama_bahan; ?>">Checkout</a>
-												<a onclick="return confirm('apakah anda yakin ? ');" class="btn btn-danger btn-sm" href="hapus.php?id=<?php echo $id_cart; ?>">Hapus</a>
+											<td><?= $nomor; ?></td>
+											<td><?= $pecah["jenis_produk"]; ?></td>
+											<td><?= $pecah["jenis_bahan"]; ?></td>
+											<td>Rp. <?= number_format($pecah["harga"]); ?></td>
+											<td><?= $jumlah; ?></td>
+											<td><?= number_format($subharga); ?></td>
+											<td class="product-remove">
+												<a href="hapuskeranjang.php?id=<?= $id_produk ?> " onclick="return confirm('yakin menghapus produk dari keranjang ? ');">X</a>
 											</td>
 										</tr>
-									<?php } ?>
-								</table>
-								<a class="btn btn-primary btn-sm" href="daftarproduk.php">lanjut belanja</a>
-								<a class="btn btn-primary btn-sm" href="uploaddesain.php">upload desain</a>
+										<?php $nomor++; ?>
+									<?php endforeach ?>
+								</tbody>
+							</table>
+							<div class="cartbox__btn">
+								<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
+									<li><a href="daftarproduk.php">Lanjutkan belanja</a></li>
+									<li><a href="#">Update Cart</a></li>
+									<li><a href="chekout.php">chekout</a></li>
+								</ul>
 							</div>
 						</div>
-					</div>
 				</div>
-			</footer>
+			</div>
 		</div>
 	</div>
 </div>
