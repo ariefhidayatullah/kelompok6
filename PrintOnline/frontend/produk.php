@@ -84,6 +84,7 @@ if (isset($_POST["cart"])) {
 													echo "Silahkan Pilih Bahan";
 												}
 												?>
+
 										</a>
 										<div class="product__overview">
 											<?php
@@ -98,12 +99,15 @@ if (isset($_POST["cart"])) {
 												echo "Kenapa harus mencetak " . $ro['jenis_produk'] . "?";
 												?>
 											<br>
-											<?php
-												echo $ro['ukuran'];
+												<?php
 												echo $ro['deskripsi'];
 												?>
 											</p>
 										</div>
+										<p>Ukuran <?php
+												echo $ro['ukuran']; 
+												?>
+												<br></p>
 
 										<?php
 											$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk'");
