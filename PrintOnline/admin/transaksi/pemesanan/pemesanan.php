@@ -1,6 +1,6 @@
 <?php
 require 'function.php';
-$bahan = query('SELECT * FROM pemesanan');
+$bahan = query('SELECT * FROM pesan ORDER BY tanggal_pemesanan DESC');
 // foreach ($mahasiswa as $kel) {
 // 	echo $kel['id'];
 // }
@@ -17,7 +17,7 @@ $bahan = query('SELECT * FROM pemesanan');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>The king 2 - bahan</title>
+    <title>The King Advertising - bahan</title>
 
     <!-- Custom fonts for this template -->
     <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -157,7 +157,7 @@ $bahan = query('SELECT * FROM pemesanan');
                 <div class="container-fluid text-center">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data pembayaran</h1>
+                    <h1 class="h3 mb-2 text-gray-800">DATA PEMESANAN</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-body">
@@ -171,8 +171,6 @@ $bahan = query('SELECT * FROM pemesanan');
                                             <th>nama user</th>
                                             <th>tanggal pesan</th>
                                             <th>email</th>
-                                            <th>no hp user</th>
-                                            <th>id karyawan</th>
                                             <th>total harga</th>
                                             <th>aksi</th>
                                         </tr>
@@ -183,13 +181,11 @@ $bahan = query('SELECT * FROM pemesanan');
                                                 <td><?= $row['id_pesan']; ?></td>
                                                 <td><?= $row['id_user']; ?></td>
                                                 <td><?= $row['nama_user']; ?></td>
-                                                <td><?= $row['tgl_pesan']; ?></td>
+                                                <td><?= $row['tanggal_pemesanan']; ?></td>
                                                 <td><?= $row['email']; ?></td>
-                                                <td><?= $row['nohp_user']; ?></td>
-                                                <td><?= $row['id_krw']; ?></td>
                                                 <td><?= $row['total_harga']; ?></td>
                                                 <td>
-                                                    <a href="hapus.php?id=<?= $row['id_pesan']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">hapus</button></a>
+                                                    <a href="hapus.php?id=<?= $row['id_pesan']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Konfirmasi</button></a>
                                                 </td>
                                             </tr>
                                             <?php $i++ ?>
