@@ -73,19 +73,6 @@ if (isset($_POST["cart"])) {
 									<div class="product__info__main">
 										<h1><?= $row['jenis_produk']; ?></h1> </a>
 										<a href="">
-											<?php
-												if (isset($_POST['han'])) {
-													$han = $_POST['han'];
-													$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where nama_bahan = '$han'");
-													$row1 = mysqli_fetch_array($bahan1);
-													$nama_bahan = $row1['nama_bahan'];
-													echo "Harga : Rp. " . $row1['harga_satuan'];
-												} else {
-													echo "Silahkan Pilih Bahan";
-												}
-												?>
-
-										</a>
 										<div class="product__overview">
 											<?php
 												$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
@@ -104,31 +91,39 @@ if (isset($_POST["cart"])) {
 												?>
 											</p>
 										</div>
+
 										<p>Ukuran <?php
 												echo $ro['ukuran']; 
 												?>
 												<br></p>
-
 										<?php
 											$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk'");
 											$row = mysqli_fetch_array($bahan1);
 											?>
+										<?php 
+									$bahan = mysqli_query($conn, "SELECT * FROM bahan ORDER BY nama_bahan ASC");
+									$jsArray = "var prdName = new Array();\n";
+									?>
+									<select id="nim" name="nim" onchange="changeValue(this.value)">
+										<option disabled="" selected="">Pilih</option>
+										<?php
+										while ($row=mysqli_fetch_array($bahan)) {
+											echo '<option value="'.$row['nama_bahan'].'">'.$row['nama_bahan'].'</option> ';
+											$jsArray .= "prdName['" . $row['nama_bahan'] . "'] = {harga:'" . addslashes($row['harga_satuan']) . "'};\n"; }
+											?>
+									</select>
+										<br><br>
+										<tr>
+											<td>Harga Satuan</td>
+											<td><input type="text" name="harga" id="harga"></td>
+										</tr>
 										<br>
-										<form action="" method="post">
-											<h4><select name="han" class="drop"><a href="">Bahan</a>
-													<ul>
-														<?php foreach ($bahan1 as $p) : ?>
-															<li>
-																<option><?= $p['nama_bahan']; ?></option>
-															</li>
-														<?php endforeach ?>
-													</ul>
-												</select>
-												<button class="btn btn-danger" type="submit" value="han">Pilih Bahan</button><br>
-										</form>
-										</h4><br>
+										<script type="text/javascript">
+											<?php echo $jsArray; ?>  
+											function changeValue(x){  
+											document.getElementById('harga').value = prdName[x].harga;   }; 
+										</script>
 										<br>
-										<div class="box-tocart d-flex">
 											<div class="addtocart__actions">
 												<form action="" method="POST">
 													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
