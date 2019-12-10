@@ -72,7 +72,6 @@ if (isset($_POST["cart"])) {
 								<div class="col-lg-6 col-12">
 									<div class="product__info__main">
 										<h1><?= $row['jenis_produk']; ?></h1> </a>
-										<a href="">
 										<div class="product__overview">
 											<?php
 												$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
@@ -101,7 +100,7 @@ if (isset($_POST["cart"])) {
 											$row = mysqli_fetch_array($bahan1);
 											?>
 										<?php 
-									$bahan = mysqli_query($conn, "SELECT * FROM bahan ORDER BY nama_bahan ASC");
+									$bahan = mysqli_query($conn, "SELECT * FROM bahan WHERE id_produk ='$id_produk' ORDER BY nama_bahan ASC");
 									$jsArray = "var prdName = new Array();\n";
 									?>
 									<select id="nim" name="nim" onchange="changeValue(this.value)">
