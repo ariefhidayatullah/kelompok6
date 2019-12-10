@@ -142,6 +142,13 @@ if (isset($_POST["cart"])) {
 												<div class="addtocart__actions">
 													<button type="submit" class="tocart ml-3" value="checkout">Checkout Sekarang
 													</button>
+										
+ 											 <form method="post" enctype="multipart/form-data" action="upload.php">
+   												 <input type="file" name="gambar">
+   												 <input type="submit" value="Upload">
+  												</form>
+  											</div>
+
 												</div>
 											</form>
 										</div>
