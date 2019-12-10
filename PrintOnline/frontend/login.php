@@ -14,32 +14,24 @@ if (isset($_POST["register"])) {
 	}
 }
 
-if (isset($_POST["LOGIN"])) {
+if (isset($_POST["submit"])) {
 	$email = $_POST["email"];
 	$password = $_POST["password"];
 
-	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' AND password='$password'");
 
-	if (mysqli_num_rows($result) === 1) {
-		$row = mysqli_fetch_assoc($result);
-		// cek password
-		if (!isset($password, $row["password"])) {
+	$query = $result->num_rows;
 
-			$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
-			$row0 = mysqli_fetch_array($result0);
-
-			$_SESSION["LOGIN"] = $row0;
-			echo "<script> alert('user baru berhasil login!');</script>";
-			header("Location:index.php");
-			exit;
-		}
+	if ($query == 1) {
+		$akun = $result->fetch_assoc();
+		$_SESSION["LOGIN"] = $akun;
+		echo "<script> alert('anda sukses login !');</script>";
+		echo "<script> location='chekout.php';</script>";
+	} else {
+		echo "<script> alert('anda gagal login !');</script>";
+		echo "<script> location='login.php';</script>";
 	}
-	$error  = true;
-	?>
-
-<?php
 }
-
 ?>
 
 <!-- Main wrapper -->
@@ -88,7 +80,7 @@ if (isset($_POST["LOGIN"])) {
 									<input type="password" id="passwordd" name="password" required placeholder="Masukkan password anda">
 								</div>
 								<div class="form__btn">
-									<button type="submit" name="LOGIN">Login</button>
+									<button type="submit" name="submit">Login</button>
 								</div>
 							</div>
 						</form>

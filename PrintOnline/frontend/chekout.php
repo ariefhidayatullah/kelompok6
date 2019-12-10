@@ -3,9 +3,9 @@ session_start();
 include 'include/_header.php';
 require 'function.php';
 
-if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
+if (!isset($_SESSION["LOGIN"])) {
     echo "<script> alert ('keranjang kosong, silahkan belanja dahulu') ; </script>";
-    echo "<script>location='daftarproduk.php'; </script>";
+    echo "<script>location='login.php'; </script>";
 }
 
 ?>

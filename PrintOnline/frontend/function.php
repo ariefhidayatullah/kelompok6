@@ -61,7 +61,7 @@ function ubah($data)
 			jenis_produk = '$jenis_produk',
 			jenis_bahan = '$nama_bahan',
 			deskripsi = '$deskripsi',
-			harga = '$harga_bahan',
+			harga = '$harga',
 			ukuran = '$ukuran',
 			gambar = '$gambar'
 			WHERE id_produk = '$id_produk'
@@ -165,7 +165,6 @@ function registrasi($data)
 		return false;
 	}
 
-	$password = password_hash($password, PASSWORD_DEFAULT);
 	// tambahkan user baru ke database
 	mysqli_query($conn, "INSERT INTO user VALUES ('', '', '$nama_user', '$email', '', '$password', '', '$nohp_user', '', '', '', '', '')");
 	echo "<script>
@@ -173,7 +172,6 @@ function registrasi($data)
 	</script>";
 
 	header('Location:login.php');
-	return mysqli_affected_rows($conn);
 }
 
 function tambahcart($data)

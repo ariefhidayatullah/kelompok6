@@ -85,43 +85,38 @@ if (isset($_POST["cart"])) {
 												echo "Kenapa harus mencetak " . $ro['jenis_produk'] . "?";
 												?>
 											<br>
-												<?php
+											<?php
 												echo $ro['deskripsi'];
 												?>
 											</p>
 										</div>
 
 										<p>Ukuran <?php
-												echo $ro['ukuran']; 
-												?>
-												<br></p>
+														echo $ro['ukuran'];
+														?>
+											<br></p>
 										<?php
 											$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk'");
 											$row = mysqli_fetch_array($bahan1);
+											$nama_bahan = $row['nama_bahan'];
 											?>
-										<?php 
-									$bahan = mysqli_query($conn, "SELECT * FROM bahan WHERE id_produk ='$id_produk' ORDER BY nama_bahan ASC");
-									$jsArray = "var prdName = new Array();\n";
-									?>
-									<select id="nim" name="nim" onchange="changeValue(this.value)" class="form-control col-md-6">
-										<option disabled="" selected="">pilih bahan</option>
 										<?php
-										while ($row=mysqli_fetch_array($bahan)) {
-											echo '<option value="'.$row['nama_bahan'].'">'.$row['nama_bahan'].'</option> ';
-											$jsArray .= "prdName['" . $row['nama_bahan'] . "'] = {harga:'" . addslashes($row['harga_satuan']) . "'};\n"; }
+											$bahan = mysqli_query($conn, "SELECT * FROM bahan WHERE id_produk ='$id_produk' ORDER BY nama_bahan ASC");
+											$jsArray = "var prdName = new Array();\n";
 											?>
-									</select>
+										<select id="nim" name="nim" onchange="changeValue(this.value)" class="form-control col-md-6">
+											<option disabled="" selected="">pilih bahan</option>
+											<?php
+												while ($row = mysqli_fetch_array($bahan)) {
+													echo '<option value="' . $row['nama_bahan'] . '">' . $row['nama_bahan'] . '</option> ';
+													$jsArray .= "prdName['" . $row['nama_bahan'] . "'] = {harga:'" . addslashes($row['harga_satuan']) . "'};\n";
+												}
+												?>
+										</select>
 										<br><br>
 										<tr>
-											<td>Harga </td>
-											<td><input class="form-control col-md-6" type="text" name="harga" id="harga"></td>
+											
 										</tr>
-										<br>
-										<script type="text/javascript">
-											<?php echo $jsArray; ?>  
-											function changeValue(x){  
-											document.getElementById('harga').value = prdName[x].harga;   }; 
-										</script>
 										<br>
 										<div class="box-tocart d-flex">
 											<div class="addtocart__actions">
@@ -130,10 +125,10 @@ if (isset($_POST["cart"])) {
 													<input type="text" name="jenis_produk" value="<?php echo $jenis_produk ?>" hidden>
 													<input type="text" name="nama_bahan" value="<?php echo $nama_bahan ?>" hidden>
 													<input type="text" name="deskripsi" value="<?php echo $deskripsi ?>" hidden>
-													<input type="text" name="harga" value="<?php echo $han ?>" hidden>
+													<input type="text" name="harga" id="harga">
 													<input type="text" name="ukuran" value="<?php echo $ukuran ?>" hidden>
 													<input type="text" name="gambar" value="<?php echo $gambar ?>" hidden>
-													<button class="tocart" type="submit" name="cart" id="cart" title="Add to Cart"><a href="beli.php?id=<?= $row['id_produk']; ?>" name="cart" id="cart">Add to Cart</a></button>
+													<button class="tocart" type="submit" name="cart" id="cart" title="Add to Cart"><a href="beli.php?id=<?= $id_produk; ?>" name="cart" id="cart">Add to Cart</a></button>
 												</form>
 											</div>
 											<form action="checkout.php" method="get">
@@ -142,16 +137,10 @@ if (isset($_POST["cart"])) {
 												<div class="addtocart__actions">
 													<button type="submit" class="tocart ml-3" value="checkout">Checkout Sekarang
 													</button>
-										
- 											 <form method="post" enctype="multipart/form-data" action="upload.php">
-   												 <input type="file" name="gambar">
-   												 <input type="submit" value="Upload">
-  												</form>
-  											</div>
-
 												</div>
-											</form>
+
 										</div>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -159,59 +148,67 @@ if (isset($_POST["cart"])) {
 					</div>
 				</div>
 			</div>
-		<?php endforeach; ?>
 	</div>
+<?php endforeach; ?>
+</div>
 
-	<section class="wn__product__area brown--color pt--80  pb--30">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="section__title text-center">
-						<h2 class="title__be--2"><span class="color--theme">produk lainnya</span></h2>
-						<hr>
-					</div>
+<section class="wn__product__area brown--color pt--80  pb--30">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="section__title text-center">
+					<h2 class="title__be--2"><span class="color--theme">produk lainnya</span></h2>
+					<hr>
 				</div>
 			</div>
-			<!-- Start Single Tab Content -->
-			<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50 ">
-				<!-- Start Single Product -->
-				<?php foreach ($produk as $row) : ?>
-					<div class="product product__style--3">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="product__thumb">
-								<a class="first__img" href="produk.php?id=<?= $row['id_produk']; ?>"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
-								<a class="second__img animation1" href="produk.php?id=<?= $row['id_produk']; ?>"><img src="img/<?= $row['gambar']; ?>" alt="product image"></a>
-								<div class="hot__box">
-									<span class="hot-label">BEST SELLER</span>
-								</div>
+		</div>
+		<!-- Start Single Tab Content -->
+		<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50 ">
+			<!-- Start Single Product -->
+			<?php foreach ($produk as $row) : ?>
+				<div class="product product__style--3">
+					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+						<div class="product__thumb">
+							<a class="first__img" href="produk.php?id=<?= $row['id_produk']; ?>"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
+							<a class="second__img animation1" href="produk.php?id=<?= $row['id_produk']; ?>"><img src="img/<?= $row['gambar']; ?>" alt="product image"></a>
+							<div class="hot__box">
+								<span class="hot-label">BEST SELLER</span>
 							</div>
-							<div class="product__content content--center">
-								<h4><a href="single-product.html"><?= $row['jenis_produk']; ?></a></h4>
-								<div class="action">
-									<div class="actions_inner">
-										<ul class="add_to_links">
-											<li><a href="produk.php?id=<?= $row['id_produk']; ?>"><i class=" bi bi-search"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="product__hover--content">
-									<ul class="rating d-flex">
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
+						</div>
+						<div class="product__content content--center">
+							<h4><a href="single-product.html"><?= $row['jenis_produk']; ?></a></h4>
+							<div class="action">
+								<div class="actions_inner">
+									<ul class="add_to_links">
+										<li><a href="produk.php?id=<?= $row['id_produk']; ?>"><i class=" bi bi-search"></i></a></li>
 									</ul>
 								</div>
 							</div>
+							<div class="product__hover--content">
+								<ul class="rating d-flex">
+									<li class="on"><i class="fa fa-star-o"></i></li>
+									<li class="on"><i class="fa fa-star-o"></i></li>
+									<li class="on"><i class="fa fa-star-o"></i></li>
+									<li><i class="fa fa-star-o"></i></li>
+									<li><i class="fa fa-star-o"></i></li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				<?php endforeach; ?>
-			</div>
-			<!-- End Single Tab Content -->
+				</div>
+			<?php endforeach; ?>
 		</div>
-	</section>
+		<!-- End Single Tab Content -->
+	</div>
+</section>
 </div>
+<script type="text/javascript">
+	<?php echo $jsArray; ?>
+
+	function changeValue(x) {
+		document.getElementById('harga').value = prdName[x].harga;
+	};
+</script>
 
 
 
