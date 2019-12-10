@@ -39,43 +39,46 @@ if (empty($_SESSION["keranjang"]) or !isset($_SESSION["keranjang"])) {
 				<div class="col-md-12 col-sm-12 ol-lg-12">
 					<form action="#">
 						<div class="table-content wnro__table table-responsive">
-							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-								<thead>
-									<tr>
-										<th>no</th>
-										<th>produk</th>
-										<th>bahan</th>
-										<th>Harga</th>
-										<th>jumlah</th>
-										<th>subharga</th>
-										<th>Pilihan</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php $nomor = 1; ?>
-									<?php foreach ($_SESSION["keranjang"] as $id_produk => $jumlah) : ?>
-										<?php
-											$ambil = $conn->query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
-											$pecah = $ambil->fetch_assoc();
-											?>
-										<?php
-											$subharga = $pecah["harga"] * $jumlah;
-											?>
+							<form action="" method="POSt">
+								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+									<thead>
 										<tr>
-											<td><?= $nomor; ?></td>
-											<td><?= $pecah["jenis_produk"]; ?></td>
-											<td><?= $pecah["jenis_bahan"]; ?></td>
-											<td>Rp. <?= number_format($pecah["harga"]); ?></td>
-											<td><?= $jumlah; ?></td>
-											<td><?= number_format($subharga); ?></td>
-											<td class="product-remove">
-												<a href="hapuskeranjang.php?id=<?= $id_produk ?> " onclick="return confirm('yakin menghapus produk dari keranjang ? ');">X</a>
-											</td>
+											<th>no</th>
+											<th>produk</th>
+											<th>bahan</th>
+											<th>Harga</th>
+											<th>jumlah</th>
+											<th>subharga</th>
+											<th>Pilihan</th>
 										</tr>
-										<?php $nomor++; ?>
-									<?php endforeach ?>
-								</tbody>
-							</table>
+									</thead>
+									<tbody>
+										<?php $nomor = 1; ?>
+										<?php foreach ($_SESSION["keranjang"] as $id_produk => $jumlah) : ?>
+											<?php
+												$ambil = $conn->query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
+												$pecah = $ambil->fetch_assoc();
+												?>
+											<?php
+												$subharga = $pecah["harga"] * $jumlah;
+												?>
+											<tr>
+												<td><?= $nomor; ?></td>
+												<td><?= $pecah["jenis_produk"]; ?></td>
+												<td><?= $pecah["jenis_bahan"]; ?></td>
+												<td>Rp. <?= number_format($pecah["harga"]); ?></td>
+												<td> <input type="number" min="1" value="<?php echo $jumlah ?>"" name=" quantity"></td>
+												<td><?= number_format($subharga); ?></td>
+												<td class="product-remove">
+													<a href="hapuskeranjang.php?id=<?= $id_produk ?> " onclick="return confirm('yakin menghapus produk dari keranjang ? ');">X</a>
+												</td>
+											</tr>
+											<?php $nomor++; ?>
+										<?php endforeach ?>
+									</tbody>
+								</table>
+								<input type="hidden" name="update">
+							</form>
 							<div class="cartbox__btn">
 								<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
 									<li><a href="daftarproduk.php">Lanjutkan belanja</a></li>

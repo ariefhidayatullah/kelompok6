@@ -23,7 +23,7 @@ if (isset($_POST["LOGIN"])) {
 	if (mysqli_num_rows($result) === 1) {
 		$row = mysqli_fetch_assoc($result);
 		// cek password
-		if (password_verify($password, $row["password"])) {
+		if (!isset($password, $row["password"])) {
 
 			$result0 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
 			$row0 = mysqli_fetch_array($result0);

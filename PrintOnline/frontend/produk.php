@@ -103,8 +103,8 @@ if (isset($_POST["cart"])) {
 									$bahan = mysqli_query($conn, "SELECT * FROM bahan WHERE id_produk ='$id_produk' ORDER BY nama_bahan ASC");
 									$jsArray = "var prdName = new Array();\n";
 									?>
-									<select id="nim" name="nim" onchange="changeValue(this.value)">
-										<option disabled="" selected="">Pilih</option>
+									<select id="nim" name="nim" onchange="changeValue(this.value)" class="form-control col-md-6">
+										<option disabled="" selected="">pilih bahan</option>
 										<?php
 										while ($row=mysqli_fetch_array($bahan)) {
 											echo '<option value="'.$row['nama_bahan'].'">'.$row['nama_bahan'].'</option> ';
@@ -113,8 +113,8 @@ if (isset($_POST["cart"])) {
 									</select>
 										<br><br>
 										<tr>
-											<td>Harga Satuan</td>
-											<td><input type="text" name="harga" id="harga"></td>
+											<td>Harga </td>
+											<td><input class="form-control col-md-6" type="text" name="harga" id="harga"></td>
 										</tr>
 										<br>
 										<script type="text/javascript">
@@ -123,6 +123,7 @@ if (isset($_POST["cart"])) {
 											document.getElementById('harga').value = prdName[x].harga;   }; 
 										</script>
 										<br>
+										<div class="box-tocart d-flex">
 											<div class="addtocart__actions">
 												<form action="" method="POST">
 													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
@@ -133,9 +134,8 @@ if (isset($_POST["cart"])) {
 													<input type="text" name="ukuran" value="<?php echo $ukuran ?>" hidden>
 													<input type="text" name="gambar" value="<?php echo $gambar ?>" hidden>
 													<button class="tocart" type="submit" name="cart" id="cart" title="Add to Cart"><a href="beli.php?id=<?= $row['id_produk']; ?>" name="cart" id="cart">Add to Cart</a></button>
+												</form>
 											</div>
-											</form>
-
 											<form action="checkout.php" method="get">
 												<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
 												<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
