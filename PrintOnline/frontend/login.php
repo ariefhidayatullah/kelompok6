@@ -7,8 +7,7 @@ include 'include/_header.php';
 
 if (isset($_POST["register"])) {
 	if (registrasi($_POST) === 0) {
-		echo "<script> alert('user baru berhasil ditambahkan!');</script>
-		header('Location:index.php');";
+		echo "<script> alert('SELAMAT DATANG, SILAHKAN LENGKAPI DATA ANDA');</script>"; 
 	} else {
 		echo mysqli_error($conn);
 	}
@@ -18,18 +17,25 @@ if (isset($_POST["submit"])) {
 	$email = $_POST["email"];
 	$password = $_POST["password"];
 
-	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' AND password='$password'");
-
-	$query = $result->num_rows;
-
+	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+	$query = mysqli_num_rows($result);
+ 
 	if ($query == 1) {
-		$akun = $result->fetch_assoc();
-		$_SESSION["LOGIN"] = $akun;
+		$reesult = mysqli_query($conn, "SELECT * FROM user WHERE password='$password'");
+		$queery = mysqli_num_rows($reesult);
+
+		if ($queery == 1) {
+		$row = mysqli_fetch_array($result);
+		$_SESSION["LOGIN"] = $row['email'];
 		echo "<script> alert('anda sukses login !');</script>";
-		echo "<script> location='chekout.php';</script>";
-	} else {
-		echo "<script> alert('anda gagal login !');</script>";
+		echo "<script> location='index.php';</script>";
+		} else {
+		echo "<script> alert('password salah!');</script>";
 		echo "<script> location='login.php';</script>";
+		}
+	} else {
+	echo "<script> alert('email tidak terdaftar !');</script>";
+	echo "<script> location='login.php';</script>";
 	}
 }
 ?>
@@ -113,7 +119,7 @@ if (isset($_POST["submit"])) {
 								</div>
 								<div class="input__box">
 									<label>no hp <span>*</span></label>
-									<input type="text" name="nohp_user" id="nohp_user" placeholder="Masukkan no hp anda..." required="" autofocus>
+									<input type="text" name="nohp_user" id="nohp_user" placeholder="Masukkan no hp anda..." required="" maxlength="12" autofocus>
 									<small class="nohp_user" style="color: red;"></small>
 								</div>
 								<div class="form__btn">

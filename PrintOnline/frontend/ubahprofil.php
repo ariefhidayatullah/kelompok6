@@ -12,8 +12,10 @@ if (isset($_POST["submit"])) {
 			<script>
 				alert('data berhasil diubah');
 			</script>
-		";
-        header("Location:ubahprofil.php");
+        ";
+        ?>
+        <meta http-equiv="refresh" content="0; URL=profil.php?id=<?= $id_user ?>">
+        <?php
     } else {
         echo "
 			<script>
@@ -35,7 +37,7 @@ if (isset($_POST["submit"])) {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="bradcaump__inner text-center">
-                        <h2 class="bradcaump-title">ubah Profil</h2>
+                        <h2 class="bradcaump-title">Ubah Profil</h2>
                         <nav class="bradcaump-content">
                             <a class="breadcrumb_item" href="dashboard.php">Home</a>
                             <span class="brd-separetor">/</span>

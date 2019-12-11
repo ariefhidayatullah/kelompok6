@@ -1,7 +1,8 @@
 <?php
-
-$user = query('SELECT * FROM user');
-
+if (isset($_SESSION["LOGIN"])) {
+$email = $_SESSION["LOGIN"];
+$user = mysqli_query($conn,"SELECT * FROM user WHERE email = '$email'");
+}
 $daftarproduk = query('SELECT * FROM produk order by rand()');
 
 ?>

@@ -41,33 +41,33 @@ function tambah($data)
 
 function ubah($data)
 {
-	global $conn;
+	// global $conn;
 
-	$id_produk = $data['id_produk'];
-	$jenis_produk = $data['jenis_produk'];
-	$nama_bahan = $data['nama_bahan'];
-	$ukuran = $data['ukuran'];
-	$deskripsi = $data['deskripsi'];
-	$gambar = $data['gambar'];
-	$harga = $data['harga'];
+	// $id_produk = $data['id_produk'];
+	// $jenis_produk = $data['jenis_produk'];
+	// $nama_bahan = $data['nama_bahan'];
+	// $ukuran = $data['ukuran'];
+	// $deskripsi = $data['deskripsi'];
+	// $gambar = $data['gambar'];
+	// $harga = $data['harga'];
 
-	$sql = "SELECT * FROM bahan WHERE nama_bahan = '$harga'";
-	$ba = mysqli_query($conn, $sql);
-	$ro = mysqli_fetch_array($ba);
-	$harga_bahan = $ro['harga_satuan'];
+	// $sql = "SELECT * FROM bahan WHERE nama_bahan = '$harga'";
+	// $ba = mysqli_query($conn, $sql);
+	// $ro = mysqli_fetch_array($ba);
+	// $harga_bahan = $ro['harga_satuan'];
 
-	//query insert data
-	$query = "UPDATE produk SET 
-			jenis_produk = '$jenis_produk',
-			jenis_bahan = '$nama_bahan',
-			deskripsi = '$deskripsi',
-			harga = '$harga',
-			ukuran = '$ukuran',
-			gambar = '$gambar'
-			WHERE id_produk = '$id_produk'
-			";
-	mysqli_query($conn, $query);
-	return  mysqli_affected_rows($conn);
+	// //query insert data
+	// $query = "UPDATE produk SET 
+	// 		jenis_produk = '$jenis_produk',
+	// 		jenis_bahan = '$nama_bahan',
+	// 		deskripsi = '$deskripsi',
+	// 		harga = '$harga',
+	// 		ukuran = '$ukuran',
+	// 		gambar = '$gambar'
+	// 		WHERE id_produk = '$id_produk'
+	// 		";
+	// mysqli_query($conn, $query);
+	// return  mysqli_affected_rows($conn);
 }
 
 function cari($key)
@@ -168,10 +168,15 @@ function registrasi($data)
 	// tambahkan user baru ke database
 	mysqli_query($conn, "INSERT INTO user VALUES ('', '', '$nama_user', '$email', '', '$password', '', '$nohp_user', '', '', '', '', '')");
 	echo "<script>
-    alert('selamat anda sudah terdaftar!');
+    alert('selamat datang anda sudah terdaftar, silakan lengkapi data anda!');
 	</script>";
-
-	header('Location:login.php');
+	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+	$roww = mysqli_fetch_array($result);
+	$id_user = $roww['id_user'];
+	$_SESSION["LOGIN"] = $roww['email'];
+?>
+		<meta http-equiv="refresh" content="0; URL=profil.php?id=<?= $id_user ?>">
+<?php
 }
 
 function tambahcart($data)
@@ -210,7 +215,7 @@ function ubahprofil($data)
 	global $conn;
 	// ambil data dari tiap elemen
 	$id_user = $data['id_user'];
-	$gambar = upload();
+	// $gambar = upload();
 	$nama_user = $data['nama_user'];
 	$email = $data['email'];
 	$username = $data['username'];
@@ -225,13 +230,12 @@ function ubahprofil($data)
 
 	//cek
 
-	if ($gambar == false) {
-		return false;
-	}
+	// if ($gambar == false) {
+	// 	return false;
+	// }
 
 	//query insert data
-	$query = "UPDATE user SET  
-			gambar = '$gambar',
+	$query = "UPDATE user SET
 			nama_user = '$nama_user' ,
 			email = '$email',
 			username = '$username',

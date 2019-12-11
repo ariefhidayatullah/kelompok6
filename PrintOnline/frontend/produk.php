@@ -12,22 +12,22 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 if (isset($_SESSION["LOGIN"])) {
 	$user = query("SELECT * FROM user");
 }
-if (isset($_POST["cart"])) {
-	//cek data berhasil diubaahtau tidak
-	if (ubah($_POST) > 0) {
-		echo "
-			<script>
-				alert('data berhasil diubah');
-			</script>
-		";
-	} else {
-		echo "
-			<script>
-				alert('data gagal diubah'); 
-			</script>
-		";
-	}
-}
+// if (isset($_POST["cart"])) {
+// 	//cek data berhasil diubaahtau tidak
+// 	if (ubah($_POST) > 0) {
+// 		echo "
+// 			<script>
+// 				alert('data berhasil diubah');
+// 			</script>
+// 		";
+// 	} else {
+// 		echo "
+// 			<script>
+// 				alert('data gagal diubah'); 
+// 			</script>
+// 		";
+// 	}
+// }
 
 ?>
 
@@ -128,7 +128,9 @@ if (isset($_POST["cart"])) {
 													<input type="text" name="harga" id="harga">
 													<input type="text" name="ukuran" value="<?php echo $ukuran ?>" hidden>
 													<input type="text" name="gambar" value="<?php echo $gambar ?>" hidden>
-													<button class="tocart" type="submit" name="cart" id="cart" title="Add to Cart"><a href="beli.php?id=<?= $id_produk; ?>" name="cart" id="cart">Add to Cart</a></button>
+													<!-- <button class="tocart" type="submit" name="cart" id="cart" title="Add to Cart"> -->
+														<a class="tocart" href="beli.php?id=<?= $id_produk; ?>" name="cart" id="cart">Add to Cart</a>
+													</button>
 												</form>
 											</div>
 											<form action="checkout.php" method="get">

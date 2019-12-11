@@ -4,6 +4,7 @@ require 'function.php';
 include 'include/_header.php';
 $id_user = $_GET['id'];
 $bahan = query('SELECT * FROM produk order by rand()');
+$user=$_SESSION["LOGIN"]
 ?>
 
 <!-- Main wrapper -->
@@ -34,10 +35,11 @@ $bahan = query('SELECT * FROM produk order by rand()');
 			<div class="col-lg-6 col-12 offset-3">
 				<div class="my__account__wrapper">
 					<div class="account__form">
+						<h5>Silahkan lengkapi data anda</h5>
 						<?php
 						$query = mysqli_query($conn, "SELECT * FROM user WHERE id_user = '$id_user'");
 						while ($data = mysqli_fetch_array($query)) {
-							$gambar    = $data['gambar'];
+							$gambar    = $data['profil_user'];
 							$nama    = $data['nama_user'];
 							$email   = $data['email'];
 							$username = $data['username'];
