@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 require 'function.php';
 include 'include/_header.php';
@@ -73,7 +73,8 @@ if (isset($_SESSION["LOGIN"])) {
 									<div class="product__info__main">
 										<h1><?= $row['jenis_produk']; ?></h1> </a>
 										<div class="product__overview">
-											<?php
+											<span>
+												<?php
 												$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
 												$ba = mysqli_query($conn, $sql);
 												$ro = mysqli_fetch_array($ba);
@@ -84,17 +85,17 @@ if (isset($_SESSION["LOGIN"])) {
 												$gambar = $ro['gambar'];
 												echo "Kenapa harus mencetak " . $ro['jenis_produk'] . "?";
 												?>
+											</span>
 											<br>
 											<?php
 												echo $ro['deskripsi'];
 												?>
-											</p>
 										</div>
 
-										<p>Ukuran <?php
+										<span>Ukuran Percetakan : <?php
 														echo $ro['ukuran'];
 														?>
-											<br></p>
+										</span>
 										<?php
 											$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk'");
 											$row = mysqli_fetch_array($bahan1);
@@ -104,41 +105,34 @@ if (isset($_SESSION["LOGIN"])) {
 											$bahan = mysqli_query($conn, "SELECT * FROM bahan WHERE id_produk ='$id_produk' ORDER BY nama_bahan ASC");
 											$jsArray = "var prdName = new Array();\n";
 											?>
-										<select id="nim" name="nim" onchange="changeValue(this.value)" class="form-control col-md-6">
-											<option disabled="" selected="">pilih bahan</option>
+										<div class="box-tocart d-flex">
+											<div class="addtocart__actions">
+												<form action="beli.php" method="POST">
+													<select id="nim" name="nama_bahan" onchange="changeValue(this.value)" class="form-control col-md-6">
+											<option disabled="" selected="">Pilih Bahan</option>
 											<?php
 												while ($row = mysqli_fetch_array($bahan)) {
 													echo '<option value="' . $row['nama_bahan'] . '">' . $row['nama_bahan'] . '</option> ';
-													$jsArray .= "prdName['" . $row['nama_bahan'] . "'] = {harga:'" . addslashes($row['harga_satuan']) . "'};\n";
-												}
-												?>
-										</select>
-										<br><br>
-										<tr>
-											
-										</tr>
-										<br>
-										<div class="box-tocart d-flex">
-											<div class="addtocart__actions">
-												<form action="" method="POST">
+													$jsArray .= "prdName['" . $row['nama_bahan'] . "'] = {harga:'" . addslashes($row['harga_satuan']) . "'};\n";}
+												?></select>
 													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
 													<input type="text" name="jenis_produk" value="<?php echo $jenis_produk ?>" hidden>
 													<input type="text" name="nama_bahan" value="<?php echo $nama_bahan ?>" hidden>
 													<input type="text" name="deskripsi" value="<?php echo $deskripsi ?>" hidden>
-													<input type="text" name="harga" id="harga">
+													<span>Harga Satuan</span><br>
+													<input class="form-control" type="text" name="harga" id="harga" disabled>
 													<input type="text" name="ukuran" value="<?php echo $ukuran ?>" hidden>
 													<input type="text" name="gambar" value="<?php echo $gambar ?>" hidden>
 													<!-- <button class="tocart" type="submit" name="cart" id="cart" title="Add to Cart"> -->
-														<a class="tocart" href="beli.php?id=<?= $id_produk; ?>" name="cart" id="cart">Add to Cart</a>
-													</button>
+														<button class="tocart" name="cart" id="cart">Add to Cart</button>
+														<button class="tocart">Checkout Sekarang</button>
 												</form>
 											</div>
 											<form action="checkout.php" method="get">
 												<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
 												<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
-												<div class="addtocart__actions">
-													<button type="submit" class="tocart ml-3" value="checkout">Checkout Sekarang
-													</button>
+												<div class="addtocart__actions"><br><br>
+													<br>
 												</div>
 
 										</div>
@@ -205,7 +199,7 @@ if (isset($_SESSION["LOGIN"])) {
 </section>
 </div>
 <script type="text/javascript">
-	<?php echo $jsArray; ?>
+	<?php echo $jsArray; ?>hhuy5uhcs78
 
 	function changeValue(x) {
 		document.getElementById('harga').value = prdName[x].harga;
