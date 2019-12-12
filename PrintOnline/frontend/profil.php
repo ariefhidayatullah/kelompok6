@@ -32,7 +32,7 @@ $user=$_SESSION["LOGIN"]
 
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-6 col-12 offset-3">
+			<div class="col">
 				<div class="my__account__wrapper">
 					<div class="account__form">
 						<h5>Silahkan lengkapi data anda</h5>

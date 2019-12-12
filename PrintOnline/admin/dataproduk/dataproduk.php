@@ -28,13 +28,9 @@ $bahan = query('SELECT * FROM produk');
   <!-- <link href="../assets/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <!-- Custom styles for this page -->
   <script src="../assets/js/bootstrap.min.js"></script>
   <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="../assets/jquery-3.3.1.slim.min.js"></script>
-  <script src="../assets/popper.min.js"></script>
-  <link rel="stylesheet" href="../_assets/libs/DataTables/datatables.min.css">
-  <script src="../_assets/libs/DataTables/datatables.min.js"></script>
 
 </head>
 
@@ -95,6 +91,8 @@ $bahan = query('SELECT * FROM produk');
                       <th>Gambar</th>
                       <th>Aksi</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($bahan as $row) : ?>
                       <tr>
@@ -112,7 +110,7 @@ $bahan = query('SELECT * FROM produk');
                       </tr>
                       <?php $i++ ?>
                     <?php endforeach; ?>
-                  </thead>
+                  </tbody>
                 </table>
                 <a href="tambah.php" class="btn btn-primary" role="button"> Tambah data </a>
               </div>
@@ -145,7 +143,23 @@ $bahan = query('SELECT * FROM produk');
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <!-- Bootstrap core JavaScript-->
+ <!-- Bootstrap core JavaScript-->
+ <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../assets/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="../assets/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="../assets/js/demo/datatables-demo.js"></script>
+  
   <script>
     $(document).ready(function() {
       $('#dataTable').DataTable();
