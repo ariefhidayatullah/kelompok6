@@ -168,7 +168,6 @@ $produk = query('SELECT * FROM produk where id_produk');
                       <th>Nama Bahan</th>
                       <th>Id Produk</th>
                       <th>Nama Produk</th>
-                      <th>Stok</th>
                       <th>Sarga Satuan</th>
                       <th>Aksi</th>
                     </tr>
@@ -181,7 +180,6 @@ $produk = query('SELECT * FROM produk where id_produk');
                     $id_bahan    = $data['id_bahan'];
                     $nama_bahan  = $data['nama_bahan'];
                     $id_produk   = $data['id_produk'];
-                    $stok        = $data['stok'];
                     $harga_satuan= $data['harga_satuan'];
                     ?>
                       <tr>
@@ -193,8 +191,7 @@ $produk = query('SELECT * FROM produk where id_produk');
                         $ba = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
                         $ba1 = mysqli_fetch_array($ba);
                         echo $ba1['jenis_produk'];
-                        ?></td> 
-                        <td><?php echo $stok; ?></td>
+                        ?></td>
                         <td><?php echo $harga_satuan; ?></td>
                         <td>
                           <a href="ubah.php?id=<?php echo $id_bahan; ?>"><button class="btn btn-warning btn-sm">Edit</button></a>
