@@ -1,7 +1,10 @@
 <?php
 session_start();
-$id_produk = $_GET["id"];
-unset($_SESSION["keranjang"][$id_produk]);
+require 'function.php';
+$id_cart = $_GET['id_cart'];
 
-echo "<script> alert ('produk telah dihapus dari keranjang') ; </script>";
-echo "<script>location='cart.php'; </script>";
+mysqli_query($conn, "DELETE FROM keranjang WHERE id_cart = '$id_cart'");
+echo "<script>alert('produk telah dihapus dari keranjang');</script>";
+echo "<script>window.location ='cart.php';</script>";
+
+?>

@@ -185,11 +185,14 @@ function tambahcart($data)
 	//ambil data dari tiap elemen dalam form
 	$id_produk = $data['id_produk'];
 	$nama_bahan = $data['nama_bahan'];
+	$bhn = mysqli_query($conn, "SELECT * FROM bahan WHERE nama_bahan = '$nama_bahan'");
+	$req = mysqli_fetch_array($bhn);
+	$harga = $req['harga_satuan'];
 	$qty = $data['qty'];
-	$username = $_SESSION["LOGIN"];
+	$email = $_SESSION["LOGIN"];
 
-	mysqli_query($conn, "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, qty)
-                VALUES ('', '$username', '$id_produk', '$nama_bahan', '$qty')");
+	mysqli_query($conn, "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, harga_satuan, qty)
+                VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty')");
 	return  mysqli_affected_rows($conn);
 }
 

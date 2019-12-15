@@ -10,24 +10,19 @@ $produk = query('SELECT * FROM produk order by rand()');
 $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 
 if (isset($_SESSION["LOGIN"])) {
-	$user = query("SELECT * FROM user");
+	$email = $_SESSION["LOGIN"];
+	$user = query("SELECT * FROM user WHERE email = $email");
 }
-// if (isset($_POST["cart"])) {
-// 	//cek data berhasil diubaahtau tidak
-// 	if (ubah($_POST) > 0) {
-// 		echo "
-// 			<script>
-// 				alert('data berhasil diubah');
-// 			</script>
-// 		";
-// 	} else {
-// 		echo "
-// 			<script>
-// 				alert('data gagal diubah'); 
-// 			</script>
-// 		";
-// 	}
-// }
+
+if (isset($_POST["cart"])) {
+	if (tambahcart($_POST)>0) {
+		echo "<script>alert('produk berhasil masuk keranjang');</script>";
+		echo "<script>window.location ='cart.php';</script>";
+	}
+	else{
+		echo "<script>alert('maaf gagal');</script>";
+	}
+}
 
 ?>
 
@@ -107,7 +102,7 @@ if (isset($_SESSION["LOGIN"])) {
 											?>
 										<div class="box-tocart d-flex">
 											<div class="addtocart__actions">
-												<form action="beli.php" method="POST">
+												<form action="" method="POST">
 													<select id="nim" name="nama_bahan" onchange="changeValue(this.value)" class="form-control col-md-6">
 											<option disabled="" selected="">Pilih Bahan</option>
 											<?php
@@ -115,16 +110,12 @@ if (isset($_SESSION["LOGIN"])) {
 													echo '<option value="' . $row['nama_bahan'] . '">' . $row['nama_bahan'] . '</option> ';
 													$jsArray .= "prdName['" . $row['nama_bahan'] . "'] = {harga:'" . addslashes($row['harga_satuan']) . "'};\n";}
 												?></select>
-													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
-													<input type="text" name="jenis_produk" value="<?php echo $jenis_produk ?>" hidden>
-													<input type="text" name="nama_bahan" value="<?php echo $nama_bahan ?>" hidden>
-													<input type="text" name="deskripsi" value="<?php echo $deskripsi ?>" hidden>
 													<span>Harga Satuan</span><br>
-													<input class="form-control" type="text" name="harga" id="harga" disabled>
-													<input type="text" name="ukuran" value="<?php echo $ukuran ?>" hidden>
-													<input type="text" name="gambar" value="<?php echo $gambar ?>" hidden>
-													<!-- <button class="tocart" type="submit" name="cart" id="cart" title="Add to Cart"> -->
-														<button class="tocart" name="cart" id="cart">Add to Cart</button>
+													<input class="form-control" type="number" name="harga" id="harga" disabled><br>
+													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
+													<input type="text" name="nama_bahan" value="<?php echo $nama_bahan ?>" hidden>
+													<input class="form-control" type="number" value="1" name="qty" id="qty" hidden>
+														<button type="submit" class="tocart" name="cart" id="cart">Add to Cart</button>
 														<button class="tocart">Checkout Sekarang</button>
 												</form>
 											</div>
@@ -199,8 +190,7 @@ if (isset($_SESSION["LOGIN"])) {
 </section>
 </div>
 <script type="text/javascript">
-	<?php echo $jsArray; ?>hhuy5uhcs78
-
+	<?php echo $jsArray; ?>
 	function changeValue(x) {
 		document.getElementById('harga').value = prdName[x].harga;
 	};
