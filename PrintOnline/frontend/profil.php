@@ -42,7 +42,6 @@ $user=$_SESSION["LOGIN"]
 							$gambar    = $data['profil_user'];
 							$nama    = $data['nama_user'];
 							$email   = $data['email'];
-							$username = $data['username'];
 							$jk		 = $data['jenis_kelamin'];
 							$nohp 	 = $data['nohp_user'];
 							$provinsi 	 = $data['provinsi'];
@@ -67,14 +66,9 @@ $user=$_SESSION["LOGIN"]
 							<div class="input__box"><?php echo $email; ?>
 							</div>
 							<div class="input__box">
-								<label>username <span>:</span></label>
-							</div>
-							<div class="input__box"><?php echo $username; ?>
-							</div>
-							<div class="input__box">
 								<label>password <span>:</span></label>
 							</div>
-							<div class="input__box">*****
+							<div class="input__box">********
 							</div>
 							<div class="input__box">
 								<label>jenis kelamin <span>:</span></label>

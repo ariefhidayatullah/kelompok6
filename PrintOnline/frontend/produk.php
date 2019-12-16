@@ -11,7 +11,7 @@ $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 
 if (isset($_SESSION["LOGIN"])) {
 	$email = $_SESSION["LOGIN"];
-	$user = query("SELECT * FROM user WHERE email = $email");
+	$user = query("SELECT * FROM user WHERE email = '$email'");
 }
 
 if (isset($_POST["cart"])) {
