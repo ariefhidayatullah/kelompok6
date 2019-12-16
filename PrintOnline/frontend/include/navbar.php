@@ -32,7 +32,7 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                             <li class="drop"><a href="cart.php">keranjang belanja</a></li>
                         <?php else : ?>
                         <?php endif ?>
-                        <li class="drop"><a href="">Tentang kami</a></li>
+                        <li class="drop"><a href="tentangkami.php">Tentang kami</a></li>
                     </ul>
                 </nav>
             </div>

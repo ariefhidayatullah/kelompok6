@@ -197,7 +197,7 @@ function registrasi($data)
 
 																if (mysqli_num_rows($hasil_barang) > 0) {
 																	$totalstok = $qty + $hasil['qty'];
-																	$update = "UPDATE keranjang SET qty = '$totalstok' WHERE id_produk = '$id_produk'";
+																	$update = "UPDATE keranjang SET qty = '$totalstok' WHERE id_produk = '$id_produk' AND nama_bahan = '$nama_bahan'";
 																	mysqli_query($conn, $update);
 																	mysqli_affected_rows($conn);
 																	echo 'gagal';
