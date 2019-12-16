@@ -175,7 +175,7 @@ function registrasi($data)
 	$id_user = $roww['id_user'];
 	$_SESSION["LOGIN"] = $roww['email'];
 ?>
-	<meta http-equiv="refresh" content="0; URL=profil.php?id=<?= $id_user ?>">
+	<meta http-equiv="refresh" content="0; URL=login.php?id=<?= $id_user ?>">
 <?php
 															}
 
