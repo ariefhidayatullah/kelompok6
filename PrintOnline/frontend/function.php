@@ -191,16 +191,32 @@ function registrasi($data)
 																$qty = $data['qty'];
 																$email = $_SESSION["LOGIN"];
 
-																$cek_barang = "SELECT * FROM keranjang WHERE id_produk = '$id_produk'";
+																$cek_barang = "SELECT * FROM keranjang WHERE nama_bahan = '$nama_bahan'";
 																$hasil_barang = mysqli_query($conn, $cek_barang);
 																$hasil = mysqli_fetch_array($hasil_barang);
 
 																if (mysqli_num_rows($hasil_barang) > 0) {
-																	$totalstok = $qty + $hasil['qty'];
-																	$update = "UPDATE keranjang SET qty = '$totalstok' WHERE id_produk = '$id_produk' AND nama_bahan = '$nama_bahan'";
-																	mysqli_query($conn, $update);
-																	mysqli_affected_rows($conn);
-																	echo 'gagal';
+																	$reesult = mysqli_query($conn, "SELECT * FROM keranjang WHERE nama_bahan='$nama_bahan'");
+																	$queery = mysqli_num_rows($reesult);
+																	
+																	if ($queery == 0) {
+																		
+																		mysqli_query($conn, "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, harga_satuan, qty)
+																		VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty')");
+																														return  mysqli_affected_rows($conn);
+																														echo 'gagal';
+																		} else {
+																			$totalstok = $qty + $hasil['qty'];
+																			$update = "UPDATE keranjang SET qty = '$totalstok' WHERE id_produk = '$id_produk' AND nama_bahan = '$nama_bahan'";
+																			mysqli_query($conn, $update);
+																			mysqli_affected_rows($conn);
+																			echo 'ngentot';
+																		}
+																	// $totalstok = $qty + $hasil['qty'];
+																	// $update = "UPDATE keranjang SET qty = '$totalstok' WHERE id_produk = '$id_produk' AND nama_bahan = '$nama_bahan'";
+																	// mysqli_query($conn, $update);
+																	// mysqli_affected_rows($conn);
+																	// echo 'gagal';
 																} else {
 																	mysqli_query($conn, "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, harga_satuan, qty)
 					VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty')");
