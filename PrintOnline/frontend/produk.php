@@ -17,7 +17,7 @@ if (isset($_SESSION["LOGIN"])) {
 if (isset($_POST["cart"])) {
 	if (tambahcart($_POST)>0) {
 		echo "<script>alert('produk berhasil masuk keranjang');</script>";
-		echo "<script>window.location ='cart.php';</script>";
+		echo "<script>window.location ='uploaddesain.php';</script>";
 	}
 	else{
 		echo "<script>alert('maaf gagal');</script>";
@@ -113,9 +113,8 @@ if (isset($_POST["cart"])) {
 													<span>Harga Satuan</span><br>
 													<input class="form-control" type="number" name="harga" id="harga" disabled><br>
 													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
-													<input type="text" name="nama_bahan" value="<?php echo $nama_bahan ?>" hidden>
 													<input class="form-control" type="number" value="1" name="qty" id="qty" hidden>
-														<button type="submit" class="tocart" name="cart" id="cart">Add to Cart</button>
+														<button type="submit" class="tocart" name="cart" id="cart">Masukkan Keranjang</button>
 														<button class="tocart">Checkout Sekarang</button>
 												</form>
 											</div>
