@@ -7,7 +7,7 @@ include 'include/_header.php';
 
 if (isset($_POST["register"])) {
 	if (registrasi($_POST) === 0) {
-		echo "<script> alert('SELAMAT DATANG, SILAHKAN LENGKAPI DATA ANDA');</script>"; 
+		echo "<script> alert('SELAMAT DATANG, SILAHKAN LENGKAPI DATA ANDA');</script>";
 	} else {
 		echo mysqli_error($conn);
 	}
@@ -19,23 +19,23 @@ if (isset($_POST["submit"])) {
 
 	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
 	$query = mysqli_num_rows($result);
- 
+
 	if ($query == 1) {
 		$reesult = mysqli_query($conn, "SELECT * FROM user WHERE password='$password'");
 		$queery = mysqli_num_rows($reesult);
 
 		if ($queery == 1) {
-		$row = mysqli_fetch_array($result);
-		$_SESSION["LOGIN"] = $row['email'];
-		echo "<script> alert('anda sukses login !');</script>";
-		echo "<script> location='index.php';</script>";
+			$row = mysqli_fetch_array($result);
+			$_SESSION["LOGIN"] = $row['email'];
+			echo "<script> alert('anda sukses login !');</script>";
+			echo "<script> location='index.php';</script>";
 		} else {
-		echo "<script> alert('password salah!');</script>";
-		echo "<script> location='login.php';</script>";
+			echo "<script> alert('password salah!');</script>";
+			echo "<script> location='login.php';</script>";
 		}
 	} else {
-	echo "<script> alert('email tidak terdaftar !');</script>";
-	echo "<script> location='login.php';</script>";
+		echo "<script> alert('email tidak terdaftar !');</script>";
+		echo "<script> location='login.php';</script>";
 	}
 }
 ?>
@@ -91,6 +91,29 @@ if (isset($_POST["submit"])) {
 							</div>
 						</form>
 					</div>
+					<div id="accordion" class="wn_accordion" role="tablist">
+						<div class="card">
+							<div class="acc-header" role="tab" id="headingOne">
+								<h5>
+									<a data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false" aria-controls="collapseOne">bagaimana cara mendaftar sebagai pelanggan?</a>
+								</h5>
+							</div>
+							<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+								<div class="card-body">dengan cara mengisi data diri di kanan yang bertuliskan registrasi</div>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="acc-header" role="tab" id="headingTwo">
+							<h5>
+								<a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+									bagaimana cara login ? </a>
+							</h5>
+						</div>
+						<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+							<div class="card-body">dengan mengisi data email dan password anda dengan benar </div>
+						</div>
+					</div>
 				</div>
 				<div class="col-lg-6 col-12">
 					<div class="my__account__wrapper">
@@ -132,6 +155,7 @@ if (isset($_POST["submit"])) {
 			</div>
 		</div>
 	</section>
+
 </div>
 <!-- //Main wrapper -->
 <script>
@@ -199,5 +223,5 @@ if (isset($_POST["submit"])) {
 </script>
 
 <?php
-include 'include/_footer.php';
+						include 'include/_footer.php';
 ?>

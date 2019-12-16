@@ -68,8 +68,7 @@ if (isset($_POST["cart"])) {
 									<div class="product__info__main">
 										<h1><?= $row['jenis_produk']; ?></h1> </a>
 										<div class="product__overview">
-											<span>
-												<?php
+											<?php
 																			$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
 																			$ba = mysqli_query($conn, $sql);
 																			$ro = mysqli_fetch_array($ba);
@@ -78,13 +77,18 @@ if (isset($_POST["cart"])) {
 																			$deskripsi = $ro['deskripsi'];
 																			$ukuran = $ro['ukuran'];
 																			$gambar = $ro['gambar'];
-																			echo "Kenapa harus mencetak " . $ro['jenis_produk'] . "?";
-												?>
-											</span>
-											<br>
-											<?php
-																			echo $ro['deskripsi'];
 											?>
+											<div class="card">
+												<div class="acc-header" role="tab" id="headingTwo">
+													<h5>
+														<a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+															<?php echo "Kenapa harus mencetak " . $ro['jenis_produk'] . "?"; ?> </a>
+													</h5>
+												</div>
+												<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+													<div class="card-body"><?php echo $ro['deskripsi']; ?></div>
+												</div>
+											</div>
 										</div>
 
 										<span>Ukuran Percetakan : <?php
