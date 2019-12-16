@@ -4,7 +4,7 @@ include 'include/_header.php';
 require 'function.php';
 
 if (!isset($_SESSION["LOGIN"])) {
-    echo "<script> alert ('keranjang kosong, silahkan belanja dahulu') ; </script>";
+    echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
     echo "<script>location='login.php'; </script>";
 }
 
