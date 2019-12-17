@@ -102,9 +102,10 @@ require 'function.php';
                         <div class="col-md-7">
                             <div class="alert alert-info">
                                 <p>
-                                    silahkan melakukan pembayaran minimal 50% Rp . <?= number_format($detail['total_harga']); ?> ke <br>
+                                    silahkan melakukan pembayaran Rp . <?= number_format($detail['total_harga']); ?> ke <br>
                                     <strong>BANK MANDIRI 137-001088-3276 . Mohammad Arief Hidayatullah</strong>
                                 </p>
+                                <input class="btn btn-success btn-sm" type="button" onclick="window.print()" value="cetak">
                             </div>
                         </div>
                     </div>

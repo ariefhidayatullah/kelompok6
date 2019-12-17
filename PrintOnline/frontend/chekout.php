@@ -7,7 +7,8 @@ if (!isset($_SESSION["LOGIN"])) {
     echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
     echo "<script>location='login.php'; </script>";
 }
-
+$email = $_SESSION["LOGIN"];
+$query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
 ?>
 <!-- Main wrapper -->
 <div class="wrapper" id="wrapper">
@@ -55,62 +56,76 @@ if (!isset($_SESSION["LOGIN"])) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $nomor = 1; ?>
-                                        <?php $totalbelanja = 0; ?>
-                                        <?php foreach ($_SESSION["keranjang"] as $id_produk => $jumlah) : ?>
-                                            <?php
-                                                $ambil = $conn->query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
-                                                $pecah = $ambil->fetch_assoc();
-                                                ?>
-                                            <?php
-                                                $subharga = $pecah["harga"] * $jumlah;
-                                                ?>
-                                            <tr>
-                                                <td><?= $nomor; ?></td>
-                                                <td><?= $pecah["jenis_produk"]; ?></td>
-                                                <td><?= $pecah["jenis_bahan"]; ?></td>
-                                                <td>Rp. <?= number_format($pecah["harga"]); ?></td>
-                                                <td><?= $jumlah; ?></td>
-                                                <td><?= number_format($subharga); ?></td>
-                                                <td>
-                                                    <a href="hapuskeranjang.php?id=<?= $id_produk ?> " class="btn btn-primary" onclick="return confirm('yakin menghapus produk dari keranjang ? ');">hapus</a>
-                                                </td>
-                                            </tr>
-                                            <?php $nomor++; ?>
-                                            <?php $totalbelanja += $subharga; ?>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                    <tfoot>
+                                        <?php $nomor = 1; $total = 0; ?>
+                                        <?php while ($data = mysqli_fetch_array($query)) {
+                                        $id_cart = $data['id_cart'];
+                                        $id_produk = $data['id_produk'];
+                                        $nama_bahan = $data['nama_bahan'];
+                                        $harga_satuan = $data['harga_satuan'];
+                                        $qty =$data['qty'];
+
+                                        $quer = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
+                                        $b = mysqli_fetch_array($quer);
+                                        ?>
                                         <tr>
-                                            <th colspan="6">total belanja</th>
-                                            <th>Rp. <?= number_format($totalbelanja) ?> </th>
-                                        </tr>
-                                    </tfoot>
+                                                <td><?= $nomor; ?></td>
+                                                <td><?= $b['jenis_produk']; ?></td>
+                                                <td><?= $nama_bahan; ?></td>
+                                                <td><?= $harga_satuan ?></td>
+                                                <td>
+                                                <form action="updatecart.php" method="get">
+                                                    <input type="text" name="id_cart" value="<?= $id_cart; ?>" hidden>
+                                                    <input type="number" min="1" max="100" name="qty" placeholder="<?= $qty; ?>">
+                                                    <button class="btn btn-warning btn-sm" type="submit" name="sub" value="sub" >OK</button>
+                                                </form>
+                                                </td>
+                                                <td><?php $subtotal = $harga_satuan*$qty; ?>
+                                                <?= $subtotal; ?></td>
+                                                <td><a class="btn btn-danger btn-sm" href="hapuskeranjang.php?id_cart=<?= $id_cart; ?>">Hapus</a></td>
+                                            </tr>
+                                            <?php $nomor++; ?>  
+                                            <?php 
+                                            $total = $total + $subtotal;
+                                            ?>
+                                            <?php } ?>
+                                         <tr>
+                                            <th colspan="5" style="text-align:right">jumlah total</th>
+                                            <th><?= $total; ?></th>
+                                            <th><input type="button" onclick="window.print()" value="cetak"></th>
+                                         </tr>
+                                    </tbody>
                                 </table>
                                 <form action="" method="POST">
                                     <div class="row contact-form-wrap">
                                         <div class="col-md-4">
                                             <input type="hidden" id="id_pesan" name="id_pesan" required value="" readonly>
                                             <div class=" single-contact-form">
-                                                <input type="text" readonly value="<?= $_SESSION["LOGIN"]["nama_user"] ?>" class="input__box">
+                                                <?php 
+                                                $user1 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+                                                $nama = mysqli_fetch_array($user1);
+                                                ?>
+
+                                                <input type="text" readonly value="<?= $nama['nama_user']; ?>" class="input__box">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class=" single-contact-form">
-                                                <input type="text" readonly value="<?= $_SESSION["LOGIN"]["nohp_user"] ?>" class="input__box">
+                                                <input type="text" readonly value="<?= $nama['nohp_user'] ?>" class="input__box">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class=" single-contact-form">
                                                 <?php
-                                                $id_userrr = $_SESSION["LOGIN"]["id_user"];
-                                                $queryy = "SELECT kabkot.id_kabkot, kabkot.nama_kabkot, kabkot.jne_reg FROM user left join kabkot on user.kabupaten = kabkot.id_kabkot WHERE id_user = '$id_userrr'";
+                                                $queryy = "SELECT * FROM user WHERE email = '$email'";
                                                 $result1 = mysqli_query($conn, $queryy);
                                                 $row1 = mysqli_fetch_array($result1);
-                                                var_dump($row1);
+                                                $id_kabkot = $row1['kabupaten'];
+
+                                                $ong = mysqli_query($conn, "SELECT * FROM kabkot WHERE id_kabkot = '$id_kabkot'");
+                                                $ongk = mysqli_fetch_array($ong);
                                                 ?>
                                                 <input type="hidden" readonly value="<?= $row1['id_kabkot'] ?>" class="input__box" name="id_ongkir" id="id_ongkir">
-                                                <input type="text" readonly value="<?= $row1['nama_kabkot'] ?>" class="input__box">
+                                                <input type="text" readonly value="<?= $ongk['nama_kabkot'] ?>" class="input__box">
                                             </div>
                                         </div>
                                     </div>
@@ -119,44 +134,38 @@ if (!isset($_SESSION["LOGIN"])) {
                                 <?php
                                 if (isset($_POST['chekout'])) {
                                     $id_pesan = $_POST['id_pesan'];
-                                    $id_pelanggan = $_SESSION['LOGIN']['id_user'];
-                                    $nama_user = $_SESSION['LOGIN']['nama_user'];
-                                    $email = $_SESSION['LOGIN']['email'];
-                                    $nohp_user = $_SESSION['LOGIN']['nohp_user'];
-                                    $id_kabkot = $_POST['id_ongkir'];
+                                    $id_pelanggan = $nama['id_user'];
+                                    $nama_user = $nama['nama_user'];
+                                    $nohp_user = $nama['nohp_user'];
+                                    $id_kabkot = $_POST['id_kabkot'];
                                     $tanggal_pembelian = date("Y-m-d");
-
-                                    $ambil = $conn->query("SELECT * FROM kabkot WHERE id_kabkot ='$id_kabkot'");
-                                    $arrayongkir = $ambil->fetch_assoc();
-                                    $tarif = $arrayongkir['jne_reg'];
+                                    $tarif = $ongk['jne_reg'];
 
                                     $total_pembelian = $totalbelanja + $tarif;
 
-                                    # 1. simpan data ke tabel pembelian
-                                    $query = "INSERT INTO pesan VALUES ('$id_pesan','$id_pelanggan','$nama_user','$email','$nohp_user','$id_kabkot','$tanggal_pembelian', '$total_pembelian' )";
+                                    $query = "INSERT INTO pesan VALUES ('$id_pesan','$email','$nama_user','$email','$nohp_user','$id_kabkot','$tanggal_pembelian', '$total_pembelian' )";
 
                                     mysqli_query($conn, $query);
 
                                     $id_pesan_barusan = $conn->insert_id;
 
-                                    foreach ($_SESSION["keranjang"] as $id_produk => $jumlah) {
-                                        $value = $conn->query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
-                                        $row2 = $value->fetch_assoc();
-
-                                        $jenis_produk = $row2["jenis_produk"];
-                                        $jenis_bahan = $row2["jenis_bahan"];
-                                        $ukuran = $row2["ukuran"];
-
-                                        $conn->query("INSERT INTO `detail_pemesanan`(`id_pesan`, `id_produk`, `jenis_produk`, `nama_bahan`, `ukuran`, `qty`, `harga_satuan`) VALUES ('$id_pesan_barusan','$id_produk','$jenis_produk','$jenis_bahan','$ukuran','$jumlah','$subharga' )");
+                                   while($fetch = mysqli_fetch_array($query)) {
+                                    $id_produk = $fetch['id_produk'];
+                                    $res = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
+                                    $arr = mysqli_fetch_array($res);
+                                    $jenis_produk = $arr['jenis_produk'];
+                                    $nama_bahan = $fetch['nama_bahan'];
+                                    $harga_satuan = $fetch['harga_satuan'];
+                                    $qty = $fetch['qty'];
+                                   var_dump($arr);
+                                    mysqli_query($conn, "INSERT INTO `detail_pemesanan`(`id_pesan`, `id_produk`, `jenis_produk`, `nama_bahan`, `ukuran`, `qty`, `harga_satuan`) VALUES ('$id_pesan_barusan','$id_produk','$jenis_produk','$nama_bahan','','$qty','$harga_satuan' )");
+                                    
+                                    // $conn->query("DELETE `detail_pemesanan`(`id_pesan`, `id_produk`, `jenis_produk`, `nama_bahan`, `ukuran`, `qty`, `harga_satuan`) VALUES ('$id_pesan_barusan','$id_produk','$jenis_produk','$nama_bahan','','$qty','$harga_satuan' )");
                                     }
-
-                                    #kosongkan keranjang belanja
-                                    unset($_SESSION['keranjang']);
-
                                     #tampilan dialihkan ke nota, nota pembelian baru terjadi
                                     echo "<script>alert('Pembelian Berhasil !');</script>";
                                     echo "<script>location='nota.php?id=$id_pesan_barusan';</script>";
-                                }
+                                    }
 
                                 ?>
                             </div>
