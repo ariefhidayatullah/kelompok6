@@ -1,7 +1,7 @@
 <?php
 if (isset($_SESSION["LOGIN"])) {
-$email = $_SESSION["LOGIN"];
-$user = mysqli_query($conn,"SELECT * FROM user WHERE email = '$email'");
+    $email = $_SESSION["LOGIN"];
+    $user = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
 }
 $daftarproduk = query('SELECT * FROM produk order by rand()');
 
@@ -36,35 +36,25 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                     </ul>
                 </nav>
             </div>
-            <div class="col-md-6 col-sm-6 col-6 col-lg-2">
-
-                <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
-                    <!-- Start Shopping Cart -->
-                    <li class="shop_search"><a class="search__active" href="#"></a></li>
-                    <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
-                        <div class="searchbar__content setting__block">
-                            <div class="content-inner">
-                                <div class="switcher-currency">
-                                    <div class="switcher-options">
-                                        <div class="switcher-currency-trigger">
-                                            <div class="setting__menu">
-                                                <?php if (isset($_SESSION["LOGIN"])) : ?>
-                                                    <?php foreach ($user as $row) : ?>
-                                                        <span><a href="profil.php?id=<?= $row['id_user']; ?>" type="hidden">profil</a></span>
-                                                        <span><a href="logout.php">Keluar</a></span>
-                                                    <?php endforeach; ?> -->
-                                                <?php else : ?>
-                                                    <span><a href="login.php">login</a></span>
-                                                <?php endif ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            <!-- <div class="col-md-6 col-sm-6 col-6 col-lg-2"> -->
+            <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
+                <!-- Start Shopping Cart -->
+                <div class="col d-none d-lg-block">
+                    <nav class="mainmenu__nav">
+                        <ul class="meninmenu d-flex">
+                            <?php if (isset($_SESSION["LOGIN"])) : ?>
+                                <?php foreach ($user as $row) : ?>
+                                    <li class="drop"><a href="profil.php?id=<?= $row['id_user']; ?>" type="hidden">profil</a></li>
+                                    <li class="drop"><a href="logout.php">Keluar</a></li>
+                                <?php endforeach; ?> -->
+                            <?php else : ?>
+                                <li class="drop"><a href="login.php">login / registrasi</a></li>
+                            <?php endif ?>
+                        </ul>
+                    </nav>
+                </div>
+            </ul>
+            <!-- </div> -->
         </div>
     </div>
     <div class="brown--color box-search-content search_active block-bg close__top">
