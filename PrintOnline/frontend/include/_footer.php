@@ -39,6 +39,7 @@
                     <div class="copyright">
                         <div class="copy__right__inner text-left">
                             <p>Copyright <i class="fa fa-instagram"></i> <a href="https://www.instagram.com/arfhdytllh_/">.arfhdytllh_</a> </p>
+                            <p>Copyright <i class="fa fa-instagram"></i> <a href="https://www.instagram.com/bimabgskr_/">.bimabgskr_</a> </p>
                         </div>
                     </div>
                 </div>
