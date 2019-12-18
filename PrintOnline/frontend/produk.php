@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 require 'function.php';
 include 'include/_header.php';
@@ -96,12 +96,12 @@ if (isset($_POST["cart"])) {
 																	?>
 										</span>
 										<?php
-																			$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk'");
+										$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk'");
 																			$row = mysqli_fetch_array($bahan1);
 																			$nama_bahan = $row['nama_bahan'];
 										?>
 										<?php
-																			$bahan = mysqli_query($conn, "SELECT * FROM bahan WHERE id_produk ='$id_produk' ORDER BY nama_bahan ASC");
+										$bahan = mysqli_query($conn, "SELECT * FROM bahan WHERE id_produk ='$id_produk' ORDER BY nama_bahan ASC");
 																			$jsArray = "var prdName = new Array();\n";
 										?>
 										<div class="box-tocart d-flex">
@@ -110,9 +110,9 @@ if (isset($_POST["cart"])) {
 													<select id="nim" name="nama_bahan" onchange="changeValue(this.value)" class="form-control col-md-6">
 														<option disabled="" selected="">Pilih Bahan</option>
 														<?php
-																			while ($row = mysqli_fetch_array($bahan)) {
-																				echo '<option value="' . $row['nama_bahan'] . '">' . $row['nama_bahan'] . '</option> ';
-																				$jsArray .= "prdName['" . $row['nama_bahan'] . "'] = {harga:'" . addslashes($row['harga_satuan']) . "'};\n";
+														while ($row = mysqli_fetch_array($bahan)) {
+														echo '<option value="' . $row['nama_bahan'] . '">' . $row['nama_bahan'] . '</option> ';
+														$jsArray .= "prdName['" . $row['nama_bahan'] . "'] = {harga:'" . addslashes($row['harga_satuan']) . "'};\n";
 																			}
 														?>
 													</select>

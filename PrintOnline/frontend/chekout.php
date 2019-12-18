@@ -116,8 +116,7 @@ $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
                                         <div class="col-md-4">
                                             <div class=" single-contact-form">
                                                 <?php
-                                                $queryy = "SELECT * FROM user WHERE email = '$email'";
-                                                $result1 = mysqli_query($conn, $queryy);
+                                                $result1 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
                                                 $row1 = mysqli_fetch_array($result1);
                                                 $id_kabkot = $row1['kabupaten'];
 
@@ -129,7 +128,7 @@ $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary" name="chekout">chekout</button>
+                                    <button type="submit" class="btn btn-primary" name="chekout">chekout</button>
                                 </form>
                                 <?php
                                 if (isset($_POST['chekout'])) {
@@ -137,15 +136,10 @@ $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
                                     $id_pelanggan = $nama['id_user'];
                                     $nama_user = $nama['nama_user'];
                                     $nohp_user = $nama['nohp_user'];
-                                    $id_kabkot = $_POST['id_kabkot'];
+                                    $id_kabkot = $ongk['nama_kabkot'];
                                     $tanggal_pembelian = date("Y-m-d");
-                                    $tarif = $ongk['jne_reg'];
 
-                                    $total_pembelian = $totalbelanja + $tarif;
-
-                                    $query = "INSERT INTO pesan VALUES ('$id_pesan','$email','$nama_user','$email','$nohp_user','$id_kabkot','$tanggal_pembelian', '$total_pembelian' )";
-
-                                    mysqli_query($conn, $query);
+                                    mysqli_query($conn,"INSERT INTO pesan VALUES ('$id_pesan','$id_pelanggan','$nama_user','$email','$nohp_user','$id_kabkot','$tanggal_pembelian', '$total' )");
 
                                     $id_pesan_barusan = $conn->insert_id;
 
@@ -157,8 +151,9 @@ $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
                                     $nama_bahan = $fetch['nama_bahan'];
                                     $harga_satuan = $fetch['harga_satuan'];
                                     $qty = $fetch['qty'];
-                                   var_dump($arr);
-                                    mysqli_query($conn, "INSERT INTO `detail_pemesanan`(`id_pesan`, `id_produk`, `jenis_produk`, `nama_bahan`, `ukuran`, `qty`, `harga_satuan`) VALUES ('$id_pesan_barusan','$id_produk','$jenis_produk','$nama_bahan','','$qty','$harga_satuan' )");
+
+                                    mysqli_query($conn, "INSERT INTO detail_pemesanan VALUES ('','$id_pesan_barusan' ,'$id_produk' , '$jenis_produk', '$nama_bahan' ,'', '$qty', '$harga_satuan')");
+
                                     
                                     // $conn->query("DELETE `detail_pemesanan`(`id_pesan`, `id_produk`, `jenis_produk`, `nama_bahan`, `ukuran`, `qty`, `harga_satuan`) VALUES ('$id_pesan_barusan','$id_produk','$jenis_produk','$nama_bahan','','$qty','$harga_satuan' )");
                                     }
