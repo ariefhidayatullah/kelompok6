@@ -21,7 +21,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/plugins.css">
-    <<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
     
 

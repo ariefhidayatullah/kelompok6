@@ -830,7 +830,7 @@ a {
 }
 
 /* Background Image */
-.bg-image--1 {
+.bg-image--5 {
   background-image: url(slide/akbar.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -4293,7 +4293,7 @@ h3.widget-title-modal {
 }
 
 .contentbox>h3 {
-  color: #ce7852;
+  color: white;
   font-size: 40px;
   margin-bottom: 10px;
 }
@@ -4303,7 +4303,7 @@ h3.widget-title-modal {
 }
 
 .slide .slider__content h2 {
-  color: #3c3c3c;
+  color: white;
   font-size: 68px;
   font-family: poppins;
   font-weight: 700;
@@ -4381,7 +4381,7 @@ h3.widget-title-modal {
 }
 
 .slider--15 .slide .slider__content a:hover {
-  color: #ce7852;
+  color: white;
 }
 
 .slide__arrow01 {

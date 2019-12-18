@@ -15,7 +15,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 	<div class="slider-area slider--15 slide__activation slide__arrow01 owl-carousel">
 
 		<!-- Start Single Slide -->
-		<div class="slide animation__style09 bg-image--1 fullscreen align__center--left">
+		<div class="slide animation__style09 bg-image--5 fullscreen align__center--left">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
@@ -34,7 +34,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 		</div>
 		<!-- End Single Slide -->
 		<!-- Start Single Slide -->
-		<div class="slide animation__style10 bg-image--9 fullscreen align__center--left">
+		<div class="slide animation__style10 bg-image--5 fullscreen align__center--left">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
@@ -97,7 +97,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 	</section>
 	<!-- Start BEst Seller Area -->
 	<!-- Start NEwsletter Area -->
-	<section class="wn__newsletter__area bg-image--4">
+	<section class="wn__newsletter__area bg-image--5">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-7 col-md-12 col-12 ptb--150">
