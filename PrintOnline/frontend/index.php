@@ -34,7 +34,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 		</div>
 		<!-- End Single Slide -->
 		<!-- Start Single Slide -->
-		<div class="slide animation__style10 bg-image--3 fullscreen align__center--left">
+		<div class="slide animation__style10 bg-image--9 fullscreen align__center--left">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">

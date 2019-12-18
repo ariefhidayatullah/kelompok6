@@ -831,63 +831,7 @@ a {
 
 /* Background Image */
 .bg-image--1 {
-  background-image: url(aa.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-
-.bg-image--2 {
-  background-image: url(bb.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-
-.bg-image--3 {
-  background-image: url(cc.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-
-.bg-image--4 {
-  background-image: url(dd.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-
-.bg-image--5 {
-  background-image: url(aa.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-
-.bg-image--6 {
-  background-image: url(aa.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-
-.bg-image--7 {
-  background-image: url(aa.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-
-.bg-image--8 {
-  background-image: url(images/bg/8.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-
-.bg-image--9 {
-  background-image: url(images/bg/9.jpg);
+  background-image: url(slide/akbar.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

@@ -28,16 +28,12 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                                 </ul>
                             </div>
                         </li>
-                        <?php if (isset($_SESSION["LOGIN"])) : ?>
-                            <li class="drop"><a href="cart.php">keranjang belanja</a></li>
-                        <?php else : ?>
-                        <?php endif ?>
                         <li class="drop"><a href="tentangkami.php">Tentang kami</a></li>
                     </ul>
                 </nav>
             </div>
             <!-- <div class="col-md-6 col-sm-6 col-6 col-lg-2"> -->
-            <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
+            <ul class="header__sidebar__right d-flex justify-content-end">
                 <!-- Start Shopping Cart -->
                 <div class="col d-none d-lg-block">
                     <nav class="mainmenu__nav">
@@ -46,7 +42,7 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                                 <?php foreach ($user as $row) : ?>
                                     <li class="drop"><a href="profil.php?id=<?= $row['id_user']; ?>" type="hidden">profil</a></li>
                                     <li class="drop"><a href="logout.php">Keluar</a></li>
-                                <?php endforeach; ?> -->
+                                <?php endforeach; ?>
                             <?php else : ?>
                                 <li class="drop"><a href="login.php">login / registrasi</a></li>
                             <?php endif ?>
