@@ -44,6 +44,7 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                 <div class="col d-none d-lg-block">
                     <nav class="mainmenu__nav">
                         <ul class="meninmenu d-flex">
+                        <li class=""><a class="search__active" href="#">cari</a></li>
                             <?php if (isset($_SESSION["LOGIN"])) : ?>
                                 <?php foreach ($user as $row) : ?>
                                     <li class="drop"><a href="profil.php?id=<?= $row['id_user']; ?>" type="hidden">profil</a></li>
@@ -59,16 +60,17 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
             <!-- </div> -->
         </div>
     </div>
-    <div class="brown--color box-search-content search_active block-bg close__top">
-        <form id="search_mini_form" class="minisearch" action="daftarproduk.php" method="get">
-            <div class="field__search">
-                <input type="text" name="cari" placeholder="Cari produk disini ...">
-                <div class="action">
-                    <button class="btn btn-warning" type="submit" value="submit"><i class="zmdi zmdi-search"></i></button>
-                </div>
-            </div>
-        </form>
-        <div class="close__wrap">
-            <span>close</span>
-        </div>
+        <div class="brown--color box-search-content search_active block-bg close__top">
+			<form id="search_mini_form" class="minisearch" action="pencarian.php" method="get">
+				<div class="field__search">
+					<input type="text" name="cari" placeholder="cari produk anda disini...">
+					<div class="action">
+                    <input type="submit" value="Cari">
+					</div>
+				</div>
+			</form>
+			<div class="close__wrap">
+				<span>close</span>
+			</div>
+		</div>
 </header>

@@ -155,7 +155,7 @@ $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
 
                                     mysqli_query($conn, "INSERT INTO detail_pemesanan VALUES ('','$id_pesan_barusan' ,'$id_produk' , '$jenis_produk', '$nama_bahan' ,'', '$qty', '$harga_satuan')");
 
-                                    mysqli_query($conn, "DELETE FROM keranjang WHERE id_cart = '$id_cart');                                                                       
+                                    mysqli_query($conn, "DELETE FROM keranjang WHERE id_cart = '$id_cart'");                                                                       
                                     }
                                     #tampilan dialihkan ke nota, nota pembelian baru terjadi
                                     echo "<script>alert('Pembelian Berhasil !');</script>";
