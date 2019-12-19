@@ -153,9 +153,13 @@ $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
                                     $harga_satuan = $fetch['harga_satuan'];
                                     $qty = $fetch['qty'];
 
-                                    mysqli_query($conn, "INSERT INTO detail_pemesanan VALUES ('','$id_pesan_barusan' ,'$id_produk' , '$jenis_produk', '$nama_bahan' ,'', '$qty', '$harga_satuan')");
+                                    $ress = mysqli_query($conn, "SELECT * FROM bahan WHERE nama_bahan = '$nama_bahan' AND id_produk = '$id_produk'");
+                                    $arra = mysqli_fetch_array($ress);
+                                    $id_bahan = $arra['id_bahan'];
 
-                                    mysqli_query($conn, "DELETE FROM keranjang WHERE id_cart = '$id_cart'");                                                                       
+                                    mysqli_query($conn, "INSERT INTO `detail_pemesanan`(`id_detail`, `id_pesan`, `id_produk`, `jenis_produk`, `id_bahan`, `ukuran`, `qty`, `harga_satuan`) VALUES ('','$id_pesan_barusan','$id_produk','$jenis_produk','$id_bahan','1','$qty','$harga_satuan')");
+
+                                    // mysqli_query($conn, "DELETE FROM keranjang WHERE id_cart = '$id_cart'");                                                                       
                                     }
                                     #tampilan dialihkan ke nota, nota pembelian baru terjadi
                                     echo "<script>alert('Pembelian Berhasil !');</script>";

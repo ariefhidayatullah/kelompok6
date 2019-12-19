@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 require 'function.php';
 include 'include/_header.php';
@@ -69,14 +69,14 @@ if (isset($_POST["cart"])) {
 										<h1><?= $row['jenis_produk']; ?></h1> </a>
 										<div class="product__overview">
 											<?php
-																			$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
-																			$ba = mysqli_query($conn, $sql);
-																			$ro = mysqli_fetch_array($ba);
+											$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
+											$ba = mysqli_query($conn, $sql);
+											$ro = mysqli_fetch_array($ba);
 
-																			$jenis_produk = $ro['jenis_produk'];
-																			$deskripsi = $ro['deskripsi'];
-																			$ukuran = $ro['ukuran'];
-																			$gambar = $ro['gambar'];
+											$jenis_produk = $ro['jenis_produk'];
+											$deskripsi = $ro['deskripsi'];
+											$ukuran = $ro['ukuran'];
+											$gambar = $ro['gambar'];
 											?>
 											<div class="card">
 												<div class="acc-header" role="tab" id="headingTwo">
