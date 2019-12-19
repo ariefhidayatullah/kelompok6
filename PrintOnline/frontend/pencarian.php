@@ -13,14 +13,10 @@ while($pecah = $ambil->fetch_assoc()){
     $semuadata[]=$pecah;
 }
 
-if ($pecah==0) {
-	echo "<script>alert('pencarian anda tidak ditemukan');</script>";
+if (mysqli_num_rows($ambil)==0) {
+	echo "<script>alert('keranjang kosong, silakan berbelanja terlebih dahulu');</script>";
 	echo "<script>window.location ='daftarproduk.php';</script>";
 }
-
-echo"<pre>";
-print_r ($semuadata);
-echo"</pre>";
 ?>
 
 <div class="wrapper" id="wrapper">
@@ -48,7 +44,8 @@ echo"</pre>";
     <div class="row pt--80  pb--30">
         <div class="col-lg-12">
             <div class="section__title text-center">
-                <h2 class="title__be--2"><span class="color--theme">hasil pencarian <?= $cari ?></span></h2>
+                <h2 class="title__be--2"><span class="color--theme">hasil pencarian</span></h2>
+                <h2 class="title__be--2"><?= $cari ?></h2>
                 <hr>
             </div>
         </div>
