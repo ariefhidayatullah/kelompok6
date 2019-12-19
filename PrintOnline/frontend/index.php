@@ -55,6 +55,14 @@ $bahan = query('SELECT * FROM produk order by rand()');
 	<!-- End Slider area -->
 	<!-- Start BEst Seller Area -->
 	<section class="wn__product__area brown--color pt--80  pb--30">
+	<div class="row pt--80  pb--30">
+        <div class="col-lg-12">
+            <div class="section__title text-center">
+                <h2 class="title__be--2"><span class="color--theme">produk</span></h2>
+                <hr>
+            </div>
+        </div>
+    </div>
 		<div class="container">
 			<!-- Start Single Tab Content -->
 			<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50 ">
