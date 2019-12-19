@@ -139,13 +139,14 @@ $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
                                     $id_kabkot = $ongk['nama_kabkot'];
                                     $tanggal_pembelian = date("Y-m-d");
 
-                                    mysqli_query($conn,"INSERT INTO pesan VALUES ('$id_pesan','$id_pelanggan','$nama_user','$email','$nohp_user','$id_kabkot','$tanggal_pembelian', '$total' )");
+                                    mysqli_query($conn,"INSERT INTO pesan VALUES ('$id_pesan','$id_pelanggan','$nama_user','$email','$nohp_user','$id_kabkot','$tanggal_pembelian', '$total', '1' )");
 
                                     $id_pesan_barusan = $conn->insert_id;
 
-                                   while($fetch = mysqli_fetch_array($query)) {
+                                   while($fetch = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'"))) {
+                                    $id_cart =$fetch['id_cart'];
                                     $id_produk = $fetch['id_produk'];
-                                    $res = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
+                                    $res = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
                                     $arr = mysqli_fetch_array($res);
                                     $jenis_produk = $arr['jenis_produk'];
                                     $nama_bahan = $fetch['nama_bahan'];
@@ -154,8 +155,7 @@ $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
 
                                     mysqli_query($conn, "INSERT INTO detail_pemesanan VALUES ('','$id_pesan_barusan' ,'$id_produk' , '$jenis_produk', '$nama_bahan' ,'', '$qty', '$harga_satuan')");
 
-                                    
-                                    // $conn->query("DELETE `detail_pemesanan`(`id_pesan`, `id_produk`, `jenis_produk`, `nama_bahan`, `ukuran`, `qty`, `harga_satuan`) VALUES ('$id_pesan_barusan','$id_produk','$jenis_produk','$nama_bahan','','$qty','$harga_satuan' )");
+                                    mysqli_query($conn, "DELETE FROM keranjang WHERE id_cart = '$id_cart');                                                                       
                                     }
                                     #tampilan dialihkan ke nota, nota pembelian baru terjadi
                                     echo "<script>alert('Pembelian Berhasil !');</script>";
