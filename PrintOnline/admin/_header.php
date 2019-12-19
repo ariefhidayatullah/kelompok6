@@ -95,6 +95,11 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://app.smartsupp.com/app" target="https://app.smartsupp.com/app_blank">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Live Chat</span></a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="../auth/logout.php">
