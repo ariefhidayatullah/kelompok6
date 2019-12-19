@@ -28,6 +28,12 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                                 </ul>
                             </div>
                         </li>
+                        <?php if (isset($_SESSION["LOGIN"])) : ?>
+                                <?php foreach ($user as $row) : ?>
+                                    <li class="drop"><a href="cart.php">keranjang belanja</a></li>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                            <?php endif ?>
                         <li class="drop"><a href="tentangkami.php">Tentang kami</a></li>
                     </ul>
                 </nav>
