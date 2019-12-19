@@ -19,12 +19,6 @@
                                 <li><a href="#"><i class="bi bi-youtube"></i></a></li>
                             </ul>
                             <ul class="mainmenu d-flex justify-content-center">
-                                <li><a href="index.html">Trending</a></li>
-                                <li><a href="index.html">Best Seller</a></li>
-                                <li><a href="index.html">All Product</a></li>
-                                <li><a href="index.html">Wishlist</a></li>
-                                <li><a href="index.html">Blog</a></li>
-                                <li><a href="index.html">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -36,7 +30,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="copyright">
+                <div class="copyright">
                         <div class="copy__right__inner text-left">
                             <p>Copyright <i class="fa fa-instagram"></i> <a href="https://www.instagram.com/arfhdytllh_/">.arfhdytllh_</a> </p>
                             <p>Copyright <i class="fa fa-instagram"></i> <a href="https://www.instagram.com/bimabgskr_/">.bimabgskr_</a> </p>
@@ -44,16 +38,21 @@
                     </div>
                 </div>
                 <!-- Smartsupp Live Chat script -->
-<script type="text/javascript">
-var _smartsupp = _smartsupp || {};
-_smartsupp.key = '535088b9b191a116a7e929a012c155e8aaa797c3';
-window.smartsupp||(function(d) {
-  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-  c.type='text/javascript';c.charset='utf-8';c.async=true;
-  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-})(document);
-</script>
+                <?php if (isset($_SESSION["LOGIN"])) : ?>
+                                <?php foreach ($user as $row) : ?>
+                <script type="text/javascript">
+                var _smartsupp = _smartsupp || {};
+                    _smartsupp.key = '535088b9b191a116a7e929a012c155e8aaa797c3';
+                    window.smartsupp||(function(d) {
+                var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+                    s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+                    c.type='text/javascript';c.charset='utf-8';c.async=true;
+                    c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+                    })(document);
+                </script>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                            <?php endif ?>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="payment text-right">
                         <img src="images/icons/payment.png" alt="" />
