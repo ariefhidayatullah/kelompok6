@@ -119,7 +119,7 @@ if (isset($_POST["submit"])) {
 					<div class="my__account__wrapper">
 						<h3 class="account__title">Daftar akun</h3>
 						<form action="" method="post">
-							<div class="account__form">
+							<div class="account__form space-between">
 								<div class="input__box">
 									<label>nama : <span>*</span></label>
 									<input type="text" name="nama_user" id="nama_user" placeholder="Masukkan nama anda..." required="" autofocus>
@@ -131,6 +131,38 @@ if (isset($_POST["submit"])) {
 									<small class="email" style="color: red;"></small>
 								</div>
 								<div class="input__box">
+									<label>jenis kelamin <span>*</span></label>
+									<input type="text" name="jenis_kelamin" id="jenis_kelamin" placeholder="Masukkan jenis kelamin anda..." required="" maxlength="12" autofocus>
+									<small class="jenis_kelamin" style="color: red;"></small>
+								</div>
+								<div class="input__box">
+									<label for="Provinsi">Provinsi <span>*</span></label>
+									<select name="provinsi" id="provinsi" class="form-control" required></select>
+								</div>
+								<div class="input__box">
+									<label for="kabupaten">Kabupaten <span>*</span></label>
+									<select name="kabupaten" id="kabupaten" class="form-control" required></select>
+								</div>
+								<div class="input__box">
+									<label for="kecamatan">Kecamatan <span>*</span></label>
+									<select name="kecamatan" id="kecamatan" class="form-control" required></select>
+								</div>
+								<div class="input__box">
+									<label>no hp <span>*</span></label>
+									<input type="text" name="nohp_user" id="nohp_user" placeholder="Masukkan no hp anda..." required="" maxlength="12" autofocus>
+									<small class="nohp_user" style="color: red;"></small>
+								</div>
+								<div class="input__box">
+									<label for="alamat">Alamat <span>*</span></label>
+									<input type="text" name="alamat" id="alamat" placeholder="Masukkan alamat anda..." required="" maxlength="12" autofocus>
+									<small class="alamat" style="color: red;"></small>
+								</div>
+								<div class="input__box">
+									<label for="kodepos">Kode pos <span>*</span></label>
+									<input type="text" name="kodepos" id="kodepos" placeholder="Masukkan jenis kelamin anda..." required="" maxlength="12" autofocus>
+									<small class="kodepos" style="color: red;"></small>
+								</div>
+								<div class="input__box">
 									<label>Password<span>*</span></label>
 									<input type="password" name="password" id="password" placeholder="Masukkan password anda..." required>
 									<small class="password" style="color: red;"></small>
@@ -139,11 +171,6 @@ if (isset($_POST["submit"])) {
 									<label>konfirmasi Password <span>*</span></label>
 									<input type="password" name="password2" id="password2" placeholder="konfirmasi password anda..." required>
 									<small class="password2" style="color: red;"></small>
-								</div>
-								<div class="input__box">
-									<label>no hp <span>*</span></label>
-									<input type="text" name="nohp_user" id="nohp_user" placeholder="Masukkan no hp anda..." required="" maxlength="12" autofocus>
-									<small class="nohp_user" style="color: red;"></small>
 								</div>
 								<div class="form__btn">
 									<button type="submit" name="register">Register</button>
@@ -181,8 +208,10 @@ if (isset($_POST["submit"])) {
 			var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 			if (!this.value.match(valid)) {
 				$('.email').text('Isi Email dengan Benar!');
+				email = false;
 			} else {
 				$('.email').text('');
+				email = true;
 			}
 		});
 
@@ -197,8 +226,10 @@ if (isset($_POST["submit"])) {
 
 			if ($(this).val().length < 12) {
 				$('.nohp_user').text('maksimal 12 angka!');
+				nohp_user = false;
 			} else {
 				$('.nohp_user').text('');
+				nohp_user = true;
 			}
 
 		});
@@ -207,15 +238,102 @@ if (isset($_POST["submit"])) {
 		$('#password').on('keyup', function() {
 			if ($(this).val().length < 8) {
 				$('.password').text('Password Minimal 8 digit');
+				password = false;
 			} else {
 				$('.password').text('');
+				password = true;
 			}
 		});
 		$('#password2').on('keyup', function() {
 			if ($(this).val() != $('#password').val()) {
 				$('.password2').text('Password Tidak Sama');
+				password2 = false;
 			} else {
 				$('.password2').text('');
+				password2 = true;
+			}
+		});
+
+		// validasi kode pos
+		$('#kodepos').on('keyup', function() {
+			var regex = /^[0-9]+$/;
+			if (regex.test(this.value) !== true) {
+				this.value = this.value.replace(/[^0-9]+/, '');
+			} else {
+				$('.kodepos').text('');
+			}
+
+			if ($(this).val().length < 5) {
+				$('.kodepos').text('minimal 5 angka!');
+			} else {
+				$('.kodepos').text('');
+			}
+
+		});
+
+
+		// Validasi jenis kelamin
+		$('#jenis_kelamin').on('keyup', function() {
+			var regex = /^[L  P l  p]+$/;
+			if (regex.test(this.value) !== true) {
+				this.value = this.value.replace(/[^L P]+/, '');
+			} else {
+				$('.jenis_kelamin').text('');
+			}
+			if ($(this).val().length == 0) {
+				$('.jenis_kelamin').text('laki laki (L) atau perempuan (P)!');
+			}
+		});
+
+
+		$("#provinsi").append('<option value="">Pilih</option>');
+		$("#kabupaten").html('');
+		$("#kecamatan").html('');
+		$("#kabupaten").append('<option value="">Pilih</option>');
+		$("#kecamatan").append('<option value="">Pilih</option>');
+		url = 'include/get_provinsi.php';
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'json',
+			success: function(result) {
+				for (var i = 0; i < result.length; i++)
+					$("#provinsi").append('<option value="' + result[i].id_prov + '">' + result[
+						i].nama_prov + '</option>');
+			}
+		});
+	});
+	$("#provinsi").change(function() {
+		var id_prov = $("#provinsi").val();
+		var url = 'include/get_kabupaten.php?id_prov=' + id_prov;
+		$("#kabupaten").html('');
+		$("#kecamatan").html('');
+		$("#kabupaten").append('<option value="">Pilih</option>');
+		$("#kecamatan").append('<option value="">Pilih</option>');
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'json',
+			success: function(result) {
+				for (var i = 0; i < result.length; i++)
+					$("#kabupaten").append('<option value="' + result[i].id_kabkot + '">' + result[
+						i].nama_kabkot + '</option>');
+			}
+		});
+	});
+	$("#kabupaten").change(function() {
+		var id_kabkot = $("#kabupaten").val();
+		var url = 'include/get_kecamatan.php?id_kabkot=' + id_kabkot;
+		$("#kecamatan").html('');
+		$("#kecamatan").append('<option value="">Pilih</option>');
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'json',
+			success: function(result) {
+				for (var i = 0; i < result.length; i++)
+					$("#kecamatan").append('<option value="' + result[i].id_kec + '">' + result[
+						i].nama_kec + '</option>');
 			}
 		});
 

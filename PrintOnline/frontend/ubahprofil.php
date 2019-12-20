@@ -13,17 +13,17 @@ if (isset($_POST["submit"])) {
 				alert('data berhasil diubah');
 			</script>
         ";
-        ?>
+?>
         <meta http-equiv="refresh" content="0; URL=profil.php?id=<?= $id_user ?>">
-        <?php
-    } else {
-        echo "
+<?php
+                                                                } else {
+                                                                    echo "
 			<script>
 				alert('data gagal diubah'); 
 			</script>
 		";
-    }
-}
+                                                                }
+                                                            }
 
 ?>
 <!-- Main wrapper -->
@@ -63,7 +63,6 @@ if (isset($_POST["submit"])) {
                                         <label>email <span>:</span><input class="input__box" name="email" id="email" required value="<?= $row['email']; ?>"><small class="email" style="color: red;"></small></label>
                                     </div>
                                     <div class="single-contact-form space-between">
-                                        <label>username <span>:</span><input class="input__box" name="username" id="username" required value="<?= $row['username']; ?>"></label>
                                         <label>password <span>:</span><input class="input__box" type="password" name="password" id="password" required value=""></label>
                                     </div>
                                     <div class=" single-contact-form space-between">
@@ -74,7 +73,6 @@ if (isset($_POST["submit"])) {
                                         <label for="Provinsi">Provinsi <select name="provinsi" id="provinsi" class="form-control" required></select></label>
                                         <label for="Kabupaten">Kabupaten <select class="form-control" id="kabupaten" name="kabupaten" required></select></label>
                                         <label for="Kecamatan">Kecamatan<select class="form-control" id="kecamatan" name="kecamatan" required value="<?= $row['kecamatan']; ?>"></select></label>
-
                                     </div>
                                     <div class="single-contact-form space-between">
                                         <label>alamat <span>:</span><input class="input__box" name="alamat" id="alamat" required value="<?= $row['alamat']; ?>"></label>
@@ -161,7 +159,7 @@ if (isset($_POST["submit"])) {
         });
 
 
-        // Validasi Nama Lengkap
+        // Validasi jenis kelamin
         $('#jenis_kelamin').on('keyup', function() {
             var regex = /^[L  P l  p]+$/;
             if (regex.test(this.value) !== true) {
@@ -231,4 +229,4 @@ if (isset($_POST["submit"])) {
 </script>
 
 <?php
-include 'include/_footer.php';
+                                                                                                                                                            include 'include/_footer.php';

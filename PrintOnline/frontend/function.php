@@ -38,38 +38,6 @@ function tambah($data)
 	return  mysqli_affected_rows($conn);
 }
 
-
-function ubah($data)
-{
-	// global $conn;
-
-	// $id_produk = $data['id_produk'];
-	// $jenis_produk = $data['jenis_produk'];
-	// $nama_bahan = $data['nama_bahan'];
-	// $ukuran = $data['ukuran'];
-	// $deskripsi = $data['deskripsi'];
-	// $gambar = $data['gambar'];
-	// $harga = $data['harga'];
-
-	// $sql = "SELECT * FROM bahan WHERE nama_bahan = '$harga'";
-	// $ba = mysqli_query($conn, $sql);
-	// $ro = mysqli_fetch_array($ba);
-	// $harga_bahan = $ro['harga_satuan'];
-
-	// //query insert data
-	// $query = "UPDATE produk SET 
-	// 		jenis_produk = '$jenis_produk',
-	// 		jenis_bahan = '$nama_bahan',
-	// 		deskripsi = '$deskripsi',
-	// 		harga = '$harga',
-	// 		ukuran = '$ukuran',
-	// 		gambar = '$gambar'
-	// 		WHERE id_produk = '$id_produk'
-	// 		";
-	// mysqli_query($conn, $query);
-	// return  mysqli_affected_rows($conn);
-}
-
 function cari($key)
 {
 	$query = "SELECT * FROM produk WHERE nama LIKE '%$key%'";
@@ -136,6 +104,12 @@ function registrasi($data)
 	$password = mysqli_real_escape_string($conn, $data["password"]);
 	$password2 = mysqli_real_escape_string($conn, $data["password2"]);
 	$nohp_user = strtolower(stripcslashes($data["nohp_user"]));
+	$alamat = strtolower(stripcslashes($data["alamat"]));
+	$kodepos = strtolower(stripcslashes($data["kodepos"]));
+	$jenis_kelamin = strtolower(stripcslashes($data["jenis_kelamin"]));
+	$provinsi = strtolower(stripcslashes($data["provinsi"]));
+	$kabupaten = strtolower(stripcslashes($data["kabupaten"]));
+	$kecamatan = strtolower(stripcslashes($data["kecamatan"]));
 
 	$result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
 	if (mysqli_fetch_assoc($result)) {
@@ -166,7 +140,7 @@ function registrasi($data)
 	}
 
 	// tambahkan user baru ke database
-	mysqli_query($conn, "INSERT INTO user VALUES ('', '', '$nama_user', '$email', '', '$password', '', '$nohp_user', '', '', '', '', '')");
+	mysqli_query($conn, "INSERT INTO user VALUES ('', '$nama_user', '$email', '$password', '$jenis_kelamin', '$nohp_user', '$provinsi', '$kabupaten', '$kecamatan', '$alamat', '$kodepos')");
 	echo "<script>
     alert('selamat datang anda sudah terdaftar, silakan lengkapi data anda!');
 	</script>";
@@ -177,80 +151,80 @@ function registrasi($data)
 ?>
 	<meta http-equiv="refresh" content="0; URL=login.php?id=<?= $id_user ?>">
 <?php
-															}
+														}
 
-															function tambahcart($data)
-															{
-																global $conn;
-																//ambil data dari tiap elemen dalam form
-																$id_produk = $data['id_produk'];
-																$nama_bahan = $data['nama_bahan'];
-																$bhn = mysqli_query($conn, "SELECT * FROM bahan WHERE nama_bahan = '$nama_bahan'");
-																$req = mysqli_fetch_array($bhn);
-																$harga = $req['harga_satuan'];
-																$qty = $data['qty'];
-																$email = $_SESSION["LOGIN"];
+														function tambahcart($data)
+														{
+															global $conn;
+															//ambil data dari tiap elemen dalam form
+															$id_produk = $data['id_produk'];
+															$nama_bahan = $data['nama_bahan'];
+															$bhn = mysqli_query($conn, "SELECT * FROM bahan WHERE nama_bahan = '$nama_bahan'");
+															$req = mysqli_fetch_array($bhn);
+															$harga = $req['harga_satuan'];
+															$qty = $data['qty'];
+															$email = $_SESSION["LOGIN"];
 
-																$cek_barang = "SELECT * FROM keranjang WHERE nama_bahan = '$nama_bahan'";
-																$hasil_barang = mysqli_query($conn, $cek_barang);
-																$hasil = mysqli_fetch_array($hasil_barang);
+															$cek_barang = "SELECT * FROM keranjang WHERE nama_bahan = '$nama_bahan'";
+															$hasil_barang = mysqli_query($conn, $cek_barang);
+															$hasil = mysqli_fetch_array($hasil_barang);
 
-																if (mysqli_num_rows($hasil_barang) > 0) {
-																	$reesult = mysqli_query($conn, "SELECT * FROM keranjang WHERE nama_bahan='$nama_bahan'");
-																	$queery = mysqli_num_rows($reesult);
-																	
-																	if ($queery == 0) {
-																		
-																		mysqli_query($conn, "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, harga_satuan, qty)
-																		VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty')");
-																														return  mysqli_affected_rows($conn);
-																														echo 'gagal';
-																		} else {
-																			$totalstok = $qty + $hasil['qty'];
-																			$update = "UPDATE keranjang SET qty = '$totalstok' WHERE id_produk = '$id_produk' AND nama_bahan = '$nama_bahan'";
-																			mysqli_query($conn, $update);
-																			mysqli_affected_rows($conn);
-																			echo 'ngentot';
-																		}
-																	// $totalstok = $qty + $hasil['qty'];
-																	// $update = "UPDATE keranjang SET qty = '$totalstok' WHERE id_produk = '$id_produk' AND nama_bahan = '$nama_bahan'";
-																	// mysqli_query($conn, $update);
-																	// mysqli_affected_rows($conn);
-																	// echo 'gagal';
-																} else {
+															if (mysqli_num_rows($hasil_barang) > 0) {
+																$reesult = mysqli_query($conn, "SELECT * FROM keranjang WHERE nama_bahan='$nama_bahan'");
+																$queery = mysqli_num_rows($reesult);
+
+																if ($queery == 0) {
+
 																	mysqli_query($conn, "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, harga_satuan, qty)
-					VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty')");
+																		VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty')");
 																	return  mysqli_affected_rows($conn);
 																	echo 'gagal';
+																} else {
+																	$totalstok = $qty + $hasil['qty'];
+																	$update = "UPDATE keranjang SET qty = '$totalstok' WHERE id_produk = '$id_produk' AND nama_bahan = '$nama_bahan'";
+																	mysqli_query($conn, $update);
+																	mysqli_affected_rows($conn);
+																	echo 'ngentot';
 																}
+																// $totalstok = $qty + $hasil['qty'];
+																// $update = "UPDATE keranjang SET qty = '$totalstok' WHERE id_produk = '$id_produk' AND nama_bahan = '$nama_bahan'";
+																// mysqli_query($conn, $update);
+																// mysqli_affected_rows($conn);
+																// echo 'gagal';
+															} else {
+																mysqli_query($conn, "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, harga_satuan, qty)
+					VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty')");
+																return  mysqli_affected_rows($conn);
+																echo 'gagal';
 															}
+														}
 
-															function ubahprofil($data)
-															{
-																global $conn;
-																// ambil data dari tiap elemen
-																$id_user = $data['id_user'];
-																// $gambar = upload();
-																$nama_user = $data['nama_user'];
-																$email = $data['email'];
-																$username = $data['username'];
-																$password = $data['password'];
-																$jenis_kelamin = $data['jenis_kelamin'];
-																$nohp_user = $data['nohp_user'];
-																$provinsi = $data['provinsi'];
-																$kabupaten = $data['kabupaten'];
-																$kecamatan = $data['kecamatan'];
-																$alamat = $data['alamat'];
-																$kodepos = $data['kodepos'];
+														function ubahprofil($data)
+														{
+															global $conn;
+															// ambil data dari tiap elemen
+															$id_user = $data['id_user'];
+															// $gambar = upload();
+															$nama_user = $data['nama_user'];
+															$email = $data['email'];
+															$username = $data['username'];
+															$password = $data['password'];
+															$jenis_kelamin = $data['jenis_kelamin'];
+															$nohp_user = $data['nohp_user'];
+															$provinsi = $data['provinsi'];
+															$kabupaten = $data['kabupaten'];
+															$kecamatan = $data['kecamatan'];
+															$alamat = $data['alamat'];
+															$kodepos = $data['kodepos'];
 
-																//cek
+															//cek
 
-																// if ($gambar == false) {
-																// 	return false;
-																// }
+															// if ($gambar == false) {
+															// 	return false;
+															// }
 
-																//query insert data
-																$query = "UPDATE user SET
+															//query insert data
+															$query = "UPDATE user SET
 			nama_user = '$nama_user' ,
 			email = '$email',
 			username = '$username',
@@ -264,6 +238,6 @@ function registrasi($data)
 			kodepos = '$kodepos'
 			WHERE id_user = '$id_user'
 			";
-																mysqli_query($conn, $query);
-																return  mysqli_affected_rows($conn);
-															}
+															mysqli_query($conn, $query);
+															return  mysqli_affected_rows($conn);
+														}
