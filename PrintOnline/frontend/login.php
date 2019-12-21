@@ -4,10 +4,11 @@ session_start();
 require 'function.php';
 include 'include/_header.php';
 
+$result1 = mysqli_query($conn, "SELECT * FROM user");
 
 if (isset($_POST["register"])) {
 	if (registrasi($_POST) === 0) {
-		echo "<script> alert('SELAMAT DATANG, SILAHKAN LENGKAPI DATA ANDA');</script>";
+		echo "<script> alert('Selamat bergabung, dan silahkan login terlebih dahulu');</script>";
 	} else {
 		echo mysqli_error($conn);
 	}
@@ -117,63 +118,71 @@ if (isset($_POST["submit"])) {
 				</div>
 				<div class="col-lg-6 col-12">
 					<div class="my__account__wrapper">
-						<h3 class="account__title">Daftar akun</h3>
+						<h3 class="account__title">Registrasi</h3>
 						<form action="" method="post">
 							<div class="account__form space-between">
-								<div class="input__box">
-									<label>nama : <span>*</span></label>
-									<input type="text" name="nama_user" id="nama_user" placeholder="Masukkan nama anda..." required="" autofocus>
-									<small class="nama_user" style="color: red;"></small>
+								<div class="datadiri">
+									<div class="input__box">
+										<label>nama : <span>*</span></label>
+										<input type="text" name="nama_user" id="nama_user" placeholder="Masukkan nama anda..." required="" autofocus>
+										<small class="nama_user" style="color: red;"></small>
+									</div>
+									<div class="input__box">
+										<label>Email address <span>*</span></label>
+										<input type="email" name="email" id="email" placeholder="Masukkan email anda..." required="" autofocus>
+										<small class="email" style="color: red;"></small>
+										<small class="email1 text-success"></small>
+									</div>
+									<div class="input__box">
+										<label>Password<span>*</span></label>
+										<input type="password" name="password" id="password" placeholder="Masukkan password anda..." required>
+										<small class="password" style="color: red;"></small>
+									</div>
+									<div class="input__box">
+										<label>konfirmasi Password <span>*</span></label>
+										<input type="password" name="password2" id="password2" placeholder="konfirmasi password anda..." required>
+										<small class="password2" style="color: red;"></small>
+									</div>
+									<div class="form__btn">
+										<button class="selanjutnya" type="button">SELANJUTNYA</button>
+									</div>
 								</div>
-								<div class="input__box">
-									<label>Email address <span>*</span></label>
-									<input type="email" name="email" id="email" placeholder="Masukkan email anda..." required="" autofocus>
-									<small class="email" style="color: red;"></small>
-								</div>
-								<div class="input__box">
-									<label>jenis kelamin <span>*</span></label>
-									<input type="text" name="jenis_kelamin" id="jenis_kelamin" placeholder="Masukkan jenis kelamin anda..." required="" maxlength="12" autofocus>
-									<small class="jenis_kelamin" style="color: red;"></small>
-								</div>
-								<div class="input__box">
-									<label for="Provinsi">Provinsi <span>*</span></label>
-									<select name="provinsi" id="provinsi" class="form-control" required></select>
-								</div>
-								<div class="input__box">
-									<label for="kabupaten">Kabupaten <span>*</span></label>
-									<select name="kabupaten" id="kabupaten" class="form-control" required></select>
-								</div>
-								<div class="input__box">
-									<label for="kecamatan">Kecamatan <span>*</span></label>
-									<select name="kecamatan" id="kecamatan" class="form-control" required></select>
-								</div>
-								<div class="input__box">
-									<label>no hp <span>*</span></label>
-									<input type="text" name="nohp_user" id="nohp_user" placeholder="Masukkan no hp anda..." required="" maxlength="12" autofocus>
-									<small class="nohp_user" style="color: red;"></small>
-								</div>
-								<div class="input__box">
-									<label for="alamat">Alamat <span>*</span></label>
-									<input type="text" name="alamat" id="alamat" placeholder="Masukkan alamat anda..." required="" maxlength="12" autofocus>
-									<small class="alamat" style="color: red;"></small>
-								</div>
-								<div class="input__box">
-									<label for="kodepos">Kode pos <span>*</span></label>
-									<input type="text" name="kodepos" id="kodepos" placeholder="Masukkan jenis kelamin anda..." required="" maxlength="12" autofocus>
-									<small class="kodepos" style="color: red;"></small>
-								</div>
-								<div class="input__box">
-									<label>Password<span>*</span></label>
-									<input type="password" name="password" id="password" placeholder="Masukkan password anda..." required>
-									<small class="password" style="color: red;"></small>
-								</div>
-								<div class="input__box">
-									<label>konfirmasi Password <span>*</span></label>
-									<input type="password" name="password2" id="password2" placeholder="konfirmasi password anda..." required>
-									<small class="password2" style="color: red;"></small>
-								</div>
-								<div class="form__btn">
-									<button type="submit" name="register">Register</button>
+								<div class="datauser">
+									<div class="input__box">
+										<label>no hp <span>*</span></label>
+										<input type="text" name="nohp_user" id="nohp_user" placeholder="Masukkan no hp anda..." required="" maxlength="12" autofocus>
+										<small class="nohp_user" style="color: red;"></small>
+									</div>
+									<div class="input__box">
+										<label for="alamat">Alamat <span>*</span></label>
+										<input type="text" name="alamat" id="alamat" placeholder="Masukkan alamat anda..." required="" autofocus>
+										<small class="alamat" style="color: red;"></small>
+									</div>
+									<div class="input__box">
+										<label for="kodepos">Kode pos <span>*</span></label>
+										<input type="text" name="kodepos" id="kodepos" placeholder="Masukkan jenis kelamin anda..." required="" maxlength="12" autofocus>
+										<small class="kodepos" style="color: red;"></small>
+									</div>
+									<div class="input__box">
+										<label>jenis kelamin <span>*</span></label>
+										<input type="text" name="jenis_kelamin" id="jenis_kelamin" placeholder="Masukkan jenis kelamin anda..." required="" maxlength="12" autofocus>
+										<small class="jenis_kelamin" style="color: red;"></small>
+									</div>
+									<div class="input__box">
+										<label for="Provinsi">Provinsi <span>*</span></label>
+										<select name="provinsi" id="provinsi" class="form-control" required></select>
+									</div>
+									<div class="input__box">
+										<label for="kabupaten">Kabupaten <span>*</span></label>
+										<select name="kabupaten" id="kabupaten" class="form-control" required></select>
+									</div>
+									<div class="input__box">
+										<label for="kecamatan">Kecamatan <span>*</span></label>
+										<select name="kecamatan" id="kecamatan" class="form-control" required></select>
+									</div>
+									<div class="form__btn">
+										<button type="submit" name="register">Register</button>
+									</div>
 								</div>
 							</div>
 						</form>
@@ -187,7 +196,7 @@ if (isset($_POST["submit"])) {
 <!-- //Main wrapper -->
 <script>
 	$(document).ready(function() {
-
+		$('.datauser').hide();
 		// Validasi Nama Lengkap
 		$('#nama_user').on('keyup', function() {
 			var regex = /^[a-z A-Z]+$/;
@@ -209,8 +218,17 @@ if (isset($_POST["submit"])) {
 			if (!this.value.match(valid)) {
 				$('.email').text('Isi Email dengan Benar!');
 				email = false;
-			} else {
+			}
+			<?php foreach ($result1 as $pelanggan) : ?>
+				else if ($(this).val() == "<?= $pelanggan['email']; ?>") {
+					$('.email').text('Email Sudah Terdaftar!');
+					$('.email1').text('');
+					email = false;
+				}
+			<?php endforeach; ?>
+			else {
 				$('.email').text('');
+				$('.email1').text('Email dapat digunakan');
 				email = true;
 			}
 		});
@@ -234,10 +252,32 @@ if (isset($_POST["submit"])) {
 
 		});
 
+		$('.selanjutnya').on('click', function() {
+			if ($('#nama_user').val() === '') {
+				$('.nama_user').text('Nama Harus Di isi!');
+			} else if ($('#email').val() === '') {
+				$('.email').text('Email Harus Di isi!');
+			} else if (email == false) {
+				$('.email').text('Isi Email dengan Benar!');
+			} else if ($('#password').val() === '') {
+				$('.password').text('Password Harus Di Isi!');
+			} else if ($('#password2').val() === '') {
+				$('.password2').text('Password Harus Di Isi!');
+			} else if (password2 == false) {
+				$('.password2').text('Password Harus sama');
+			} else if (password == false) {
+				$('.password1').text('Password Minimal 8 Digit (huruf besar dan huruf kecil, dan angka)');
+			} else {
+				$('.judul').text('Akun Masuk');
+				$('.datadiri').hide();
+				$('.datauser').show();
+			}
+		});
+
 		// validasi kata sandi
 		$('#password').on('keyup', function() {
 			if ($(this).val().length < 8) {
-				$('.password').text('Password Minimal 8 digit');
+				$('.password').text('Password Minimal 8 digit (huruf besar dan huruf kecil, dan angka)');
 				password = false;
 			} else {
 				$('.password').text('');
@@ -341,5 +381,5 @@ if (isset($_POST["submit"])) {
 </script>
 
 <?php
-						include 'include/_footer.php';
+include 'include/_footer.php';
 ?>
