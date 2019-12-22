@@ -9,13 +9,13 @@ $cari = $_GET['cari'];
 
 $semuadata = array();
 $ambil = $conn->query("SELECT * FROM produk WHERE jenis_produk LIKE '%$cari%' OR deskripsi LIKE '%$cari%'");
-while($pecah = $ambil->fetch_assoc()){
-    $semuadata[]=$pecah;
+while ($pecah = $ambil->fetch_assoc()) {
+    $semuadata[] = $pecah;
 }
 
-if (mysqli_num_rows($ambil)==0) {
-	echo "<script>alert('keranjang kosong, silakan berbelanja terlebih dahulu');</script>";
-	echo "<script>window.location ='daftarproduk.php';</script>";
+if (mysqli_num_rows($ambil) == 0) {
+    echo "<script>alert('produk yang anda cari tidak ada');</script>";
+    echo "<script>window.location ='daftarproduk.php';</script>";
 }
 ?>
 

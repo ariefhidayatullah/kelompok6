@@ -4,10 +4,10 @@ require 'function.php';
 include 'include/_header.php';
 
 
-$id_produk = base64_decode($_GET['id']);
+$id_produk1 = base64_decode($_GET['id']);
 
 $produk = query('SELECT * FROM produk order by rand()');
-$mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
+$mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk1'");
 
 if (isset($_SESSION["LOGIN"])) {
 	$email = $_SESSION["LOGIN"];
@@ -69,7 +69,7 @@ if (isset($_POST["cart"])) {
 										<h1><?= $row['jenis_produk']; ?></h1> </a>
 										<div class="product__overview">
 											<?php
-											$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk'";
+											$sql = "SELECT * FROM produk WHERE id_produk = '$id_produk1'";
 											$ba = mysqli_query($conn, $sql);
 											$ro = mysqli_fetch_array($ba);
 
@@ -92,41 +92,42 @@ if (isset($_POST["cart"])) {
 										</div>
 
 										<span>Ukuran Percetakan : <?php
-																			echo $ro['ukuran'];
+																	echo $ro['ukuran'];
 																	?>
 										</span>
 										<?php
-										$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk'");
-																			$row = mysqli_fetch_array($bahan1);
-																			$nama_bahan = $row['nama_bahan'];
+										$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk1'");
+										$row = mysqli_fetch_array($bahan1);
+										$nama_bahan = $row['nama_bahan'];
 										?>
 										<?php
-										$bahan = mysqli_query($conn, "SELECT * FROM bahan WHERE id_produk ='$id_produk' ORDER BY nama_bahan ASC");
-																			$jsArray = "var prdName = new Array();\n";
+										$bahan = mysqli_query($conn, "SELECT * FROM bahan WHERE id_produk ='$id_produk1' ORDER BY nama_bahan ASC");
+										$jsArray = "var prdName = new Array();\n";
 										?>
 										<div class="box-tocart d-flex">
 											<div class="addtocart__actions">
-												<form action="" method="POST">
+												<form action="" method="POST" enctype="multipart/form-data">
 													<select id="nim" name="nama_bahan" onchange="changeValue(this.value)" class="form-control col-md-6">
 														<option disabled="" selected="">Pilih Bahan</option>
 														<?php
 														while ($row = mysqli_fetch_array($bahan)) {
-														echo '<option value="' . $row['nama_bahan'] . '">' . $row['nama_bahan'] . '</option> ';
-														$jsArray .= "prdName['" . $row['nama_bahan'] . "'] = {harga:'" . addslashes($row['harga_satuan']) . "'};\n";
-																			}
+															echo '<option value="' . $row['nama_bahan'] . '">' . $row['nama_bahan'] . '</option> ';
+															$jsArray .= "prdName['" . $row['nama_bahan'] . "'] = {harga:'" . addslashes($row['harga_satuan']) . "'};\n";
+														}
 														?>
 													</select>
 													<span>Harga Satuan</span><br>
 													<input class="form-control" type="number" name="harga" id="harga" disabled><br>
-													<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
+													<input type="file" name="files" id="file">
+													<input type="text" name="id_produk" value="<?php echo $id_produk1 ?>" hidden>
 													<input class="form-control" type="number" value="1" name="qty" id="qty" hidden>
-													<button type="submit" class="tocart" name="cart" id="cart">Masukkan Keranjang</button>
-													<button class="tocart">Checkout Sekarang</button>
+													<button type="submit" class="tocart" name="cart" id="cart">Tambah Keranjang</button>
+													<button class="tocart">Checkout</button>
 												</form>
 											</div>
 											<form action="checkout.php" method="get">
 												<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
-												<input type="text" name="id_produk" value="<?php echo $id_produk ?>" hidden>
+												<input type="text" name="id_produk" value="<?php echo $id_produk1 ?>" hidden>
 												<div class="addtocart__actions"><br><br>
 													<br>
 												</div>
@@ -202,8 +203,30 @@ if (isset($_POST["cart"])) {
 	};
 </script>
 
+<script type="text/javascript">
+	var tm_pilih = document.getElementById('pilih');
+	var file = document.getElementById('file');
+	tm_pilih.addEventListener('click', function() {
+		file.click();
+	})
+	file.addEventListener('change', function() {
+		gambar(this);
+	})
+
+	function gambar(a) {
+		if (a.files && a.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				document.getElementById('gambar').src = e.target.result;
+			}
+			reader.readAsDataURL(a.files[0]);
+		}
+
+	}
+</script>
+
 
 
 <?php
-																														include 'include/_footer.php';
+include 'include/_footer.php';
 ?>

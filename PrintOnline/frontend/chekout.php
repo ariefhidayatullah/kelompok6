@@ -56,43 +56,44 @@ $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $nomor = 1; $total = 0; ?>
+                                        <?php $nomor = 1;
+                                        $total = 0; ?>
                                         <?php while ($data = mysqli_fetch_array($query)) {
-                                        $id_cart = $data['id_cart'];
-                                        $id_produk = $data['id_produk'];
-                                        $nama_bahan = $data['nama_bahan'];
-                                        $harga_satuan = $data['harga_satuan'];
-                                        $qty =$data['qty'];
+                                            $id_cart = $data['id_cart'];
+                                            $id_produk = $data['id_produk'];
+                                            $nama_bahan = $data['nama_bahan'];
+                                            $harga_satuan = $data['harga_satuan'];
+                                            $qty = $data['qty'];
 
-                                        $quer = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
-                                        $b = mysqli_fetch_array($quer);
+                                            $quer = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
+                                            $b = mysqli_fetch_array($quer);
                                         ?>
-                                        <tr>
+                                            <tr>
                                                 <td><?= $nomor; ?></td>
                                                 <td><?= $b['jenis_produk']; ?></td>
                                                 <td><?= $nama_bahan; ?></td>
                                                 <td><?= $harga_satuan ?></td>
                                                 <td>
-                                                <form action="updatecart.php" method="get">
-                                                    <input type="text" name="id_cart" value="<?= $id_cart; ?>" hidden>
-                                                    <input type="number" min="1" max="100" name="qty" placeholder="<?= $qty; ?>">
-                                                    <button class="btn btn-warning btn-sm" type="submit" name="sub" value="sub" >OK</button>
-                                                </form>
+                                                    <form action="updatecart.php" method="get">
+                                                        <input type="text" name="id_cart" value="<?= $id_cart; ?>" hidden>
+                                                        <input type="number" min="1" max="100" name="qty" placeholder="<?= $qty; ?>">
+                                                        <button class="btn btn-warning btn-sm" type="submit" name="sub" value="sub">OK</button>
+                                                    </form>
                                                 </td>
-                                                <td><?php $subtotal = $harga_satuan*$qty; ?>
-                                                <?= $subtotal; ?></td>
+                                                <td><?php $subtotal = $harga_satuan * $qty; ?>
+                                                    <?= $subtotal; ?></td>
                                                 <td><a class="btn btn-danger btn-sm" href="hapuskeranjang.php?id_cart=<?= $id_cart; ?>">Hapus</a></td>
                                             </tr>
-                                            <?php $nomor++; ?>  
-                                            <?php 
+                                            <?php $nomor++; ?>
+                                            <?php
                                             $total = $total + $subtotal;
                                             ?>
-                                            <?php } ?>
-                                         <tr>
+                                        <?php } ?>
+                                        <tr>
                                             <th colspan="5" style="text-align:right">jumlah total</th>
                                             <th><?= $total; ?></th>
                                             <th><input type="button" onclick="window.print()" value="cetak"></th>
-                                         </tr>
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <form action="" method="POST">
@@ -100,7 +101,7 @@ $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
                                         <div class="col-md-4">
                                             <input type="hidden" id="id_pesan" name="id_pesan" required value="" readonly>
                                             <div class=" single-contact-form">
-                                                <?php 
+                                                <?php
                                                 $user1 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
                                                 $nama = mysqli_fetch_array($user1);
                                                 ?>
@@ -139,32 +140,32 @@ $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
                                     $id_kabkot = $ongk['nama_kabkot'];
                                     $tanggal_pembelian = date("Y-m-d");
 
-                                    mysqli_query($conn,"INSERT INTO pesan VALUES ('$id_pesan','$id_pelanggan','$nama_user','$email','$nohp_user','$id_kabkot','$tanggal_pembelian', '$total', '1' )");
+                                    mysqli_query($conn, "INSERT INTO pesan VALUES ('$id_pesan','$id_pelanggan','$nama_user','$email','$nohp_user','$id_kabkot','$tanggal_pembelian', '$total', 'pending' )");
 
                                     $id_pesan_barusan = $conn->insert_id;
 
-                                   while($fetch = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'"))) {
-                                    $id_cart =$fetch['id_cart'];
-                                    $id_produk = $fetch['id_produk'];
-                                    $res = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
-                                    $arr = mysqli_fetch_array($res);
-                                    $jenis_produk = $arr['jenis_produk'];
-                                    $nama_bahan = $fetch['nama_bahan'];
-                                    $harga_satuan = $fetch['harga_satuan'];
-                                    $qty = $fetch['qty'];
+                                    while ($fetch = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'"))) {
+                                        $id_cart = $fetch['id_cart'];
+                                        $id_produk = $fetch['id_produk'];
+                                        $res = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
+                                        $arr = mysqli_fetch_array($res);
+                                        $jenis_produk = $arr['jenis_produk'];
+                                        $nama_bahan = $fetch['nama_bahan'];
+                                        $harga_satuan = $fetch['harga_satuan'];
+                                        $qty = $fetch['qty'];
 
-                                    $ress = mysqli_query($conn, "SELECT * FROM bahan WHERE nama_bahan = '$nama_bahan' AND id_produk = '$id_produk'");
-                                    $arra = mysqli_fetch_array($ress);
-                                    $id_bahan = $arra['id_bahan'];
+                                        $ress = mysqli_query($conn, "SELECT * FROM bahan WHERE nama_bahan = '$nama_bahan' AND id_produk = '$id_produk'");
+                                        $arra = mysqli_fetch_array($ress);
+                                        $id_bahan = $arra['id_bahan'];
 
-                                    mysqli_query($conn, "INSERT INTO `detail_pemesanan`(`id_detail`, `id_pesan`, `id_produk`, `jenis_produk`, `id_bahan`, `ukuran`, `qty`, `harga_satuan`) VALUES ('','$id_pesan_barusan','$id_produk','$jenis_produk','$id_bahan','1','$qty','$harga_satuan')");
+                                        mysqli_query($conn, "INSERT INTO `detail_pemesanan`(`id_detail`, `id_pesan`, `id_produk`, `jenis_produk`, `id_bahan`, `ukuran`, `qty`, `harga_satuan`) VALUES ('','$id_pesan_barusan','$id_produk','$jenis_produk','$id_bahan','1','$qty','$harga_satuan')");
 
-                                    // mysqli_query($conn, "DELETE FROM keranjang WHERE id_cart = '$id_cart'");                                                                       
+                                        // mysqli_query($conn, "DELETE FROM keranjang WHERE id_cart = '$id_cart'");                                                                       
+                                        #tampilan dialihkan ke nota, nota pembelian baru terjadi
+                                        echo "<script>alert('Pembelian Berhasil !');</script>";
+                                        echo "<script>location='nota.php?id=$id_pesan_barusan';</script>";
                                     }
-                                    #tampilan dialihkan ke nota, nota pembelian baru terjadi
-                                    echo "<script>alert('Pembelian Berhasil !');</script>";
-                                    echo "<script>location='nota.php?id=$id_pesan_barusan';</script>";
-                                    }
+                                }
 
                                 ?>
                             </div>
