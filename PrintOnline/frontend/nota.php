@@ -37,7 +37,6 @@ require 'function.php';
         $nama_kabkot = $row2['nama_kabkot'];
         $jne_reg = $row2['jne_reg'];
         ?>
-        <pre><?php print_r($detail); ?></pre>
         <div class="container">
             <footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
                 <div class="row text-center">

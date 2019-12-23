@@ -160,7 +160,7 @@ $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
 
                                         mysqli_query($conn, "INSERT INTO `detail_pemesanan`(`id_detail`, `id_pesan`, `id_produk`, `jenis_produk`, `id_bahan`, `ukuran`, `qty`, `harga_satuan`) VALUES ('','$id_pesan_barusan','$id_produk','$jenis_produk','$id_bahan','1','$qty','$harga_satuan')");
 
-                                        // mysqli_query($conn, "DELETE FROM keranjang WHERE id_cart = '$id_cart'");                                                                       
+                                        mysqli_query($conn, "DELETE FROM keranjang WHERE id_cart = '$id_cart'");                                                                       
                                         #tampilan dialihkan ke nota, nota pembelian baru terjadi
                                         echo "<script>alert('Pembelian Berhasil !');</script>";
                                         echo "<script>location='nota.php?id=$id_pesan_barusan';</script>";
