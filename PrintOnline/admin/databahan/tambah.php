@@ -46,26 +46,26 @@ if ($datakode) {
 
 ?>
 <div class="container text-center">
-	<div class="text-center">
-		<h1 class="h4 text-gray-900 mb-4">Tambahkan Data!</h1>
-	</div>
-	<form class="user" method="post" action="">
+<div class="card w-75 border-primary" style="max-width: 75rem;">
+  <div class="card-body">
+  	<div class="card-header">
+  		<h5 class="card-title">Tambahkan data bahan</h5>
+  	</div>
+   	<form class="user" method="post" action="">
 		<div class="form-group row">
 			<div class="col mb-3 mb-sm-0">
 				<input type="hidden" class="form-control form-control-static text-center" id="id_bahan" name="id_bahan" required value="<?= $kode_otomatis; ?>" readonly>
 			</div>
 		</div>
-		<div class="form-group ">
-			<div class="col-md-4 mb-3 mb-sm-0">
+		<div class="form-row">
+			<div class="col">
 				<label for="nama_bahan">Nama Bahan :</label>
 				<input type="text" class="form-control form-control-static text-center" id="nama_bahan" name="nama_bahan" required placeholder="Masukkan Nama Bahan">
 			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col mb-3 mb-sm-0">
+			<div class="col">
 				<label for="id_produk">nama Produk : </label>
 				<select class="form-control" name="id_produk" id="id_produk">
-					<option>Pilih Produk : </option>
+					<option disabled selected="">Pilih Produk : </option>
 					<?php
 					$q = mysqli_query($conn, "SELECT * FROM produk");
 					while ($row = mysqli_fetch_array($q)) {
@@ -74,15 +74,8 @@ if ($datakode) {
 				</select>
 			</div>
 		</div>
-
-		<div class="form-group row">
-			<div class="col mb-3 mb-sm-0">
-				<label for="stok">Stok :</label>
-				<input type="text" class="form-control form-control-static text-center" id="stok" name="stok" required placeholder="Masukkan Jumlah Stok">
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col mb-3 mb-sm-0">
+		<div class="form-group form-row">
+			<div class="col">
 				<label for="harga_satuan">Harga Satuan :</label>
 				<input type="text" class="form-control form-control-static text-center" id="harga_satuan" name="harga_satuan" required placeholder="Masukkan Jumlah Harga">
 			</div>
@@ -91,6 +84,8 @@ if ($datakode) {
 			<a href="databahan.php" class="btn btn-warning">Kembali</a>
 			<input class="btn btn-primary" name="submit" type="submit" value="Tambahkan!"></input>
 		</div>
+		</div>
+</div>
 	</form>
 </div>
 <?php

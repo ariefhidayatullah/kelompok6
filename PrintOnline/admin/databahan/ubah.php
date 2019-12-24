@@ -50,12 +50,6 @@ include '../_header.php';
             </div>
             <div class="form-group">
                 <div class="col mb-3 mb-sm-0">
-                    <label for="stok">stok : </label>
-                    <input class="form-control form-control-static" type="text" name="stok" id="stok" required value="<?= $row['stok']; ?>">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col mb-3 mb-sm-0">
                     <label for="harga_satuan">harga satuan : </label>
                     <input class="form-control form-control-static" type="text" name="harga_satuan" id="harga_satuan" required value="<?= $row['harga_satuan']; ?>">
                 </div>
