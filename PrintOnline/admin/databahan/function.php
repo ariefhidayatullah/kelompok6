@@ -25,11 +25,12 @@ function tambah($data)
 	$id_bahan = $data['id_bahan'];
 	$nama_bahan = htmlspecialchars($data['nama_bahan']);
 	$id_produk = $data['id_produk'];
+	$stok = $data['stok'];
 	$harga_satuan = $data['harga_satuan'];
 
 
 	//query insert data
-	$query = "INSERT INTO bahan VALUES ('$id_bahan', '$nama_bahan', '$id_produk', '$harga_satuan')";
+	$query = "INSERT INTO bahan VALUES ('$id_bahan', '$nama_bahan', '$id_produk', '$stok', '$harga_satuan')";
 	mysqli_query($conn, $query);
 	return  mysqli_affected_rows($conn);
 }

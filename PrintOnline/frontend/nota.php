@@ -32,10 +32,26 @@ require 'function.php';
         $detail = $ambil->fetch_assoc();
         $id_kabkot = $detail['nama_kabkot'];
         ?>
-        <?php $value = $conn->query("SELECT * FROM kabkot WHERE id_kabkot = '$id_kabkot'");
+        <?php $value = $conn->query("SELECT * FROM kabkot WHERE nama_kabkot = '$id_kabkot'");
         $row2 = $value->fetch_assoc();
         $nama_kabkot = $row2['nama_kabkot'];
         $jne_reg = $row2['jne_reg'];
+        ?>
+        <?php
+        $id_user = $detail['id_user'];
+
+        $id_userr = $_SESSION['LOGIN'];
+
+        $ong = mysqli_query($conn, "SELECT * FROM user WHERE email = '$id_userr'");
+        $ongk = mysqli_fetch_array($ong);
+
+        $id_userlogin = $ongk['id_user'];
+
+        if ($id_user !== $id_userlogin) {
+            echo "<script>alert(' jangan nakal yaa !');</script>";
+            echo "<script>location='riwayatpemesanan.php';</script>";
+            exit();
+        }
         ?>
         <div class="container">
             <footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
@@ -57,7 +73,7 @@ require 'function.php';
                     <div class="col-md-4">
                         <h3>pengiriman</h3>
                         <strong><?= $nama_kabkot ?></strong><br>
-                        ongkos kirim : Rp. <?= number_format($row2['jne_reg']); ?>
+                        Ongkos kirim : Rp. <?= number_format($row2['jne_reg']); ?>
                     </div>
                 </div>
                 <div class="footer-static-top">
@@ -78,16 +94,25 @@ require 'function.php';
                                     <tbody>
                                         <?php $nomor = 1; ?>
                                         <?php
-                                        $ambil1 = $conn->query("SELECT * FROM detail_pemesanan JOIN produk ON detail_pemesanan.id_produk=produk.id_produk WHERE detail_pemesanan.id_pesan = '$_GET[id]'");
+                                        $ambil1 = $conn->query("SELECT * FROM detail_pemesanan WHERE id_pesan = '$_GET[id]'");
                                         ?>
                                         <?php while ($pecah = $ambil1->fetch_assoc()) { ?>
+                                            <?php
+                                            $produk = $pecah["id_produk"];
+                                            $bahan = $pecah["id_bahan"];
+                                            $ress = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$produk'");
+                                            $arra = mysqli_fetch_array($ress);
+
+                                            $res = mysqli_query($conn, "SELECT * FROM bahan WHERE id_bahan = '$bahan'");
+                                            $arr = mysqli_fetch_array($res);
+                                            ?>
                                             <tr>
                                                 <td><?= $nomor; ?></td>
-                                                <td><?= $pecah["jenis_produk"]; ?></td>
-                                                <td><?= $pecah["jenis_bahan"]; ?></td>
-                                                <td>Rp. <?= number_format($pecah["harga"]); ?></td>
+                                                <td><?= $arra["jenis_produk"]; ?></td>
+                                                <td><?= $arr["nama_bahan"]; ?></td>
+                                                <td>Rp. <?= number_format($pecah["harga_satuan"]); ?></td>
                                                 <td><?= $pecah["qty"]; ?></td>
-                                                <td><?= $pecah['harga'] * $pecah['qty']; ?></td>
+                                                <td><?= $pecah['harga_satuan'] * $pecah['qty']; ?></td>
                                             </tr>
                                             <?php $nomor++; ?>
                                         <?php } ?>

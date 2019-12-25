@@ -161,6 +161,7 @@ function tambahcart($data)
 	$nama_bahan = $data['nama_bahan'];
 	$bhn = mysqli_query($conn, "SELECT * FROM bahan WHERE nama_bahan = '$nama_bahan'");
 	$req = mysqli_fetch_array($bhn);
+	$id_bahan = $req['id_bahan'];
 	$harga = $req['harga_satuan'];
 	$qty = $data['qty'];
 	$email = $_SESSION["LOGIN"];
@@ -176,7 +177,7 @@ function tambahcart($data)
 
 	if (mysqli_num_rows($hasil_barang) > 0) {
 		$reesult = mysqli_query($conn, "SELECT * FROM keranjang WHERE email='$email'");
-		if (mysqli_num_rows($reesult) == 0) {
+		if (mysqli_num_rows($reesult) == 1) {
 
 			mysqli_query($conn, "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, harga_satuan, qty, gambar)
 																		VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty', '$gambar')");
@@ -205,7 +206,6 @@ function ubahprofil($data)
 	// $gambar = upload();
 	$nama_user = $data['nama_user'];
 	$email = $data['email'];
-	$username = $data['username'];
 	$password = $data['password'];
 	$jenis_kelamin = $data['jenis_kelamin'];
 	$nohp_user = $data['nohp_user'];
@@ -225,7 +225,6 @@ function ubahprofil($data)
 	$query = "UPDATE user SET
 			nama_user = '$nama_user' ,
 			email = '$email',
-			username = '$username',
 			password = '$password',
 			jenis_kelamin = '$jenis_kelamin',
 			nohp_user = '$nohp_user',

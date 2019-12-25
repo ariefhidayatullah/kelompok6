@@ -44,33 +44,6 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                 <div class="col-lg-12">
                     <div class="wn_checkout_wrap">
                         <div class="checkout_info">
-                            <span>Returning customer ?</span>
-                            <a class="showlogin" href="#">Click here to login</a>
-                        </div>
-                        <div class="checkout_login">
-                            <form class="wn__checkout__form" action="#">
-                                <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing & Shipping section.</p>
-
-                                <div class="input__box">
-                                    <label>Username or email <span>*</span></label>
-                                    <input type="text">
-                                </div>
-
-                                <div class="input__box">
-                                    <label>password <span>*</span></label>
-                                    <input type="password">
-                                </div>
-                                <div class="form__btn">
-                                    <button>Login</button>
-                                    <label class="label-for-checkbox">
-                                        <input id="rememberme" name="rememberme" value="forever" type="checkbox">
-                                        <span>Remember me</span>
-                                    </label>
-                                    <a href="#">Lost your password?</a>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="checkout_info">
                             <span>Have a coupon? </span>
                             <a class="showcoupon" href="#">Click here to enter your code</a>
                         </div>
@@ -89,47 +62,76 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                 <div class="col-lg-6 col-12">
                     <?php foreach ($user as $row) : ?>
                         <div class="customer_details">
-                            <h3>Billing details</h3>
-                            <div class="customar__field">
-                                <div class="input_box">
-                                    <label>Nama <span>*</span></label>
-                                    <input type="text" name="nama_user" id="nama_user" required value="<?= $row['nama_user']; ?>">
+                            <h3>detail pengguna</h3>
+                            <form action="" method="POST">
+                                <div class="customar__field">
+                                    <div class="input_box">
+                                        <label>Nama <span>*</span></label>
+                                        <input type="hidden" id="id_pesan" name="id_pesan" required value="" readonly>
+                                        <?php
+                                        $user1 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+                                        $nama = mysqli_fetch_array($user1);
+                                        ?>
+                                        <input type="text" name="nama_user" id="nama_user" required value="<?= $row['nama_user']; ?>">
+                                    </div>
+                                    <div class="input_box">
+                                        <label>No Hp <span>*</span></label>
+                                        <input type="text" name="nohp_user" id="nohp_user" required value="<?= $row['nohp_user']; ?>">
+                                    </div>
+                                    <div class="input_box">
+                                        <label>Alamat <span>*</span></label>
+                                        <input type="text" name="alamat" id="alamat" required value="<?= $row['alamat']; ?>">
+                                    </div>
+                                    <div class="input_box">
+                                        <label>Kode pos <span>*</span></label>
+                                        <input type="text" name="kodepos" id="kodepos" required value="<?= $row['kodepos']; ?>">
+                                    </div>
+                                    <div class="contact-form-wrap">
+                                        <div class="contact-btn">
+                                            <button type="submit" name="chekout">konfirmasi pembayaran</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="input_box">
-                                    <label>No Hp <span>*</span></label>
-                                    <input type="text" name="nohp_user" id="nohp_user" required value="<?= $row['nohp_user']; ?>">
-                                </div>
-                                <div class="input_box">
-                                    <label>Provinsi<span>*</span></label>
-                                    <select name="provinsi" id="provinsi" class="select__option" required></select>
-                                </div>
-                                <div class="input_box">
-                                    <label>Kabupaten<span>*</span></label>
-                                    <select class="select__option" id="kabupaten" name="kabupaten" required></select>
-                                </div>
-                                <div class="input_box">
-                                    <label>kecamatan<span>*</span></label>
-                                    <select class="select__option" id="kecamatan" name="kecamatan" required></select>
-                                </div>
-                                <div class="input_box">
-                                    <label>Alamat <span>*</span></label>
-                                    <input type="text" name="alamat" id="alamat" required value="<?= $row['alamat']; ?>">
-                                </div>
-                                <div class="input_box">
-                                    <label>Kode pos <span>*</span></label>
-                                    <input type="text" name="kodepos" id="kodepos" required value="<?= $row['kodepos']; ?>">
-                                </div>
-                            </div>
-                            <div class="create__account">
-                                <div class="wn__accountbox">
-                                    <input class="input-checkbox" name="createaccount" value="1" type="checkbox">
-                                    <span>Create an account ?</span>
-                                </div>
-                                <div class="account__field">
-                                    <form action="#">
-                                        <label>Account password <span>*</span></label>
-                                        <input type="text" placeholder="password">
-                                    </form>
+                            </form>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 mt-3">
+                                <div class="wn_checkout_wrap">
+                                    <div class="checkout_info">
+                                        <span>ganti alamat pengiriman ? </span>
+                                        <a class="showcoupon" href="#">klik disini untuk ganti</a>
+                                    </div>
+                                    <div class="checkout_coupon">
+                                        <form action="" method="POST">
+                                            <div class="form__coupon">
+                                                <div class="input_box">
+                                                    <select name="provinsi" id="provinsi" class="select__option" required></select>
+                                                </div>
+                                                <div class="form__coupon">
+                                                    <div class="input_box mt-4">
+                                                        <select class="select__option" id="kabupaten" name="kabupaten" required></select>
+                                                    </div>
+                                                </div>
+                                                <div class="form__coupon">
+                                                    <div class="input_box mt-4 mb-4">
+                                                        <select id="kecamatan" name="kecamatan" class="select__option" required></select>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" name="ubah">Ubah</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <?php
+                                    if (isset($_POST['ubah'])) {
+                                        $provinsi = $_POST['provinsi'];
+                                        $kabupaten = $_POST['kabupaten'];
+                                        $kecamatan = $_POST['kecamatan'];
+
+                                        mysqli_query($conn, "UPDATE user SET provinsi = '$provinsi', kabupaten = '$kabupaten', kecamatan = '$kecamatan' WHERE email = '$email'");
+                                    }
+
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -189,66 +191,68 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                         </table>
                                         <ul class="shipping__method">
                                             <li>Cart Subtotal <span>Rp. <?= $total; ?></span></li>
-                                            <li>ongkos kirim
-                                                <ul>
-                                                    <li>
-                                                        <input name="shipping_method[0]" data-index="0" value="legacy_flat_rate" checked="checked" type="radio">
-                                                        <label>Flat Rate: $48.00</label>
-                                                    </li>
-                                                </ul>
+                                            <?php
+                                            $result1 = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+                                            $row1 = mysqli_fetch_array($result1);
+                                            $id_kabkot = $row1['kabupaten'];
+
+                                            $ong = mysqli_query($conn, "SELECT * FROM kabkot WHERE id_kabkot = '$id_kabkot'");
+                                            $ongk = mysqli_fetch_array($ong);
+                                            $ongkir = $ongk['jne_reg'];
+
+                                            $ordertotal = $total + $ongkir;
+
+                                            ?>
+                                            <li>ongkos kirim <span>Rp.<?= $ongkir ?></span>
                                             </li>
                                         </ul>
                                         <ul class="total__amount">
-                                            <li>Order Total <span>$223.00</span></li>
+                                            <li>Order Total <span>Rp. <?= $ordertotal ?></span></li>
                                         </ul>
+                                        <?php
+                                        if (isset($_POST['chekout'])) {
+                                            $id_pesan = $_POST['id_pesan'];
+                                            $id_pelanggan = $nama['id_user'];
+                                            $nama_user = $_POST['nama_user'];
+                                            $email = $_SESSION["LOGIN"];
+                                            $alamat = $_POST['alamat'];
+                                            $nohp_user = $_POST['nohp_user'];
+                                            $id_kabkot = $ongk['nama_kabkot'];
+                                            $tanggal_pembelian = date("Y-m-d");
+
+                                            mysqli_query($conn, "INSERT INTO pesan VALUES ('$id_pesan','$id_pelanggan','$nama_user','$email','$nohp_user','$id_kabkot','$alamat','$tanggal_pembelian', '$ordertotal', 'pending', '' )");
+
+                                            $id_pesan_barusan = $conn->insert_id;
+
+                                            $donal = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
+
+                                            foreach ($donal as $fetch) {
+                                                $id_cart = $fetch['id_cart'];
+                                                $id_produk = $fetch['id_produk'];
+                                                $nama_bahan = $fetch['nama_bahan'];
+                                                $harga_satuan = $fetch['harga_satuan'];
+                                                $qty = $fetch['qty'];
+                                                $desain = $fetch['gambar'];
+
+                                                $ress = mysqli_query($conn, "SELECT * FROM bahan WHERE nama_bahan = '$nama_bahan'");
+                                                $arra = mysqli_fetch_array($ress);
+                                                $id_bahan = $arra['id_bahan'];
+
+                                                mysqli_query($conn, "INSERT INTO detail_pemesanan VALUES ('','$id_pesan_barusan','$id_produk','$id_bahan','1','$qty', '$harga_satuan', '$desain' )");
+
+                                                mysqli_query($conn, "DELETE FROM keranjang WHERE id_cart = '$id_cart'");
+                                            }
+                                            #tampilan dialihkan ke nota, nota pembelian baru terjadi
+                                            echo "<script>alert('Pembelian Berhasil !');</script>";
+                                            echo "<script>location='nota.php?id=$id_pesan_barusan';</script>";
+                                        }
+
+                                        ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div id="accordion" class="checkout_accordion mt--30" role="tablist">
-                            <div class="payment">
-                                <div class="che__header" role="tab" id="headingOne">
-                                    <a class="checkout__title" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        <span>Direct Bank Transfer</span>
-                                    </a>
-                                </div>
-                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="payment-body">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</div>
-                                </div>
-                            </div>
-                            <div class="payment">
-                                <div class="che__header" role="tab" id="headingTwo">
-                                    <a class="collapsed checkout__title" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <span>Cheque Payment</span>
-                                    </a>
-                                </div>
-                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                                    <div class="payment-body">Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</div>
-                                </div>
-                            </div>
-                            <div class="payment">
-                                <div class="che__header" role="tab" id="headingThree">
-                                    <a class="collapsed checkout__title" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <span>Cash on Delivery</span>
-                                    </a>
-                                </div>
-                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                                    <div class="payment-body">Pay with cash upon delivery.</div>
-                                </div>
-                            </div>
-                            <div class="payment">
-                                <div class="che__header" role="tab" id="headingFour">
-                                    <a class="collapsed checkout__title" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                        <span>PayPal <img src="images/icons/payment.png" alt="payment images"> </span>
-                                    </a>
-                                </div>
-                                <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
-                                    <div class="payment-body">Pay with cash upon delivery.</div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -290,6 +294,7 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                 for (var i = 0; i < result.length; i++)
                     $("#kabupaten").append('<option value="' + result[i].id_kabkot + '">' + result[
                         i].nama_kabkot + '</option>');
+                $("#harga").append('<input value="' + result[i].id_kabkot + '"></input>');
             }
         });
     });

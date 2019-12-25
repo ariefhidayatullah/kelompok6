@@ -1,6 +1,7 @@
 <?php
 require 'function.php';
 include '../_header.php';
+
 if (isset($_POST["submit"])) {
 
 	//cek data berhasil ditambah atau tidak

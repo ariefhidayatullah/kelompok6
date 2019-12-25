@@ -28,7 +28,6 @@
 
 <body id="page-top">
 
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -90,8 +89,8 @@
                 <div id="collapsePagess" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">detail pemesanan</h6>
-                        <a class="collapse-item" href="../transaksi/pembayaran/pembayaran.php">pembayaran</a>
-                        <a class="collapse-item" href="../transaksi/pemesanan/pemesanan.php">pemesanan</a>
+                        <a class="collapse-item" href="../pemesanan/pemesanan.php">pemesanan</a>
+                        <a class="collapse-item" href="../pemesanan/laporanspemesanan.php">laporan pemesanan</a>
                     </div>
                 </div>
             </li>
@@ -132,16 +131,5 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="cari disini..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
 
                 </nav>

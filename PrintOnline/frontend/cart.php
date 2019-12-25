@@ -71,7 +71,7 @@ if (mysqli_num_rows($query) == 0) {
 										<td><img src="desainuser/<?= $gambar; ?>" width="100"></td>
 										<td class="product-name"><a href=""><?= $b['jenis_produk']; ?></a></td>
 										<td class="product-name"><a href=""><?= $nama_bahan; ?></a></td>
-										<td class="product-price"><span class="amount">Rp. <?= $harga_satuan ?></span></td>
+										<td class="product-price"><span class="amount">Rp. <?= number_format($harga_satuan) ?></span></td>
 										<td class="product-quantity">
 											<form action="updatecart.php" method="get">
 												<input type="text" name="id_cart" value="<?= $id_cart; ?>" hidden>
@@ -94,7 +94,7 @@ if (mysqli_num_rows($query) == 0) {
 						<div class="cartbox__btn">
 							<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
 								<li><a href="daftarproduk.php">Lanjutkan belanja</a></li>
-								<li><a href="chekout.php">chekout</a></li>
+								<li><a href="chekoutcoba.php">chekout</a></li>
 							</ul>
 						</div>
 					</div>

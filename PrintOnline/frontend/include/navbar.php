@@ -112,7 +112,7 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                                                 <div class="switcher-currency-trigger">
                                                     <div class="setting__menu">
                                                         <span><a href="profil.php?id=<?= $row['id_user']; ?>" type="hidden">profil</a></span>
-                                                        <span><a href="#">riwayat belanjaan</a></span>
+                                                        <span><a href="riwayatpemesanan.php">riwayat pemesanan</a></span>
                                                         <span><a href="logout.php">Keluar</a></span>
                                                     </div>
                                                 </div>
