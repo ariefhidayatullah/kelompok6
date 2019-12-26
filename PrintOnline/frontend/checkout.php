@@ -3,7 +3,8 @@ session_start();
 require 'function.php';
 include 'include/_header.php';
 
-if (!isset($_SESSION["LOGIN"])) { }
+if (!isset($_SESSION["LOGIN"])) {
+}
 
 if (isset($_SESSION["LOGIN"])) {
 	$username = $_SESSION["LOGIN"];

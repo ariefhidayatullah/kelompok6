@@ -15,7 +15,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 	<div class="slider-area slider--15 slide__activation slide__arrow01 owl-carousel">
 
 		<!-- Start Single Slide -->
-		<div class="slide animation__style09 bg-image--5 fullscreen align__center--left">
+		<div class="slide animation__style09 bg-image--1 fullscreen align__center--left">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
@@ -55,14 +55,14 @@ $bahan = query('SELECT * FROM produk order by rand()');
 	<!-- End Slider area -->
 	<!-- Start BEst Seller Area -->
 	<section class="wn__product__area brown--color pt--80  pb--30">
-	<div class="row pt--80  pb--30">
-        <div class="col-lg-12">
-            <div class="section__title text-center">
-                <h2 class="title__be--2"><span class="color--theme">produk</span></h2>
-                <hr>
-            </div>
-        </div>
-    </div>
+		<div class="row pt--80  pb--30">
+			<div class="col-lg-12">
+				<div class="section__title text-center">
+					<h2 class="title__be--2"><span class="color--theme">produk</span></h2>
+					<hr>
+				</div>
+			</div>
+		</div>
 		<div class="container">
 			<!-- Start Single Tab Content -->
 			<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50 ">
@@ -105,35 +105,43 @@ $bahan = query('SELECT * FROM produk order by rand()');
 	</section>
 	<!-- Start BEst Seller Area -->
 	<!-- Start NEwsletter Area -->
-	<section class="wn__newsletter__area bg-image--5">
+	<div class="mb-2">
+		<img src="slide/cepatt.png" alt="">
+	</div>
+
+
+	<section class="wn__newsletter__area">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-7 col-md-12 col-12 ptb--150">
+				<div class="col-lg-4 ptb--70">
 					<div class="section__title text-center">
 						<h2>tetap bersama kami</h2>
 					</div>
 					<div class="newsletter__block text-center">
 						<p>.</p>
-						<form action="#">
-							<div class="newsletter__box">
-								<input type="email">
-								<button>Subscribe</button>
-							</div>
-						</form>
+					</div>
+				</div>
+				<div class="col-lg-4 ptb--70">
+					<div class="section__title text-center">
+						<h2>tetap bersama kami</h2>
+					</div>
+					<div class="newsletter__block text-center">
+						<p>.</p>
+					</div>
+				</div>
+				<div class="col-lg-4 ptb--70">
+					<div class="section__title text-center">
+						<h2>tetap bersama kami</h2>
+					</div>
+					<div class="newsletter__block text-center">
+						<p>.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Best Sale Area Area -->
-	<!-- Footer Area -->
 
-	<!-- //Footer Area -->
-	<!-- QUICKVIEW PRODUCT -->
-	<!-- END QUICKVIEW PRODUCT -->
 </div>
-<!-- //Main wrapper -->
-<!-- JS Files -->
 <?php
 include 'include/_footer.php';
 ?>
