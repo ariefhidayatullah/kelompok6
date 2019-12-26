@@ -3,6 +3,11 @@ session_start();
 include 'include/_header.php';
 require 'function.php';
 
+if (!isset($_SESSION["LOGIN"])) {
+	echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
+	echo "<script>location='login.php'; </script>";
+	exit();
+}
 $email = $_SESSION["LOGIN"];
 $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
 if (mysqli_num_rows($query) == 0) {

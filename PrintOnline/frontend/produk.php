@@ -9,12 +9,19 @@ $id_produk1 = base64_decode($_GET['id']);
 $produk = query('SELECT * FROM produk order by rand()');
 $mhs = query("SELECT * FROM produk WHERE id_produk = '$id_produk1'");
 
+
+
 if (isset($_SESSION["LOGIN"])) {
 	$email = $_SESSION["LOGIN"];
 	$user = query("SELECT * FROM user WHERE email = '$email'");
 }
 
 if (isset($_POST["cart"])) {
+	if (!isset($_SESSION["LOGIN"])) {
+		echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
+		echo "<script>location='login.php'; </script>";
+		exit();
+	}
 	if (tambahcart($_POST) > 0) {
 		echo "<script>alert('produk berhasil masuk keranjang');</script>";
 		echo "<script>window.location ='cart.php';</script>";
@@ -31,7 +38,7 @@ if (isset($_POST["cart"])) {
 	<?php include 'include/navbar.php'; ?>
 	<!-- //Header -->
 	<!-- Start Bradcaump area -->
-	<div class="ht__bradcaump__area bg-image--5">
+	<div class="ht__bradcaump__area bg-image--1">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -115,13 +122,12 @@ if (isset($_POST["cart"])) {
 														}
 														?>
 													</select>
-													<span>Harga Satuan</span><br>
+													<span>Harga</span><br>
 													<input class="form-control" type="number" name="harga" id="harga" disabled><br>
 													<input type="file" name="files" id="file">
 													<input type="text" name="id_produk" value="<?php echo $id_produk1 ?>" hidden>
 													<input class="form-control" type="number" value="1" name="qty" id="qty" hidden>
-													<button type="submit" class="tocart" name="cart" id="cart">Tambah Keranjang</button>
-													<button class="tocart">Checkout</button>
+													<button type="submit" class="tocart" name="cart" id="cart">beli sekarang</button>
 												</form>
 											</div>
 											<form action="checkout.php" method="get">

@@ -14,7 +14,7 @@ if (isset($_POST["submit"])) {
 			</script>
         ";
 ?>
-        <meta http-equiv="refresh" content="0; URL=profil.php?id=<?= $id_user ?>">
+        <meta http-equiv="refresh" content="0; URL=ubahprofil.php?id=<?= $id_user ?>">
 <?php
     } else {
         echo "
@@ -53,38 +53,87 @@ if (isset($_POST["submit"])) {
         <div class="container">
             <div class="row">
                 <?php foreach ($user as $row) : ?>
+                    <?php
+                    $prov = $row["provinsi"];
+                    $kabkot = $row["kabupaten"];
+                    $kec = $row["kecamatan"];
+
+                    $provinsi = mysqli_query($conn, "SELECT * FROM prov WHERE id_prov = '$prov'");
+                    $query_provinsi = mysqli_fetch_array($provinsi);
+                    $nama_provinsi = $query_provinsi["nama_prov"];
+
+                    $kabupaten = mysqli_query($conn, "SELECT * FROM kabkot WHERE id_kabkot = '$kabkot'");
+                    $query_kabupaten = mysqli_fetch_array($kabupaten);
+                    $nama_kabupaten = $query_kabupaten["nama_kabkot"];
+
+                    $ambil = $conn->query("SELECT * FROM kec WHERE id_kec = '$kec'");
+                    $detailbayar = $ambil->fetch_assoc();
+                    $nama_kecamatan = $detailbayar["nama_kec"];
+                    ?>
                     <div class="col-lg-10 col-12 offset-1">
-                        <div class="container">
-                            <form class="user" action="" method="POST" enctype="multipart/form-data">
-                                <div class="contact-form-wrap">
-                                    <input type="hidden" name="id_user" id="id_user" value="<?= $row['id_user']; ?>">
-                                    <div class="single-contact-form space-between">
-                                        <label>nama <span>:</span> <input class="input__box" name="nama_user" id="nama_user" required value="<?= $row['nama_user']; ?>"><small class="nama_user" style="color: red;"></small></label>
-                                        <label>email <span>:</span><input class="input__box" name="email" id="email" required value="<?= $row['email']; ?>"><small class="email" style="color: red;"></small></label>
+                        <div class="customer_details">
+                            <h3>detail pengguna</h3>
+                            <form action="" method="POST">
+                                <div class="customar__field">
+                                    <div class="margin_between">
+                                        <div class="input_box space_between">
+                                            <label>Nama <span>*</span></label>
+                                            <input type="hidden" id="id_user" name="id_user" required value="<?= $row['id_user']; ?>" readonly>
+                                            <input class="input__box" name="nama_user" id="nama_user" required value="<?= $row['nama_user']; ?>">
+                                        </div>
+                                        <div class="input_box space_between">
+                                            <label>Email <span>*</span></label>
+                                            <input class="input__box" name="email" id="email" required value="<?= $row['email']; ?>">
+                                        </div>
                                     </div>
-                                    <div class="single-contact-form space-between">
-                                        <label>password <span>:</span><input class="input__box" type="password" name="password" id="password" required value="<?= $row['password']; ?>"></label>
+                                    <div class="margin_between">
+                                        <div class="input_box space_between">
+                                            <label>Password <span>*</span></label>
+                                            <input class="input__box" type="password" name="password" id="password" required value="<?= $row['password']; ?>">
+                                        </div>
+                                        <div class="input_box space_between">
+                                            <label>Jenis kelamin <span>*</span></label>
+                                            <input class="input__box" name="jenis_kelamin" id="jenis_kelamin" required value="<?= $row['jenis_kelamin']; ?>">
+                                        </div>
                                     </div>
-                                    <div class=" single-contact-form space-between">
-                                        <label>jenis kelamin <span>:</span><input class="input__box" name="jenis_kelamin" id="jenis_kelamin" required value="<?= $row['jenis_kelamin']; ?>"><small class="jenis_kelamin" style="color: red;"></small></label>
-                                        <label>no hp <span>:</span><input class="input__box" name="nohp_user" id="nohp_user" required value="<?= $row['nohp_user']; ?>"><small class="nohp_user" style="color: red;"></small></label>
+                                    <div class="margin_between">
+                                        <div class="input_box space_between">
+                                            <label>No hp <span>*</span></label>
+                                            <input class="input__box" name="nohp_user" id="nohp_user" required value="<?= $row['nohp_user']; ?>">
+                                        </div>
+                                        <div class="input_box space_between">
+                                            <label>Alamat <span>*</span></label>
+                                            <input class="input__box" name="alamat" id="alamat" required value="<?= $row['alamat']; ?>">
+                                        </div>
                                     </div>
-                                    <div class="single-contact-form space-between">
-                                        <label for="Provinsi">Provinsi <select name="provinsi" id="provinsi" class="form-control" required></select></label>
-                                        <label for="Kabupaten">Kabupaten <select class="form-control" id="kabupaten" name="kabupaten" required></select></label>
-                                        <label for="Kecamatan">Kecamatan<select class="form-control" id="kecamatan" name="kecamatan" required value="<?= $row['kecamatan']; ?>"></select></label>
+                                    <div class="margin_between">
+                                        <div class="input_box space_between">
+                                            <label>Provinsi <span>*</span></label><select name="provinsi" id="provinsi" class="select__option" required>
+                                                <option value="<?= $row['provinsi']; ?>"><?= $nama_provinsi ?></option>
+                                            </select>
+                                        </div>
+                                        <div class="input_box space_between">
+                                            <label>Kabupaten <span>*</span></label><select class="select__option" id="kabupaten" name="kabupaten" required>
+                                                <option value="<?= $row['kabupaten']; ?>"><?= $nama_kabupaten ?></option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="single-contact-form space-between">
-                                        <label>alamat <span>:</span><input class="input__box" name="alamat" id="alamat" required value="<?= $row['alamat']; ?>"></label>
-                                        <label>kode pos <span>:</span><input class="input__box" name="kodepos" id="kodepos" required value="<?= $row['kodepos']; ?>"><small class="kodepos" style="color: red;"></small></label>
+                                    <div class="margin_between">
+                                        <div class="input_box space_between">
+                                            <label>Kecamatan <span>*</span></label><select class="select__option" id="kecamatan" name="kecamatan" required>
+                                                <option value="<?= $row['kecamatan']; ?>"><?= $nama_kecamatan ?></option>
+                                            </select>
+                                        </div>
+                                        <div class="input_box space_between">
+                                            <label>Kode pos <span>*</span></label>
+                                            <input class="input__box" name="kodepos" id="kodepos" required value="<?= $row['kodepos']; ?>">
+                                        </div>
                                     </div>
-                                    <div class="space-between">
-                                        <input type="file" id="gambar" name="gambar">
+                                    <div class="contact-form-wrap">
+                                        <div class="contact-btn">
+                                            <button name="submit" type="submit" id="submit">update profil</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form__btn">
-                                    <button name="submit" type="submit" id="submit">edit profil</button>
-                                    <button>kembali</button>
                                 </div>
                             </form>
                         </div>
@@ -173,11 +222,9 @@ if (isset($_POST["submit"])) {
         });
 
 
-        $("#provinsi").append('<option value="">Pilih</option>');
-        $("#kabupaten").html('');
-        $("#kecamatan").html('');
-        $("#kabupaten").append('<option value="">Pilih</option>');
-        $("#kecamatan").append('<option value="">Pilih</option>');
+
+
+
         url = 'include/get_provinsi.php';
         $.ajax({
             url: url,

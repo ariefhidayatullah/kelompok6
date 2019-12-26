@@ -179,22 +179,21 @@ function tambahcart($data)
 		$reesult = mysqli_query($conn, "SELECT * FROM keranjang WHERE email='$email'");
 		if (mysqli_num_rows($reesult) == 1) {
 
-			mysqli_query($conn, "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, harga_satuan, qty, gambar)
-																		VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty', '$gambar')");
+			$insert = "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, harga_satuan, qty, gambar)
+																		VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty', '$gambar')";
+			mysqli_query($conn, $insert);
 			return  mysqli_affected_rows($conn);
-			echo 'gagal';
 		} else {
 			$totalstok = $qty + $hasil['qty'];
 			$update = "UPDATE keranjang SET qty = '$totalstok' WHERE id_produk = '$id_produk' AND nama_bahan = '$nama_bahan'";
 			mysqli_query($conn, $update);
-			mysqli_affected_rows($conn);
-			echo 'ngentot';
+			return  mysqli_affected_rows($conn);
 		}
 	} else {
-		mysqli_query($conn, "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, harga_satuan, qty, gambar)
-					VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty', '$gambar')");
+		$update = "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, harga_satuan, qty, gambar)
+					VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty', '$gambar')";
+		mysqli_query($conn, $update);
 		return  mysqli_affected_rows($conn);
-		echo 'gagal';
 	}
 }
 
