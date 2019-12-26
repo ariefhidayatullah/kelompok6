@@ -16,14 +16,14 @@ if (isset($_POST["submit"])) {
 ?>
         <meta http-equiv="refresh" content="0; URL=profil.php?id=<?= $id_user ?>">
 <?php
-                                                                } else {
-                                                                    echo "
+    } else {
+        echo "
 			<script>
 				alert('data gagal diubah'); 
 			</script>
 		";
-                                                                }
-                                                            }
+    }
+}
 
 ?>
 <!-- Main wrapper -->
@@ -63,7 +63,7 @@ if (isset($_POST["submit"])) {
                                         <label>email <span>:</span><input class="input__box" name="email" id="email" required value="<?= $row['email']; ?>"><small class="email" style="color: red;"></small></label>
                                     </div>
                                     <div class="single-contact-form space-between">
-                                        <label>password <span>:</span><input class="input__box" type="password" name="password" id="password" required value=""></label>
+                                        <label>password <span>:</span><input class="input__box" type="password" name="password" id="password" required value="<?= $row['password']; ?>"></label>
                                     </div>
                                     <div class=" single-contact-form space-between">
                                         <label>jenis kelamin <span>:</span><input class="input__box" name="jenis_kelamin" id="jenis_kelamin" required value="<?= $row['jenis_kelamin']; ?>"><small class="jenis_kelamin" style="color: red;"></small></label>
@@ -229,4 +229,4 @@ if (isset($_POST["submit"])) {
 </script>
 
 <?php
-                                                                                                                                                            include 'include/_footer.php';
+include 'include/_footer.php';

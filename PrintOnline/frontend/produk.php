@@ -19,8 +19,7 @@ if (isset($_POST["cart"])) {
 		echo "<script>alert('produk berhasil masuk keranjang');</script>";
 		echo "<script>window.location ='cart.php';</script>";
 	} else {
-		echo "<script>alert('produk berhasil masuk keranjang');</script>";
-		echo "<script>window.location ='cart.php';</script>";
+		echo "<script>alert('maaf kesalahan, pastikan anda inputkan dengan benar');</script>";
 	}
 }
 

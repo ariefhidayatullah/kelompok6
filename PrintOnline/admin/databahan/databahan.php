@@ -44,6 +44,7 @@ if ($datakode) {
   $kode_otomatis = "B001";
 }
 ?>
+
 <!-- End of Topbar -->
 
 <!-- Begin Page Content -->
@@ -56,7 +57,6 @@ if ($datakode) {
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Tambah Bahan</button>
           <thead>
             <tr>
               <th>No.</th>
@@ -92,8 +92,9 @@ if ($datakode) {
                 <td>
                   <button hidden data-toggle="modal" data-id="<?= $id_bahan; ?>" data-target="#myModal" class="btn btn-warning btn-sm">Edit</button></a>
                   <a href="ubah.php?id=<?= $data['id_bahan']; ?>" ><button class="btn btn-warning btn-sm">Ubah</button></a>
+                  <a href="ubah.php?id=<?php echo $id_bahan; ?>"><button class="btn btn-warning btn-sm">Edit</button></a>
                   <a>||</a>
-                  <a href="hapus.php?id=<?= $data['id_bahan']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
+                  <a href="hapus.php?id=<?= $row['id_bahan']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
                 </td>
               </tr>
             <?php } ?>
@@ -104,7 +105,6 @@ if ($datakode) {
     </div>
   </div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">

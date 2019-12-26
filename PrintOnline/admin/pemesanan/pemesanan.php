@@ -1,13 +1,16 @@
 <?php
 require 'function.php';
-$bahan = query('SELECT * FROM user');
+$bahan = query('SELECT * FROM pesan ORDER BY tanggal_pemesanan DESC');
 include '../_header.php';
 ?>
+
+
+
 <!-- Begin Page Content -->
 <div class="container-fluid text-center">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data user</h1>
+    <h1 class="h3 mb-2 text-gray-800">DATA PEMESANAN</h1>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -16,39 +19,40 @@ include '../_header.php';
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>id user</th>
                             <th>nama user</th>
-                            <th>email</th>
-                            <th>password</th>
-                            <th>no hp user</th>
-                            <th>alamat</th>
-                            <th>kode pos</th>
+                            <th>tanggal pesan</th>
+                            <th>status pemesanan</th>
+                            <th>total harga</th>
                             <th>aksi</th>
                         </tr>
-                        </thead>
-                        <tbody>
+                    </thead>
+                    <tbody>
                         <?php $i = 1; ?>
                         <?php foreach ($bahan as $row) : ?>
                             <tr>
                                 <td><?= $i; ?></td>
-                                <td><?= $row['id_user']; ?></td>
                                 <td><?= $row['nama_user']; ?></td>
-                                <td><?= $row['email']; ?></td>
-                                <td><?= $row['password']; ?></td>
-                                <td><?= $row['nohp_user']; ?></td>
-                                <td><?= $row['alamat']; ?></td>
-                                <td><?= $row['kodepos']; ?></td>
+                                <td><?= $row['tanggal_pemesanan']; ?></td>
+                                <td><?= $row['status_pemesanan']; ?></td>
+                                <td><?= $row['total_harga']; ?></td>
                                 <td>
-                                    <a href="hapus.php?id=<?= $row['id_user']; ?>" onclick="return confirm('apakah anda yakin ? ');" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
+                                    <a href="detailpemesanan.php?id=<?= $row['id_pesan']; ?>" class="btn btn-info btn-circle btn-sm"><i class="fas fa-info-circle"></i></a>
+                                    <?php
+                                    if ($row['status_pemesanan'] !== "pending") : ?>
+                                        <a href="pembayaran.php?id=<?= $row['id_pesan']; ?>" class="btn btn-success btn-circle btn-sm"><i class="fas fa-check"></i></a>
+                                    <?php endif ?>
                                 </td>
                             </tr>
                             <?php $i++ ?>
                         <?php endforeach; ?>
-                        </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
 <!-- /.container-fluid -->
-<?php include '../_footer.php'; ?>
+
+<?php
+include '../_footer.php';
+?>
