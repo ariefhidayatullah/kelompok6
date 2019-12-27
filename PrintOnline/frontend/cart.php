@@ -102,7 +102,7 @@ if (mysqli_num_rows($query) == 0) {
 						<div class="cartbox__btn">
 							<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
 								<li><a href="daftarproduk.php">Lanjutkan belanja</a></li>
-								<li><a href="chekoutcoba.php">chekout</a></li>
+								<li><a href="chekout.php">chekout</a></li>
 							</ul>
 						</div>
 					</div>

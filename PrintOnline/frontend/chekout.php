@@ -95,6 +95,25 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                             </form>
                         </div>
 
+
+                        <?php
+                        $prov = $row["provinsi"];
+                        $kabkot = $row["kabupaten"];
+                        $kec = $row["kecamatan"];
+
+                        $provinsi = mysqli_query($conn, "SELECT * FROM prov WHERE id_prov = '$prov'");
+                        $query_provinsi = mysqli_fetch_array($provinsi);
+                        $nama_provinsi = $query_provinsi["nama_prov"];
+
+                        $kabupaten = mysqli_query($conn, "SELECT * FROM kabkot WHERE id_kabkot = '$kabkot'");
+                        $query_kabupaten = mysqli_fetch_array($kabupaten);
+                        $nama_kabupaten = $query_kabupaten["nama_kabkot"];
+
+                        $ambil = $conn->query("SELECT * FROM kec WHERE id_kec = '$kec'");
+                        $detailbayar = $ambil->fetch_assoc();
+                        $nama_kecamatan = $detailbayar["nama_kec"];
+
+                        ?>
                         <div class="row">
                             <div class="col-lg-12 mt-3">
                                 <div class="wn_checkout_wrap">
@@ -106,16 +125,22 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                         <form action="" method="POST">
                                             <div class="form__coupon">
                                                 <div class="input_box">
-                                                    <select name="provinsi" id="provinsi" class="select__option" required></select>
+                                                    <label>Provinsi <span>*</span></label><select name="provinsi" id="provinsi" class="select__option" required>
+                                                        <option value="<?= $row['provinsi']; ?>"><?= $nama_provinsi ?></option>
+                                                    </select>
                                                 </div>
                                                 <div class="form__coupon">
                                                     <div class="input_box mt-4">
-                                                        <select class="select__option" id="kabupaten" name="kabupaten" required></select>
+                                                        <label>Kabupaten <span>*</span></label><select class="select__option" id="kabupaten" name="kabupaten" required>
+                                                            <option value="<?= $row['kabupaten']; ?>"><?= $nama_kabupaten ?></option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="form__coupon">
                                                     <div class="input_box mt-4 mb-4">
-                                                        <select id="kecamatan" name="kecamatan" class="select__option" required></select>
+                                                        <label>Kecamatan <span>*</span></label><select class="select__option" id="kecamatan" name="kecamatan" required>
+                                                            <option value="<?= $row['kecamatan']; ?>"><?= $nama_kecamatan ?></option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <button type="submit" name="ubah">ganti alamat</button>
@@ -259,11 +284,6 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#provinsi").append('<option value="">Pilih</option>');
-        $("#kabupaten").html('');
-        $("#kecamatan").html('');
-        $("#kabupaten").append('<option value="">Pilih</option>');
-        $("#kecamatan").append('<option value="">Pilih</option>');
         url = 'include/get_provinsi.php';
         $.ajax({
             url: url,

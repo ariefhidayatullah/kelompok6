@@ -58,7 +58,14 @@ include '../_header.php';
                 <div class="col mb-3 mb-sm-0">
                     <label for="id_produk">id produk : </label>
                     <select class="form-control" name="id_produk" id="id_produk">
-                        <option>pilih produk : </option>
+                        <?php
+                        $id_produk =  $row['id_produk'];
+                        $q = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
+                        while ($ro = mysqli_fetch_array($q)) {
+                            $nama_produk = $ro['jenis_produk'];
+                        }
+                        ?>
+                        <option><?= $nama_produk; ?></option>
                         <?php
                         $q = mysqli_query($conn, "SELECT * FROM produk");
                         while ($row = mysqli_fetch_array($q)) {

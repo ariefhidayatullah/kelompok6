@@ -81,9 +81,12 @@ if (isset($_POST["submit"])) {
                     $query_kabupaten = mysqli_fetch_array($kabupaten);
                     $nama_kabupaten = $query_kabupaten["nama_kabkot"];
 
-                    $ambil = $conn->query("SELECT * FROM kec WHERE id_kec = '$kec'");
-                    $detailbayar = $ambil->fetch_assoc();
-                    $nama_kecamatan = $detailbayar["nama_kec"];
+                    $kecamatan = mysqli_query($conn, "SELECT * FROM kec WHERE id_kec = '$kec'");
+                    $query_kecamatan = mysqli_fetch_array($kecamatan);
+                    $nama_kecamatan = $query_kecamatan["nama_kec"];
+
+
+                    var_dump($kec);
                     ?>
                     <div class="col-lg-10 col-12 offset-1">
                         <div class="customer_details">
