@@ -50,7 +50,13 @@ include '../_header.php';
             </div>
             <div class="form-group">
                 <div class="col mb-3 mb-sm-0">
-                    <label for="harga_satuan">harga : </label>
+                    <label for="stok">stok : </label>
+                    <input class="form-control form-control-static" type="text" name="stok" id="stok" required value="<?= $row['stok']; ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col mb-3 mb-sm-0">
+                    <label for="harga_satuan">harga satuan : </label>
                     <input class="form-control form-control-static" type="text" name="harga_satuan" id="harga_satuan" required value="<?= $row['harga_satuan']; ?>">
                 </div>
             </div>
@@ -60,22 +66,19 @@ include '../_header.php';
                     <select class="form-control" name="id_produk" id="id_produk">
                         <option>pilih produk : </option>
                         <?php
-                        $q = mysqli_query($conn, "SELECT * FROM produk");
-                        while ($row = mysqli_fetch_array($q)) {
-                            echo "<option value=$row[id_produk]>$row[jenis_produk]</option>";
-                        } ?>
+                            $q = mysqli_query($conn, "SELECT * FROM produk");
+                            while ($row = mysqli_fetch_array($q)) {
+                                echo "<option value=$row[id_produk]>$row[jenis_produk]</option>";
+                            } ?>
                     </select>
                 </div>
             </div>
+            <a href="databahan.php" class="btn btn-warning">
+                Kembali
+            </a>
             <button class="btn btn-primary" name="submit" type="submit">
                 Ubah
             </button>
-            <a href="databahan.php" class="btn btn-secondary btn-icon-split btn-sm">
-                <span class="icon text-white-50">
-                    <i class="fas fa-arrow-right"></i>
-                </span>
-                <span class="text">Kembali</span>
-            </a>
         </form>
     <?php endforeach; ?>
 </div>

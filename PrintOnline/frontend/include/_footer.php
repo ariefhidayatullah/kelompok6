@@ -30,7 +30,7 @@
                 <div class="col-lg-6">
                     <div class="footer__widget footer__menu">
                         <div class="ft__logo">
-                            <a href="index.html">
+                            <a href="index.php">
                                 <img src="images/logo/3.png" alt="logo">
                             </a>
                             <p>JL Ki S. Mngunsarkoro, No 52, Kampung Templek Kec. Bondowoso, Kabupaten Bondowoso, Jawa Timur 68211 </p>

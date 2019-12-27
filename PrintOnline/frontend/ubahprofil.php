@@ -50,6 +50,21 @@ if (isset($_POST["submit"])) {
     </div>
 
     <section class="wn_contact_area bg--white pt--80 pb--80">
+        <?php
+
+        $id_userr = $_SESSION['LOGIN'];
+
+        $ong = mysqli_query($conn, "SELECT * FROM user WHERE email = '$id_userr'");
+        $ongk = mysqli_fetch_array($ong);
+
+        $id_userlogin = $ongk['id_user'];
+
+        if ($id_user !== $id_userlogin) {
+            echo "<script>alert(' anda tidak berhak !');</script>";
+            echo "<script>location='index.php';</script>";
+            exit();
+        }
+        ?>
         <div class="container">
             <div class="row">
                 <?php foreach ($user as $row) : ?>

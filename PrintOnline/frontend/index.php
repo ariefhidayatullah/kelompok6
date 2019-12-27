@@ -114,33 +114,53 @@ $bahan = query('SELECT * FROM produk order by rand()');
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 ptb--70">
-					<div class="section__title text-center">
-						<h2>tetap bersama kami</h2>
-					</div>
-					<div class="newsletter__block text-center">
-						<p>.</p>
+					<div class="footer__widget footer__menu">
+						<div class="ft__logo ml-5">
+							<a href="index.php">
+								<img src="images/logo/icon.png" alt="logo">
+							</a>
+						</div>
+						<div class="section__title text-center">
+							<h2>pilih produk</h2>
+						</div>
+						<div class="newsletter__block text-center">
+							<p>pilih produk yang sesuai kebutuhan anda</p>
+						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 ptb--70">
-					<div class="section__title text-center">
-						<h2>tetap bersama kami</h2>
-					</div>
-					<div class="newsletter__block text-center">
-						<p>.</p>
+					<div class="footer__widget footer__menu">
+						<div class="ft__logo ml-2">
+							<a href="index.php">
+								<img src="images/logo/icon1.png" alt="logo">
+							</a>
+						</div>
+						<div class="section__title text-center">
+							<h2>upload desain</h2>
+						</div>
+						<div class="newsletter__block text-center">
+							<p>pilih bahan dan upload desain sesuai kebutuhan anda </p>
+						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 ptb--70">
-					<div class="section__title text-center">
-						<h2>tetap bersama kami</h2>
-					</div>
-					<div class="newsletter__block text-center">
-						<p>.</p>
+					<div class="footer__widget footer__menu">
+						<div class="ft__logo ml-2">
+							<a href="index.php">
+								<img src="images/logo/icon1.png" alt="logo">
+							</a>
+						</div>
+						<div class="section__title text-center">
+							<h2>lakukan pembayaran</h2>
+						</div>
+						<div class="newsletter__block text-center">
+							<p>lakukan pembayaran di atm terdekat atau transfer lewat m-banking</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
 </div>
 <?php
 include 'include/_footer.php';

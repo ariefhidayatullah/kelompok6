@@ -90,7 +90,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">detail pemesanan</h6>
                         <a class="collapse-item" href="../pemesanan/pemesanan.php">pemesanan</a>
-                        <a class="collapse-item" href="../pemesanan/laporanspemesanan.php">laporan pemesanan</a>
+                        <a class="collapse-item" href="../pemesanan/laporanpemesanan.php">laporan pemesanan</a>
                     </div>
                 </div>
             </li>

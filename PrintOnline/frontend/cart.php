@@ -64,18 +64,21 @@ if (mysqli_num_rows($query) == 0) {
 								while ($data = mysqli_fetch_array($query)) {
 									$id_cart = $data['id_cart'];
 									$id_produk = $data['id_produk'];
-									$nama_bahan = $data['nama_bahan'];
+									$id_bahan = $data['id_bahan'];
 									$harga_satuan = $data['harga_satuan'];
 									$qty = $data['qty'];
 									$gambar = $data['gambar'];
 
 									$quer = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
 									$b = mysqli_fetch_array($quer);
+
+									$query_bahan = mysqli_query($conn, "SELECT * FROM bahan WHERE id_bahan = '$id_bahan'");
+									$pecah_bahan = mysqli_fetch_array($query_bahan);
 								?>
 									<tr>
 										<td><img src="desainuser/<?= $gambar; ?>" width="100"></td>
 										<td class="product-name"><a href=""><?= $b['jenis_produk']; ?></a></td>
-										<td class="product-name"><a href=""><?= $nama_bahan; ?></a></td>
+										<td class="product-name"><a href=""><?= $pecah_bahan['nama_bahan']; ?></a></td>
 										<td class="product-price"><span class="amount">Rp. <?= number_format($harga_satuan) ?></span></td>
 										<td class="product-quantity">
 											<form action="updatecart.php" method="get">

@@ -171,27 +171,29 @@ function tambahcart($data)
 		return false;
 	}
 
-	$cek_barang = "SELECT * FROM keranjang WHERE nama_bahan = '$nama_bahan'";
+
+	$cek_barang = "SELECT * FROM keranjang WHERE id_bahan = '$id_bahan'";
 	$hasil_barang = mysqli_query($conn, $cek_barang);
 	$hasil = mysqli_fetch_array($hasil_barang);
+	var_dump($hasil);
 
 	if (mysqli_num_rows($hasil_barang) > 0) {
 		$reesult = mysqli_query($conn, "SELECT * FROM keranjang WHERE email='$email'");
 		if (mysqli_num_rows($reesult) == 1) {
 
-			$insert = "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, harga_satuan, qty, gambar)
-																		VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty', '$gambar')";
+			$insert = "INSERT INTO keranjang (id_cart, email, id_produk, id_bahan, harga_satuan, qty, gambar)
+																		VALUES ('', '$email', '$id_produk', '$id_bahan', '$harga', '$qty', '$gambar')";
 			mysqli_query($conn, $insert);
 			return  mysqli_affected_rows($conn);
 		} else {
 			$totalstok = $qty + $hasil['qty'];
-			$update = "UPDATE keranjang SET qty = '$totalstok' WHERE id_produk = '$id_produk' AND nama_bahan = '$nama_bahan'";
+			$update = "UPDATE keranjang SET qty = '$totalstok' WHERE id_produk = '$id_produk' AND id_bahan = '$id_bahan'";
 			mysqli_query($conn, $update);
 			return  mysqli_affected_rows($conn);
 		}
 	} else {
-		$update = "INSERT INTO keranjang (id_cart, email, id_produk, nama_bahan, harga_satuan, qty, gambar)
-					VALUES ('', '$email', '$id_produk', '$nama_bahan', '$harga', '$qty', '$gambar')";
+		$update = "INSERT INTO keranjang (id_cart, email, id_produk, id_bahan, harga_satuan, qty, gambar)
+					VALUES ('', '$email', '$id_produk', '$id_bahan', '$harga', '$qty', '$gambar')";
 		mysqli_query($conn, $update);
 		return  mysqli_affected_rows($conn);
 	}

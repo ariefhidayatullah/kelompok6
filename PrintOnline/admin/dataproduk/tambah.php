@@ -41,24 +41,24 @@ if (isset($_POST["submit"])) {
 				<label for="jenis_produk">Masukkan Jenis Produk : </label>
 				<input type="text" class="form-control form-control-static text-center" id="jenis_produk" name="jenis_produk" required placeholder="Masukkan jenis produk">
 			</div>
-
-
 			<div class="col mb-3 mb-sm-0">
 				<label for="deskripsi">Tambahkan Deskripsi : </label>
 				<input type="text" class="form-control form-control-static text-center" id="deskripsi" name="deskripsi" required placeholder="Tambahkan Deskripsi">
 			</div>
-
 			<div class="col mb-3 mb-sm-0">
 				<input type="file" id="gambar" name="gambar">
-
-
-
 			</div>
 		</div>
 		<div class="pull-right text-center">
-			<a href="dataproduk.php" class="btn btn-warning btn-xs">Kembali</a>
+			<a href="dataproduk.php" class="btn btn-secondary btn-icon-split">
+				<span class="icon text-white-50">
+					<i class="fas fa-arrow-right"></i>
+				</span>
+				<span class="text">kembali</span></a>
 			<input class="btn btn-primary ml-5" name="submit" type="submit" value="Tambahkan"></input>
 		</div>
 	</form>
 </div>
+
+
 <? include '../_footer.php'; ?>

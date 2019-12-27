@@ -19,29 +19,38 @@ if (isset($_POST["proses"])) {
 <div class="row container">
     <div class="col-lg-6 offset-3">
         <div class="card mb-4">
-            <div class="card-header">
+            <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                 <h6 class="m-0 font-weight-bold text-success">Pilih sesuai keinginan</h6>
-            </div>
-            <div class="card-body">
-                <form action="" method="POST">
-                    <div class="form-group">
-                        <label>tanggal mulai : </label>
-                        <input type="date" class="form-control" name="tglm" value="<?= $tgl_mulai ?>">
-                    </div>
-                    <div class="form-group">
-                        <label>tanggal selesai : </label>
-                        <input type="date" class="form-control" name="tgls" value="<?= $tgl_selesai ?>">
-                    </div>
-                    <button class="btn btn-primary" name="proses">Proses</button>
-                    <a href="pemesanan.php" class="btn btn-secondary btn-icon-split btn-sm">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-arrow-right"></i>
-                        </span>
-                        <span class="text">kembali</span>
-                    </a>
-                </form>
+            </a>
+            <div class="collapse show" id="collapseCardExample">
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label>tanggal mulai : </label>
+                            <input type="date" class="form-control" name="tglm" value="<?= $tgl_mulai ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>tanggal selesai : </label>
+                            <input type="date" class="form-control" name="tgls" value="<?= $tgl_selesai ?>">
+                        </div>
+                        <button class="btn btn-primary" name="proses">Proses</button>
+                        <a href="pemesanan.php" class="btn btn-secondary btn-icon-split btn-sm">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                            <span class="text">kembali</span>
+                        </a>
+                    </form>
+                </div>
             </div>
         </div>
+
+        <?php
+        if (empty($semuadata)) {
+            echo "<script> alert ('silahkan pilih tanggal lalu klik proses ') ; </script>";
+            return;
+        }
+        ?>
     </div>
 
     <div class="col-lg-12">

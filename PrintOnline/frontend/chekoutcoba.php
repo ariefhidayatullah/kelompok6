@@ -118,7 +118,7 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                                         <select id="kecamatan" name="kecamatan" class="select__option" required></select>
                                                     </div>
                                                 </div>
-                                                <button type="submit" name="ubah">Ubah</button>
+                                                <button type="submit" name="ubah">ganti alamat</button>
                                             </div>
                                         </form>
                                     </div>
@@ -162,7 +162,7 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                                 while ($data = mysqli_fetch_array($query)) {
                                                     $id_cart = $data['id_cart'];
                                                     $id_produk = $data['id_produk'];
-                                                    $nama_bahan = $data['nama_bahan'];
+                                                    $id_bahan = $data['id_bahan'];
                                                     $harga_satuan = $data['harga_satuan'];
                                                     $qty = $data['qty'];
                                                     $gambar = $data['gambar'];
@@ -172,7 +172,7 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                                 ?>
                                                     <tr>
                                                         <td class="product-name"><a href=""><?= $b['jenis_produk']; ?></a></td>
-                                                        <td class="product-name"><a href=""><?= $nama_bahan; ?></a></td>
+                                                        <td class="product-name"><a href=""><?= $id_bahan; ?></a></td>
                                                         <td class="product-price"><span class="amount">Rp. <?= $harga_satuan ?></span></td>
                                                         <td class="product-quantity">
                                                             <input type="text" name="id_cart" value="<?= $id_cart; ?>" hidden>
@@ -229,14 +229,11 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                             foreach ($donal as $fetch) {
                                                 $id_cart = $fetch['id_cart'];
                                                 $id_produk = $fetch['id_produk'];
-                                                $nama_bahan = $fetch['nama_bahan'];
+                                                $id_bahan = $fetch['id_bahan'];
                                                 $harga_satuan = $fetch['harga_satuan'];
                                                 $qty = $fetch['qty'];
                                                 $desain = $fetch['gambar'];
 
-                                                $ress = mysqli_query($conn, "SELECT * FROM bahan WHERE nama_bahan = '$nama_bahan'");
-                                                $arra = mysqli_fetch_array($ress);
-                                                $id_bahan = $arra['id_bahan'];
 
                                                 mysqli_query($conn, "INSERT INTO detail_pemesanan VALUES ('','$id_pesan_barusan','$id_produk','$id_bahan','1','$qty', '$harga_satuan', '$desain' )");
 

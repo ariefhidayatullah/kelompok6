@@ -74,22 +74,19 @@ if ($datakode) {
 				</select>
 			</div>
 		</div>
-
 		<div class="form-group row">
 			<div class="col mb-3 mb-sm-0">
-				<label for="stok">Stok :</label>
-				<input type="text" class="form-control form-control-static text-center" id="stok" name="stok" required placeholder="Masukkan Jumlah Stok">
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col mb-3 mb-sm-0">
-				<label for="harga_satuan">Harga Satuan :</label>
+				<label for="harga_satuan">Harga :</label>
 				<input type="text" class="form-control form-control-static text-center" id="harga_satuan" name="harga_satuan" required placeholder="Masukkan Jumlah Harga">
 			</div>
 		</div>
 		<div class="pull-right text-center">
-			<a href="databahan.php" class="btn btn-warning">Kembali</a>
 			<input class="btn btn-primary" name="submit" type="submit" value="Tambahkan!"></input>
+			<a href="databahan.php" class="btn btn-secondary btn-icon-split btn-sm">
+				<span class="icon text-white-50">
+					<i class="fas fa-arrow-right"></i>
+				</span>
+				<span class="text">Kembali</span></a>
 		</div>
 	</form>
 </div>

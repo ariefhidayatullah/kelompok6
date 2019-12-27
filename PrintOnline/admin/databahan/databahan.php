@@ -60,11 +60,9 @@ if ($datakode) {
           <thead>
             <tr>
               <th>No.</th>
-              <th>Id Bahan</th>
               <th>Nama Bahan</th>
-              <th>Id Produk</th>
               <th>Nama Produk</th>
-              <th>Sarga Satuan</th>
+              <th>Harga</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -77,30 +75,27 @@ if ($datakode) {
               $nama_bahan  = $data['nama_bahan'];
               $id_produk   = $data['id_produk'];
               $harga_satuan = $data['harga_satuan'];
-              ?>
+            ?>
               <tr>
                 <td><?php echo $i++; ?></td>
-                <td><?php echo $id_bahan; ?></td>
                 <td><?php echo $nama_bahan; ?></td>
-                <td><?php echo $id_produk; ?></td>
                 <td><?php
-                      $ba = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
-                      $ba1 = mysqli_fetch_array($ba);
-                      echo $ba1['jenis_produk'];
-                      ?></td>
+                    $ba = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
+                    $ba1 = mysqli_fetch_array($ba);
+                    echo $ba1['jenis_produk'];
+                    ?></td>
                 <td><?php echo $harga_satuan; ?></td>
                 <td>
                   <button hidden data-toggle="modal" data-id="<?= $id_bahan; ?>" data-target="#myModal" class="btn btn-warning btn-sm">Edit</button></a>
-                  <a href="ubah.php?id=<?= $data['id_bahan']; ?>" ><button class="btn btn-warning btn-sm">Ubah</button></a>
-                  <a href="ubah.php?id=<?php echo $id_bahan; ?>"><button class="btn btn-warning btn-sm">Edit</button></a>
-                  <a>||</a>
-                  <a href="hapus.php?id=<?= $row['id_bahan']; ?>" onclick="return confirm('apakah anda yakin ? ');"><button class="btn btn-danger btn-sm">Hapus</button></a>
+                  <a href="ubah.php?id=<?= $id_bahan; ?>" class="btn btn-info btn-circle btn-sm"><i class="fas fa-info-circle"></i></a>
+                  <a href="hapus.php?id=<?= $id_bahan; ?>" onclick="return confirm('apakah anda yakin ? ');" class="btn btn-danger btn-circle btn-sm">
+                    <i class="fas fa-trash"></i></a>
                 </td>
               </tr>
             <?php } ?>
           </tbody>
         </table>
-        <a href="tambah.php" class="btn btn-primary text-right" role="button"> Tambah data </a>
+        <a href="tambah.php" class="btn btn-primary text-right" role="button">Tambah data</a>
       </div>
     </div>
   </div>
@@ -116,32 +111,32 @@ if ($datakode) {
         </button>
       </div>
       <div class="modal-body">
-    <form class="user" method="post" action="">
-    <div class="form-group row">
-      <div class="col mb-3 mb-sm-0">
-        <input type="hidden" class="form-control form-control-static text-center" id="id_bahan" name="id_bahan" required value="<?= $kode_otomatis; ?>" readonly>
+        <form class="user" method="post" action="">
+          <div class="form-group row">
+            <div class="col mb-3 mb-sm-0">
+              <input type="hidden" class="form-control form-control-static text-center" id="id_bahan" name="id_bahan" required value="<?= $kode_otomatis; ?>" readonly>
+            </div>
+          </div>
+          <label for="nama_bahan">Nama Bahan :</label>
+          <input type="text" class="form-control form-control-static text-center" id="nama_bahan" name="nama_bahan" required placeholder="Masukkan Nama Bahan">
+          <div class="form-row">
+            <div class="col">
+              <label for="id_produk">nama Produk : </label>
+              <select class="form-control" name="id_produk" id="id_produk">
+                <option disabled selected="">Pilih Produk : </option>
+                <?php
+                $q = mysqli_query($conn, "SELECT * FROM produk");
+                while ($row = mysqli_fetch_array($q)) {
+                  echo "<option value=$row[id_produk]>$row[jenis_produk]</option>";
+                } ?>
+              </select>
+            </div>
+            <div class="col">
+              <label for="harga_satuan">Harga Satuan :</label>
+              <input type="text" class="form-control form-control-static text-center" id="harga_satuan" name="harga_satuan" required placeholder="Masukkan Jumlah Harga">
+            </div>
+          </div>
       </div>
-    </div>
-        <label for="nama_bahan">Nama Bahan :</label>
-        <input type="text" class="form-control form-control-static text-center" id="nama_bahan" name="nama_bahan" required placeholder="Masukkan Nama Bahan">
-      <div class="form-row">
-      <div class="col">
-        <label for="id_produk">nama Produk : </label>
-        <select class="form-control" name="id_produk" id="id_produk">
-          <option disabled selected="">Pilih Produk : </option>
-          <?php
-          $q = mysqli_query($conn, "SELECT * FROM produk");
-          while ($row = mysqli_fetch_array($q)) {
-            echo "<option value=$row[id_produk]>$row[jenis_produk]</option>";
-          } ?>
-        </select>
-      </div>
-      <div class="col">
-        <label for="harga_satuan">Harga Satuan :</label>
-        <input type="text" class="form-control form-control-static text-center" id="harga_satuan" name="harga_satuan" required placeholder="Masukkan Jumlah Harga">
-      </div>
-    </div>
-</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <input class="btn btn-primary" name="submit" type="submit" value="Simpan"></input>
