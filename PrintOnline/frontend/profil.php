@@ -2,6 +2,18 @@
 session_start();
 require 'function.php';
 include 'include/_header.php';
+
+if (!isset($_SESSION["LOGIN"])) {
+    echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
+    echo "<script>location='login'; </script>";
+    exit();
+}
+
+if (empty($_GET['id'])) {
+    echo "<script>location='error';</script>";
+    exit();
+}
+
 $id_user = $_GET['id'];
 $user = query("SELECT * FROM user WHERE id_user = '$id_user'");
 
@@ -14,7 +26,6 @@ if (isset($_POST["submit"])) {
 			</script>
         ";
 ?>
-        <meta http-equiv="refresh" content="0; URL=ubahprofil.php?id=<?= $id_user ?>">
 <?php
     } else {
         echo "
@@ -39,7 +50,7 @@ if (isset($_POST["submit"])) {
                     <div class="bradcaump__inner text-center">
                         <h2 class="bradcaump-title">Ubah Profil</h2>
                         <nav class="bradcaump-content">
-                            <a class="breadcrumb_item" href="dashboard.php">Home</a>
+                            <a class="breadcrumb_item" href="index">Home</a>
                             <span class="brd-separetor">/</span>
                             <span class="breadcrumb_item active">ubah Profil</span>
                         </nav>
@@ -61,7 +72,7 @@ if (isset($_POST["submit"])) {
 
         if ($id_user !== $id_userlogin) {
             echo "<script>alert(' anda tidak berhak !');</script>";
-            echo "<script>location='index.php';</script>";
+            echo "<script>location='index';</script>";
             exit();
         }
         ?>

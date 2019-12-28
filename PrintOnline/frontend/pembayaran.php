@@ -3,6 +3,12 @@ session_start();
 require 'function.php';
 include 'include/_header.php';
 
+if (!isset($_SESSION["LOGIN"])) {
+    echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
+    echo "<script>location='login'; </script>";
+    exit();
+}
+
 $idpesan = $_GET["id"];
 $ambil = $conn->query("SELECT * FROM pesan WHERE id_pesan = '$idpesan'");
 $detail = $ambil->fetch_assoc();
@@ -17,8 +23,7 @@ $ongk = mysqli_fetch_array($ong);
 $id_userlogin = $ongk['id_user'];
 
 if ($id_user !== $id_userlogin) {
-    echo "<script>alert(' jangan nakal yaa !');</script>";
-    echo "<script>location='riwayatpemesanan.php';</script>";
+    echo "<script>location='error';</script>";
     exit();
 }
 
@@ -29,14 +34,14 @@ if ($id_user !== $id_userlogin) {
     <?php include 'include/navbar.php'; ?>
     <!-- //Header -->
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area bg-image--5">
+    <div class="ht__bradcaump__area bg-image--1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="bradcaump__inner text-center">
                         <h2 class="bradcaump-title">pembayaran</h2>
                         <nav class="bradcaump-content">
-                            <a class="breadcrumb_item" href="dashboard.php">Home</a>
+                            <a class="breadcrumb_item" href="index">Home</a>
                             <span class="brd-separetor">/</span>
                             <span class="breadcrumb_item active">input pembayaran</span>
                         </nav>
@@ -74,7 +79,7 @@ if ($id_user !== $id_userlogin) {
                         $namabukti = $_FILES["bukti"]["name"];
                         $lokasibukti = $_FILES["bukti"]["tmp_name"];
                         $namafiks = date("YmdHis") . $namabukti;
-                        move_uploaded_file($lokasibukti, "bukti_pembayaran/$namafiks");
+                        move_uploaded_file($lokasibukti, "images/bukti_pembayaran/$namafiks");
 
                         $nama = $_POST["nama"];
                         $bank = $_POST["bank"];
@@ -86,9 +91,8 @@ if ($id_user !== $id_userlogin) {
                         $conn->query("UPDATE pesan SET status_pemesanan = 'pembayaran berhasil (menunggu pengiriman dari admin)' WHERE id_pesan ='$idpesan'");
 
                         echo "<script>alert('terima kasih telah melakukan pembayaran');</script>";
-                        echo "<script>location='riwayatpemesanan.php';</script>";
+                        echo "<script>location='riwayatpemesanan';</script>";
                     }
-                    var_dump($_POST)
                     ?>
                 </div>
             </div>

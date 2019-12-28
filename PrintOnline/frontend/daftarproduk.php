@@ -26,7 +26,7 @@ if (isset($_GET['submit'])) {
                     <div class="bradcaump__inner text-center">
                         <h2 class="bradcaump-title">Daftar Produk</h2>
                         <nav class="bradcaump-content">
-                            <a class="breadcrumb_item" href="dashboard.php">Home</a>
+                            <a class="breadcrumb_item" href="index">Home</a>
                             <span class="brd-separetor">/</span>
                             <span class="breadcrumb_item active">Daftar Produk</span>
                         </nav>
@@ -69,7 +69,7 @@ if (isset($_GET['submit'])) {
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a href="produk.php?id=<?= base64_encode($row['id_produk']); ?>"><i class=" bi bi-search"></i></a></li>
+                                                        <li><a href="produk?id=<?= base64_encode($row['id_produk']); ?>"><i class=" bi bi-search"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>

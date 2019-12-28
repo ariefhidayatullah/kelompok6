@@ -6,7 +6,7 @@ include 'include/_header.php';
 
 if (!isset($_SESSION["LOGIN"])) {
     echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
-    echo "<script>location='login.php'; </script>";
+    echo "<script>location='login'; </script>";
 }
 $email = $_SESSION["LOGIN"];
 $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
@@ -20,14 +20,14 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
     <?php include 'include/navbar.php'; ?>
     <!-- //Header -->
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area bg-image--5">
+    <div class="ht__bradcaump__area bg-image--1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="bradcaump__inner text-center">
                         <h2 class="bradcaump-title">chekout</h2>
                         <nav class="bradcaump-content">
-                            <a class="breadcrumb_item" href="dashboard.php">Home</a>
+                            <a class="breadcrumb_item" href="index">Home</a>
                             <span class="brd-separetor">/</span>
                             <span class="breadcrumb_item active">chekout</span>
                         </nav>
@@ -154,6 +154,9 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                         $kecamatan = $_POST['kecamatan'];
 
                                         mysqli_query($conn, "UPDATE user SET provinsi = '$provinsi', kabupaten = '$kabupaten', kecamatan = '$kecamatan' WHERE email = '$email'");
+
+                                        echo "<script>alert('alamat berhasil di ganti !');</script>";
+                                        echo "<script>location='chekout';</script>";
                                     }
 
                                     ?>
@@ -173,6 +176,7 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                         <table>
                                             <thead>
                                                 <tr class="title-top">
+                                                    <th>desain</th>
                                                     <th>produk</th>
                                                     <th>bahan</th>
                                                     <th>Harga</th>
@@ -196,6 +200,7 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                                     $b = mysqli_fetch_array($quer);
                                                 ?>
                                                     <tr>
+                                                        <td><img src="images/desainuser/<?= $gambar; ?>" width="100"></td>
                                                         <td class="product-name"><a href=""><?= $b['jenis_produk']; ?></a></td>
                                                         <td class="product-name"><a href=""><?= $id_bahan; ?></a></td>
                                                         <td class="product-price"><span class="amount">Rp. <?= $harga_satuan ?></span></td>
@@ -266,7 +271,7 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                             }
                                             #tampilan dialihkan ke nota, nota pembelian baru terjadi
                                             echo "<script>alert('Pembelian Berhasil !');</script>";
-                                            echo "<script>location='nota.php?id=$id_pesan_barusan';</script>";
+                                            echo "<script>location='nota?id=$id_pesan_barusan';</script>";
                                         }
 
                                         ?>

@@ -5,14 +5,14 @@ require 'function.php';
 
 if (!isset($_SESSION["LOGIN"])) {
 	echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
-	echo "<script>location='login.php'; </script>";
+	echo "<script>location='login'; </script>";
 	exit();
 }
 $email = $_SESSION["LOGIN"];
 $query = mysqli_query($conn, "SELECT * FROM keranjang WHERE email = '$email'");
 if (mysqli_num_rows($query) == 0) {
 	echo "<script>alert('keranjang kosong, silakan berbelanja terlebih dahulu');</script>";
-	echo "<script>window.location ='daftarproduk.php';</script>";
+	echo "<script>window.location ='daftarproduk';</script>";
 }
 
 ?>
@@ -23,14 +23,14 @@ if (mysqli_num_rows($query) == 0) {
 	<?php include 'include/navbar.php'; ?>
 	<!-- //Header -->
 	<!-- Start Search Popup -->
-	<div class="ht__bradcaump__area bg-image--5">
+	<div class="ht__bradcaump__area bg-image--1">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="bradcaump__inner text-center">
 						<h2 class="bradcaump-title">Keranjang Belanja</h2>
 						<nav class="bradcaump-content">
-							<a class="breadcrumb_item" href="dashboard.php">Home</a>
+							<a class="breadcrumb_item" href="index">Home</a>
 							<span class="brd-separetor">/</span>
 							<span class="breadcrumb_item active">Keranjang Belanja</span>
 						</nav>
@@ -76,7 +76,7 @@ if (mysqli_num_rows($query) == 0) {
 									$pecah_bahan = mysqli_fetch_array($query_bahan);
 								?>
 									<tr>
-										<td><img src="desainuser/<?= $gambar; ?>" width="100"></td>
+										<td><img src="images/desainuser/<?= $gambar; ?>" width="100"></td>
 										<td class="product-name"><a href=""><?= $b['jenis_produk']; ?></a></td>
 										<td class="product-name"><a href=""><?= $pecah_bahan['nama_bahan']; ?></a></td>
 										<td class="product-price"><span class="amount">Rp. <?= number_format($harga_satuan) ?></span></td>
@@ -89,7 +89,7 @@ if (mysqli_num_rows($query) == 0) {
 										</td>
 										<td><?php $subtotal = $harga_satuan * $qty; ?>
 											<?= $subtotal; ?></td>
-										<td class="product-remove"><a href=" hapuskeranjang.php?id_cart=<?= $id_cart; ?>" onclick="return confirm('apakah anda yakin ? ');">X</a></td>
+										<td class="product-remove"><a href=" hapuskeranjang?id_cart=<?= $id_cart; ?>" onclick="return confirm('apakah anda yakin ? ');">X</a></td>
 									</tr>
 									<?php $nomor++; ?>
 									<?php
@@ -101,8 +101,8 @@ if (mysqli_num_rows($query) == 0) {
 						<input type="hidden" name="update">
 						<div class="cartbox__btn">
 							<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
-								<li><a href="daftarproduk.php">Lanjutkan belanja</a></li>
-								<li><a href="chekout.php">chekout</a></li>
+								<li><a href="daftarproduk">Lanjutkan belanja</a></li>
+								<li><a href="chekout">chekout</a></li>
 							</ul>
 						</div>
 					</div>

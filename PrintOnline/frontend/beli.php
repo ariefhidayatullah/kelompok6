@@ -5,11 +5,11 @@ require 'function.php';
 // jika sudah ada produk itu di keranjang, maka produk itu jumlahnya di tambah 1
 
 if (isset($_POST["cart"])) {
- if (tambahcart($_POST) > 0) {
+	if (tambahcart($_POST) > 0) {
 		echo "
 			<script>
 				alert('produk berhasil masuk keranjang');
-					document.location.href = 'cart.php';
+					document.location.href = 'cart';
 			</script>
 		";
 	} else {
@@ -18,5 +18,5 @@ if (isset($_POST["cart"])) {
 				alert('data gagal masuk keranjang'); 
 			</script>
 		";
-}}
-?>
+	}
+}

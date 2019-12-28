@@ -5,6 +5,11 @@ include 'include/_header.php';
 
 $user = query("SELECT * FROM user");
 
+if (empty($_GET['cari'])) {
+    echo "<script>location='error';</script>";
+    exit();
+}
+
 $cari = $_GET['cari'];
 
 $semuadata = array();
@@ -15,7 +20,7 @@ while ($pecah = $ambil->fetch_assoc()) {
 
 if (mysqli_num_rows($ambil) == 0) {
     echo "<script>alert('produk yang anda cari tidak ada');</script>";
-    echo "<script>window.location ='daftarproduk.php';</script>";
+    echo "<script>window.location ='daftarproduk';</script>";
 }
 ?>
 
@@ -24,14 +29,14 @@ if (mysqli_num_rows($ambil) == 0) {
     <?php include 'include/navbar.php'; ?>
     <!-- //Header -->
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area bg-image--5">
+    <div class="ht__bradcaump__area bg-image--1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="bradcaump__inner text-center">
                         <h2 class="bradcaump-title">Daftar Produk</h2>
                         <nav class="bradcaump-content">
-                            <a class="breadcrumb_item" href="dashboard.php">Home</a>
+                            <a class="breadcrumb_item" href="index">Home</a>
                             <span class="brd-separetor">/</span>
                             <span class="breadcrumb_item active">hasil pencarian</span>
                         </nav>
@@ -75,7 +80,7 @@ if (mysqli_num_rows($ambil) == 0) {
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a href="produk.php?id=<?= base64_encode($row['id_produk']); ?>"><i class=" bi bi-search"></i></a></li>
+                                                        <li><a href="produk?id=<?= base64_encode($row['id_produk']); ?>"><i class=" bi bi-search"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>

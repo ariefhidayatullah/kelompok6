@@ -28,15 +28,15 @@ if (isset($_POST["submit"])) {
 		if ($queery == 1) {
 			$row = mysqli_fetch_array($result);
 			$_SESSION["LOGIN"] = $row['email'];
-			echo "<script> alert('anda sukses login !');</script>";
-			echo "<script> location='index.php';</script>";
+			echo "<script> alert(' anda berhasil login, selamata berbelanja !');</script>";
+			echo "<script> location='index';</script>";
 		} else {
 			echo "<script> alert('password salah!');</script>";
-			echo "<script> location='login.php';</script>";
+			echo "<script> location='login';</script>";
 		}
 	} else {
 		echo "<script> alert('email tidak terdaftar !');</script>";
-		echo "<script> location='login.php';</script>";
+		echo "<script> location='login';</script>";
 	}
 }
 ?>
@@ -54,7 +54,7 @@ if (isset($_POST["submit"])) {
 					<div class="bradcaump__inner text-center">
 						<h2 class="bradcaump-title">My Account</h2>
 						<nav class="bradcaump-content">
-							<a class="breadcrumb_item" href="index.html">Home</a>
+							<a class="breadcrumb_item" href="index">Home</a>
 							<span class="brd-separetor">/</span>
 							<span class="breadcrumb_item active">My Account</span>
 						</nav>

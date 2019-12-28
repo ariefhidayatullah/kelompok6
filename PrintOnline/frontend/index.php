@@ -25,7 +25,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 								<h2>Cetak <span>Dokumen </span></h2>
 								<h2>Anda <span>Kepada </span></h2>
 								<h2><span>Ahlinya </span></h2>
-								<a class="shopbtn" href="daftarproduk.php">shop now</a>
+								<a class="shopbtn" href="daftarproduk">shop now</a>
 							</div>
 						</div>
 					</div>
@@ -116,7 +116,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 				<div class="col-lg-4 ptb--70">
 					<div class="footer__widget footer__menu">
 						<div class="ft__logo ml-5">
-							<a href="index.php">
+							<a href="index">
 								<img src="images/logo/icon.png" alt="logo">
 							</a>
 						</div>
@@ -131,7 +131,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 				<div class="col-lg-4 ptb--70">
 					<div class="footer__widget footer__menu">
 						<div class="ft__logo ml-2">
-							<a href="index.php">
+							<a href="index">
 								<img src="images/logo/icon1.png" alt="logo">
 							</a>
 						</div>
@@ -146,7 +146,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 				<div class="col-lg-4 ptb--70">
 					<div class="footer__widget footer__menu">
 						<div class="ft__logo ml-2">
-							<a href="index.php">
+							<a href="index">
 								<img src="images/logo/icon1.png" alt="logo">
 							</a>
 						</div>

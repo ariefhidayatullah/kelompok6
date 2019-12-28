@@ -22,7 +22,7 @@ $detailpesan = mysqli_fetch_assoc($pesan);
                 <div class="card-body">
                     <div class="text-center">
                         <h6 class="m-0 font-weight-bold text-info">struk pembayaran : </h6>
-                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" width="300" src="../../frontend/bukti_pembayaran/<?= $detailpesan['bukti']; ?>" alt="">
+                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" width="300" src="../../frontend/images/bukti_pembayaran/<?= $detailpesan['bukti']; ?>" alt="">
                     </div>
                     <p>Nama pengirim : <?= $detailpesan['nama'] ?></a><br>
                         <p>Bank : <?= $detailpesan['bank'] ?></a><br>

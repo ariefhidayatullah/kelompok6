@@ -3,6 +3,18 @@ session_start();
 include 'include/_header.php';
 require 'function.php';
 
+if (!isset($_SESSION["LOGIN"])) {
+    echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
+    echo "<script>location='login'; </script>";
+    exit();
+}
+
+// $lama = 1;
+
+// $query = "DELETE FROM pesan
+//           WHERE DATEDIFF(CURDATE(), tanggal_pemesanan) > $lama";
+// $hasil = mysqli_query($conn, $query);
+
 ?>
 <!-- Main wrapper -->
 <div class="wrapper" id="wrapper">
@@ -18,7 +30,7 @@ require 'function.php';
                     <div class="bradcaump__inner text-center">
                         <h2 class="bradcaump-title">nota</h2>
                         <nav class="bradcaump-content">
-                            <a class="breadcrumb_item" href="dashboard.php">Home</a>
+                            <a class="breadcrumb_item" href="index">Home</a>
                             <span class="brd-separetor">/</span>
                             <span class="breadcrumb_item active">nota</span>
                         </nav>
@@ -28,17 +40,16 @@ require 'function.php';
         </div>
     </div>
     <div class="wn_contact_area section-padding--lg bg--white">
-        <?php $ambil = $conn->query("SELECT * FROM pesan JOIN user ON pesan.id_user=user.id_user WHERE pesan.id_pesan='$_GET[id]'");
+        <?php
+        if (empty($_GET['id'])) {
+            echo "<script>location='error';</script>";
+            exit();
+        }
+        $ambil = $conn->query("SELECT * FROM pesan JOIN user ON pesan.id_user=user.id_user WHERE pesan.id_pesan='$_GET[id]'");
         $detail = $ambil->fetch_assoc();
         $id_kabkot = $detail['nama_kabkot'];
         $alamat = $detail['alamat'];
-        ?>
-        <?php $value = $conn->query("SELECT * FROM kabkot WHERE nama_kabkot = '$id_kabkot'");
-        $row2 = $value->fetch_assoc();
-        $nama_kabkot = $row2['nama_kabkot'];
-        $jne_reg = $row2['jne_reg'];
-        ?>
-        <?php
+
         $id_user = $detail['id_user'];
 
         $id_userr = $_SESSION['LOGIN'];
@@ -49,14 +60,18 @@ require 'function.php';
         $id_userlogin = $ongk['id_user'];
 
         if ($id_user !== $id_userlogin) {
-            echo "<script>alert(' jangan nakal yaa !');</script>";
-            echo "<script>location='riwayatpemesanan.php';</script>";
+            echo "<script>location='error';</script>";
             exit();
         }
         ?>
+        <?php $value = $conn->query("SELECT * FROM kabkot WHERE nama_kabkot = '$id_kabkot'");
+        $row2 = $value->fetch_assoc();
+        $nama_kabkot = $row2['nama_kabkot'];
+        $jne_reg = $row2['jne_reg'];
+        ?>
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
+                <div class="col-lg-8 col-12 md-mt-40 sm-mt-40">
                     <div class="container">
                         <div class="table-content wnro__table table-responsive">
                             <div class="wn__order__box">
@@ -81,6 +96,7 @@ require 'function.php';
                                             <?php
                                             $produk = $pecah["id_produk"];
                                             $bahan = $pecah["id_bahan"];
+                                            $gambar = $pecah["desain"];
                                             $ress = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$produk'");
                                             $arra = mysqli_fetch_array($ress);
 
@@ -88,7 +104,7 @@ require 'function.php';
                                             $arr = mysqli_fetch_array($res);
                                             ?>
                                             <tr>
-                                                <td><?= $nomor; ?></td>
+                                                <td><img src="images/desainuser/<?= $gambar; ?>" width="100"></td>
                                                 <td><?= $arra["jenis_produk"]; ?></td>
                                                 <td><?= $arr["nama_bahan"]; ?></td>
                                                 <td>Rp. <?= number_format($pecah["harga_satuan"]); ?></td>
@@ -121,6 +137,7 @@ require 'function.php';
                                     <div class="contact-form-wrap">
                                         <div class="contact-btn">
                                             <button type="submit" onclick="window.print()">Cetak nota</button>
+                                            <a href="riwayatpemesanan"><button>kembali</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -128,16 +145,16 @@ require 'function.php';
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
+                <div class="col-lg-4 col-12 md-mt-40 sm-mt-40">
                     <div id="accordion" class="checkout_accordion" role="tablist">
                         <div class="payment">
                             <div class="che__header" role="tab" id="headingOne">
                                 <a class="checkout__title" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <span>Detail pembelian</span>
+                                    <span>Detail pemesanan</span>
                                 </a>
                             </div>
                             <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                                <div class="payment-body"><strong> no. pembelian : <?= $detail['id_pesan']; ?></strong><br>
+                                <div class="payment-body"><strong> no. pemesanan : <?= $detail['id_pesan']; ?></strong><br>
                                     tanggal: <?= $detail['tanggal_pemesanan']; ?> <br>
                                     Total : Rp. <?= number_format($detail['total_harga']); ?></div>
                             </div>

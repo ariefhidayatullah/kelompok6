@@ -100,51 +100,6 @@ if ($datakode) {
     </div>
   </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="card-title">Tambahkan data bahan</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="user" method="post" action="">
-          <div class="form-group row">
-            <div class="col mb-3 mb-sm-0">
-              <input type="hidden" class="form-control form-control-static text-center" id="id_bahan" name="id_bahan" required value="<?= $kode_otomatis; ?>" readonly>
-            </div>
-          </div>
-          <label for="nama_bahan">Nama Bahan :</label>
-          <input type="text" class="form-control form-control-static text-center" id="nama_bahan" name="nama_bahan" required placeholder="Masukkan Nama Bahan">
-          <div class="form-row">
-            <div class="col">
-              <label for="id_produk">nama Produk : </label>
-              <select class="form-control" name="id_produk" id="id_produk">
-                <option disabled selected="">Pilih Produk : </option>
-                <?php
-                $q = mysqli_query($conn, "SELECT * FROM produk");
-                while ($row = mysqli_fetch_array($q)) {
-                  echo "<option value=$row[id_produk]>$row[jenis_produk]</option>";
-                } ?>
-              </select>
-            </div>
-            <div class="col">
-              <label for="harga_satuan">Harga Satuan :</label>
-              <input type="text" class="form-control form-control-static text-center" id="harga_satuan" name="harga_satuan" required placeholder="Masukkan Jumlah Harga">
-            </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <input class="btn btn-primary" name="submit" type="submit" value="Simpan"></input>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
 <!-- /.container-fluid -->
 
 <?php

@@ -1,3 +1,7 @@
+<?php 
+$user = mysqli_query($conn, "SELECT * FROM pesan WHERE status_pemesanan = '$email'");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="shortcut icon" href="../assets/icon.png">
+    <link rel="apple-touch-icon" href="../assets/icon.png">
 
-    <title>The KING Admin</title>
+    <title>The KING</title>
 
     <!-- Custom fonts for this template -->
     <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -82,6 +88,12 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" href="../ongkir/dataongkir.php">
+                    <i class="fas fa-fw fa-eye-dropper"></i>
+                    <span>Ongkir</span></a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagess" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>transaksi</span>
@@ -130,6 +142,33 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Alerts Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 12, 2019</div>
+                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
 
 
                 </nav>

@@ -89,7 +89,7 @@ function upload()
 
 	//jika lolos dari seleksi
 
-	move_uploaded_file($tmpName, 'desainuser/' . $namaFileBaru);
+	move_uploaded_file($tmpName, 'images/desainuser/' . $namaFileBaru);
 
 	return $namaFileBaru;
 }

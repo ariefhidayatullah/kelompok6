@@ -16,15 +16,13 @@ $id_user = $ongk["id_user"];
 
 if (empty($detailbayar)) {
     echo "<script>alert(' belum ada data pembayaran !');</script>";
-    echo "<script>location='riwayatpemesanan.php';</script>";
+    echo "<script>location='riwayatpemesanan';</script>";
     exit();
 }
 
 
 if ($id_user !== $detailbayar["id_user"]) {
-
-    echo "<script>alert(' anda tidak berhak !');</script>";
-    echo "<script>location='riwayatpemesanan.php';</script>";
+    echo "<script>location='error';</script>";
     exit();
 }
 
@@ -35,16 +33,16 @@ if ($id_user !== $detailbayar["id_user"]) {
     <?php include 'include/navbar.php'; ?>
     <!-- //Header -->
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area bg-image--5">
+    <div class="ht__bradcaump__area bg-image--1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="bradcaump__inner text-center">
                         <h2 class="bradcaump-title">pembayaran</h2>
                         <nav class="bradcaump-content">
-                            <a class="breadcrumb_item" href="dashboard.php">Home</a>
+                            <a class="breadcrumb_item" href="index">Home</a>
                             <span class="brd-separetor">/</span>
-                            <span class="breadcrumb_item active">lihat pembayaran</span>
+                            <span class="breadcrumb_item active">pembayaran</span>
                         </nav>
                     </div>
                 </div>
@@ -52,32 +50,40 @@ if ($id_user !== $detailbayar["id_user"]) {
         </div>
     </div>
 
-    <div class="container">
-        <h3>lihat pembayaran</h3>
+    <div class="container mt--50">
         <div class="row">
-            <div class="col-md-6">
-                <table>
-                    <tr>
-                        <th>Nama</th>
-                        <td><?= $detailbayar["nama"] ?></td>
-                    </tr>
-                    <tr>
-                        <th>bank</th>
-                        <td><?= $detailbayar["bank"] ?></td>
-                    </tr>
-                    <tr>
-                        <th>tanggal</th>
-                        <td><?= $detailbayar["tanggal"] ?></td>
-                    </tr>
-                    <tr>
-                        <th>jumlah</th>
-                        <td>Rp. <?= $detailbayar["jumlah"]; ?></td>
-                    </tr>
-                </table>
+            <div class="col-lg-6 col-12">
+                <div id="accordion" class="checkout_accordion" role="tablist">
+                    <div class="payment">
+                        <div class="che__header" role="tab" id="headingOne">
+                            <a class="checkout__title" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <span>Detail pemesanan</span>
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="payment-body"><strong> Nama pemesan : <?= $detailbayar["nama"] ?></strong><br>
+                                bank: <?= $detailbayar["bank"] ?> <br>
+                                Tanggal transfer : <?= $detailbayar["tanggal"] ?><br>
+                                Jumlah : Rp.<?= number_format($detailbayar["jumlah"]); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6">
-                <h3>lihat pembayaran</h3>
-                <img src="bukti_pembayaran/<?= $detailbayar["bukti"] ?>" alt="" class="img-responsive">
+            <div class="col-lg-6 col-12 mb-5">
+                <div id="accordion" class="checkout_accordion" role="tablist">
+                    <div class="payment">
+                        <div class="che__header" role="tab" id="headingOne">
+                            <a class="checkout__title" data-toggle="collapse" href="#collapseOn" aria-expanded="true" aria-controls="collapseOne">
+                                <span>struk pemesanan</span>
+                            </a>
+                        </div>
+                        <div id="collapseOn" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="payment-body"><img src="images/bukti_pembayaran/<?= $detailbayar["bukti"] ?>" alt="" class="img-responsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

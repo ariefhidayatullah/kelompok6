@@ -80,7 +80,7 @@ include '../_header.php';
                             ?>
                             <tr>
                                 <td><?= $i; ?></td>
-                                <td><img src="../../frontend/desainuser/<?= $row['desain']; ?>" width="100"></td>
+                                <td><img src="../../frontend/images/desainuser/<?= $row['desain']; ?>" width="100"></td>
                                 <td><?= $pp['jenis_produk']; ?></td>
                                 <td><?= $bb['nama_bahan']; ?></td>
                                 <td><?= $row['harga_satuan']; ?></td>

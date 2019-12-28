@@ -3,6 +3,11 @@ session_start();
 require 'function.php';
 include 'include/_header.php';
 
+if (empty(base64_decode($_GET['id']))) {
+	echo "<script>location='error';</script>";
+	exit();
+}
+
 
 $id_produk1 = base64_decode($_GET['id']);
 
@@ -19,12 +24,12 @@ if (isset($_SESSION["LOGIN"])) {
 if (isset($_POST["cart"])) {
 	if (!isset($_SESSION["LOGIN"])) {
 		echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
-		echo "<script>location='login.php'; </script>";
+		echo "<script>location='login'; </script>";
 		exit();
 	}
 	if (tambahcart($_POST) > 0) {
 		echo "<script>alert('produk berhasil masuk keranjang');</script>";
-		echo "<script>window.location ='cart.php';</script>";
+		echo "<script>window.location ='cart';</script>";
 	} else {
 		echo "<script>alert('maaf kesalahan, pastikan anda inputkan dengan benar');</script>";
 	}
@@ -45,7 +50,7 @@ if (isset($_POST["cart"])) {
 					<div class="bradcaump__inner text-center">
 						<h2 class="bradcaump-title">Shop Single</h2>
 						<nav class="bradcaump-content">
-							<a class="breadcrumb_item" href="dashboard.php">Home</a>
+							<a class="breadcrumb_item" href="index">Home</a>
 							<span class="brd-separetor">/</span>
 							<span class="breadcrumb_item active">Shop Single</span>
 						</nav>
@@ -130,15 +135,7 @@ if (isset($_POST["cart"])) {
 													<button type="submit" class="tocart" name="cart" id="cart">beli sekarang</button>
 												</form>
 											</div>
-											<form action="checkout.php" method="get">
-												<input type="text" name="id_bahan" value="<?php echo $han ?>" hidden>
-												<input type="text" name="id_produk" value="<?php echo $id_produk1 ?>" hidden>
-												<div class="addtocart__actions"><br><br>
-													<br>
-												</div>
-
 										</div>
-										</form>
 									</div>
 								</div>
 							</div>
@@ -167,7 +164,7 @@ if (isset($_POST["cart"])) {
 				<div class="product product__style--3">
 					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 						<div class="product__thumb">
-							<a class="first__img" href="produk.php?id=<?= $row['id_produk']; ?>"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
+							<a class="first__img" href="produk?id=<?= $row['id_produk']; ?>"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
 							<a class="second__img animation1" href="produk.php?id=<?= $row['id_produk']; ?>"><img src="img/<?= $row['gambar']; ?>" alt="product image"></a>
 							<div class="hot__box">
 								<span class="hot-label">BEST SELLER</span>
@@ -178,7 +175,7 @@ if (isset($_POST["cart"])) {
 							<div class="action">
 								<div class="actions_inner">
 									<ul class="add_to_links">
-										<li><a href="produk.php?id=<?= $row['id_produk']; ?>"><i class=" bi bi-search"></i></a></li>
+										<li><a href="produk?id=<?= $row['id_produk']; ?>"><i class=" bi bi-search"></i></a></li>
 									</ul>
 								</div>
 							</div>

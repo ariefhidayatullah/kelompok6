@@ -14,7 +14,7 @@
                  <div class="bradcaump__inner text-center">
                      <h2 class="bradcaump-title">Tentang Kami</h2>
                      <nav class="bradcaump-content">
-                         <a class="breadcrumb_item" href="dashboard.php">Home</a>
+                         <a class="breadcrumb_item" href="index">Home</a>
                          <span class="brd-separetor">/</span>
                          <span class="breadcrumb_item active">Upload Design</span>
                      </nav>

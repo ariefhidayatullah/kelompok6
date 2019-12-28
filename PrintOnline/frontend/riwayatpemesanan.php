@@ -3,6 +3,12 @@ session_start();
 include 'include/_header.php';
 require 'function.php';
 
+if (!isset($_SESSION["LOGIN"])) {
+    echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
+    echo "<script>location='login'; </script>";
+    exit();
+}
+
 ?>
 <!-- Main wrapper -->
 <div class="wrapper" id="wrapper">
@@ -18,7 +24,7 @@ require 'function.php';
                     <div class="bradcaump__inner text-center">
                         <h2 class="bradcaump-title">Riwayat pemesanan</h2>
                         <nav class="bradcaump-content">
-                            <a class="breadcrumb_item" href="dashboard.php">Home</a>
+                            <a class="breadcrumb_item" href="index">Home</a>
                             <span class="brd-separetor">/</span>
                             <span class="breadcrumb_item active">Riwayat pemesanan</span>
                         </nav>
@@ -69,11 +75,11 @@ require 'function.php';
                                         <td class="product-price">Rp. <?= number_format($pecah["total_harga"]) ?></td>
                                         <td>
                                             <div class="blog__btn">
-                                                <a href="nota.php?id=<?= $pecah["id_pesan"] ?>">Nota</a> ||
+                                                <a href="nota?id=<?= $pecah["id_pesan"] ?>">Nota</a> ||
                                                 <?php if ($pecah['status_pemesanan'] == "pending") : ?>
-                                                    <a href="pembayaran.php?id=<?= $pecah["id_pesan"] ?>">input Pembayaran</a>
+                                                    <a href="pembayaran?id=<?= $pecah["id_pesan"] ?>">input Pembayaran</a>
                                                 <?php else : ?>
-                                                    <a href="lihatpembayaran.php?id=<?= $pecah["id_pesan"] ?>">lihat Pembayaran</a>
+                                                    <a href="lihatpembayaran?id=<?= $pecah["id_pesan"] ?>">lihat Pembayaran</a>
                                                 <?php endif ?>
                                             </div>
                                         </td>
@@ -82,7 +88,6 @@ require 'function.php';
                                 <?php } ?>
                             </tbody>
                         </table>
-                        <pre><?php print_r($id_pelanggan) ?></pre>
                     </div>
                 </div>
             </div>

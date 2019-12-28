@@ -14,7 +14,7 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
         <div class="row">
             <div class="col-md-6 col-sm-6 col-6 col-lg-2">
                 <div class="logo">
-                    <a href="index.php">
+                    <a href="index">
                         <img src="images/logo/logo.png" alt="">
                     </a>
                 </div>
@@ -26,12 +26,12 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                             <div class="megamenu mega02">
                                 <ul class="item item01">
                                     <?php foreach ($daftarproduk as $row) : ?>
-                                        <li><a href="produk.php?id=<?= base64_encode($row['id_produk']); ?>"><?= $row['jenis_produk']; ?></a></li>
+                                        <li><a href="produk?id=<?= base64_encode($row['id_produk']); ?>"><?= $row['jenis_produk']; ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
                         </li>
-                        <li class="drop"><a href="tentangkami.php">Tentang kami</a></li>
+                        <li class="drop"><a href="tentangkami">Tentang kami</a></li>
                         <li class="drop"><a class="search__active" href="#">cari produk</a></li>
                     </ul>
                 </nav>
@@ -53,7 +53,7 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                                             <span><?= $keranjang; ?> Pesanan dalam keranjang</span>
                                         </div>
                                         <div class="mini_action checkout">
-                                            <a class="checkout__btn" href="chekout.php">Checkout Sekarang</a>
+                                            <a class="checkout__btn" href="chekout">Checkout Sekarang</a>
                                         </div>
                                         <div class="single__items">
                                             <?php $nomor = 1;
@@ -75,7 +75,7 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                                                 <div class="miniproduct">
                                                     <div class="item01 d-flex mt--20">
                                                         <div class="thumb">
-                                                            <a><img src="desainuser/<?= $gambar ?>" alt="product images"></a>
+                                                            <a><img src="images/desainuser/<?= $gambar ?>" alt="product images"></a>
                                                         </div>
                                                         <div class="content">
                                                             <h6><a href="product-details.html"><?= $b['jenis_produk']; ?></a></h6>
@@ -96,7 +96,7 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                                             <span>Keranjang Total : Rp. <?= $total1; ?></span>
                                         </div>
                                         <div class="mini_action cart">
-                                            <a class="cart__btn" href="cart.php">Lihat dan edit keranjang</a>
+                                            <a class="cart__btn" href="cart">Lihat dan edit keranjang</a>
                                         </div>
                                     </div>
                                 </div>
@@ -111,9 +111,9 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                                             <div class="switcher-options">
                                                 <div class="switcher-currency-trigger">
                                                     <div class="setting__menu">
-                                                        <span><a href="ubahprofil.php?id=<?= $row['id_user']; ?>" type="hidden">profil</a></span>
-                                                        <span><a href="riwayatpemesanan.php">riwayat pemesanan</a></span>
-                                                        <span><a href="logout.php">Keluar</a></span>
+                                                        <span><a href="profil?id=<?= $row['id_user']; ?>" type="hidden">profil</a></span>
+                                                        <span><a href="riwayatpemesanan">riwayat pemesanan</a></span>
+                                                        <span><a href="logout">Keluar</a></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -123,7 +123,7 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                             </li>
                         <?php endforeach; ?>
                     <?php else : ?>
-                        <li class="drop"><a href="login.php">login / registrasi</a></li>
+                        <li class="drop"><a href="login">login / registrasi</a></li>
                     <?php endif ?>
                 </ul>
             </div>
