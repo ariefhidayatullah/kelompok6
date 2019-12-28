@@ -83,6 +83,10 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                         <input type="text" name="alamat" id="alamat" required value="<?= $row['alamat']; ?>">
                                     </div>
                                     <div class="input_box">
+                                        <label>Pesan <span>*</span></label>
+                                        <input type="text" name="pesan" id="pesan" required placeholder="Isi pesan anda disini...">
+                                    </div>
+                                    <div class="input_box">
                                         <label>Kode pos <span>*</span></label>
                                         <input type="text" name="kodepos" id="kodepos" required value="<?= $row['kodepos']; ?>">
                                     </div>
@@ -246,11 +250,12 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                             $nama_user = $_POST['nama_user'];
                                             $email = $_SESSION["LOGIN"];
                                             $alamat = $_POST['alamat'];
+                                            $pesan = $_POST['pesan'];
                                             $nohp_user = $_POST['nohp_user'];
                                             $id_kabkot = $ongk['nama_kabkot'];
                                             $tanggal_pembelian = date("Y-m-d");
 
-                                            mysqli_query($conn, "INSERT INTO pesan VALUES ('$id_pesan','$id_pelanggan','$nama_user','$email','$nohp_user','$id_kabkot','$alamat','$tanggal_pembelian', '$ordertotal', 'pending', '' )");
+                                            mysqli_query($conn, "INSERT INTO pesan VALUES ('$id_pesan','$id_pelanggan','$nama_user','$email','$nohp_user','$id_kabkot','$alamat', '$pesan', '$tanggal_pembelian', '$ordertotal', 'pending', '' )");
 
                                             $id_pesan_barusan = $conn->insert_id;
 

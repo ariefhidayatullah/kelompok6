@@ -16,26 +16,51 @@
                      <nav class="bradcaump-content">
                          <a class="breadcrumb_item" href="index">Home</a>
                          <span class="brd-separetor">/</span>
-                         <span class="breadcrumb_item active">Upload Design</span>
+                         <span class="breadcrumb_item active">Tentang kami</span>
                      </nav>
                  </div>
              </div>
          </div>
      </div>
- </div>
 
- <head>
-     <title>The King | Tentang Kami</title>
-     <link rel="stylesheet" type="text/css" href="css.css">
- </head>
-
- <body>
 
      <!-- Start Contact Area -->
-     <section class="wn_contact_area bg--white pt--80 pb--80">
+     <section class="wn__team__area pt--40 pb--75 bg--white">
          <div class="container">
              <div class="row">
-                 <div class="col-lg-12 col-12 md-mt-40 sm-mt-40">
+                 <div class="col-lg-4">
+                     <div class="wn__team text-center">
+                         <img src="images/bima.png" width="300">
+                         <div class="content">
+                             <h4>BIMA BAGASKARA</h4>
+                             <p>PO (Product owner)</p>
+                             <ul class="team__social__net">
+                                 <li><a href="#"><i class="icon-social-twitter icons"></i></a></li>
+                                 <li><a href="#"><i class="icon-social-tumblr icons"></i></a></li>
+                                 <li><a href="#"><i class="icon-social-facebook icons"></i></a></li>
+                                 <li><a href="#"><i class="icon-social-linkedin icons"></i></a></li>
+                                 <li><a href="#"><i class="icon-social-pinterest icons"></i></a></li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-lg-4 ">
+                     <div class="wn__team text-center">
+                         <img src="images/rizal.png" width="300">
+                         <div class="content">
+                             <h4>FABRYZAL PRAMUDYA</h4>
+                             <p>Scrum master</p>
+                             <ul class="team__social__net">
+                                 <li><a href="#"><i class="icon-social-twitter icons"></i></a></li>
+                                 <li><a href="#"><i class="icon-social-tumblr icons"></i></a></li>
+                                 <li><a href="#"><i class="icon-social-facebook icons"></i></a></li>
+                                 <li><a href="#"><i class="icon-social-linkedin icons"></i></a></li>
+                                 <li><a href="#"><i class="icon-social-pinterest icons"></i></a></li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-lg-4 md-mt-40 sm-mt-40">
                      <div class="wn__address">
                          <div class="text-center">
                              <h2 class="contact__title">Tentang Kami</h2>
@@ -70,10 +95,27 @@
                          </div>
                      </div>
                  </div>
+                 <div class="col-lg-4">
+                     <div class="wn__team text-center">
+                         <img src="images/gw.jpg" width="300">
+                         <div class="content">
+                             <h4>MOHAMMAD ARIEF HIDAYATULLAH</h4>
+                             <p>Designer - Dev Team - Programmer</p>
+                             <ul class="team__social__net">
+                                 <li><a href="#"><i class="icon-social-twitter icons"></i></a></li>
+                                 <li><a href="#"><i class="icon-social-tumblr icons"></i></a></li>
+                                 <li><a href="#"><i class="icon-social-facebook icons"></i></a></li>
+                                 <li><a href="#"><i class="icon-social-linkedin icons"></i></a></li>
+                                 <li><a href="#"><i class="icon-social-pinterest icons"></i></a></li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
              </div>
          </div>
      </section>
+ </div>
 
-     <?php
-        include 'include/_footer.php';
-        ?>
+ <?php
+    include 'include/_footer.php';
+    ?>
