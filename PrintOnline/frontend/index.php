@@ -110,7 +110,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 	</div>
 
 
-	<section class="wn__newsletter__area">
+	<section class="wn__newsletter__area bg--gray">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 ptb--70">
@@ -147,7 +147,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 					<div class="footer__widget footer__menu">
 						<div class="ft__logo ml-2">
 							<a href="index">
-								<img src="images/logo/icon1.png" alt="logo">
+								<img src="images/logo/icon2.png" alt="logo">
 							</a>
 						</div>
 						<div class="section__title text-center">

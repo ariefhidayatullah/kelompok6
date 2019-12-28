@@ -1,7 +1,6 @@
-<?php 
-$user = mysqli_query($conn, "SELECT * FROM pesan WHERE status_pemesanan = '$email'");
+<?php
+$pesanan = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM pesan WHERE status_pemesanan = 'pembayaran berhasil (menunggu pengiriman dari admin)'"));
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -148,7 +147,7 @@ $user = mysqli_query($conn, "SELECT * FROM pesan WHERE status_pemesanan = '$emai
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
+                                <span class="badge badge-danger badge-counter"><?= $pesanan  ?></span>
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">

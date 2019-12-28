@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2019 at 04:09 AM
+-- Generation Time: Dec 28, 2019 at 11:44 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -60,7 +60,6 @@ CREATE TABLE `bahan` (
   `id_bahan` varchar(5) NOT NULL,
   `nama_bahan` varchar(20) NOT NULL,
   `id_produk` varchar(5) NOT NULL,
-  `stok` int(4) NOT NULL,
   `harga_satuan` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -68,25 +67,25 @@ CREATE TABLE `bahan` (
 -- Dumping data for table `bahan`
 --
 
-INSERT INTO `bahan` (`id_bahan`, `nama_bahan`, `id_produk`, `stok`, `harga_satuan`) VALUES
-('B001', 'FINEL 150 S', '4', 20, 15000),
-('B002', '100 GSM GLOSSY PAPER', '2', 20, 17000),
-('B003', 'MUG INNER COLOUR', '1', 20, 14000),
-('B004', 'MUG LOKAL', '1', 25, 14000),
-('B005', '280 GSM FRONT HI-RES', '3', 25, 21000),
-('B006', '340 GSM FLEXY FRONTL', '3', 25, 25000),
-('B007', '210 GSM GLOSSY PAPER', '5', 23, 13000),
-('B008', '310 GSM GLOSSY PAPER', '5', 24, 14000),
-('B009', 'TRANSPARAN', '6', 23, 8000),
-('B010', 'VINYL', '6', 21, 11000),
-('B011', '100 GSM MATTE PAPER', '7', 25, 14000),
-('B012', '310 GSM GLOSSY PAPER', '7', 26, 17000),
-('B013', 'BANTAL FOTO 45 X 30', '8', 25, 56000),
-('B014', 'BANTAL FOTO 60 X 75', '8', 32, 78000),
-('B015', '340 GSM FLEXY FRONTL', '9', 20, 45000),
-('B016', '400 GSM FLEXY', '9', 25, 88000),
-('B017', '100 GSM MATTE PAPER', '10', 88, 45000),
-('B018', '130 GSM MATTE PAPER', '10', 32, 53000);
+INSERT INTO `bahan` (`id_bahan`, `nama_bahan`, `id_produk`, `harga_satuan`) VALUES
+('B001', 'FINEL 150 S', '4', 15000),
+('B002', '100 GSM GLOSSY PAPER', '2', 17000),
+('B003', 'MUG INNER COLOUR', '1', 14000),
+('B004', 'MUG LOKAL', '1', 14000),
+('B005', '280 GSM FRONT HI-RES', '3', 21000),
+('B006', '340 GSM FLEXY FRONTL', '3', 25000),
+('B007', '210 GSM GLOSSY PAPER', '5', 13000),
+('B008', '310 GSM GLOSSY PAPER', '5', 14000),
+('B009', 'TRANSPARAN', '6', 8000),
+('B010', 'VINYLL', '4', 11000),
+('B011', '100 GSM MATTE PAPER', '7', 14000),
+('B012', '310 GSM GLOSSY PAPER', '7', 17000),
+('B013', 'BANTAL FOTO 45 X 30', '8', 56000),
+('B014', 'BANTAL FOTO 60 X 75', '8', 78000),
+('B015', '340 GSM FLEXY FRONTL', '9', 45000),
+('B016', '400 GSM FLEXY', '9', 88000),
+('B017', '100 GSM MATTE PAPER', '10', 45000),
+('B018', '130 GSM MATTE PAPER', '10', 53000);
 
 -- --------------------------------------------------------
 
@@ -116,7 +115,13 @@ INSERT INTO `detail_pemesanan` (`id_detail`, `id_pesan`, `id_produk`, `id_bahan`
 (12, 47, 1, 'B004', '1', 7, 14000, ''),
 (13, 48, 7, 'B008', '1', 1, 14000, '5e018bec9d931.jpg'),
 (14, 49, 2, 'B002', '1', 1, 17000, '5e01a8e76259c.jpg'),
-(17, 50, 8, 'B014', '1', 1, 78000, '5e01d14f22502.jpg');
+(17, 50, 8, 'B014', '1', 1, 78000, '5e01d14f22502.jpg'),
+(18, 51, 3, 'B006', '1', 3, 25000, '5dfdf86e2bf5a.jpg'),
+(19, 51, 3, 'B005', '1', 3, 21000, '5dfdf8b17bde9.jpg'),
+(20, 52, 7, 'B008', '1', 1, 14000, '5e05d9f72ec92.jpg'),
+(21, 53, 1, 'B004', '1', 4, 14000, '5e05f64d1ccc5.jpg'),
+(22, 54, 9, 'B016', '1', 1, 88000, '5e0610bf9022d.jpg'),
+(23, 54, 5, 'B008', '1', 1, 14000, '5e06c382a022b.jpg');
 
 -- --------------------------------------------------------
 
@@ -370,8 +375,8 @@ INSERT INTO `kabkot` (`id_kabkot`, `id_prov`, `nama_kabkot`, `jne_reg`, `jne_yes
 (3508, 35, 'Kabupaten Lumajang\r', '', ''),
 (3509, 35, 'Kabupaten Jember\r', '', ''),
 (3510, 35, 'Kabupaten Banyuwangi\r', '', ''),
-(3511, 35, 'Kabupaten Bondowoso\r', '', ''),
-(3512, 35, 'Kabupaten Situbondo\r', '', ''),
+(3511, 35, '', '10000', ''),
+(3512, 35, 'Kabupaten Situbondo', '8000', ''),
 (3513, 35, 'Kabupaten Probolinggo\r', '', ''),
 (3514, 35, 'Kabupaten Pasuruan\r', '', ''),
 (3515, 35, 'Kabupaten Sidoarjo\r', '', ''),
@@ -633,7 +638,8 @@ INSERT INTO `kabkot` (`id_kabkot`, `id_prov`, `nama_kabkot`, `jne_reg`, `jne_yes
 (9434, 94, 'Kabupaten Dogiyai\r', '', ''),
 (9435, 94, 'Kabupaten Intan Jaya\r', '', ''),
 (9436, 94, 'Kabupaten Deiyai\r', '', ''),
-(9471, 94, 'Kota Jayapura \r', '', '');
+(9471, 94, 'Kota Jayapura', '120000', ''),
+(9472, 35, 'Kabupaten Bondowoso', '100000', '');
 
 -- --------------------------------------------------------
 
@@ -7419,25 +7425,12 @@ INSERT INTO `kec` (`id_kec`, `id_prov`, `id_kabkot`, `nama_kec`) VALUES
 CREATE TABLE `keranjang` (
   `id_cart` int(11) NOT NULL,
   `email` varchar(40) NOT NULL,
-  `id_produk` varchar(10) NOT NULL,
-  `nama_bahan` varchar(20) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `id_bahan` varchar(10) NOT NULL,
   `harga_satuan` int(7) NOT NULL,
   `qty` int(3) NOT NULL,
   `gambar` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `keranjang`
---
-
-INSERT INTO `keranjang` (`id_cart`, `email`, `id_produk`, `nama_bahan`, `harga_satuan`, `qty`, `gambar`) VALUES
-(84, 'febiola01@gmail.com', '7', '100 GSM MATTE PAPER', 14000, 5, ''),
-(86, 'febiola01@gmail.com', '10', '100 GSM MATTE PAPER', 14000, 2, ''),
-(94, 'arfhdytllh@hotmail.co.id', '1', 'MUG LOKAL', 14000, 17, ''),
-(107, 'arfhdytllh@hotmail.co.id', '1', 'MUG INNER COLOUR', 14000, 4, ''),
-(110, 'ryzaldm@gmail.com', '3', '340 GSM FLEXY FRONTL', 25000, 3, '5dfdf86e2bf5a.jpg'),
-(111, 'ryzaldm@gmail.com', '3', '280 GSM FRONT HI-RES', 21000, 2, '5dfdf8b17bde9.jpg'),
-(124, 'bima.kenong33@gmail.com', '9', '400 GSM FLEXY', 88000, 1, '5e02232be9fd8.jpg');
 
 -- --------------------------------------------------------
 
@@ -7463,7 +7456,9 @@ INSERT INTO `pembayaran` (`id_pembayaran`, `id_pesan`, `nama`, `bank`, `jumlah`,
 (1, 47, 'yudis', 'mandiri', 775, '2019-12-24', 'coba'),
 (2, 47, 'yudis', 'mandiri', 136000, '2019-12-24', '20191224042121download (2'),
 (3, 48, 'bima', 'mandiri', 14000, '2019-12-24', '20191224045518download-1.'),
-(4, 49, 'yudi', 'mandiri', 17000, '2019-12-24', '20191224065843download-1.jpg');
+(4, 49, 'yudi', 'mandiri', 17000, '2019-12-24', '20191224065843download-1.jpg'),
+(5, 51, 'Ilham Robby Sanjaya', 'Mandiri', 257000, '2019-12-26', '20191226042806Screenshot_1.png'),
+(6, 53, 'yudi', 'mandiri', 175, '2019-12-27', '201912271513493610-home_default.jpg');
 
 -- --------------------------------------------------------
 
@@ -7479,6 +7474,7 @@ CREATE TABLE `pesan` (
   `nohp_user` varchar(15) NOT NULL,
   `nama_kabkot` varchar(30) NOT NULL,
   `alamat` varchar(100) NOT NULL,
+  `pesan` varchar(100) NOT NULL,
   `tanggal_pemesanan` date NOT NULL,
   `total_harga` int(7) NOT NULL,
   `status_pemesanan` varchar(70) NOT NULL DEFAULT 'pending',
@@ -7489,18 +7485,10 @@ CREATE TABLE `pesan` (
 -- Dumping data for table `pesan`
 --
 
-INSERT INTO `pesan` (`id_pesan`, `id_user`, `nama_user`, `email`, `nohp_user`, `nama_kabkot`, `alamat`, `tanggal_pemesanan`, `total_harga`, `status_pemesanan`, `resi_pengiriman`) VALUES
-(40, 17, 'yudistiono', 'yudistiono@gmail.com', '086456343545', 'Kabupaten Indramayu', '', '2019-12-23', 29000, 'pending', ''),
-(41, 17, 'yudistiono', 'yudistiono@gmail.com', '086456343545', 'Kabupaten Indramayu', '', '2019-12-23', 21000, 'pending', ''),
-(42, 17, 'yudistiono', 'yudistiono@gmail.com', '086456343545', 'Kabupaten Indramayu', '', '2019-12-23', 21000, 'pending', ''),
-(43, 17, 'yudistiono', 'yudistiono@gmail.com', '086456343545', 'Kabupaten Indramayu', '', '2019-12-23', 136000, 'pending', ''),
-(44, 17, 'yudistiono', 'yudistiono@gmail.com', '086456343545', 'Kabupaten Indramayu', '', '2019-12-23', 136000, 'pending', ''),
-(45, 17, 'yudistiono', 'yudistiono@gmail.com', '086456343545', 'Kabupaten Indramayu', '', '2019-12-23', 136000, 'pending', ''),
-(46, 17, 'yudistiono', 'yudistiono@gmail.com', '086456343545', 'Kabupaten Indramayu', '', '2019-12-23', 136000, 'pending', ''),
-(47, 17, 'yudistiono', 'yudistiono@gmail.com', '086456343545', 'Kabupaten Indramayu', '', '2019-12-23', 136000, 'pembayaran berhasil (menunggu pengiriman dari admin)', ''),
-(48, 21, 'Bima Bagaskara', 'bima.kenong33@gmail.com', '081232434656', '', '', '2019-12-24', 14000, 'barang sedang di proses', ''),
-(49, 21, 'Bima Bagaskara', 'bima.kenong33@gmail.com', '081232434656', '', '', '2019-12-24', 17000, 'barang dikirim', '3213123123123'),
-(50, 21, 'Bima Bagaskara', 'bima.kenong33@gmail.com', '081232434656', 'Kabupaten Aceh Singkil', 'Kecamatan Silir Agung', '2019-12-24', 141000, 'pending', '');
+INSERT INTO `pesan` (`id_pesan`, `id_user`, `nama_user`, `email`, `nohp_user`, `nama_kabkot`, `alamat`, `pesan`, `tanggal_pemesanan`, `total_harga`, `status_pemesanan`, `resi_pengiriman`) VALUES
+(52, 22, 'bensarombenn', 'bensaromben@gmail.com', '087887879907', 'Kabupaten Aceh Singkil', 'jln. situbon', '', '2019-12-27', 77000, 'pending', ''),
+(53, 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Kabupaten Simeulue', 'Kecamatan Panji', '', '2019-12-27', 175000, 'pembayaran berhasil (menunggu pengiriman dari admin)', ''),
+(54, 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Kabupaten Simeulue', 'Kecamatan Panji', '', '2019-12-28', 221000, 'pending', '');
 
 -- --------------------------------------------------------
 
@@ -7511,7 +7499,6 @@ INSERT INTO `pesan` (`id_pesan`, `id_user`, `nama_user`, `email`, `nohp_user`, `
 CREATE TABLE `produk` (
   `id_produk` int(11) NOT NULL,
   `jenis_produk` varchar(20) NOT NULL,
-  `jenis_bahan` varchar(25) NOT NULL,
   `deskripsi` varchar(200) NOT NULL,
   `harga` int(11) NOT NULL,
   `ukuran` varchar(30) NOT NULL,
@@ -7522,17 +7509,17 @@ CREATE TABLE `produk` (
 -- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `jenis_produk`, `jenis_bahan`, `deskripsi`, `harga`, `ukuran`, `gambar`) VALUES
-(1, 'MUG', 'MUG INNER COLOUR', 'Mug merupakan jenis alat minum yang sering digunakan untuk kebutuhan sehari-hari. Namun, kini mug juga dapat Anda manfaatkan sebagai alat promosi, yang bisa dicustom menggunakan identitas perusahaan.', 14000, '-', '5de1248d6d05b.jpg'),
-(2, 'Kalender', '100 GSM GLOSSY PAPER', 'Tak hanya sebagai kebutuhan pengingat tanggal, mencetak kalender juga dapat dijadikan sebagai media untuk memperkenalkan identitas atau memperkuat branding perusaahan Anda.', 17000, '10 HALAMAN', '5de124549dfdb.jpg'),
-(3, 'Spanduk', '280 GSM FRONT HI-RES', 'Spanduk adalah alat pemasaran favorit untuk kebutuhan berbagai promosi. Dengan harga cetak yang cukup murah, Anda sudah dapat mempromosikan berbagai hal pada spanduk yang terpasang di area publik.', 21000, '100 X 200 CM', '5de1252969ca2.jpg'),
-(4, 'X-Banner', '<br /><b>Notice</b>:  Und', 'X â€“ Banner cukup efektif untuk Anda gunakan sebagai alat atau sarana promosi. Alat promosi ini menggunakan penyangga berbahan fiber dengan bentuk huruf â€œXâ€, yang dapat berdiri cukup kokoh untuk ', 0, '25 X 40 CM', '5de125713ba42.jpg'),
-(5, 'Kartu Nama', '210 GSM GLOSSY PAPER', 'Kartu nama bukan sekadar tanda pengenal, dalam dunia bisnis penggunaan kartu nama sangat penting untuk menambah koneksi dan relasi.', 13000, '9 X 5.5 CM', '5de125d8dd410.jpg'),
-(6, 'Stiker', '', 'Sticker dapat digunakan sebagai alat promosi usaha Anda, saat sedang mengadakan kegiatan promosi perusahaan. Anda dapat memberikan sticker tersebut kepada banyak orang, agar dapat terpasang dan terlih', 8000, 'A3 SHEET', '5de12685b1b23.jpg'),
-(7, 'Undangan', '100 GSM MATTE PAPER', 'Dalam dunia bisnis, undangan untuk berbagai kegiatan perusahaan, seperti acara peresmian dan berperan penting untuk menjalin hubungan baik kepada rekan bisnis, atau klien.', 17000, '5 X 7 INCH', '5de1419611c76.jpg'),
-(8, 'Bantal Foto', 'BANTAL FOTO 45 X 30', 'Anda dapat memanfaatkan bantal untuk memajang foto, baik untuk keperluan personal, keperluan bisnis,usaha, ataupun digunakan sebagai hadiah untuk orang-orang terdekat.', 56000, '45 X 30', '5de27266a821c.jpg'),
-(9, 'Brosur', '<br /><b>Notice</b>:  Und', 'Beragam produk cetak dapat digunakan sebagai media promosi, salah satunya dengan menggunakan brosur. Melalui brosur, informasi terkait promosi produk dan lainnya dapat tersampaikan secara jelas dan le', 0, 'A4 SHEET', '5de292b0dc4e0.jpg'),
-(10, 'Kop Surat', '', 'Kop surat adalah hal penting yang harus dimiliki oleh suatu perusahaan/instansi dalam urusan surat menyurat. Dengan menggunakan kop surat, penerima surat dengan mudah mengatahui surat yang Anda kirim ', 0, 'A4 SHEET', '5de293a692051.jpg');
+INSERT INTO `produk` (`id_produk`, `jenis_produk`, `deskripsi`, `harga`, `ukuran`, `gambar`) VALUES
+(1, 'MUG', 'Mug merupakan jenis alat minum yang sering digunakan untuk kebutuhan sehari-hari. Namun, kini mug juga dapat Anda manfaatkan sebagai alat promosi, yang bisa dicustom menggunakan identitas perusahaan.', 14000, '-', '5de1248d6d05b.jpg'),
+(2, 'Kalender', 'Tak hanya sebagai kebutuhan pengingat tanggal, mencetak kalender juga dapat dijadikan sebagai media untuk memperkenalkan identitas atau memperkuat branding perusaahan Anda.', 17000, '10 HALAMAN', '5de124549dfdb.jpg'),
+(3, 'Spanduk', 'Spanduk adalah alat pemasaran favorit untuk kebutuhan berbagai promosi. Dengan harga cetak yang cukup murah, Anda sudah dapat mempromosikan berbagai hal pada spanduk yang terpasang di area publik.', 21000, '100 X 200 CM', '5de1252969ca2.jpg'),
+(4, 'X-Banner', 'X â€“ Banner cukup efektif untuk Anda gunakan sebagai alat atau sarana promosi. Alat promosi ini menggunakan penyangga berbahan fiber dengan bentuk huruf â€œXâ€, yang dapat berdiri cukup kokoh untuk ', 0, '25 X 40 CM', '5de125713ba42.jpg'),
+(5, 'Kartu Nama', 'Kartu nama bukan sekadar tanda pengenal, dalam dunia bisnis penggunaan kartu nama sangat penting untuk menambah koneksi dan relasi.', 13000, '9 X 5.5 CM', '5de125d8dd410.jpg'),
+(6, 'Stiker', 'Sticker dapat digunakan sebagai alat promosi usaha Anda, saat sedang mengadakan kegiatan promosi perusahaan. Anda dapat memberikan sticker tersebut kepada banyak orang, agar dapat terpasang dan terlih', 8000, 'A3 SHEET', '5de12685b1b23.jpg'),
+(7, 'Undangan', 'Dalam dunia bisnis, undangan untuk berbagai kegiatan perusahaan, seperti acara peresmian dan berperan penting untuk menjalin hubungan baik kepada rekan bisnis, atau klien.', 17000, '5 X 7 INCH', '5de1419611c76.jpg'),
+(8, 'Bantal Foto', 'Anda dapat memanfaatkan bantal untuk memajang foto, baik untuk keperluan personal, keperluan bisnis,usaha, ataupun digunakan sebagai hadiah untuk orang-orang terdekat.', 56000, '45 X 30', '5de27266a821c.jpg'),
+(9, 'Brosur', 'Beragam produk cetak dapat digunakan sebagai media promosi, salah satunya dengan menggunakan brosur. Melalui brosur, informasi terkait promosi produk dan lainnya dapat tersampaikan secara jelas dan le', 0, 'A4 SHEET', '5de292b0dc4e0.jpg'),
+(10, 'Kop Surat', 'Kop surat adalah hal penting yang harus dimiliki oleh suatu perusahaan/instansi dalam urusan surat menyurat. Dengan menggunakan kop surat, penerima surat dengan mudah mengatahui surat yang Anda kirim ', 0, 'A4 SHEET', '5de293a692051.jpg');
 
 -- --------------------------------------------------------
 
@@ -7612,9 +7599,9 @@ INSERT INTO `user` (`id_user`, `nama_user`, `email`, `password`, `jenis_kelamin`
 (12, 'fabryzal adam pramudya', 'ryzaldm@gmail.com', 'Adam2408', 'L', '082229024685', '11', '1101', '1101010', 'Jl. R.E Martadinata no 17, Dabasah', '68211'),
 (17, 'yudistiono', 'yudistiono@gmail.com', 'Yudis1234', 'L', '086456343545', '32', '3212', '3212050', 'Sumber Pandan', '67212'),
 (18, 'Febiola Putri Yunita', 'febiola01@gmail.com', 'Febiola01', 'P', '084455234234', '11', '1101', '1101010', 'Dusun Sawahan, Genteng Kulon', '68212'),
-(20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '260600Arif', 'L', '087789653245', '11', '1102', '1102090', 'Kecamatan Panji', '62322'),
+(20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '260600Arif', 'L', '087789653245', '11', '1101', '1101020', 'Kecamatan Panji', '62322'),
 (21, 'Bima Bagaskara', 'bima.kenong33@gmail.com', 'Becak5425411', 'L', '081232434656', '13', '1374', '1374010', 'Kecamatan Silir Agung', '67654'),
-(22, 'bensaromben', 'bensaromben@gmail.com', 'Ari12345', 'l', '087887879907', '35', '3511', '3511070', 'jln. situbon', '68223');
+(22, 'bensarom', 'bensaromben@gmail.com', 'Ari12345', 'l', '087887879907', '11', '1102', '1102021', 'jln. situbon', '68223');
 
 --
 -- Indexes for dumped tables
@@ -7658,7 +7645,8 @@ ALTER TABLE `kec`
 -- Indexes for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  ADD PRIMARY KEY (`id_cart`);
+  ADD PRIMARY KEY (`id_cart`),
+  ADD KEY `id_produk` (`id_produk`);
 
 --
 -- Indexes for table `pembayaran`
@@ -7699,37 +7687,37 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `detail_pemesanan`
 --
 ALTER TABLE `detail_pemesanan`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `kabkot`
 --
 ALTER TABLE `kabkot`
-  MODIFY `id_kabkot` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9472;
+  MODIFY `id_kabkot` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9473;
 
 --
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `pesan`
 --
 ALTER TABLE `pesan`
-  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user`

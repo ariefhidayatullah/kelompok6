@@ -52,6 +52,9 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
                                         <div class="total_amount text-right">
                                             <span><?= $keranjang; ?> Pesanan dalam keranjang</span>
                                         </div>
+                                        <? if ($keranjang == 0) {
+                                            exit();
+                                        } ?>
                                         <div class="mini_action checkout">
                                             <a class="checkout__btn" href="chekout">Checkout Sekarang</a>
                                         </div>
