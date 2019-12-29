@@ -63,7 +63,7 @@ if (isset($_POST["submit"])) {
 			</div>
 		</div>
 	</div>
-	
+
 
 	<section class="my_account_area pt--80 pb--55 bg--white">
 		<div class="container">
@@ -160,7 +160,7 @@ if (isset($_POST["submit"])) {
 									</div>
 									<div class="input__box">
 										<label for="kodepos">Kode pos <span>*</span></label>
-										<input type="text" name="kodepos" id="kodepos" placeholder="Masukkan jenis kelamin anda..." required="" maxlength="12" autofocus>
+										<input type="text" name="kodepos" id="kodepos" placeholder="Masukkan kode pos anda..." required="" maxlength="12" autofocus>
 										<small class="kodepos" style="color: red;"></small>
 									</div>
 									<div class="input__box">

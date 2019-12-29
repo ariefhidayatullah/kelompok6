@@ -157,7 +157,7 @@ if (!isset($_SESSION['login'])) {
                                     <!-- Dropdown - Alerts -->
                                     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                         <h6 class="dropdown-header">
-                                            Alerts Center
+                                            Notifikasi pemesanan
                                         </h6>
                                         <a class="dropdown-item d-flex align-items-center" href="../pemesanan/detailpemesanan.php?id=<?= $row['id_pesan']; ?>">
                                             <div class="mr-3">
@@ -173,10 +173,13 @@ if (!isset($_SESSION['login'])) {
                                     </div>
                                 <?php endforeach; ?>
                             </li>
+
+                            <div class="topbar-divider d-none d-sm-block"></div>
+
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $nama_user; ?></span>
-                                    <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                                    <img class="img-profile rounded-circle" src="../assets/img/icon.png">
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
