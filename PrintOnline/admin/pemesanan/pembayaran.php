@@ -68,9 +68,13 @@ $detailpesan = mysqli_fetch_assoc($pesan);
 
 <?php
 if (isset($_POST["proses"])) {
+    $username = $_SESSION['login'];
+    $result1 = mysqli_query($conn, "SELECT * FROM admin WHERE username = '$username'");
+    $row1 = mysqli_fetch_array($result1);
+    $id_admin = $row1["id_admin"];
     $resi = $_POST["resi"];
     $status = $_POST["status"];
-    $conn->query("UPDATE pesan SET resi_pengiriman = '$resi', status_pemesanan = '$status' WHERE id_pesan = '$id_pemesanan'");
+    $conn->query("UPDATE pesan SET id_admin = '$id_admin', resi_pengiriman = '$resi', status_pemesanan = '$status' WHERE id_pesan = '$id_pemesanan'");
 
     echo "<script>alert('data pemesanan di proses');</script>";
     echo "<script>location='pemesanan.php';</script>";

@@ -41,12 +41,12 @@ if (isset($_POST["submit"])) {
 }
 ?>
 
-<!-- Main wrapper -->
+
 <div class="wrapper" id="wrapper">
-	<!-- Header -->
+
 	<?php include 'include/navbar.php'; ?>
-	<!-- //Header -->
-	<!-- Start Bradcaump area -->
+
+
 	<div class="ht__bradcaump__area bg-image--1">
 		<div class="container">
 			<div class="row">
@@ -63,8 +63,8 @@ if (isset($_POST["submit"])) {
 			</div>
 		</div>
 	</div>
-	<!-- End Bradcaump area -->
-	<!-- Start My Account Area -->
+	
+
 	<section class="my_account_area pt--80 pb--55 bg--white">
 		<div class="container">
 			<div class="row">
@@ -191,9 +191,7 @@ if (isset($_POST["submit"])) {
 			</div>
 		</div>
 	</section>
-
 </div>
-<!-- //Main wrapper -->
 <script>
 	$(document).ready(function() {
 		$('.datauser').hide();

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Des 2019 pada 03.01
--- Versi server: 10.4.6-MariaDB
--- Versi PHP: 7.3.9
+-- Generation Time: Dec 29, 2019 at 05:22 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -38,100 +38,103 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `nama_admin`, `username`, `password`, `email`, `nohp_admin`) VALUES
-('ADM001', 'Erlan Subowo', '', '', 'erlansubowo@gmail.com', '082263736371'),
-('ADM002', 'Bima Bagaskara', '', '', 'bimakenong22@gmail.com', '087757221345'),
-('ADM003', 'mohammad arief hidayatullah', 'admin', '$2y$10$jHxQTAYyz.0JOoqxW2SsyuR', 'mzboy2606@gmail.com', ''),
-('ADM004', 'arfhdytllh', 'arfhdytllh', '$2y$10$uPHzVkO0Rd1F7Wj.AVuncuhGaNwiia1zjMaRnOMj6aJka6vJiYFha', 'mzboy2606@gmail.com', '087887879907'),
-('ADM005', 'mohammad arief hidayatullah', 'joss', '$2y$10$65qNMGdZ7FdkmxBWo72v3.vVyjSj5jwT.BY/713vVeajYCTPAxwxa', 'mzboy2606@gmail.com', '087887879907'),
-('ADM006', 'taufik kasrun', 'hahafik', '$2y$10$.t0nKsQHuUacjTRj4LTt7.nELEaUS8KXVs7nlsCKAVQ6zIIbbskES', '', ''),
-('ADM007', 'refa', 'aku@gmail.com', '$2y$10$b.OLa6qn5SxfPAyRITV.VO0SFd.9.Sa5pmfdl/3RjUyFXISsSdKCC', 'aku@gmail.com', '081230271660');
+('ADM008', 'admin', 'admin', '$2y$10$q0YPMqDT3ymj3sJIsj1WFuKbwLLNxQEDpMBP3iM6x5JBBM/gQosnW', 'admin@gmail.com', '087887879907');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bahan`
+-- Table structure for table `bahan`
 --
 
 CREATE TABLE `bahan` (
   `id_bahan` varchar(5) NOT NULL,
   `nama_bahan` varchar(20) NOT NULL,
   `id_produk` varchar(5) NOT NULL,
-  `stok` int(4) NOT NULL,
   `harga_satuan` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `bahan`
+-- Dumping data for table `bahan`
 --
 
-INSERT INTO `bahan` (`id_bahan`, `nama_bahan`, `id_produk`, `stok`, `harga_satuan`) VALUES
-('B001', 'FINEL 150 S', '4', 20, 15000),
-('B002', '100 GSM GLOSSY PAPER', '2', 20, 17000),
-('B003', 'MUG INNER COLOUR', '1', 20, 14000),
-('B004', 'MUG LOKAL', '1', 25, 14000),
-('B005', '280 GSM FRONT HI-RES', '3', 25, 21000),
-('B006', '340 GSM FLEXY FRONTL', '3', 25, 25000),
-('B007', '210 GSM GLOSSY PAPER', '5', 23, 13000),
-('B008', '310 GSM GLOSSY PAPER', '5', 24, 14000),
-('B009', 'TRANSPARAN', '6', 23, 8000),
-('B010', 'VINYL', '6', 21, 11000),
-('B011', '100 GSM MATTE PAPER', '7', 25, 14000),
-('B012', '310 GSM GLOSSY PAPER', '7', 26, 17000),
-('B013', 'BANTAL FOTO 45 X 30', '8', 25, 56000),
-('B014', 'BANTAL FOTO 60 X 75', '8', 32, 78000),
-('B015', '340 GSM FLEXY FRONTL', '9', 20, 45000),
-('B016', '400 GSM FLEXY', '9', 25, 88000),
-('B017', '100 GSM MATTE PAPER', '10', 88, 45000),
-('B018', '130 GSM MATTE PAPER', '10', 32, 53000);
+INSERT INTO `bahan` (`id_bahan`, `nama_bahan`, `id_produk`, `harga_satuan`) VALUES
+('B001', 'FINEL 150 S', '4', 15000),
+('B002', '100 GSM GLOSSY PAPER', '2', 17000),
+('B003', 'MUG INNER COLOUR', '1', 14000),
+('B004', 'MUG LOKAL', '1', 14000),
+('B005', '280 GSM FRONT HI-RES', '3', 21000),
+('B006', '340 GSM FLEXY FRONTL', '3', 25000),
+('B007', '210 GSM GLOSSY PAPER', '5', 13000),
+('B008', '310 GSM GLOSSY PAPER', '5', 14000),
+('B009', 'TRANSPARAN', '6', 8000),
+('B010', 'VINYLL', '4', 11000),
+('B011', '100 GSM MATTE PAPER', '7', 14000),
+('B012', '310 GSM GLOSSY PAPER', '7', 17000),
+('B013', 'BANTAL FOTO 45 X 30', '8', 56000),
+('B014', 'BANTAL FOTO 60 X 75', '8', 78000),
+('B015', '340 GSM FLEXY FRONTL', '9', 45000),
+('B016', '400 GSM FLEXY', '9', 88000),
+('B017', '100 GSM MATTE PAPER', '10', 45000),
+('B018', '130 GSM MATTE PAPER', '10', 53000);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_pemesanan`
+-- Table structure for table `detail_pemesanan`
 --
 
 CREATE TABLE `detail_pemesanan` (
   `id_detail` int(11) NOT NULL,
   `id_pesan` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
-  `jenis_produk` varchar(50) NOT NULL,
-  `id_bahan` varchar(5) NOT NULL,
-  `ukuran` varchar(10) NOT NULL,
-  `qty` int(3) NOT NULL,
-  `harga_satuan` int(6) NOT NULL
+  `id_bahan` varchar(10) NOT NULL,
+  `ukuran` varchar(20) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `harga_satuan` int(11) NOT NULL,
+  `desain` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detail_pemesanan`
+--
+
+INSERT INTO `detail_pemesanan` (`id_detail`, `id_pesan`, `id_produk`, `id_bahan`, `ukuran`, `qty`, `harga_satuan`, `desain`) VALUES
+(9, 46, 2, 'B002', '1', 1, 17000, ''),
+(10, 46, 1, 'B004', '1', 7, 14000, ''),
+(11, 47, 2, 'B002', '1', 1, 17000, ''),
+(12, 47, 1, 'B004', '1', 7, 14000, ''),
+(13, 48, 7, 'B008', '1', 1, 14000, '5e018bec9d931.jpg'),
+(14, 49, 2, 'B002', '1', 1, 17000, '5e01a8e76259c.jpg'),
+(17, 50, 8, 'B014', '1', 1, 78000, '5e01d14f22502.jpg'),
+(18, 51, 3, 'B006', '1', 3, 25000, '5dfdf86e2bf5a.jpg'),
+(19, 51, 3, 'B005', '1', 3, 21000, '5dfdf8b17bde9.jpg'),
+(20, 52, 7, 'B008', '1', 1, 14000, '5e05d9f72ec92.jpg'),
+(21, 53, 1, 'B004', '1', 4, 14000, '5e05f64d1ccc5.jpg'),
+(22, 54, 9, 'B016', '1', 1, 88000, '5e0610bf9022d.jpg'),
+(23, 54, 5, 'B008', '1', 1, 14000, '5e06c382a022b.jpg'),
+(24, 55, 2, 'B002', '1', 1, 17000, '5e07565cedd89.jpg'),
+(25, 56, 1, 'B004', '1', 6, 14000, '5e08066077af9.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dp`
---
-
-CREATE TABLE `dp` (
-  `id_pesan` int(11) NOT NULL,
-  `dp` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `kabkot`
+-- Table structure for table `kabkot`
 --
 
 CREATE TABLE `kabkot` (
   `id_kabkot` int(4) NOT NULL,
   `id_prov` int(2) NOT NULL,
-  `nama_kabkot` char(40) NOT NULL,
+  `nama_kabkot` varchar(40) NOT NULL,
   `jne_reg` varchar(15) NOT NULL,
   `jne_yes` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kabkot`
+-- Dumping data for table `kabkot`
 --
 
 INSERT INTO `kabkot` (`id_kabkot`, `id_prov`, `nama_kabkot`, `jne_reg`, `jne_yes`) VALUES
@@ -368,8 +371,8 @@ INSERT INTO `kabkot` (`id_kabkot`, `id_prov`, `nama_kabkot`, `jne_reg`, `jne_yes
 (3508, 35, 'Kabupaten Lumajang\r', '', ''),
 (3509, 35, 'Kabupaten Jember\r', '', ''),
 (3510, 35, 'Kabupaten Banyuwangi\r', '', ''),
-(3511, 35, 'Kabupaten Bondowoso\r', '', ''),
-(3512, 35, 'Kabupaten Situbondo\r', '', ''),
+(3511, 35, '', '10000', ''),
+(3512, 35, 'Kabupaten Situbondo', '8000', ''),
 (3513, 35, 'Kabupaten Probolinggo\r', '', ''),
 (3514, 35, 'Kabupaten Pasuruan\r', '', ''),
 (3515, 35, 'Kabupaten Sidoarjo\r', '', ''),
@@ -631,23 +634,24 @@ INSERT INTO `kabkot` (`id_kabkot`, `id_prov`, `nama_kabkot`, `jne_reg`, `jne_yes
 (9434, 94, 'Kabupaten Dogiyai\r', '', ''),
 (9435, 94, 'Kabupaten Intan Jaya\r', '', ''),
 (9436, 94, 'Kabupaten Deiyai\r', '', ''),
-(9471, 94, 'Kota Jayapura \r', '', '');
+(9471, 94, 'Kota Jayapura', '120000', ''),
+(9472, 35, 'Kabupaten Bondowoso', '100000', '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kec`
+-- Table structure for table `kec`
 --
 
 CREATE TABLE `kec` (
   `id_kec` int(4) NOT NULL,
   `id_prov` int(2) NOT NULL,
   `id_kabkot` int(4) NOT NULL,
-  `nama_kec` char(40) NOT NULL
+  `nama_kec` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kec`
+-- Dumping data for table `kec`
 --
 
 INSERT INTO `kec` (`id_kec`, `id_prov`, `id_kabkot`, `nama_kec`) VALUES
@@ -7411,139 +7415,89 @@ INSERT INTO `kec` (`id_kec`, `id_prov`, `id_kabkot`, `nama_kec`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `keranjang`
+-- Table structure for table `keranjang`
 --
 
 CREATE TABLE `keranjang` (
   `id_cart` int(11) NOT NULL,
   `email` varchar(40) NOT NULL,
-  `id_produk` varchar(10) NOT NULL,
-  `nama_bahan` varchar(20) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `id_bahan` varchar(10) NOT NULL,
   `harga_satuan` int(7) NOT NULL,
-  `qty` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `keranjang`
---
-
-INSERT INTO `keranjang` (`id_cart`, `email`, `id_produk`, `nama_bahan`, `harga_satuan`, `qty`) VALUES
-(84, 'febiola01@gmail.com', '7', '100 GSM MATTE PAPER', 14000, 5),
-(86, 'febiola01@gmail.com', '10', '100 GSM MATTE PAPER', 14000, 3),
-(87, 'arfhdytllh@hotmail.co.id', '2', '100 GSM GLOSSY PAPER', 17000, 4),
-(88, 'arfhdytllh@hotmail.co.id', '5', '210 GSM GLOSSY PAPER', 13000, 3),
-(92, 'arfhdytllh@hotmail.co.id', '1', 'MUG INNER COLOUR', 14000, 7),
-(94, 'arfhdytllh@hotmail.co.id', '1', 'MUG LOKAL', 14000, 3),
-(102, 'arfhdytllh@hotmail.co.id', '1', 'MUG INNER COLOUR', 14000, 1),
-(103, 'yudistiono@gmail.com', '4', 'FINEL 150 S', 15000, 0);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `masuk_stokbahan`
---
-
-CREATE TABLE `masuk_stokbahan` (
-  `id_masuk` varchar(7) NOT NULL,
-  `id_admin` varchar(7) NOT NULL,
-  `id_bahan` varchar(7) NOT NULL,
-  `tgl_masuk` date NOT NULL,
-  `stok_baru` int(4) NOT NULL
+  `qty` int(3) NOT NULL,
+  `gambar` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ongkir`
---
-
-CREATE TABLE `ongkir` (
-  `kodepos` varchar(7) NOT NULL,
-  `ongkir` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `ongkir`
---
-
-INSERT INTO `ongkir` (`kodepos`, `ongkir`) VALUES
-('68211', 2000),
-('68212', 5000);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pembayaran`
+-- Table structure for table `pembayaran`
 --
 
 CREATE TABLE `pembayaran` (
-  `id_bayar` int(11) NOT NULL,
+  `id_pembayaran` int(11) NOT NULL,
   `id_pesan` int(11) NOT NULL,
-  `email` varchar(40) NOT NULL,
-  `alamat` varchar(80) NOT NULL,
-  `kodepos` varchar(7) NOT NULL,
-  `total_bayar` int(5) NOT NULL,
-  `total_harga` int(7) NOT NULL,
-  `status` varchar(12) NOT NULL
+  `nama` varchar(25) NOT NULL,
+  `bank` varchar(25) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `bukti` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pembayaran`
+-- Dumping data for table `pembayaran`
 --
 
-INSERT INTO `pembayaran` (`id_bayar`, `id_pesan`, `email`, `alamat`, `kodepos`, `total_bayar`, `total_harga`, `status`) VALUES
-(1, 1, 'ryzaldm@gmail.com', 'Jl R.E Martadinata no 17', '68211', 136000, 136000, 'Lunas'),
-(2, 2, 'bima.kenong33@gmail.com', 'Jl. Ir Soekarno no 203 Blok B', '68212', 124000, 124000, 'Lunas'),
-(3, 5, 'yudistiono@gmail.com', 'Jl. Raya Jember - Bondowoso, Sumber Pandan.', '68211', 0, 75000, 'Dibatalkan'),
-(4, 8, 'febiola01@gmail.com', 'Jl. Raya Genteng, Dusun Sawahan, Genteng Kulon', '68212', 232000, 232000, 'Lunas'),
-(5, 11, 'arfhdytllh@hotmail.co.id', 'Jl Raya Bondowoso-Situbondo, Kelurahan Kalitapen', '68211', 210000, 210000, 'Lunas'),
-(6, 7, 'bima.kenong33@gmail.com', 'Jl R.A Kartini no 153, Kelurahan Dabaasah', '68212', 0, 120000, 'Dibatalkan'),
-(7, 13, 'ryzaldm@gmail.com', 'Jl. R.E Martadinata gg IV no 17, Kelurahan Dabasah', '68211', 90000, 180000, 'Belum Lunas'),
-(8, 12, 'febiola01@gmail.com', 'Jl.KH. Hasyim Asyari gg 5 no 177 Keluraha Blindungan', '68212', 0, 56000, 'Dibatalkan'),
-(9, 14, 'yudistiono@gmail.com', 'Jl. Raya Jember - Bondowoso, Sumber Pandan', '68211', 50000, 96000, 'Belum Lunas');
+INSERT INTO `pembayaran` (`id_pembayaran`, `id_pesan`, `nama`, `bank`, `jumlah`, `tanggal`, `bukti`) VALUES
+(1, 47, 'yudis', 'mandiri', 775, '2019-12-24', 'coba'),
+(2, 47, 'yudis', 'mandiri', 136000, '2019-12-24', '20191224042121download (2'),
+(3, 48, 'bima', 'mandiri', 14000, '2019-12-24', '20191224045518download-1.'),
+(4, 49, 'yudi', 'mandiri', 17000, '2019-12-24', '20191224065843download-1.jpg'),
+(5, 51, 'Ilham Robby Sanjaya', 'Mandiri', 257000, '2019-12-26', '20191226042806Screenshot_1.png'),
+(6, 53, 'yudi', 'mandiri', 175, '2019-12-27', '201912271513493610-home_default.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pesan`
+-- Table structure for table `pesan`
 --
 
 CREATE TABLE `pesan` (
   `id_pesan` int(11) NOT NULL,
+  `id_admin` varchar(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `nama_user` varchar(30) NOT NULL,
   `email` varchar(40) NOT NULL,
   `nohp_user` varchar(15) NOT NULL,
   `nama_kabkot` varchar(30) NOT NULL,
+  `alamat` varchar(100) NOT NULL,
+  `pesan` varchar(100) NOT NULL,
   `tanggal_pemesanan` date NOT NULL,
-  `total_harga` int(7) NOT NULL
+  `total_harga` int(7) NOT NULL,
+  `status_pemesanan` varchar(70) NOT NULL DEFAULT 'pending',
+  `resi_pengiriman` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pesan`
+-- Dumping data for table `pesan`
 --
 
-INSERT INTO `pesan` (`id_pesan`, `id_user`, `nama_user`, `email`, `nohp_user`, `nama_kabkot`, `tanggal_pemesanan`, `total_harga`) VALUES
-(1, 12, 'fabryzal adam pramudya', 'ryzaldm@gmail.com', '082229024685', 'Bondowoso', '2019-11-04', 136000),
-(2, 21, 'Bima Bagaskara', 'bima.kenong33@gmail.com', '081232434656', 'Banyuwangi', '2019-11-05', 124000),
-(5, 17, 'yudistiono', 'yudistiono@gmail.com', '086456343545', 'Bondowoso', '2019-11-11', 75000),
-(7, 21, 'Bima Bagaskara', 'bima.kenong33@gmail.com', '086456343545', 'Banyuwangi', '2019-11-15', 120000),
-(8, 18, 'Febiola Putri Yunita', 'febiola01@gmail.com', '084455234234', 'Banyuwangi', '2019-12-23', 232000),
-(11, 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Bondowoso', '2019-12-01', 210000),
-(12, 18, 'Febiola Putri Yunita', 'febiola01@gmail.com', '084455234234', 'Banyuwangi', '2019-12-05', 56000),
-(13, 12, 'fabryzal adam pramudya', 'ryzaldm@gmail.com', '082229024685', 'Bondowoso', '2019-12-11', 180000),
-(14, 17, 'yudistiono', 'yudistiono@gmail.com', '086456343545', 'Bondowoso', '2019-12-11', 96000);
+INSERT INTO `pesan` (`id_pesan`, `id_admin`, `id_user`, `nama_user`, `email`, `nohp_user`, `nama_kabkot`, `alamat`, `pesan`, `tanggal_pemesanan`, `total_harga`, `status_pemesanan`, `resi_pengiriman`) VALUES
+(52, '0', 22, 'bensarombenn', 'bensaromben@gmail.com', '087887879907', 'Kabupaten Aceh Singkil', 'jln. situbon', '', '2019-12-27', 77000, 'pending', ''),
+(53, 'ADM001', 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Kabupaten Simeulue', 'Kecamatan Panji', '', '2019-12-27', 175000, 'batal', ''),
+(54, '0', 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Kabupaten Simeulue', 'Kecamatan Panji', '', '2019-12-28', 221000, 'pending', ''),
+(55, '0', 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Kabupaten Simeulue', 'Kecamatan Panji', 'untuk kaleender font nya harus bagus yaa', '2019-12-28', 136000, 'pending', ''),
+(56, '0', 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Kabupaten Simeulue', 'Kecamatan Panji', 'kosong', '2019-12-29', 203000, 'pending', '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk`
+-- Table structure for table `produk`
 --
 
 CREATE TABLE `produk` (
   `id_produk` int(11) NOT NULL,
   `jenis_produk` varchar(20) NOT NULL,
-  `jenis_bahan` varchar(25) NOT NULL,
   `deskripsi` varchar(200) NOT NULL,
   `harga` int(11) NOT NULL,
   `ukuran` varchar(30) NOT NULL,
@@ -7551,34 +7505,34 @@ CREATE TABLE `produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `produk`
+-- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `jenis_produk`, `jenis_bahan`, `deskripsi`, `harga`, `ukuran`, `gambar`) VALUES
-(1, 'MUG', 'MUG INNER COLOUR', 'Mug merupakan jenis alat minum yang sering digunakan untuk kebutuhan sehari-hari. Namun, kini mug juga dapat Anda manfaatkan sebagai alat promosi, yang bisa dicustom menggunakan identitas perusahaan.', 14000, '-', '5de1248d6d05b.jpg'),
-(2, 'Kalender', '100 GSM GLOSSY PAPER', 'Tak hanya sebagai kebutuhan pengingat tanggal, mencetak kalender juga dapat dijadikan sebagai media untuk memperkenalkan identitas atau memperkuat branding perusaahan Anda.', 17000, '10 HALAMAN', '5de124549dfdb.jpg'),
-(3, 'Spanduk', '280 GSM FRONT HI-RES', 'Spanduk adalah alat pemasaran favorit untuk kebutuhan berbagai promosi. Dengan harga cetak yang cukup murah, Anda sudah dapat mempromosikan berbagai hal pada spanduk yang terpasang di area publik.', 21000, '100 X 200 CM', '5de1252969ca2.jpg'),
-(4, 'X-Banner', '<br /><b>Notice</b>:  Und', 'X â€“ Banner cukup efektif untuk Anda gunakan sebagai alat atau sarana promosi. Alat promosi ini menggunakan penyangga berbahan fiber dengan bentuk huruf â€œXâ€, yang dapat berdiri cukup kokoh untuk ', 0, '25 X 40 CM', '5de125713ba42.jpg'),
-(5, 'Kartu Nama', '210 GSM GLOSSY PAPER', 'Kartu nama bukan sekadar tanda pengenal, dalam dunia bisnis penggunaan kartu nama sangat penting untuk menambah koneksi dan relasi.', 13000, '9 X 5.5 CM', '5de125d8dd410.jpg'),
-(6, 'Stiker', '', 'Sticker dapat digunakan sebagai alat promosi usaha Anda, saat sedang mengadakan kegiatan promosi perusahaan. Anda dapat memberikan sticker tersebut kepada banyak orang, agar dapat terpasang dan terlih', 8000, 'A3 SHEET', '5de12685b1b23.jpg'),
-(7, 'Undangan', '100 GSM MATTE PAPER', 'Dalam dunia bisnis, undangan untuk berbagai kegiatan perusahaan, seperti acara peresmian dan berperan penting untuk menjalin hubungan baik kepada rekan bisnis, atau klien.', 17000, '5 X 7 INCH', '5de1419611c76.jpg'),
-(8, 'Bantal Foto', 'BANTAL FOTO 45 X 30', 'Anda dapat memanfaatkan bantal untuk memajang foto, baik untuk keperluan personal, keperluan bisnis,usaha, ataupun digunakan sebagai hadiah untuk orang-orang terdekat.', 56000, '45 X 30', '5de27266a821c.jpg'),
-(9, 'Brosur', '<br /><b>Notice</b>:  Und', 'Beragam produk cetak dapat digunakan sebagai media promosi, salah satunya dengan menggunakan brosur. Melalui brosur, informasi terkait promosi produk dan lainnya dapat tersampaikan secara jelas dan le', 0, 'A4 SHEET', '5de292b0dc4e0.jpg'),
-(10, 'Kop Surat', '', 'Kop surat adalah hal penting yang harus dimiliki oleh suatu perusahaan/instansi dalam urusan surat menyurat. Dengan menggunakan kop surat, penerima surat dengan mudah mengatahui surat yang Anda kirim ', 0, 'A4 SHEET', '5de293a692051.jpg');
+INSERT INTO `produk` (`id_produk`, `jenis_produk`, `deskripsi`, `harga`, `ukuran`, `gambar`) VALUES
+(1, 'MUG', 'Mug merupakan jenis alat minum yang sering digunakan untuk kebutuhan sehari-hari. Namun, kini mug juga dapat Anda manfaatkan sebagai alat promosi, yang bisa dicustom menggunakan identitas perusahaan.', 14000, '-', '5de1248d6d05b.jpg'),
+(2, 'Kalender', 'Tak hanya sebagai kebutuhan pengingat tanggal, mencetak kalender juga dapat dijadikan sebagai media untuk memperkenalkan identitas atau memperkuat branding perusaahan Anda.', 17000, '10 HALAMAN', '5de124549dfdb.jpg'),
+(3, 'Spanduk', 'Spanduk adalah alat pemasaran favorit untuk kebutuhan berbagai promosi. Dengan harga cetak yang cukup murah, Anda sudah dapat mempromosikan berbagai hal pada spanduk yang terpasang di area publik.', 21000, '100 X 200 CM', '5de1252969ca2.jpg'),
+(4, 'X-Banner', 'X â€“ Banner cukup efektif untuk Anda gunakan sebagai alat atau sarana promosi. Alat promosi ini menggunakan penyangga berbahan fiber dengan bentuk huruf â€œXâ€, yang dapat berdiri cukup kokoh untuk ', 0, '25 X 40 CM', '5de125713ba42.jpg'),
+(5, 'Kartu Nama', 'Kartu nama bukan sekadar tanda pengenal, dalam dunia bisnis penggunaan kartu nama sangat penting untuk menambah koneksi dan relasi.', 13000, '9 X 5.5 CM', '5de125d8dd410.jpg'),
+(6, 'Stiker', 'Sticker dapat digunakan sebagai alat promosi usaha Anda, saat sedang mengadakan kegiatan promosi perusahaan. Anda dapat memberikan sticker tersebut kepada banyak orang, agar dapat terpasang dan terlih', 8000, 'A3 SHEET', '5de12685b1b23.jpg'),
+(7, 'Undangan', 'Dalam dunia bisnis, undangan untuk berbagai kegiatan perusahaan, seperti acara peresmian dan berperan penting untuk menjalin hubungan baik kepada rekan bisnis, atau klien.', 17000, '5 X 7 INCH', '5de1419611c76.jpg'),
+(8, 'Bantal Foto', 'Anda dapat memanfaatkan bantal untuk memajang foto, baik untuk keperluan personal, keperluan bisnis,usaha, ataupun digunakan sebagai hadiah untuk orang-orang terdekat.', 56000, '45 X 30', '5de27266a821c.jpg'),
+(9, 'Brosur', 'Beragam produk cetak dapat digunakan sebagai media promosi, salah satunya dengan menggunakan brosur. Melalui brosur, informasi terkait promosi produk dan lainnya dapat tersampaikan secara jelas dan le', 0, 'A4 SHEET', '5de292b0dc4e0.jpg'),
+(10, 'Kop Surat', 'Kop surat adalah hal penting yang harus dimiliki oleh suatu perusahaan/instansi dalam urusan surat menyurat. Dengan menggunakan kop surat, penerima surat dengan mudah mengatahui surat yang Anda kirim ', 0, 'A4 SHEET', '5de293a692051.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `prov`
+-- Table structure for table `prov`
 --
 
 CREATE TABLE `prov` (
   `id_prov` int(2) NOT NULL,
-  `nama_prov` char(30) NOT NULL
+  `nama_prov` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `prov`
+-- Dumping data for table `prov`
 --
 
 INSERT INTO `prov` (`id_prov`, `nama_prov`) VALUES
@@ -7619,76 +7573,67 @@ INSERT INTO `prov` (`id_prov`, `nama_prov`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
-  `profil_user` varchar(60) NOT NULL,
   `nama_user` varchar(30) NOT NULL,
   `email` varchar(40) NOT NULL,
   `password` varchar(60) NOT NULL,
   `jenis_kelamin` varchar(1) NOT NULL,
   `nohp_user` varchar(15) NOT NULL,
-  `provinsi` varchar(20) NOT NULL,
-  `kabupaten` varchar(20) NOT NULL,
-  `kecamatan` varchar(20) NOT NULL,
+  `provinsi` int(11) NOT NULL,
+  `kabupaten` int(11) NOT NULL,
+  `kecamatan` int(11) NOT NULL,
   `alamat` varchar(80) NOT NULL,
   `kodepos` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `profil_user`, `nama_user`, `email`, `password`, `jenis_kelamin`, `nohp_user`, `provinsi`, `kabupaten`, `kecamatan`, `alamat`, `kodepos`) VALUES
-(12, '', 'fabryzal adam pramudya', 'ryzaldm@gmail.com', 'Adam2408', 'L', '082229024685', '11', '1101', '1101010', 'Jl. R.E Martadinata no 17, Dabasah', '68211'),
-(17, '', 'yudistiono', 'yudistiono@gmail.com', 'Yudis1234', 'L', '086456343545', '', '', '', 'Sumber Pandan', '67212'),
-(18, '', 'Febiola Putri Yunita', 'febiola01@gmail.com', 'Febiola01', 'P', '084455234234', '11', '1101', '1101010', 'Dusun Sawahan, Genteng Kulon', '68212'),
-(20, '', 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '260600Arif', 'L', '087789653245', '11', '1102', '1102090', 'Kecamatan Panji', '62322'),
-(21, '', 'Bima Bagaskara', 'bima.kenong33@gmail.com', 'Becak5425411', 'L', '081232434656', '', '', '', 'Kecamatan Silir Agung', '67654');
+INSERT INTO `user` (`id_user`, `nama_user`, `email`, `password`, `jenis_kelamin`, `nohp_user`, `provinsi`, `kabupaten`, `kecamatan`, `alamat`, `kodepos`) VALUES
+(12, 'fabryzal adam pramudya', 'ryzaldm@gmail.com', 'Adam2408', 'L', '082229024685', 11, 1101, 1101010, 'Jl. R.E Martadinata no 17, Dabasah', '68211'),
+(17, 'yudistiono', 'yudistiono@gmail.com', 'Yudis1234', 'L', '086456343545', 32, 3212, 3212050, 'Sumber Pandan', '67212'),
+(18, 'Febiola Putri Yunita', 'febiola01@gmail.com', 'Febiola01', 'P', '084455234234', 11, 1101, 1101010, 'Dusun Sawahan, Genteng Kulon', '68212'),
+(20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '260600Arif', 'L', '087789653245', 11, 1101, 1101020, 'Kecamatan Panji', '62322'),
+(21, 'Bima Bagaskara', 'bima.kenong33@gmail.com', 'Becak5425411', 'L', '081232434656', 13, 1374, 1374010, 'Kecamatan Silir Agung', '67654'),
+(22, 'bensarom', 'bensaromben@gmail.com', 'Ari12345', 'l', '087887879907', 11, 1102, 1102021, 'jln. situbon', '68223');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indeks untuk tabel `bahan`
+-- Indexes for table `bahan`
 --
 ALTER TABLE `bahan`
   ADD PRIMARY KEY (`id_bahan`),
   ADD KEY `id_produk` (`id_produk`);
 
 --
--- Indeks untuk tabel `detail_pemesanan`
+-- Indexes for table `detail_pemesanan`
 --
 ALTER TABLE `detail_pemesanan`
-  ADD PRIMARY KEY (`id_detail`),
-  ADD UNIQUE KEY `id_bahan` (`id_bahan`),
-  ADD KEY `id_pesan` (`id_pesan`),
-  ADD KEY `id_produk` (`id_produk`);
+  ADD PRIMARY KEY (`id_detail`);
 
 --
--- Indeks untuk tabel `dp`
---
-ALTER TABLE `dp`
-  ADD UNIQUE KEY `id_pesan` (`id_pesan`);
-
---
--- Indeks untuk tabel `kabkot`
+-- Indexes for table `kabkot`
 --
 ALTER TABLE `kabkot`
   ADD PRIMARY KEY (`id_kabkot`),
   ADD KEY `FK_kabkot_prov` (`id_prov`);
 
 --
--- Indeks untuk tabel `kec`
+-- Indexes for table `kec`
 --
 ALTER TABLE `kec`
   ADD PRIMARY KEY (`id_kec`),
@@ -7696,151 +7641,108 @@ ALTER TABLE `kec`
   ADD KEY `FK_kec_prov` (`id_prov`);
 
 --
--- Indeks untuk tabel `keranjang`
+-- Indexes for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  ADD PRIMARY KEY (`id_cart`);
+  ADD PRIMARY KEY (`id_cart`),
+  ADD KEY `id_produk` (`id_produk`);
 
 --
--- Indeks untuk tabel `masuk_stokbahan`
---
-ALTER TABLE `masuk_stokbahan`
-  ADD PRIMARY KEY (`id_masuk`),
-  ADD KEY `id_admin` (`id_admin`),
-  ADD KEY `id_bahan` (`id_bahan`);
-
---
--- Indeks untuk tabel `ongkir`
---
-ALTER TABLE `ongkir`
-  ADD PRIMARY KEY (`kodepos`);
-
---
--- Indeks untuk tabel `pembayaran`
+-- Indexes for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  ADD PRIMARY KEY (`id_bayar`),
-  ADD KEY `id_pemesanan` (`id_pesan`),
-  ADD KEY `kodepos` (`kodepos`);
+  ADD PRIMARY KEY (`id_pembayaran`);
 
 --
--- Indeks untuk tabel `pesan`
+-- Indexes for table `pesan`
 --
 ALTER TABLE `pesan`
   ADD PRIMARY KEY (`id_pesan`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `produk`
+-- Indexes for table `produk`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`id_produk`);
 
 --
--- Indeks untuk tabel `prov`
+-- Indexes for table `prov`
 --
 ALTER TABLE `prov`
   ADD PRIMARY KEY (`id_prov`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `detail_pemesanan`
+-- AUTO_INCREMENT for table `detail_pemesanan`
 --
 ALTER TABLE `detail_pemesanan`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT untuk tabel `kabkot`
+-- AUTO_INCREMENT for table `kabkot`
 --
 ALTER TABLE `kabkot`
-  MODIFY `id_kabkot` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9472;
+  MODIFY `id_kabkot` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9473;
 
 --
--- AUTO_INCREMENT untuk tabel `keranjang`
+-- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
--- AUTO_INCREMENT untuk tabel `pembayaran`
+-- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_bayar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `pesan`
+-- AUTO_INCREMENT for table `pesan`
 --
 ALTER TABLE `pesan`
-  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
--- AUTO_INCREMENT untuk tabel `produk`
+-- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `detail_pemesanan`
---
-ALTER TABLE `detail_pemesanan`
-  ADD CONSTRAINT `detail_pemesanan_ibfk_2` FOREIGN KEY (`id_pesan`) REFERENCES `pesan` (`id_pesan`),
-  ADD CONSTRAINT `detail_pemesanan_ibfk_3` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`),
-  ADD CONSTRAINT `detail_pemesanan_ibfk_4` FOREIGN KEY (`id_bahan`) REFERENCES `bahan` (`id_bahan`);
-
---
--- Ketidakleluasaan untuk tabel `dp`
---
-ALTER TABLE `dp`
-  ADD CONSTRAINT `dp_ibfk_1` FOREIGN KEY (`id_pesan`) REFERENCES `pesan` (`id_pesan`);
-
---
--- Ketidakleluasaan untuk tabel `kabkot`
+-- Constraints for table `kabkot`
 --
 ALTER TABLE `kabkot`
   ADD CONSTRAINT `FK_kabkot_prov` FOREIGN KEY (`id_prov`) REFERENCES `prov` (`id_prov`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `kec`
+-- Constraints for table `kec`
 --
 ALTER TABLE `kec`
   ADD CONSTRAINT `kec_ibfk_1` FOREIGN KEY (`id_prov`) REFERENCES `prov` (`id_prov`),
   ADD CONSTRAINT `kec_ibfk_2` FOREIGN KEY (`id_kabkot`) REFERENCES `kabkot` (`id_kabkot`);
 
 --
--- Ketidakleluasaan untuk tabel `masuk_stokbahan`
---
-ALTER TABLE `masuk_stokbahan`
-  ADD CONSTRAINT `masuk_stokbahan_ibfk_1` FOREIGN KEY (`id_bahan`) REFERENCES `bahan` (`id_bahan`),
-  ADD CONSTRAINT `masuk_stokbahan_ibfk_2` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`);
-
---
--- Ketidakleluasaan untuk tabel `pembayaran`
---
-ALTER TABLE `pembayaran`
-  ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`kodepos`) REFERENCES `ongkir` (`kodepos`),
-  ADD CONSTRAINT `pembayaran_ibfk_2` FOREIGN KEY (`id_pesan`) REFERENCES `pesan` (`id_pesan`);
-
---
--- Ketidakleluasaan untuk tabel `pesan`
+-- Constraints for table `pesan`
 --
 ALTER TABLE `pesan`
   ADD CONSTRAINT `pesan_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);

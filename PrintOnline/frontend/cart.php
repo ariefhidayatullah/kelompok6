@@ -16,13 +16,13 @@ if (mysqli_num_rows($query) == 0) {
 }
 
 ?>
-<!-- Main wrapper -->
+
 <div class="wrapper" id="wrapper">
 
-	<!-- Header -->
+
 	<?php include 'include/navbar.php'; ?>
-	<!-- //Header -->
-	<!-- Start Search Popup -->
+
+
 	<div class="ht__bradcaump__area bg-image--1">
 		<div class="container">
 			<div class="row">
@@ -40,6 +40,8 @@ if (mysqli_num_rows($query) == 0) {
 		</div>
 	</div>
 
+
+	<!-- start tabel area -->
 	<div class="cart-main-area section-padding--lg bg--white">
 		<div class="container">
 			<div class="row">
@@ -144,6 +146,9 @@ if (mysqli_num_rows($query) == 0) {
 			</div>
 		</div>
 	</div>
+	<!-- finish table area -->
+
+
 </div>
 
 <?php

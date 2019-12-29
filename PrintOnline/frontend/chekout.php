@@ -14,12 +14,13 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
 
 ?>
 
-<!-- Main wrapper -->
+
 <div class="wrapper" id="wrapper">
-    <!-- Header -->
+
+
     <?php include 'include/navbar.php'; ?>
-    <!-- //Header -->
-    <!-- Start Bradcaump area -->
+
+
     <div class="ht__bradcaump__area bg-image--1">
         <div class="container">
             <div class="row">
@@ -36,8 +37,8 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
             </div>
         </div>
     </div>
-    <!-- End Bradcaump area -->
-    <!-- Start main Content -->
+
+
     <section class="wn__checkout__area section-padding--lg bg__white">
         <div class="container">
             <div class="row">
@@ -175,8 +176,7 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                             <div class="row">
                                 <div class="table-content wnro__table table-responsive">
                                     <div class="wn__order__box">
-                                        <h3 class="onder__title">Your order</h3>
-
+                                        <h3 class="onder__title">pesanan kamu</h3>
                                         <table>
                                             <thead>
                                                 <tr class="title-top">
@@ -202,11 +202,14 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
 
                                                     $quer = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '$id_produk'");
                                                     $b = mysqli_fetch_array($quer);
+
+                                                    $query_bahan = mysqli_query($conn, "SELECT * FROM bahan WHERE id_bahan = '$id_bahan'");
+                                                    $bahan = mysqli_fetch_array($query_bahan);
                                                 ?>
                                                     <tr>
                                                         <td><img src="images/desainuser/<?= $gambar; ?>" width="100"></td>
                                                         <td class="product-name"><a href=""><?= $b['jenis_produk']; ?></a></td>
-                                                        <td class="product-name"><a href=""><?= $id_bahan; ?></a></td>
+                                                        <td class="product-name"><a href=""><?= $bahan['nama_bahan']; ?></a></td>
                                                         <td class="product-price"><span class="amount">Rp. <?= $harga_satuan ?></span></td>
                                                         <td class="product-quantity">
                                                             <input type="text" name="id_cart" value="<?= $id_cart; ?>" hidden>
@@ -255,7 +258,7 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                             $id_kabkot = $ongk['nama_kabkot'];
                                             $tanggal_pembelian = date("Y-m-d");
 
-                                            mysqli_query($conn, "INSERT INTO pesan VALUES ('$id_pesan','$id_pelanggan','$nama_user','$email','$nohp_user','$id_kabkot','$alamat', '$pesan', '$tanggal_pembelian', '$ordertotal', 'pending', '' )");
+                                            mysqli_query($conn, "INSERT INTO pesan VALUES ('$id_pesan',' ', '$id_pelanggan', '$nama_user','$email','$nohp_user','$id_kabkot','$alamat', '$pesan', '$tanggal_pembelian', '$ordertotal', 'pending', '' )");
 
                                             $id_pesan_barusan = $conn->insert_id;
 
@@ -274,7 +277,7 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
 
                                                 mysqli_query($conn, "DELETE FROM keranjang WHERE id_cart = '$id_cart'");
                                             }
-                                            #tampilan dialihkan ke nota, nota pembelian baru terjadi
+
                                             echo "<script>alert('Pembelian Berhasil !');</script>";
                                             echo "<script>location='nota?id=$id_pesan_barusan';</script>";
                                         }
@@ -288,8 +291,7 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                 </div>
             </div>
         </div>
-</div>
-</section>
+    </section>
 </div>
 
 <script type="text/javascript">

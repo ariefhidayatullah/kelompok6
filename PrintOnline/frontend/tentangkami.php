@@ -6,26 +6,29 @@
     $produk = query('SELECT * FROM produk order by rand()');
 
     ?>
- <?php include 'include/navbar.php'; ?>
- <div class="ht__bradcaump__area bg-image--1">
-     <div class="container">
-         <div class="row">
-             <div class="col-lg-12">
-                 <div class="bradcaump__inner text-center">
-                     <h2 class="bradcaump-title">Tentang Kami</h2>
-                     <nav class="bradcaump-content">
-                         <a class="breadcrumb_item" href="index">Home</a>
-                         <span class="brd-separetor">/</span>
-                         <span class="breadcrumb_item active">Tentang kami</span>
-                     </nav>
+ <div class="wrapper" id="wrapper">
+
+     <?php include 'include/navbar.php'; ?>
+     <div class="ht__bradcaump__area bg-image--1">
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-12">
+                     <div class="bradcaump__inner text-center">
+                         <h2 class="bradcaump-title">Tentang Kami</h2>
+                         <nav class="bradcaump-content">
+                             <a class="breadcrumb_item" href="index">Home</a>
+                             <span class="brd-separetor">/</span>
+                             <span class="breadcrumb_item active">Tentang kami</span>
+                         </nav>
+                     </div>
                  </div>
              </div>
          </div>
      </div>
 
 
-     <!-- Start Contact Area -->
-     <section class="wn__team__area pt--40 pb--75 bg--white">
+
+     <section class="wn__team__area section-padding--lg bg--white">
          <div class="container">
              <div class="row">
                  <div class="col-lg-4">
@@ -114,6 +117,7 @@
              </div>
          </div>
      </section>
+ </div>
  </div>
 
  <?php

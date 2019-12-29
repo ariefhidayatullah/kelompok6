@@ -29,10 +29,10 @@ if ($id_user !== $detailbayar["id_user"]) {
 ?>
 <!-- Main wrapper -->
 <div class="wrapper" id="wrapper">
-    <!-- Header -->
+    
     <?php include 'include/navbar.php'; ?>
-    <!-- //Header -->
-    <!-- Start Bradcaump area -->
+    
+
     <div class="ht__bradcaump__area bg-image--1">
         <div class="container">
             <div class="row">

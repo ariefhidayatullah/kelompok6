@@ -66,7 +66,6 @@ $pesanan = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM pesan WHERE status
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Admin / User</h6>
                         <a class="collapse-item" href="../auth/register.php">Tambah Akun Admin</a>
-                        <a class="collapse-item" href="../auth/datakaryawan/datakaryawan.php">Data Karyawan</a>
                         <a class="collapse-item" href="../pengguna/datauser.php">List User / Pengguna</a>
                     </div>
                 </div>

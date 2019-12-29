@@ -16,25 +16,21 @@ include '../_header.php';
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>id user</th>
                             <th>nama user</th>
                             <th>email</th>
-                            <th>password</th>
                             <th>no hp user</th>
                             <th>alamat</th>
                             <th>kode pos</th>
                             <th>aksi</th>
                         </tr>
-                        </thead>
-                        <tbody>
+                    </thead>
+                    <tbody>
                         <?php $i = 1; ?>
                         <?php foreach ($bahan as $row) : ?>
                             <tr>
                                 <td><?= $i; ?></td>
-                                <td><?= $row['id_user']; ?></td>
                                 <td><?= $row['nama_user']; ?></td>
                                 <td><?= $row['email']; ?></td>
-                                <td><?= $row['password']; ?></td>
                                 <td><?= $row['nohp_user']; ?></td>
                                 <td><?= $row['alamat']; ?></td>
                                 <td><?= $row['kodepos']; ?></td>
@@ -44,7 +40,7 @@ include '../_header.php';
                             </tr>
                             <?php $i++ ?>
                         <?php endforeach; ?>
-                        </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>

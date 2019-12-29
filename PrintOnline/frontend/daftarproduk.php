@@ -51,8 +51,10 @@ if (isset($_GET['submit'])) {
                     <div class="tab__container">
                         <div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
                             <div class="row">
+
+
+                                <!-- start konten daftar produk -->
                                 <?php foreach ($bahan as $row) : ?>
-                                    <!-- Start Single Product -->
                                     <div class="product product__style--3 col-lg-3 col-md-3 col-sm-3 col-12">
                                         <div class="product__thumb">
                                             <a class="first__img"><img src="img/<?= $row['gambar']; ?>" width="100" alt=""></a>
@@ -85,7 +87,9 @@ if (isset($_GET['submit'])) {
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
-                                <!-- End Single Product -->
+                                <!-- finish daftar produk  -->
+
+
                             </div>
                         </div>
                     </div>
