@@ -31,37 +31,8 @@
      <section class="wn__team__area section-padding--lg bg--white">
          <div class="container">
              <div class="row">
-                 <div class="col-lg-4">
-                     <div class="wn__team text-center">
-                         <img src="images/bima.png" width="300">
-                         <div class="content">
-                             <h4>BIMA BAGASKARA</h4>
-                             <p>PO (Product owner)</p>
-                             <ul class="team__social__net">
-                                 <li><a href="#"><i class="icon-social-twitter icons"></i></a></li>
-                                 <li><a href="#"><i class="icon-social-tumblr icons"></i></a></li>
-                                 <li><a href="#"><i class="icon-social-facebook icons"></i></a></li>
-                                 <li><a href="#"><i class="icon-social-linkedin icons"></i></a></li>
-                                 <li><a href="#"><i class="icon-social-pinterest icons"></i></a></li>
-                             </ul>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="col-lg-4 ">
-                     <div class="wn__team text-center">
-                         <img src="images/rizal.png" width="300">
-                         <div class="content">
-                             <h4>FABRYZAL PRAMUDYA</h4>
-                             <p>Scrum master</p>
-                             <ul class="team__social__net">
-                                 <li><a href="#"><i class="icon-social-twitter icons"></i></a></li>
-                                 <li><a href="#"><i class="icon-social-tumblr icons"></i></a></li>
-                                 <li><a href="#"><i class="icon-social-facebook icons"></i></a></li>
-                                 <li><a href="#"><i class="icon-social-linkedin icons"></i></a></li>
-                                 <li><a href="#"><i class="icon-social-pinterest icons"></i></a></li>
-                             </ul>
-                         </div>
-                     </div>
+                 <div class="col-lg-8 mt-5">
+                     <img src="images/king.jpg" class="mt-4">
                  </div>
                  <div class="col-lg-4 md-mt-40 sm-mt-40">
                      <div class="wn__address">
@@ -100,17 +71,31 @@
                  </div>
                  <div class="col-lg-4">
                      <div class="wn__team text-center">
-                         <img src="images/gw.jpg" width="300">
+                         <img src="images/bima.jpg" width="250">
+                         <div class="content">
+                             <h4>BIMA BAGASKARA</h4>
+                             <p>PO (Product owner)</p>
+                             <i class="fa fa-instagram"></i> <a href="https://www.instagram.com/bimabgskr_/">.bimabgskr_</a> </p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-lg-4 ">
+                     <div class="wn__team text-center">
+                         <img src="images/rizal.png" width="300">
+                         <div class="content">
+                             <h4>FABRYZAL PRAMUDYA</h4>
+                             <p>Scrum master - Dev Team</p>
+                             <i class="fa fa-instagram"></i> <a href="https://www.instagram.com/here_with_virgo/">.here_with_virgo</a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-lg-4">
+                     <div class="wn__team text-center">
+                         <img src="images/gw.jpg" width="250">
                          <div class="content">
                              <h4>MOHAMMAD ARIEF HIDAYATULLAH</h4>
                              <p>Designer - Dev Team - Programmer</p>
-                             <ul class="team__social__net">
-                                 <li><a href="#"><i class="icon-social-twitter icons"></i></a></li>
-                                 <li><a href="#"><i class="icon-social-tumblr icons"></i></a></li>
-                                 <li><a href="#"><i class="icon-social-facebook icons"></i></a></li>
-                                 <li><a href="#"><i class="icon-social-linkedin icons"></i></a></li>
-                                 <li><a href="#"><i class="icon-social-pinterest icons"></i></a></li>
-                             </ul>
+                             <i class="fa fa-instagram"></i> <a href="https://www.instagram.com/arfhdytllh_/">.arfhdytllh_</a>
                          </div>
                      </div>
                  </div>
