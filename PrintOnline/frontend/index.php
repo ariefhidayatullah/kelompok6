@@ -51,7 +51,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 			</div>
 		</div>
 	</div>
-	
+
 
 	<section class="wn__product__area brown--color pt--80  pb--30">
 		<div class="row pt--80  pb--30">

@@ -1,5 +1,7 @@
 <?php
 $pesanan = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM pesan WHERE status_pemesanan = 'pembayaran berhasil (menunggu pengiriman dari admin)'"));
+$pecah = query("SELECT * FROM pesan WHERE status_pemesanan = 'pembayaran berhasil (menunggu pengiriman dari admin)'");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -148,23 +150,25 @@ $pesanan = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM pesan WHERE status
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter"><?= $pesanan  ?></span>
                             </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
+                            <?php foreach ($pecah as $row) : ?>
+                                <!-- Dropdown - Alerts -->
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                    <h6 class="dropdown-header">
+                                        Alerts Center
+                                    </h6>
+                                    <a class="dropdown-item d-flex align-items-center" href="../pemesanan/detailpemesanan.php?id=<?= $row['id_pesan']; ?>">
+                                        <div class="mr-3">
+                                            <div class="icon-circle bg-primary">
+                                                <i class="fas fa-file-alt text-white"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                            </div>
+                                        <div>
+                                            <div class="small text-gray-500"><?= $row['tanggal_pemesanan']; ?></div>
+                                            <span class="font-weight-bold">pesanan baru <?= $row['nama_user']; ?> telah membayar </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
                         </li>
                     </ul>
 

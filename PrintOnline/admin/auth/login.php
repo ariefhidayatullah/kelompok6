@@ -23,7 +23,7 @@ if (isset($_POST["login"])) {
     }
   }
   $error  = true;
-  ?>
+?>
 
 <?php
 }
@@ -62,52 +62,52 @@ if (isset($_POST["login"])) {
 
       <div class="col-lg-5"> -->
 
-    <div class="card o-hidden border-0 shadow-lg my-5">
-      <div class="card-body p-0">
-        <!-- Nested Row within Card Body -->
-        <div class="row justify-content-center">
-          <div class="col-lg">
-            <div class="p-5">
-              <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">selamat datang!</h1>
+    <div class="row">
+      <div class="col-lg-10 offset-1">
+        <div class="card o-hidden border-0 shadow-lg">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row justify-content-center">
+              <div class="col-lg">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900">selamat datang admin!</h1>
+                  </div>
+                  <?php if (isset($error)) : ?>
+                    <p style="color : red; font-style:italic">
+                      username / password salah
+                    </p>
+                  <?php endif; ?>
+                  <form class="user" action="" method="post">
+                    <div class="form-group">
+                      <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukkan username anda..." required="" autofocus>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control form-control-user" id="password" name="password" required placeholder="Masukkan password anda">
+                    </div>
+                    <div class="text-center">
+                      <input type="submit" name="login" class="btn btn-user btn-primary btn-block" value="login"></input>
+                    </div>
+                  </form>
+                </div>
               </div>
-              <?php if (isset($error)) : ?>
-                <p style="color : red; font-style:italic">
-                  username / password salah
-                </p>
-              <?php endif; ?>
-              <form class="user" action="" method="post">
-                <div class="form-group">
-                  <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukkan username anda..." required="" autofocus>
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control form-control-user" id="password" name="password" required placeholder="Masukkan password anda">
-                </div>
-                <div class="text-center">
-                  <input type="submit" name="login" class="btn btn-user btn-primary btn-block" value="login"></input>
-                </div>
-              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
+</body><br><br><br><br><br>
 
-  </div>
+<!-- Bootstrap core JavaScript-->
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  </div><br><br><br>
+<!-- Core plugin JavaScript-->
+<script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="../assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
 
 </body>
 

@@ -9,6 +9,7 @@ $pembayaran = mysqli_fetch_array($bayar);
 $pesan = mysqli_query($conn, "SELECT * FROM pesan WHERE id_pesan = '$id'");
 $detailpesan = mysqli_fetch_array($pesan);
 $nama_kabkot = $detailpesan['nama_kabkot'];
+$status_pesan = $detailpesan['status_pemesanan'];
 
 $ongkir = mysqli_query($conn, "SELECT * FROM kabkot WHERE nama_kabkot = '$nama_kabkot'");
 $detailongkir = mysqli_fetch_array($ongkir);
@@ -91,6 +92,11 @@ include '../_header.php';
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                <div class="text-center">
+                    <?php if ($status_pesan !== "pending") : ?>
+                        <a href="pembayaran.php?id=<?= $row['id_pesan']; ?>" class="btn btn-success btn-sm"><i class="fas fa-check"></i> masukkan no resi</a>
+                    <?php endif ?>
+                </div>
             </div>
         </div>
     </div>
