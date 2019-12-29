@@ -56,6 +56,7 @@ function upload()
 	if ($error === 4) {
 		echo "<script>alert('Masukkan Gambar!!');</script>";
 		return false;
+		exit;
 	}
 
 	//jika yg di upload bukan gambar
@@ -158,6 +159,13 @@ function tambahcart($data)
 	global $conn;
 	//ambil data dari tiap elemen dalam form
 	$id_produk = $data['id_produk'];
+	if (empty($data['nama_bahan'])) {
+		echo "<script>
+		alert('pilih bahan terlebih dahulu');
+		</script>";
+		echo "<script>location='produk?id=$_GET[id]'; </script>";
+		exit;
+	}
 	$nama_bahan = $data['nama_bahan'];
 	$bhn = mysqli_query($conn, "SELECT * FROM bahan WHERE nama_bahan = '$nama_bahan'");
 	$req = mysqli_fetch_array($bhn);
@@ -203,7 +211,6 @@ function ubahprofil($data)
 	global $conn;
 	// ambil data dari tiap elemen
 	$id_user = $data['id_user'];
-	// $gambar = upload();
 	$nama_user = $data['nama_user'];
 	$email = $data['email'];
 	$password = $data['password'];
