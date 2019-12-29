@@ -175,7 +175,6 @@ function tambahcart($data)
 	$cek_barang = "SELECT * FROM keranjang WHERE id_bahan = '$id_bahan'";
 	$hasil_barang = mysqli_query($conn, $cek_barang);
 	$hasil = mysqli_fetch_array($hasil_barang);
-	var_dump($hasil);
 
 	if (mysqli_num_rows($hasil_barang) > 0) {
 		$reesult = mysqli_query($conn, "SELECT * FROM keranjang WHERE email='$email'");
