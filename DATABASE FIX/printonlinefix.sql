@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2019 at 05:22 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Waktu pembuatan: 29 Des 2019 pada 07.07
+-- Versi server: 10.4.6-MariaDB
+-- Versi PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `admin`
 --
 
 CREATE TABLE `admin` (
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `admin`
+-- Dumping data untuk tabel `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `nama_admin`, `username`, `password`, `email`, `nohp_admin`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `admin` (`id_admin`, `nama_admin`, `username`, `password`, `email`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bahan`
+-- Struktur dari tabel `bahan`
 --
 
 CREATE TABLE `bahan` (
@@ -58,7 +58,7 @@ CREATE TABLE `bahan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `bahan`
+-- Dumping data untuk tabel `bahan`
 --
 
 INSERT INTO `bahan` (`id_bahan`, `nama_bahan`, `id_produk`, `harga_satuan`) VALUES
@@ -84,7 +84,7 @@ INSERT INTO `bahan` (`id_bahan`, `nama_bahan`, `id_produk`, `harga_satuan`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_pemesanan`
+-- Struktur dari tabel `detail_pemesanan`
 --
 
 CREATE TABLE `detail_pemesanan` (
@@ -99,14 +99,10 @@ CREATE TABLE `detail_pemesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `detail_pemesanan`
+-- Dumping data untuk tabel `detail_pemesanan`
 --
 
 INSERT INTO `detail_pemesanan` (`id_detail`, `id_pesan`, `id_produk`, `id_bahan`, `ukuran`, `qty`, `harga_satuan`, `desain`) VALUES
-(9, 46, 2, 'B002', '1', 1, 17000, ''),
-(10, 46, 1, 'B004', '1', 7, 14000, ''),
-(11, 47, 2, 'B002', '1', 1, 17000, ''),
-(12, 47, 1, 'B004', '1', 7, 14000, ''),
 (13, 48, 7, 'B008', '1', 1, 14000, '5e018bec9d931.jpg'),
 (14, 49, 2, 'B002', '1', 1, 17000, '5e01a8e76259c.jpg'),
 (17, 50, 8, 'B014', '1', 1, 78000, '5e01d14f22502.jpg'),
@@ -122,7 +118,7 @@ INSERT INTO `detail_pemesanan` (`id_detail`, `id_pesan`, `id_produk`, `id_bahan`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kabkot`
+-- Struktur dari tabel `kabkot`
 --
 
 CREATE TABLE `kabkot` (
@@ -134,7 +130,7 @@ CREATE TABLE `kabkot` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kabkot`
+-- Dumping data untuk tabel `kabkot`
 --
 
 INSERT INTO `kabkot` (`id_kabkot`, `id_prov`, `nama_kabkot`, `jne_reg`, `jne_yes`) VALUES
@@ -640,7 +636,7 @@ INSERT INTO `kabkot` (`id_kabkot`, `id_prov`, `nama_kabkot`, `jne_reg`, `jne_yes
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kec`
+-- Struktur dari tabel `kec`
 --
 
 CREATE TABLE `kec` (
@@ -651,7 +647,7 @@ CREATE TABLE `kec` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kec`
+-- Dumping data untuk tabel `kec`
 --
 
 INSERT INTO `kec` (`id_kec`, `id_prov`, `id_kabkot`, `nama_kec`) VALUES
@@ -7415,7 +7411,7 @@ INSERT INTO `kec` (`id_kec`, `id_prov`, `id_kabkot`, `nama_kec`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `keranjang`
+-- Struktur dari tabel `keranjang`
 --
 
 CREATE TABLE `keranjang` (
@@ -7431,7 +7427,7 @@ CREATE TABLE `keranjang` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pembayaran`
+-- Struktur dari tabel `pembayaran`
 --
 
 CREATE TABLE `pembayaran` (
@@ -7445,7 +7441,7 @@ CREATE TABLE `pembayaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pembayaran`
+-- Dumping data untuk tabel `pembayaran`
 --
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `id_pesan`, `nama`, `bank`, `jumlah`, `tanggal`, `bukti`) VALUES
@@ -7459,7 +7455,7 @@ INSERT INTO `pembayaran` (`id_pembayaran`, `id_pesan`, `nama`, `bank`, `jumlah`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pesan`
+-- Struktur dari tabel `pesan`
 --
 
 CREATE TABLE `pesan` (
@@ -7479,20 +7475,19 @@ CREATE TABLE `pesan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pesan`
+-- Dumping data untuk tabel `pesan`
 --
 
 INSERT INTO `pesan` (`id_pesan`, `id_admin`, `id_user`, `nama_user`, `email`, `nohp_user`, `nama_kabkot`, `alamat`, `pesan`, `tanggal_pemesanan`, `total_harga`, `status_pemesanan`, `resi_pengiriman`) VALUES
-(52, '0', 22, 'bensarombenn', 'bensaromben@gmail.com', '087887879907', 'Kabupaten Aceh Singkil', 'jln. situbon', '', '2019-12-27', 77000, 'pending', ''),
 (53, 'ADM001', 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Kabupaten Simeulue', 'Kecamatan Panji', '', '2019-12-27', 175000, 'batal', ''),
-(54, '0', 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Kabupaten Simeulue', 'Kecamatan Panji', '', '2019-12-28', 221000, 'pending', ''),
-(55, '0', 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Kabupaten Simeulue', 'Kecamatan Panji', 'untuk kaleender font nya harus bagus yaa', '2019-12-28', 136000, 'pending', ''),
-(56, '0', 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Kabupaten Simeulue', 'Kecamatan Panji', 'kosong', '2019-12-29', 203000, 'pending', '');
+(54, 'ADM001', 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Kabupaten Simeulue', 'Kecamatan Panji', '', '2019-12-28', 221000, 'barang dikirim', ''),
+(55, 'ADM001', 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Kabupaten Simeulue', 'Kecamatan Panji', 'untuk kaleender font nya harus bagus yaa', '2019-12-28', 136000, 'pembayaran berhasil (menunggu pengiriman barang dari admin)', ''),
+(56, 'ADM001', 20, 'Mohammad Arief HIdayatullah', 'arfhdytllh@hotmail.co.id', '087789653245', 'Kabupaten Simeulue', 'Kecamatan Panji', 'kosong', '2019-12-29', 203000, 'pending', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produk`
+-- Struktur dari tabel `produk`
 --
 
 CREATE TABLE `produk` (
@@ -7505,7 +7500,7 @@ CREATE TABLE `produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `produk`
+-- Dumping data untuk tabel `produk`
 --
 
 INSERT INTO `produk` (`id_produk`, `jenis_produk`, `deskripsi`, `harga`, `ukuran`, `gambar`) VALUES
@@ -7523,7 +7518,7 @@ INSERT INTO `produk` (`id_produk`, `jenis_produk`, `deskripsi`, `harga`, `ukuran
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prov`
+-- Struktur dari tabel `prov`
 --
 
 CREATE TABLE `prov` (
@@ -7532,7 +7527,7 @@ CREATE TABLE `prov` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `prov`
+-- Dumping data untuk tabel `prov`
 --
 
 INSERT INTO `prov` (`id_prov`, `nama_prov`) VALUES
@@ -7573,7 +7568,7 @@ INSERT INTO `prov` (`id_prov`, `nama_prov`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -7591,7 +7586,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `email`, `password`, `jenis_kelamin`, `nohp_user`, `provinsi`, `kabupaten`, `kecamatan`, `alamat`, `kodepos`) VALUES
@@ -7607,33 +7602,36 @@ INSERT INTO `user` (`id_user`, `nama_user`, `email`, `password`, `jenis_kelamin`
 --
 
 --
--- Indexes for table `admin`
+-- Indeks untuk tabel `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indexes for table `bahan`
+-- Indeks untuk tabel `bahan`
 --
 ALTER TABLE `bahan`
   ADD PRIMARY KEY (`id_bahan`),
   ADD KEY `id_produk` (`id_produk`);
 
 --
--- Indexes for table `detail_pemesanan`
+-- Indeks untuk tabel `detail_pemesanan`
 --
 ALTER TABLE `detail_pemesanan`
-  ADD PRIMARY KEY (`id_detail`);
+  ADD PRIMARY KEY (`id_detail`),
+  ADD KEY `id_produk` (`id_produk`),
+  ADD KEY `id_bahan` (`id_bahan`),
+  ADD KEY `id_pesan` (`id_pesan`);
 
 --
--- Indexes for table `kabkot`
+-- Indeks untuk tabel `kabkot`
 --
 ALTER TABLE `kabkot`
   ADD PRIMARY KEY (`id_kabkot`),
   ADD KEY `FK_kabkot_prov` (`id_prov`);
 
 --
--- Indexes for table `kec`
+-- Indeks untuk tabel `kec`
 --
 ALTER TABLE `kec`
   ADD PRIMARY KEY (`id_kec`),
@@ -7641,111 +7639,138 @@ ALTER TABLE `kec`
   ADD KEY `FK_kec_prov` (`id_prov`);
 
 --
--- Indexes for table `keranjang`
+-- Indeks untuk tabel `keranjang`
 --
 ALTER TABLE `keranjang`
   ADD PRIMARY KEY (`id_cart`),
-  ADD KEY `id_produk` (`id_produk`);
+  ADD KEY `id_produk` (`id_produk`),
+  ADD KEY `id_bahan` (`id_bahan`);
 
 --
--- Indexes for table `pembayaran`
+-- Indeks untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id_pembayaran`);
 
 --
--- Indexes for table `pesan`
+-- Indeks untuk tabel `pesan`
 --
 ALTER TABLE `pesan`
   ADD PRIMARY KEY (`id_pesan`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_admin` (`id_admin`);
 
 --
--- Indexes for table `produk`
+-- Indeks untuk tabel `produk`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`id_produk`);
 
 --
--- Indexes for table `prov`
+-- Indeks untuk tabel `prov`
 --
 ALTER TABLE `prov`
   ADD PRIMARY KEY (`id_prov`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id_user`),
+  ADD KEY `provinsi` (`provinsi`),
+  ADD KEY `kabupaten` (`kabupaten`),
+  ADD KEY `kecamatan` (`kecamatan`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `detail_pemesanan`
+-- AUTO_INCREMENT untuk tabel `detail_pemesanan`
 --
 ALTER TABLE `detail_pemesanan`
   MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `kabkot`
+-- AUTO_INCREMENT untuk tabel `kabkot`
 --
 ALTER TABLE `kabkot`
   MODIFY `id_kabkot` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9473;
 
 --
--- AUTO_INCREMENT for table `keranjang`
+-- AUTO_INCREMENT untuk tabel `keranjang`
 --
 ALTER TABLE `keranjang`
   MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
--- AUTO_INCREMENT for table `pembayaran`
+-- AUTO_INCREMENT untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
   MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `pesan`
+-- AUTO_INCREMENT untuk tabel `pesan`
 --
 ALTER TABLE `pesan`
   MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
--- AUTO_INCREMENT for table `produk`
+-- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
   MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `kabkot`
+-- Ketidakleluasaan untuk tabel `detail_pemesanan`
+--
+ALTER TABLE `detail_pemesanan`
+  ADD CONSTRAINT `detail_pemesanan_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`),
+  ADD CONSTRAINT `detail_pemesanan_ibfk_2` FOREIGN KEY (`id_bahan`) REFERENCES `bahan` (`id_bahan`);
+
+--
+-- Ketidakleluasaan untuk tabel `kabkot`
 --
 ALTER TABLE `kabkot`
   ADD CONSTRAINT `FK_kabkot_prov` FOREIGN KEY (`id_prov`) REFERENCES `prov` (`id_prov`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `kec`
+-- Ketidakleluasaan untuk tabel `kec`
 --
 ALTER TABLE `kec`
   ADD CONSTRAINT `kec_ibfk_1` FOREIGN KEY (`id_prov`) REFERENCES `prov` (`id_prov`),
   ADD CONSTRAINT `kec_ibfk_2` FOREIGN KEY (`id_kabkot`) REFERENCES `kabkot` (`id_kabkot`);
 
 --
--- Constraints for table `pesan`
+-- Ketidakleluasaan untuk tabel `keranjang`
+--
+ALTER TABLE `keranjang`
+  ADD CONSTRAINT `keranjang_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`),
+  ADD CONSTRAINT `keranjang_ibfk_2` FOREIGN KEY (`id_bahan`) REFERENCES `bahan` (`id_bahan`);
+
+--
+-- Ketidakleluasaan untuk tabel `pesan`
 --
 ALTER TABLE `pesan`
   ADD CONSTRAINT `pesan_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Ketidakleluasaan untuk tabel `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`provinsi`) REFERENCES `prov` (`id_prov`),
+  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`kecamatan`) REFERENCES `kec` (`id_kec`),
+  ADD CONSTRAINT `user_ibfk_3` FOREIGN KEY (`kabupaten`) REFERENCES `kabkot` (`id_kabkot`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
