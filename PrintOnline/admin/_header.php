@@ -1,13 +1,8 @@
 <?php
 
-$nama_user = $_SESSION['login'];
 $pesanan = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM pesan WHERE status_pemesanan = 'pembayaran berhasil (menunggu pengiriman dari admin)'"));
 $pecah = query("SELECT * FROM pesan WHERE status_pemesanan = 'pembayaran berhasil (menunggu pengiriman dari admin)'");
 
-if (!isset($_SESSION['login'])) {
-    header("Location: ../auth/login.php");
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -178,7 +173,7 @@ if (!isset($_SESSION['login'])) {
 
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $nama_user; ?></span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">admin</span>
                                     <img class="img-profile rounded-circle" src="../assets/img/icon.png">
                                 </a>
                                 <!-- Dropdown - User Information -->
