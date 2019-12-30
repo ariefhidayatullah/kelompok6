@@ -118,7 +118,7 @@ if (isset($_POST["cart"])) {
 										<div class="box-tocart d-flex">
 											<div class="addtocart__actions">
 												<form action="" method="POST" enctype="multipart/form-data">
-													<select id="nim" name="nama_bahan" onchange="changeValue(this.value)" class="form-control col-md-6 mt-3 mt-3">
+													<select id="nim" name="nama_bahan" onchange="changeValue(this.value)" class="form-control col-md-6 mt-3 mt-3" required>
 														<option disabled="" selected="">Pilih Bahan</option>
 														<?php
 														while ($row = mysqli_fetch_array($bahan)) {
