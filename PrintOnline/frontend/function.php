@@ -133,7 +133,7 @@ function registrasi($data)
 	$lowercase = preg_match('@[a-z]@', $password);
 	$number    = preg_match('@[0-9]@', $password);
 
-	if (!$uppercase || !$lowercase || !$number || strlen($password) <= 6) {
+	if (!$uppercase || !$lowercase || !$number || strlen($password) <= 8) {
 		echo "<script>
 		alert('password harus lebih dari 6 karakter, mengandung huruf BESAR, huruf kecil dan angka');
 		</script>";

@@ -1,5 +1,10 @@
 <?php
-
+session_start();
+if (!isset($_SESSION["login"])) {
+    echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
+    echo "<script>location='../auth/login.php'; </script>";
+    exit();
+}
 $pesanan = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM pesan WHERE status_pemesanan = 'pembayaran berhasil (menunggu pengiriman dari admin)'"));
 $pecah = query("SELECT * FROM pesan WHERE status_pemesanan = 'pembayaran berhasil (menunggu pengiriman dari admin)'");
 

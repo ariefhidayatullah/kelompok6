@@ -1,11 +1,6 @@
 <?php
-
-session_start();
 require_once "../dataproduk/function.php";
-if (!isset($_SESSION['login'])) {
-  header("Location: ../auth/login.php");
-  exit;
-}
+
 include '../_header.php';
 ?>
 <!-- Begin Page Content -->
