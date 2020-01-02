@@ -104,7 +104,7 @@
             if (regex.test(this.value) !== true) {
                 this.value = this.value.replace(/[^a-z]+/, '');
             } else {
-                $('.nohp_user').text('');
+
             }
 
         });

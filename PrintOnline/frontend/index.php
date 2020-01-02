@@ -3,7 +3,6 @@ session_start();
 require 'function.php';
 include 'include/_header.php';
 $bahan = query('SELECT * FROM produk order by rand()');
-
 ?>
 
 
@@ -88,7 +87,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 										<li class="on"><i class="fa fa-star-o"></i></li>
 										<li class="on"><i class="fa fa-star-o"></i></li>
 										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
+										<li class="on"><i class="fa fa-star-o"></i></li>
 										<li><i class="fa fa-star-o"></i></li>
 									</ul>
 								</div>
