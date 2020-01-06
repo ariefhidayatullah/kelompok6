@@ -3,7 +3,6 @@ session_start();
 require 'function.php';
 include 'include/_header.php';
 $bahan = query('SELECT * FROM produk order by rand()');
-
 ?>
 
 
@@ -88,7 +87,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 										<li class="on"><i class="fa fa-star-o"></i></li>
 										<li class="on"><i class="fa fa-star-o"></i></li>
 										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
+										<li class="on"><i class="fa fa-star-o"></i></li>
 										<li><i class="fa fa-star-o"></i></li>
 									</ul>
 								</div>
@@ -111,7 +110,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 					<div class="footer__widget footer__menu">
 						<div class="ft__logo ml-5">
 							<a href="index">
-								<img src="images/logo/icon.png" alt="logo">
+								<img src="images/logo/icon.png" alt="logo" style="width: 30%">
 							</a>
 						</div>
 						<div class="section__title text-center">
@@ -126,7 +125,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 					<div class="footer__widget footer__menu">
 						<div class="ft__logo ml-2">
 							<a href="index">
-								<img src="images/logo/icon1.png" alt="logo">
+								<img src="images/logo/icon1.png" alt="logo" style="width: 30%">
 							</a>
 						</div>
 						<div class="section__title text-center">
@@ -141,7 +140,7 @@ $bahan = query('SELECT * FROM produk order by rand()');
 					<div class="footer__widget footer__menu">
 						<div class="ft__logo ml-2">
 							<a href="index">
-								<img src="images/logo/icon2.png" alt="logo">
+								<img src="images/logo/icon2.png" alt="logo" style="width: 30%">
 							</a>
 						</div>
 						<div class="section__title text-center">

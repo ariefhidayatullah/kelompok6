@@ -95,7 +95,22 @@
     </div>
 </footer>
 
+<script>
+    $(document).ready(function() {
 
+        // validasi nohp
+        $('#cari').on('keyup', function() {
+            var regex = /^[a-z]+$/;
+            if (regex.test(this.value) !== true) {
+                this.value = this.value.replace(/[^a-z]+/, '');
+            } else {
+
+            }
+
+        });
+
+    });
+</script>
 <script src="js/vendor/jquery-3.2.1.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

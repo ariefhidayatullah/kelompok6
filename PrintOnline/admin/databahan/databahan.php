@@ -1,9 +1,10 @@
 <?php
 require 'function.php';
+
+include '../_header.php';
 $bahan = query('SELECT * FROM bahan');
 $produk = query('SELECT * FROM produk where id_produk');
 
-include '../_header.php';
 
 if (isset($_POST["submit"])) {
 

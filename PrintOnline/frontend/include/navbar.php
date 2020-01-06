@@ -136,7 +136,7 @@ $daftarproduk = query('SELECT * FROM produk order by rand()');
     <div class="brown--color box-search-content search_active block-bg close__top">
         <form id="search_mini_form" class="minisearch" action="pencarian.php" method="get">
             <div class="field__search">
-                <input type="text" name="cari" placeholder="cari produk anda disini...">
+                <input type="text" name="cari" id="cari" placeholder="cari produk anda disini...">
                 <div class="action">
                     <input type="submit" value="Cari">
                 </div>

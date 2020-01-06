@@ -53,7 +53,7 @@ if (isset($_POST["login"])) {
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class=" bg-gradient-primary">
 
   <div class="container" style="padding-top: 10%; padding-left: 1%; width: 50%;">
 
@@ -64,14 +64,14 @@ if (isset($_POST["login"])) {
 
     <div class="row">
       <div class="col-lg-10 offset-1">
-        <div class="card o-hidden border-0 shadow-lg">
+        <div class="card o-hidden border-0 shadow-lg bg-gradient-light">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row justify-content-center">
               <div class="col-lg">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900">selamat datang admin!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">selamat datang admin!</h1>
                   </div>
                   <?php if (isset($error)) : ?>
                     <p style="color : red; font-style:italic">
@@ -97,7 +97,7 @@ if (isset($_POST["login"])) {
       </div>
     </div>
   </div>
-</body><br><br><br><br><br>
+</body><br><br><br><br><br><br><br><br>
 
 <!-- Bootstrap core JavaScript-->
 <script src="../assets/vendor/jquery/jquery.min.js"></script>

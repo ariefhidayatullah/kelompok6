@@ -63,7 +63,7 @@ if (isset($_POST["submit"])) {
 			</div>
 		</div>
 	</div>
-	
+
 
 	<section class="my_account_area pt--80 pb--55 bg--white">
 		<div class="container">
@@ -124,23 +124,23 @@ if (isset($_POST["submit"])) {
 								<div class="datadiri">
 									<div class="input__box">
 										<label>nama : <span>*</span></label>
-										<input type="text" name="nama_user" id="nama_user" placeholder="Masukkan nama anda..." required="" autofocus>
+										<input type="text" name="nama_user" id="nama_user" placeholder="Masukkan nama anda..." autofocus>
 										<small class="nama_user" style="color: red;"></small>
 									</div>
 									<div class="input__box">
 										<label>Email address <span>*</span></label>
-										<input type="email" name="email" id="email" placeholder="Masukkan email anda..." required="" autofocus>
+										<input type="email" name="email" id="email" placeholder="Masukkan email anda..." autofocus>
 										<small class="email" style="color: red;"></small>
 										<small class="email1 text-success"></small>
 									</div>
 									<div class="input__box">
 										<label>Password<span>*</span></label>
-										<input type="password" name="password" id="password" placeholder="Masukkan password anda..." required>
+										<input type="password" name="password" id="password" placeholder="Masukkan password anda...">
 										<small class="password" style="color: red;"></small>
 									</div>
 									<div class="input__box">
 										<label>konfirmasi Password <span>*</span></label>
-										<input type="password" name="password2" id="password2" placeholder="konfirmasi password anda..." required>
+										<input type="password" name="password2" id="password2" placeholder="konfirmasi password anda...">
 										<small class="password2" style="color: red;"></small>
 									</div>
 									<div class="form__btn">
@@ -160,7 +160,7 @@ if (isset($_POST["submit"])) {
 									</div>
 									<div class="input__box">
 										<label for="kodepos">Kode pos <span>*</span></label>
-										<input type="text" name="kodepos" id="kodepos" placeholder="Masukkan jenis kelamin anda..." required="" maxlength="12" autofocus>
+										<input type="text" name="kodepos" id="kodepos" placeholder="Masukkan kode pos anda..." required="" maxlength="12" autofocus>
 										<small class="kodepos" style="color: red;"></small>
 									</div>
 									<div class="input__box">
@@ -250,6 +250,46 @@ if (isset($_POST["submit"])) {
 
 		});
 
+		// validasi kata sandi
+		$('#password').on('keyup', function() {
+			var regex = /[a-z]/g;
+			var upperCaseLetters = /[A-Z]/g;
+			var numbers = /[0-9]/g;
+
+			if ($(this).val().length < 8) {
+				$('.password').text('Password Minimal 8 digit (huruf besar dan huruf kecil, dan angka)');
+				password = false;
+			} else {
+				if (regex.test(this.value) !== true) {
+					$('.password').text('Password harus berisi huruf kecil');
+					password = false;
+				} else {
+					if (upperCaseLetters.test(this.value) !== true) {
+						$('.password').text('Password harus berisi huruf besar');
+						password = false;
+					} else {
+						if (numbers.test(this.value) !== true) {
+							$('.password').text('Password harus berisi angka');
+							password = false;
+						} else {
+							$('.password').text('');
+							password = true;
+						}
+					}
+				}
+			}
+
+		});
+		$('#password2').on('keyup', function() {
+			if ($(this).val() != $('#password').val()) {
+				$('.password2').text('Password Tidak Sama');
+				password2 = false;
+			} else {
+				$('.password2').text('');
+				password2 = true;
+			}
+		});
+
 		$('.selanjutnya').on('click', function() {
 			if ($('#nama_user').val() === '') {
 				$('.nama_user').text('Nama Harus Di isi!');
@@ -269,26 +309,6 @@ if (isset($_POST["submit"])) {
 				$('.judul').text('Akun Masuk');
 				$('.datadiri').hide();
 				$('.datauser').show();
-			}
-		});
-
-		// validasi kata sandi
-		$('#password').on('keyup', function() {
-			if ($(this).val().length < 8) {
-				$('.password').text('Password Minimal 8 digit (huruf besar dan huruf kecil, dan angka)');
-				password = false;
-			} else {
-				$('.password').text('');
-				password = true;
-			}
-		});
-		$('#password2').on('keyup', function() {
-			if ($(this).val() != $('#password').val()) {
-				$('.password2').text('Password Tidak Sama');
-				password2 = false;
-			} else {
-				$('.password2').text('');
-				password2 = true;
 			}
 		});
 

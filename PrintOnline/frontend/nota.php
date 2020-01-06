@@ -9,11 +9,11 @@ if (!isset($_SESSION["LOGIN"])) {
     exit();
 }
 
-// $lama = 1;
+$lama = 1;
 
-// $query = "DELETE FROM pesan
-//           WHERE DATEDIFF(CURDATE(), tanggal_pemesanan) > $lama";
-// $hasil = mysqli_query($conn, $query);
+$query = "UPDATE pesan SET status_pemesanan = 'pemesanan di batalkan'
+          WHERE DATEDIFF(CURDATE(), tanggal_pemesanan) > $lama";
+$hasil = mysqli_query($conn, $query);
 
 ?>
 <!-- Main wrapper -->
@@ -137,7 +137,7 @@ if (!isset($_SESSION["LOGIN"])) {
                                     <div class="contact-form-wrap">
                                         <div class="contact-btn">
                                             <button type="submit" onclick="window.print()">Cetak nota</button>
-                                            <a href="riwayatpemesanan"><button>kembali</button></a>
+                                            <a href="riwayatpemesanan"><button>riwayat pemesanan</button></a>
                                         </div>
                                     </div>
                                 </div>

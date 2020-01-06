@@ -3,11 +3,14 @@ session_start();
 include 'include/_header.php';
 require 'function.php';
 
+$id_user = $_SESSION["LOGIN"];
+
 if (!isset($_SESSION["LOGIN"])) {
     echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
     echo "<script>location='login'; </script>";
     exit();
 }
+
 
 ?>
 <!-- Main wrapper -->

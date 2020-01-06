@@ -48,11 +48,11 @@ if (isset($_POST["cart"])) {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="bradcaump__inner text-center">
-						<h2 class="bradcaump-title">Shop Single</h2>
+						<h2 class="bradcaump-title">produk</h2>
 						<nav class="bradcaump-content">
 							<a class="breadcrumb_item" href="index">Home</a>
 							<span class="brd-separetor">/</span>
-							<span class="breadcrumb_item active">Shop Single</span>
+							<span class="breadcrumb_item active">produk</span>
 						</nav>
 					</div>
 				</div>
@@ -102,9 +102,9 @@ if (isset($_POST["cart"])) {
 											</div>
 										</div>
 
-										<span>Ukuran Percetakan : <?php
-																	echo $ro['ukuran'];
-																	?>
+										<span class="mb-4">Ukuran Percetakan : <?php
+																				echo $ro['ukuran'];
+																				?>
 										</span>
 										<?php
 										$bahan1 = mysqli_query($conn, "SELECT * FROM bahan where id_produk = '$id_produk1'");
@@ -118,7 +118,7 @@ if (isset($_POST["cart"])) {
 										<div class="box-tocart d-flex">
 											<div class="addtocart__actions">
 												<form action="" method="POST" enctype="multipart/form-data">
-													<select id="nim" name="nama_bahan" onchange="changeValue(this.value)" class="form-control col-md-6">
+													<select id="nim" name="nama_bahan" onchange="changeValue(this.value)" class="form-control col-md-6 mt-3 mt-3" required>
 														<option disabled="" selected="">Pilih Bahan</option>
 														<?php
 														while ($row = mysqli_fetch_array($bahan)) {
@@ -128,7 +128,8 @@ if (isset($_POST["cart"])) {
 														?>
 													</select>
 													<span>Harga</span><br>
-													<input class="form-control" type="number" name="harga" id="harga" disabled><br>
+													<input class="form-control col-md-6" type="number" name="harga" id="harga" disabled><br>
+													<span class="mb-4">upload desain anda disini :</span>
 													<input type="file" name="files" id="file">
 													<input type="text" name="id_produk" value="<?php echo $id_produk1 ?>" hidden>
 													<input class="form-control" type="number" value="1" name="qty" id="qty" hidden>

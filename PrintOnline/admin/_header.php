@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    echo "<script> alert ('silahkan login terlebih dahulu') ; </script>";
+    echo "<script>location='../auth/login.php'; </script>";
+    exit();
+}
 $pesanan = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM pesan WHERE status_pemesanan = 'pembayaran berhasil (menunggu pengiriman dari admin)'"));
 $pecah = query("SELECT * FROM pesan WHERE status_pemesanan = 'pembayaran berhasil (menunggu pengiriman dari admin)'");
 
@@ -112,11 +118,6 @@ $pecah = query("SELECT * FROM pesan WHERE status_pemesanan = 'pembayaran berhasi
                     <span>Live Chat</span></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="../auth/logout.php">
-                    <i class="fas fa-fw fa-power-off"></i>
-                    <span>Logout</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -144,32 +145,51 @@ $pecah = query("SELECT * FROM pesan WHERE status_pemesanan = 'pembayaran berhasi
                     </button>
 
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter"><?= $pesanan  ?></span>
-                            </a>
-                            <?php foreach ($pecah as $row) : ?>
-                                <!-- Dropdown - Alerts -->
-                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                                    <h6 class="dropdown-header">
-                                        Alerts Center
-                                    </h6>
-                                    <a class="dropdown-item d-flex align-items-center" href="../pemesanan/detailpemesanan.php?id=<?= $row['id_pesan']; ?>">
-                                        <div class="mr-3">
-                                            <div class="icon-circle bg-primary">
-                                                <i class="fas fa-file-alt text-white"></i>
+
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-bell fa-fw"></i>
+                                    <!-- Counter - Alerts -->
+                                    <span class="badge badge-danger badge-counter"><?= $pesanan  ?></span>
+                                </a>
+                                <?php foreach ($pecah as $row) : ?>
+                                    <!-- Dropdown - Alerts -->
+                                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                        <h6 class="dropdown-header">
+                                            Notifikasi pemesanan
+                                        </h6>
+                                        <a class="dropdown-item d-flex align-items-center" href="../pemesanan/detailpemesanan.php?id=<?= $row['id_pesan']; ?>">
+                                            <div class="mr-3">
+                                                <div class="icon-circle bg-primary">
+                                                    <i class="fas fa-file-alt text-white"></i>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div>
-                                            <div class="small text-gray-500"><?= $row['tanggal_pemesanan']; ?></div>
-                                            <span class="font-weight-bold">pesanan baru <?= $row['nama_user']; ?> telah membayar </span>
-                                        </div>
+                                            <div>
+                                                <div class="small text-gray-500"><?= $row['tanggal_pemesanan']; ?></div>
+                                                <span class="font-weight-bold">pesanan baru <?= $row['nama_user']; ?> telah membayar </span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                <?php endforeach; ?>
+                            </li>
+
+                            <div class="topbar-divider d-none d-sm-block"></div>
+
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">admin</span>
+                                    <img class="img-profile rounded-circle" src="../assets/img/icon.png">
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="../auth/logout.php">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
                                     </a>
                                 </div>
-                            <?php endforeach; ?>
-                        </li>
+                            </li>
+                        </ul>
                     </ul>
 
 

@@ -257,6 +257,8 @@ $user = query("SELECT * FROM user WHERE email = '$email'");
                                             $nohp_user = $_POST['nohp_user'];
                                             $id_kabkot = $ongk['nama_kabkot'];
                                             $tanggal_pembelian = date("Y-m-d");
+                                            $now = strtotime(date("Y-m-d"));
+                                            $date = date('Y-m-j', strtotime('+1 day', $now));
 
                                             mysqli_query($conn, "INSERT INTO pesan VALUES ('$id_pesan',' ', '$id_pelanggan', '$nama_user','$email','$nohp_user','$id_kabkot','$alamat', '$pesan', '$tanggal_pembelian', '$ordertotal', 'pending', '' )");
 
