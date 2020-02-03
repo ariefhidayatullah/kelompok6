@@ -1,5 +1,6 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'printonline');
+$conn = mysqli_connect('localhost', 'u5445042_kelompok6bws', 'kelompok6bws', 'u5445042_kelompok06bws');
+
 
 function query($query)
 {
