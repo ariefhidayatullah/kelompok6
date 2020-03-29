@@ -1,4 +1,0 @@
-<?php 
-//ini komentar
-
-?>
