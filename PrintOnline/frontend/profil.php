@@ -96,8 +96,6 @@ if (isset($_POST["submit"])) {
                     $query_kecamatan = mysqli_fetch_array($kecamatan);
                     $nama_kecamatan = $query_kecamatan["nama_kec"];
 
-
-                    var_dump($kec);
                     ?>
                     <div class="col-lg-10 col-12 offset-1">
                         <div class="customer_details">
