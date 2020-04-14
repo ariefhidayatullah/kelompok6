@@ -39,6 +39,8 @@
 
 <!-- Page level custom scripts -->
 <script src="<?= base_url(); ?>assets/admin/js/demo/datatables-demo.js"></script>
+<script src="<?= base_url(); ?>assets/admin/js/sweetalert2.all.min.js"></script>
+<script src="<?= base_url(); ?>assets/admin/js/myscript.js"></script>
 
 
 

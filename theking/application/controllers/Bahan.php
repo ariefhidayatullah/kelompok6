@@ -25,4 +25,23 @@ class Bahan extends CI_Controller {
         $this->session->set_flashdata('flash', 'Dihapus');
         redirect('bahan');
     }
+
+    public function tambah()
+    {
+        $data['judul'] = 'Form Tambah Data Bahan';
+        $data['produk'] = $this->Bahan_model->getAllProduk();
+
+        $this->form_validation->set_rules('nama_bahan', 'Nama_bahan', 'required');
+        $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header_admin', $data);
+            $this->load->view('bahan/tambah', $data);
+            $this->load->view('templates/footer_admin');
+        } else {
+            $this->Bahan_model->tambahDataBahan();
+            $this->session->set_flashdata('flash', 'Ditambahkan');
+            redirect('bahan');
+        }
+    }
 }
