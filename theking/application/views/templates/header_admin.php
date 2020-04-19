@@ -49,7 +49,7 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="../dashboard/index.php">
+                <a class="nav-link" href="<?= base_url(); ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -69,7 +69,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="../dataproduk/dataproduk.php">
+                <a class="nav-link" href="<?= base_url(); ?>produk">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data Produk</span></a>
             </li>
@@ -142,7 +142,7 @@
                                     <span class="badge badge-danger badge-counter"></span>
                                 </a>
                                 
-                                    <!-- Dropdown - Alerts -->
+                                    <!-- Dropdown - Alerts
                                     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                         <h6 class="dropdown-header">
                                             Notifikasi pemesanan
@@ -158,7 +158,7 @@
                                                 <span class="font-weight-bold">pesanan baru  telah membayar </span>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> -->
                                
                             </li>
 

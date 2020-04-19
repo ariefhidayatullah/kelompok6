@@ -5,7 +5,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; The King 2019</span>
+<span>Copyright &copy; The King 2019</span>
         </div>
     </div>
 </footer>
@@ -41,7 +41,12 @@
 <script src="<?= base_url(); ?>assets/admin/js/demo/datatables-demo.js"></script>
 <script src="<?= base_url(); ?>assets/admin/js/sweetalert2.all.min.js"></script>
 <script src="<?= base_url(); ?>assets/admin/js/myscript.js"></script>
-
+<script>
+    $('.custom-file-input').on('change', function() {
+                    let fileName = $(this).val().split('\\').pop();
+                    $(this).next('.custom-file-label').addClass("selected").html(fileName);
+                });
+    </script>
 
 
 

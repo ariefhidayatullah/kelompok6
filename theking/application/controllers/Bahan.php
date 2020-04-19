@@ -28,7 +28,7 @@ class Bahan extends CI_Controller {
 
     public function tambah()
     {
-        $data['judul'] = 'Form Tambah Data Bahan';
+        $data['judul'] = 'Tambah Data Bahan';
         $data['produk'] = $this->Bahan_model->getAllProduk();
 
         $this->form_validation->set_rules('nama_bahan', 'Nama_bahan', 'required');
@@ -41,6 +41,26 @@ class Bahan extends CI_Controller {
         } else {
             $this->Bahan_model->tambahDataBahan();
             $this->session->set_flashdata('flash', 'Ditambahkan');
+            redirect('bahan');
+        }
+    }
+
+    public function ubah($id)
+    {
+        $data['judul'] = 'Ubah Data Bahan';
+        $data['bahan'] = $this->Bahan_model->getBahanById($id);
+        $data['produk'] = $this->Bahan_model->getAllProduk();
+
+        $this->form_validation->set_rules('nama_bahan', 'Nama_bahan', 'required');
+        $this->form_validation->set_rules('harga_satuan', 'Harga_satuan', 'required|numeric');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header_admin', $data);
+            $this->load->view('bahan/ubah', $data);
+            $this->load->view('templates/footer_admin');
+        } else {
+            $this->Bahan_model->ubahDataBahan();
+            $this->session->set_flashdata('flash', 'Diubah');
             redirect('bahan');
         }
     }
