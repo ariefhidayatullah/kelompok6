@@ -61,7 +61,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Admin / User</h6>
-                        <a class="collapse-item" href="../auth/register.php">Tambah Akun Admin</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>admin/registrasi">Tambah Akun Admin</a>
                         <a class="collapse-item" href="../pengguna/datauser.php">List User / Pengguna</a>
                     </div>
                 </div>
